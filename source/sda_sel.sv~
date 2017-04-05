@@ -1,0 +1,10 @@
+module sda_sel
+  (
+   input       tx_out,
+   input [1:0] sda_mode,
+   output      sda_out
+   );
+
+   assign sda_out = (sda_mode == 2'b11) ? tx_out : ((sda_mode == 2'b01) ? 1'b0 : 1'b1);
+   
+endmodule

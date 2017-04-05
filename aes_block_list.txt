@@ -1,0 +1,23 @@
+-=-=-=- BLOCK 1 -=-=-=-
+XOR_INIT
+
+
+-=-=-=- BLOCK 2 -=-=-=-
+SUB_BYTES MULTIPLEXER
+
+
+-=-=-=- BLOCK 3 -=-=-=-
+SHIFT_ROWS
+
+
+-=-=-=- BLOCK 4 -=-=-=-
+MIX_COLUMNS
+
+
+-=-=-=- BLOCK 5 -=-=-=-
+ROUND_KEY_ADDER
+
+
+-=-=-=- BLOCK 6 -=-=-=-
+INCREMENT_STATE
+

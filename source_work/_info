@@ -1,0 +1,73 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ecegrid/a/mg85/ece337/Project
+T_opt
+!s110 1490472817
+V`LA]<X5=fRV]8oI7mdKfX2
+04 8 4 work byte_sub fast 0
+=1-782bcb3383d2-58d6cf71-a4ed8-17f6
+Z1 o-quiet -auto_acc_if_foreign -work source_work/ -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
+n@_opt
+Z2 OL;O;10.3b;59
+R0
+T_opt1
+!s110 1490750332
+V56VN18GWF4TQZ6dFLCWA:3
+04 9 4 work mux_4bits fast 0
+=1-f48e3881afdc-58db0b7c-6b4fd-6e43
+R1
+n@_opt1
+R2
+vbyte_sub
+Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+!s110 1490472813
+!i10b 1
+!s100 cHFlW]i;^1G6_<]BiT]MP3
+IUUEV;a<Yb9FRBg6gQ?GDJ3
+Z4 V`JN@9S9cnhjKRR_L]QIcM3
+!s105 byte_sub_sv_unit
+S1
+R0
+w1490472313
+8source/byte_sub.sv
+Fsource/byte_sub.sv
+L0 1
+Z5 OL;L;10.3b;59
+r1
+!s85 0
+31
+!s108 1490472813.615106
+!s107 source/byte_sub.sv|
+!s90 -sv|-work|source_work|source/byte_sub.sv|
+!i113 0
+Z6 o-sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vmux_4bits
+R3
+!s110 1490750328
+!i10b 1
+!s100 FX@oEX^Q3SNa@dP9d5@Sb0
+II=d>e5X7@<X@Gb6TziTRc2
+R4
+!s105 mux_4bits_sv_unit
+S1
+R0
+w1490750297
+8source/mux_4bits.sv
+Fsource/mux_4bits.sv
+L0 1
+R5
+r1
+!s85 0
+31
+!s108 1490750328.199807
+!s107 source/mux_4bits.sv|
+!s90 -sv|-work|source_work|source/mux_4bits.sv|
+!i113 0
+R6
