@@ -1,0 +1,24 @@
+// $Id: $
+// File name:   tx_counter_idx.sv
+// Created:     4/16/2017
+// Author:      Natat Sombuntham
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Wrapper file for side indexing fifo.
+module tx_counter_idx (
+	input wire clk,
+	input wire n_rst,
+	input wire count_en1,
+	output reg [1:0] head_side
+);
+	assign sync_clr = 1'b0;
+	fifo_flex_counter #(.NUM_CNT_BITS(2)) FLEXCNT
+	(
+		.clk(clk),
+		.n_rst(n_rst),
+		.clear(sync_clr),
+		.count_enable(count_en1),
+		.rollover_val(2'b11),
+		.count_out(head_side)
+	);
+endmodule
