@@ -1,0 +1,24 @@
+// AES: data block select
+
+module data_block_select
+  (
+   input wire 	      read_fifo,
+   input wire [127:0] fifo_in,
+   input wire [127:0] round_block,
+   input wire [4:0]   round_state,
+   output wire 	      block_out,
+   output wire 	      state_out,
+   );
+
+   always_comb begin
+      block_out = round_block;
+      state_out = round_state;
+
+      if(read_fifo)
+	begin
+	   block_out = fifo_in;
+	   state_out = '0;
+	end
+   end
+
+endmodule

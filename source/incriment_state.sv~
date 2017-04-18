@@ -1,0 +1,9 @@
+module incriment_state
+  (
+   input reg [4:0] i_state;
+   output reg [4:0] o_state;   
+   );
+
+   o_state = i_state + 1;
+
+endmodule

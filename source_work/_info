@@ -9,45 +9,192 @@ z2
 cModel Technology
 Z0 d/home/ecegrid/a/mg85/ece337/Project
 T_opt
-!s110 1490472817
-V`LA]<X5=fRV]8oI7mdKfX2
-04 8 4 work byte_sub fast 0
-=1-782bcb3383d2-58d6cf71-a4ed8-17f6
+!s110 1492494651
+VZl[=IboAS@I`FAd41@I[;3
+04 9 4 work sub_bytes fast 0
+=1-782bcb3383d2-58f5a93b-8c388-1c43
 Z1 o-quiet -auto_acc_if_foreign -work source_work/ -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
 n@_opt
 Z2 OL;O;10.3b;59
 R0
 T_opt1
-!s110 1490750332
-V56VN18GWF4TQZ6dFLCWA:3
-04 9 4 work mux_4bits fast 0
-=1-f48e3881afdc-58db0b7c-6b4fd-6e43
+!s110 1492494662
+Vz4aL>4ToS@EXWGDl3e]hP0
+04 14 4 work aes_encryption fast 0
+=1-782bcb3383d2-58f5a946-3c595-1cca
 R1
 n@_opt1
 R2
-vbyte_sub
-Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
-!s110 1490472813
-!i10b 1
-!s100 cHFlW]i;^1G6_<]BiT]MP3
-IUUEV;a<Yb9FRBg6gQ?GDJ3
-Z4 V`JN@9S9cnhjKRR_L]QIcM3
-!s105 byte_sub_sv_unit
-S1
 R0
-w1490472313
-8source/byte_sub.sv
-Fsource/byte_sub.sv
-L0 1
-Z5 OL;L;10.3b;59
+T_opt2
+!s110 1492494816
+VAMZJl2FQ3j8Ua=;M`Nihg3
+04 14 4 work aes_decryption fast 0
+=1-782bcb3383d2-58f5a9e0-d104a-270d
+R1
+n@_opt2
+R2
+vaes_block
+Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+!s110 1492490349
+!i10b 1
+!s100 4ERi>dN@GTT1`H1>FS0Eo2
+Ih9DoZM;51WQMQc2NL4l[Z3
+Z4 V`JN@9S9cnhjKRR_L]QIcM3
+!s105 aes_block_sv_unit
+S1
+Z5 d/home/ecegrid/a/mg85/ece337/337Project
+w1492488749
+8source/aes_block.sv
+Fsource/aes_block.sv
+L0 3
+Z6 OL;L;10.3b;59
 r1
 !s85 0
 31
-!s108 1490472813.615106
+!s108 1492490349.585205
+!s107 source/aes_block.sv|
+!s90 -sv|-work|source_work|source/aes_block.sv|
+!i113 0
+Z7 o-sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vaes_decryption
+R3
+!s110 1492494811
+!i10b 1
+!s100 ^[^?YSQjDQhAP6==<S?HS2
+IQ=Gmjg:hM5:Yzb_nl;>QH1
+R4
+!s105 aes_decryption_sv_unit
+S1
+R5
+w1492494806
+8source/aes_decryption.sv
+Fsource/aes_decryption.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492494811.439907
+!s107 source/aes_decryption.sv|
+!s90 -sv|-work|source_work|source/aes_decryption.sv|
+!i113 0
+R7
+vaes_encryption
+R3
+!s110 1492493505
+!i10b 1
+!s100 WUEGKChI<Gl3c><>z1l[P0
+Ih8[i554=W3QIUhb5A<a<Q2
+R4
+!s105 aes_encryption_sv_unit
+S1
+R5
+w1492493391
+8source/aes_encryption.sv
+Fsource/aes_encryption.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492493505.648884
+!s107 source/aes_encryption.sv|
+!s90 -sv|-work|source_work|source/aes_encryption.sv|
+!i113 0
+R7
+vbyte_sub
+R3
+!s110 1492490876
+!i10b 1
+!s100 c?;SRHQ2n<bmaRJ6`c5:f3
+IbDTgE;g2NbWM>?JzX^UiT3
+R4
+!s105 byte_sub_sv_unit
+S1
+R5
+w1492490821
+8source/byte_sub.sv
+Fsource/byte_sub.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1492490876.497717
 !s107 source/byte_sub.sv|
 !s90 -sv|-work|source_work|source/byte_sub.sv|
 !i113 0
-Z6 o-sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R7
+vdata_block_select
+R3
+!s110 1492493482
+!i10b 1
+!s100 mXYgEkXgE^kEaCDg7]:9K3
+IFd@c6hZol0a4F:9YZAEH92
+R4
+!s105 data_block_select_sv_unit
+S1
+R5
+w1492492803
+8source/data_block_select.sv
+Fsource/data_block_select.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492493482.121965
+!s107 source/data_block_select.sv|
+!s90 -sv|-work|source_work|source/data_block_select.sv|
+!i113 0
+R7
+vincriment_state
+R3
+!s110 1492491371
+!i10b 1
+!s100 z:Y<<?S]A1>8dIXHkazM]3
+IShf<;4ioZlf6]2JDI8mmQ2
+R4
+!s105 incriment_state_sv_unit
+S1
+R5
+w1492491369
+8source/incriment_state.sv
+Fsource/incriment_state.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1492491371.158501
+!s107 source/incriment_state.sv|
+!s90 -sv|-work|source_work|source/incriment_state.sv|
+!i113 0
+R7
+vmix_columns
+R3
+!s110 1492491279
+!i10b 1
+!s100 LlfmU=[N0EBP[jZVK@ol11
+IdQQBSVLS3zJ1egDFnc3Zk3
+R4
+!s105 mix_columns_sv_unit
+S1
+R5
+w1492491277
+8source/mix_columns.sv
+Fsource/mix_columns.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492491279.878254
+!s107 source/mix_columns.sv|
+!s90 -sv|-work|source_work|source/mix_columns.sv|
+!i113 0
+R7
 vmux_4bits
 R3
 !s110 1490750328
@@ -62,7 +209,7 @@ w1490750297
 8source/mux_4bits.sv
 Fsource/mux_4bits.sv
 L0 1
-R5
+R6
 r1
 !s85 0
 31
@@ -70,4 +217,119 @@ r1
 !s107 source/mux_4bits.sv|
 !s90 -sv|-work|source_work|source/mux_4bits.sv|
 !i113 0
+R7
+vround_key_adder
+R3
+!s110 1492491218
+!i10b 1
+!s100 XDe8Od=[d[@>;JFH3K[W>2
+IXD?IA=WfggcIkKQ0E1LZ13
+R4
+!s105 round_key_adder_sv_unit
+S1
+R5
+w1492491216
+8source/round_key_adder.sv
+Fsource/round_key_adder.sv
+L0 1
 R6
+r1
+!s85 0
+31
+!s108 1492491218.077297
+!s107 source/round_key_adder.sv|
+!s90 -sv|-work|source_work|source/round_key_adder.sv|
+!i113 0
+R7
+vshift_rows
+R3
+!s110 1492490939
+!i10b 1
+!s100 8<Iz9cS??Zf=MS]M7mJ:81
+IM089]4jFJSMY2zEQfeL>R1
+R4
+!s105 shift_rows_sv_unit
+S1
+R5
+w1492490937
+8source/shift_rows.sv
+Fsource/shift_rows.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492490939.069325
+!s107 source/shift_rows.sv|
+!s90 -sv|-work|source_work|source/shift_rows.sv|
+!i113 0
+R7
+vsub_bytes
+R3
+!s110 1492494645
+!i10b 1
+!s100 NmU9jX5cOIlGjfg3S=HW02
+InNRG<D1<cNJ]M^4ec9;h>1
+R4
+!s105 sub_bytes_sv_unit
+S1
+R5
+w1492494644
+8source/sub_bytes.sv
+Fsource/sub_bytes.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1492494645.900183
+!s107 source/sub_bytes.sv|
+!s90 -sv|-work|source_work|source/sub_bytes.sv|
+!i113 0
+R7
+vsub_bytes_byte
+R3
+!s110 1492494388
+!i10b 1
+!s100 `cEZD>=XiH8fUiMYDnZ6>2
+IW4eC`<fj^?f15@WZTFQ5>2
+R4
+!s105 sub_bytes_byte_sv_unit
+S1
+R5
+w1492494387
+8source/sub_bytes_byte.sv
+Fsource/sub_bytes_byte.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1492494388.518583
+!s107 source/sub_bytes_byte.sv|
+!s90 -sv|-work|source_work|source/sub_bytes_byte.sv|
+!i113 0
+R7
+vxor_init
+R3
+!s110 1492490790
+!i10b 1
+!s100 I4O<i;T<FGJPfP^@BIBfk3
+IC8n@7GS3:@?FEF4Q>ZJZV0
+R4
+!s105 xor_init_sv_unit
+S1
+R5
+w1492490785
+8source/xor_init.sv
+Fsource/xor_init.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492490790.087832
+!s107 source/xor_init.sv|
+!s90 -sv|-work|source_work|source/xor_init.sv|
+!i113 0
+R7

@@ -1,0 +1,9 @@
+QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+Start time: 00:55:13 on Apr 18,2017
+vlog -sv -work mapped_work mapped/mix_columns.v 
+-- Compiling module mix_columns
+
+Top level modules:
+	mix_columns
+End time: 00:55:13 on Apr 18,2017, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

@@ -340,9 +340,45 @@ def decrypt():
         outFile.close()        
     intextBV.close_file_object()
             
+def print_genTables():
+    genTables()    
+
+    bs = bytesubtable
+    ibs = invbytesubtable
+    
+    bs_str = "{{{"
+    count = 0
+    for idx in range(len(bs)):
+        bs_str += "8'b{0:08b}".format(bs[idx])
+        if idx == 255:
+            bs_str += "}}}"
+        elif idx % 16 == 15:
+            bs_str += "}},{{"
+        elif idx % 4 == 3:
+            bs_str += "},{"
+        else:
+            bs_str += "," 
+
+
+    ibs_str = "{{{"
+    count = 0
+    for idx in range(len(ibs)):
+        ibs_str += "8'b{0:08b}".format(ibs[idx])
+        if idx == 255:
+            ibs_str += "}}}"
+        elif idx % 16 == 15:
+            ibs_str += "}},{{"
+        elif idx % 4 == 3:
+            ibs_str += "},{"
+        else:
+            ibs_str += "," 
+
+    print("BS",bs_str)
+    print("IBS",ibs_str)        
 
 if __name__ == "__main__":
     
-    encrypt()
-    decrypt()
+    print_genTables()
+    #encrypt()
+    #decrypt()
     

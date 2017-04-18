@@ -1,0 +1,9 @@
+QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+Start time: 21:21:58 on Mar 28,2017
+vlog -sv -work mapped_work mapped/mux_4bits.v 
+-- Compiling module mux_4bits
+
+Top level modules:
+	mux_4bits
+End time: 21:21:58 on Mar 28,2017, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

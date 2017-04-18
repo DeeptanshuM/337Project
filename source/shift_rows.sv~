@@ -1,0 +1,14 @@
+// AES: shift rows module
+
+module shift_rows
+  (
+   input wire [127:0]  i_data,
+   input wire mode,
+   output wire [127:0] o_data,
+   );
+   
+   // NOT IMPLEMENTED
+   assign o_data = i_data;
+
+endmodule
+		  
