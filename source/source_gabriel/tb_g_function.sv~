@@ -1,0 +1,260 @@
+// $Id: $
+// File name:   tb_tx_fifo.sv
+// Created:     2/21/2017
+// Author:      Gabriel Chen
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: testbench for tx_fifo
+
+`timescale 1ns / 100ps
+
+module tb_tx_fifo ();
+
+	// Define parameters
+	// basic test bench parameters
+	localparam	CLK_PERIOD	= 2.5;
+	localparam	CHECK_DELAY = 1; // Check 1ns after the rising edge to allow for propagation delay
+	
+	// Shared Test Variables
+	reg tb_clk;
+
+	// Clock generation block
+	always
+	begin
+		tb_clk = 1'b0;
+		#(CLK_PERIOD/2.0);
+		tb_clk = 1'b1;
+		#(CLK_PERIOD/2.0);
+	end
+
+	// Default Config Test Variables & constants
+	
+	reg	tb_n_rst;
+	reg	tb_read_enable;
+	reg	tb_write_enable;
+	reg	[7:0] tb_write_data;
+	reg	[7:0] tb_read_data;
+	reg	tb_fifo_empty;
+	reg	tb_fifo_full;
+	
+	// Declare test bench signals
+	integer tb_test_case;
+	reg	[7:0] tb_expected_read_data;
+	reg	tb_expected_fifo_empty;
+	reg	tb_expected_fifo_full;
+	
+	// DUT port map
+	tx_fifo DUT(.clk(tb_clk), .n_rst(tb_n_rst), .read_enable(tb_read_enable), .write_enable(tb_write_enable), .write_data(tb_write_data), .read_data(tb_read_data), .fifo_empty(tb_fifo_empty), .fifo_full(tb_fifo_full));
+	
+	// Test bench process
+	initial
+	begin
+		//initialize and then wait
+		tb_test_case = 0;
+		tb_n_rst = 0;
+		tb_read_enable = 0;
+		tb_write_enable = 0;
+		tb_write_data = 8'b0;
+		tb_expected_read_data = 8'b0;
+		tb_expected_fifo_empty = 1;
+		tb_expected_fifo_full = 0;
+
+
+		# (1);
+		@ (posedge tb_clk);
+		@ (posedge tb_clk);
+		# (1);
+
+		//TEST CASE ONE TEST WRITE TO FIFO
+		// Initialize test inputs for DUT
+		@ (negedge tb_clk);
+		tb_n_rst = 0;
+		@ (negedge tb_clk);
+		tb_n_rst = 1;
+		@ (negedge tb_clk);
+		tb_test_case = 1;
+		tb_n_rst = 1;
+		tb_write_enable = 1;
+		tb_write_data = 8'b11110000;
+		tb_expected_read_data = 8'b11110000;
+	
+		@ (posedge tb_clk);
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (posedge tb_clk);
+		@ (posedge tb_clk);
+		# (1);
+
+		if(tb_expected_read_data == tb_read_data) begin
+			$info("Correct read_data value for test case %d!", tb_test_case);
+		end
+		else begin
+			$info("Incorrect read_data value for test case %d!", tb_test_case);
+		end
+
+		//TEST CASE TWO TEST WRITE THEN READ 
+		// Initialize test inputs for DUT
+		@ (negedge tb_clk);
+		tb_n_rst = 0;
+		@ (negedge tb_clk);
+		tb_n_rst = 1;
+		@ (negedge tb_clk);
+		tb_test_case = 2;
+		tb_write_enable = 1;
+		tb_write_data = 8'b11110000;
+		@ (posedge tb_clk);
+		@ (posedge tb_clk);
+
+		@ (negedge tb_clk);
+		tb_read_enable = 1;
+		tb_expected_read_data = 8'b11110000;
+	
+		@ (posedge tb_clk);
+		@ (posedge tb_clk);
+		@ (posedge tb_clk);
+
+		if(tb_expected_read_data == tb_read_data) begin
+			$info("Correct read_data value for test case %d!", tb_test_case);
+		end
+		else begin
+			$info("Incorrect read_data value for test case %d!", tb_test_case);
+		end
+
+		//TEST CASE THREE FULL FIFO
+		// Initialize test inputs for DUT
+		@ (negedge tb_clk);
+		tb_n_rst = 0;
+		@ (negedge tb_clk);
+		tb_n_rst = 1;
+		@ (negedge tb_clk);
+		tb_test_case = 3;
+
+		//write 8 bytes
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (negedge tb_clk);
+		tb_write_data = 8'b11111111;
+		tb_write_enable = 1;
+		@ (negedge tb_clk);
+		tb_write_enable = 0;
+
+		@ (posedge tb_clk);
+
+		if(tb_expected_fifo_full == tb_fifo_full) begin
+			$info("Correct fifo_full value for test case %d!", tb_test_case);
+		end
+		else begin
+			$info("Incorrect fifo_full value for test case %d!", tb_test_case);
+		end
+
+		//TEST CASE FOUR EMPTY FIFO
+		@ (negedge tb_clk);
+		tb_test_case = 4;
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+		tb_read_enable = 1;
+		@ (negedge tb_clk);
+		tb_read_enable = 0;
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+		@ (negedge tb_clk);
+
+
+		if(tb_expected_fifo_empty == tb_fifo_empty) begin
+			$info("Correct fifo_empty value for test case %d!", tb_test_case);
+		end
+		else begin
+			$info("Incorrect fifo_empty value for test case %d!", tb_test_case);
+		end
+
+	end
+	
+endmodule
