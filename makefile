@@ -27,6 +27,14 @@ COMPONENT_FILES	:=
 # TOP_LEVEL_FILE	:= tx_fifo.sv
 TOP_LEVEL_FILE	:= 
 
+# define values for making AES 
+AES_TOP_LEVEL := aes_block.sv
+AES_HELPER_FILES += aes_encryption.sv aes_decryption.sv sub_bytes.sv inv_sub_bytes.sv shift_rows.sv inv_shift_rows.sv s_box_lookup.sv inv_s_box_lookup.sv
+AES_TEST_BENCH := tb_$(AES_TOP_LEVEL)
+AES_TB_MODULE		:= $(notdir $(basename $(AES_TEST_BENCH)))
+AES_TOP_MODULE	:= $(notdir $(basename $(AES_TOP_LEVEL)))
+
+
 # Specify the filepath of the test bench you want to use (ie. tb_top_level.sv)
 # (do not include the source folder in the name)
 TEST_BENCH	:= tb_$(TOP_LEVEL_FILE)
@@ -210,6 +218,19 @@ define CONSOLE_SIM_CMDS
  quit -f"
 endef
 
+aes_sim_source: $(addprefix $(S_WORK_LIB)/, $(notdir $(basename $(AES_TOP_LEVEL) $(AES_TEST_BENCH) $(AES_HELPER_FILES))))
+	@echo -e "Simulating Source Design"
+	@$(SIMULATE) -i -t ps $(S_WORK_LIB).$(AES_TOP_MODULE)
+	@cp -f transcript $(basename $(AES_TOP_LEVEL)).stran
+	@echo -e "Done simulating the source design\n\n"
+
+aes_tbsim_source: $(addprefix $(S_WORK_LIB)/, $(notdir $(basename $(AES_TOP_LEVEL) $(AES_TEST_BENCH) $(AES_HELPER_FILES))))
+	@echo -e "Simulating Source Design"
+	@$(SIMULATE) -i -t ps $(S_WORK_LIB).$(AES_TB_MODULE)
+	@cp -f transcript $(basename $(AES_TOP_LEVEL)).stran
+	@echo -e "Done simulating the source design\n\n"
+
+
 # This rule defines how to simulate the source form of the full design
 sim_full_source: $(addprefix $(S_WORK_LIB)/, $(notdir $(basename $(TOP_LEVEL_FILE) $(TEST_BENCH) $(TB_HELPER_FILES) $(COMPONENT_FILES))))
 	@echo -e "Simulating Source Design"
@@ -265,6 +286,8 @@ tbsim_%_source: $(S_WORK_LIB)/% $(S_WORK_LIB)/tb_%
 tbsim_%_mapped: $(M_WORK_LIB)/% $(M_WORK_LIB)/tb_%
 	@$(SIMULATE) -i -t ps $(dir $<).tb_$*
 	@cp -f transcript $*.mtran
+
+
 
 ##############################################################################
 # Define the synthesis target specific variables to use

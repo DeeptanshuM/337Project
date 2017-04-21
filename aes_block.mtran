@@ -9,9 +9,71 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work/.aes_block 
-# Start time: 00:57:15 on Apr 18,2017
+# Start time: 17:05:15 on Apr 21,2017
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: mapped/aes_block.v(29): Module 'aes_encryption' is not defined.
-# ** Error: mapped/aes_block.v(34): Module 'aes_decryption' is not defined.
-# Optimization failed
-# Error loading design
+# ** Warning: mapped/aes_encryption.v(2706): (vopt-2685) [TFMPC] - Too few port connections for 'MIX_COLUMNS'.  Expected 3, found 2.
+# ** Warning: mapped/aes_encryption.v(2706): (vopt-2718) [TFMPC] - Missing connection for port 'o_data'.
+# Loading sv_std.std
+# Loading work.aes_block(fast)
+# Loading work.aes_encryption(fast)
+# Loading work.data_block_select(fast)
+# Loading work.xor_init(fast)
+# Loading work.sub_bytes(fast)
+# Loading work.shift_rows(fast)
+# Loading work.mix_columns(fast)
+# Loading work.round_key_adder(fast)
+# Loading work.incriment_state(fast)
+# Loading work.aes_decryption(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.math_real(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr(metastabilitywrapperarch)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.prim(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr_core(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi22x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai21x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand3x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.mux2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.xnor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.xor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx4(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx8(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor3x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx4(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai22x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi21x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.hax1(behavioral)#1
+# ** Warning: (vsim-3015) mapped/aes_block.v(29): [PCDPC] - Port size (128) does not match connection size (1) for port 'fifo_in'. The port definition is at: mapped/aes_encryption.v(731).
+#         Region: /aes_block/E_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(29): [PCDPC] - Port size (128) does not match connection size (1) for port 'round_key_input'. The port definition is at: mapped/aes_encryption.v(732).
+#         Region: /aes_block/E_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(29): [PCDPC] - Port size (128) does not match connection size (1) for port 'round_key_0'. The port definition is at: mapped/aes_encryption.v(732).
+#         Region: /aes_block/E_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(29): [PCDPC] - Port size (5) does not match connection size (1) for port 'round_key_addr'. The port definition is at: mapped/aes_encryption.v(732).
+#         Region: /aes_block/E_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(29): [PCDPC] - Port size (128) does not match connection size (1) for port 'data_output'. The port definition is at: mapped/aes_encryption.v(732).
+#         Region: /aes_block/E_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(34): [PCDPC] - Port size (128) does not match connection size (1) for port 'fifo_in'. The port definition is at: mapped/aes_decryption.v(24628).
+#         Region: /aes_block/D_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(34): [PCDPC] - Port size (128) does not match connection size (1) for port 'round_key_input'. The port definition is at: mapped/aes_decryption.v(24629).
+#         Region: /aes_block/D_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(34): [PCDPC] - Port size (128) does not match connection size (1) for port 'round_key_0'. The port definition is at: mapped/aes_decryption.v(24629).
+#         Region: /aes_block/D_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(34): [PCDPC] - Port size (5) does not match connection size (1) for port 'round_key_addr'. The port definition is at: mapped/aes_decryption.v(24629).
+#         Region: /aes_block/D_AES
+# ** Warning: (vsim-3015) mapped/aes_block.v(34): [PCDPC] - Port size (128) does not match connection size (1) for port 'data_output'. The port definition is at: mapped/aes_decryption.v(24629).
+#         Region: /aes_block/D_AES
+# End time: 17:06:46 on Apr 21,2017, Elapsed time: 0:01:31
+# Errors: 0, Warnings: 12

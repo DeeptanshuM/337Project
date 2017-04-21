@@ -9,8 +9,12 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps source_work/.aes_encryption 
-# Start time: 01:51:01 on Apr 18,2017
+# Start time: 17:10:15 on Apr 21,2017
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: source/aes_encryption.sv(45): (vopt-2685) [TFMPC] - Too few port connections for 'SUB_BYTES'.  Expected 3, found 2.
+# ** Warning: source/aes_encryption.sv(45): (vopt-2718) [TFMPC] - Missing connection for port 'i_mode'.
+# ** Warning: source/aes_encryption.sv(54): (vopt-2685) [TFMPC] - Too few port connections for 'SHIFT_ROWS'.  Expected 3, found 2.
+# ** Warning: source/aes_encryption.sv(54): (vopt-2718) [TFMPC] - Missing connection for port 'i_mode'.
 # Loading sv_std.std
 # Loading work.aes_encryption(fast)
 # Loading work.data_block_select(fast)
@@ -21,5 +25,5 @@
 # Loading work.round_key_adder(fast)
 # Loading work.incriment_state(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-# End time: 01:51:11 on Apr 18,2017, Elapsed time: 0:00:10
-# Errors: 0, Warnings: 1
+# End time: 17:10:37 on Apr 21,2017, Elapsed time: 0:00:22
+# Errors: 0, Warnings: 5

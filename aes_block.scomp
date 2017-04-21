@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 00:39:09 on Apr 18,2017
+Start time: 17:38:38 on Apr 21,2017
 vlog -sv -work source_work source/aes_block.sv 
 -- Compiling module aes_block
 
 Top level modules:
 	aes_block
-End time: 00:39:09 on Apr 18,2017, Elapsed time: 0:00:00
+End time: 17:38:38 on Apr 21,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
