@@ -7,11 +7,11 @@
 // Description: Test bench for top level module aes_block/
 `timescale 1ns / 10ps
 module tb_aes_block();
-	parameter CLK_PERIOD				= 4;
-	
-	initial begin
-	   #(CLK_PERIOD);
-	   
-	end
-	
+   parameter CLK_PERIOD				= 4;
+   
+   initial begin
+      #(CLK_PERIOD);
+      
+   end
+   
 endmodule

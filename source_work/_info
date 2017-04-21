@@ -13,27 +13,27 @@ T_opt
 V>W7YO@MQY0N2hz03T]GGb2
 04 9 4 work aes_block fast 0
 =1-782bcb3383d2-58fa7e9d-2a94c-1dfe
-Z1 o-quiet -auto_acc_if_foreign -work source_work -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
+o-quiet -auto_acc_if_foreign -work source_work -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
 n@_opt
-Z2 OL;O;10.3b;59
+Z1 OL;O;10.3b;59
+R0
 T_opt1
-!s110 1492809017
-V@1XXcXV^UG4]eCPmX>7eR0
-04 14 4 work aes_encryption fast 0
-=1-782bcb3383d2-58fa7538-446ec-3a92
-o-quiet -auto_acc_if_foreign -work source_work/ -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
+!s110 1492815762
+VJWGlMaRlo>[CCjfT3QTie3
+04 16 4 work mix_columns_byte fast 0
+=1-3417eba01898-58fa8f92-b235b-37a2
+Z2 o-quiet -auto_acc_if_foreign -work source_work/ -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
 n@_opt1
-R2
+R1
 R0
 T_opt2
-!s110 1492810071
-V5dgO?nG]imZV@ndiMnR2m0
-04 12 4 work tb_aes_block fast 0
-=1-782bcb3383d2-58fa7957-3282b-62bc
-R1
-n@_opt2
+!s110 1492816363
+VWhcLT;g`C>P6:d>nc[F_J1
+04 11 4 work mix_columns fast 0
+=1-3417eba01898-58fa91eb-3fccf-39a3
 R2
-R0
+n@_opt2
+R1
 vaes_block
 Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
 !s110 1492810718
@@ -174,7 +174,7 @@ r1
 R7
 vinv_mix_columns
 R3
-Z8 !s110 1492811408
+!s110 1492811408
 !i10b 1
 !s100 nYgi?93_:_F5O9SOSBj_V3
 I5SKjI1zT`=hNY=:kOF2EB1
@@ -220,7 +220,7 @@ r1
 R7
 vinv_shift_rows
 R3
-Z9 !s110 1492809901
+Z8 !s110 1492809901
 !i10b 1
 !s100 n6nZcf9oOnS39]G_OZW883
 IbND=OW;E2bg];]ihE:[T<0
@@ -243,7 +243,7 @@ r1
 R7
 vinv_sub_bytes
 R3
-R9
+R8
 !i10b 1
 !s100 KRo7F_6jzCa686^YC1=Un0
 IMKnz?Q71a;6eVJ@X0Ia@@3
@@ -266,15 +266,15 @@ r1
 R7
 vmix_columns
 R3
-R8
+!s110 1492816358
 !i10b 1
-!s100 0L81>2CU5QmL0H^U2JJlH1
-IM7n?ik]G]=481:;[n9D:D3
+!s100 R91bjfbl8EV04N]nC7^[Y1
+IRJ5[7I5NZK1PRF<egzPCD1
 R4
 !s105 mix_columns_sv_unit
 S1
 R5
-w1492811405
+w1492816353
 8source/mix_columns.sv
 Fsource/mix_columns.sv
 L0 3
@@ -282,9 +282,32 @@ R6
 r1
 !s85 0
 31
-!s108 1492811407.999878
+!s108 1492816358.456579
 !s107 source/mix_columns.sv|
 !s90 -sv|-work|source_work|source/mix_columns.sv|
+!i113 0
+R7
+vmix_columns_byte
+R3
+!s110 1492815759
+!i10b 1
+!s100 QRRQ:f9fAUdWeO;TCMb;[0
+I2ABOcb12`ZNGRhne1@[4<2
+R4
+!s105 mix_columns_byte_sv_unit
+S1
+R5
+w1492815740
+8source/mix_columns_byte.sv
+Fsource/mix_columns_byte.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1492815759.531701
+!s107 source/mix_columns_byte.sv|
+!s90 -sv|-work|source_work|source/mix_columns_byte.sv|
 !i113 0
 R7
 vmux_4bits
@@ -427,7 +450,7 @@ r1
 R7
 vtb_aes_block
 R3
-R9
+R8
 !i10b 1
 !s100 0b7PCaXzQbM4;?a_YX5a81
 I6B0ZHBE?E93K2?74l`RgC2

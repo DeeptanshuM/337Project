@@ -5,12 +5,13 @@ module aes_block
    input wire 	      clk,n_rst,read_fifo,is_encrypt,tx_fifo_full,
    input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
    output reg [4:0]   read_addr,
-   output reg 	      tx_fifo_in,data_done
+   output reg 	      tx_fifo_in,data_done,data_valid
    );
    
    wire [4:0] 	      enc_round_key_addr,dec_round_key_addr;
    wire [127:0]       enc_data_output,dec_data_output;
    wire 	      enc_data_done,dec_data_done;
+   wire 	      enc_data_valid,dec_data_valid;
    
    aes_encryption E_AES
    (
@@ -25,7 +26,8 @@ module aes_block
     //outputs
     .round_key_addr(enc_round_key_addr),
     .data_output(enc_data_output),
-    .data_done(enc_data_done)
+    .data_done(enc_data_done),
+    .data_valid(enc_data_valid)
     );
 
    aes_decryption D_AES
@@ -41,7 +43,8 @@ module aes_block
     //outputs
     .round_key_addr(dec_round_key_addr),
     .data_output(dec_data_output),
-    .data_done(dec_data_done)
+    .data_done(dec_data_done),
+    .data_valid(dec_data_valid)
     );
 
 
@@ -51,12 +54,14 @@ module aes_block
 	   read_addr = enc_round_key_addr;
 	   data_done = enc_data_done;
 	   tx_fifo_in = enc_data_output;
+	   data_valid = enc_data_valid;
 	end
       else
 	begin
 	   read_addr = dec_round_key_addr;
 	   data_done = dec_data_done;
 	   tx_fifo_in = dec_data_output;
+	   data_valid = dec_data_valid;
 	end
    end
    

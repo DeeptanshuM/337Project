@@ -8,7 +8,8 @@ module aes_encryption
    input wire [127:0]  round_key_0,
    output wire [4:0]   round_key_addr,
    output wire [127:0] data_output,
-   output wire 	       data_done
+   output wire 	       data_done,
+   output wire 	       data_valid
    );
 
    //REGISTER DECLARATION
@@ -27,6 +28,7 @@ module aes_encryption
    // SECTION C
    wire [4:0] 	 round_state_2_0,round_state_2_1;
    wire [127:0]  round_block_2_0,round_block_2_1;
+   assign data_valid = round_block_output[4];
    
    // DATA SELECT
    data_block_select DBS (.i_read_fifo(read_fifo),
