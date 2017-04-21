@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 17:22:06 on Apr 21,2017
+Start time: 17:48:51 on Apr 21,2017
 vlog -sv -work source_work source/aes_decryption.sv 
 -- Compiling module aes_decryption
 
 Top level modules:
 	aes_decryption
-End time: 17:22:06 on Apr 21,2017, Elapsed time: 0:00:00
+End time: 17:48:52 on Apr 21,2017, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0

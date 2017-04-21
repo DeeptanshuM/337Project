@@ -60,9 +60,8 @@ module aes_decryption
    assign round_block_2_0 = block_B;
    assign round_state_2_0 = state_B;
 
-   mix_columns MIX_COLUMNS (.i_mode(1'b1),
-			    .i_data(round_block_2_0),
-			    .o_data(round_block_2_1));
+   inv_mix_columns INV_MIX_COLUMNS (.i_data(round_block_2_0),
+				    .o_data(round_block_2_1));
 
    incriment_state INC_STATE (.i_state(round_state_2_0),
 			      .o_state(round_state_2_1));

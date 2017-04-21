@@ -54,8 +54,7 @@ module aes_encryption
    shift_rows SHIFT_ROWS (.i_data(round_block_1_0),
 			  .o_data(round_block_1_1));
    
-   mix_columns MIX_COLUMNS (.i_mode(1'b0),
-			    .i_data(round_block_1_1),
+   mix_columns MIX_COLUMNS (.i_data(round_block_1_1),
 			    .o_data(round_block_1_2));
 
    // SECTION C
