@@ -42,8 +42,7 @@ module aes_encryption
 		      .i_round_key_0(round_key_0),
 		      .o_round_block(round_block_0_1));
 
-   sub_bytes SUB_BYTES (.i_mode(1'b0),
-			.i_data(round_block_0_1),
+   sub_bytes SUB_BYTES (.i_data(round_block_0_1),
 			.o_data(round_block_0_2));
 
 
@@ -52,8 +51,7 @@ module aes_encryption
    assign round_state_1 = state_A;
    assign round_key_addr = round_state_1;
    
-   shift_rows SHIFT_ROWS (.i_mode(1'b0),
-			  .i_data(round_block_1_0),
+   shift_rows SHIFT_ROWS (.i_data(round_block_1_0),
 			  .o_data(round_block_1_1));
    
    mix_columns MIX_COLUMNS (.i_mode(1'b0),

@@ -2,9 +2,9 @@
 
 module shift_rows
   (
+   input wire i_mode,
    input wire [127:0]  i_data,
-   input wire mode,
-   output wire [127:0] o_data,
+   output wire [127:0] o_data
    );
    
    // NOT IMPLEMENTED

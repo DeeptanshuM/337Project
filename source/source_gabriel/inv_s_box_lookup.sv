@@ -12,9 +12,7 @@ module inv_s_box_lookup
 );
 
 always_comb begin :INVSBOX
-
   case(input_word)
-
 	0 : substituted_word = 82;
 	1 : substituted_word = 9;
 	2 : substituted_word = 106;
