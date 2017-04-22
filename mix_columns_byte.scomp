@@ -1,10 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 19:02:39 on Apr 21,2017
+Start time: 19:34:30 on Apr 21,2017
 vlog -sv -work source_work source/mix_columns_byte.sv 
 -- Compiling module mix_columns_byte
-** Warning: source/mix_columns_byte.sv(20): (vlog-2182) 'j' might be read before written in always_comb or always @* block.
 
 Top level modules:
 	mix_columns_byte
-End time: 19:02:39 on Apr 21,2017, Elapsed time: 0:00:00
-Errors: 0, Warnings: 1
+End time: 19:34:30 on Apr 21,2017, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

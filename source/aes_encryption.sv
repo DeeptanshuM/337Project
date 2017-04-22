@@ -47,7 +47,6 @@ module aes_encryption
    sub_bytes SUB_BYTES (.i_data(round_block_0_1),
 			.o_data(round_block_0_2));
 
-
    // SECTION B
    assign round_block_1_0 = block_A;
    assign round_state_1 = state_A;

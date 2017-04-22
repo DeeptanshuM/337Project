@@ -84,7 +84,6 @@ def getplaintext():
     File.close()
     return plaintext
 
-
 ##############################################
 ##generate the key schedule, our key is "yayboilermakers!",
 ##128 bits.
@@ -286,8 +285,9 @@ def setup():
 ##############################################
 def encrypt():
     roundkeys = setup()
-    intextBV = BitVector(filename = "plaintext.txt")
-    outFile = open("encrypted.txt", "w")
+    #intextBV = BitVector(filename = "plaintext.txt")
+    intextBV = BitVector(filename = "plaintext2.txt")
+    outFile = open("encrypted2.txt", "w")
     cleartext = ""
     outFile.write(cleartext)
     outFile.close()
@@ -378,7 +378,7 @@ def print_genTables():
 
 if __name__ == "__main__":
     
-    print_genTables()
-    #encrypt()
+    #print_genTables()
+    encrypt()
     #decrypt()
     
