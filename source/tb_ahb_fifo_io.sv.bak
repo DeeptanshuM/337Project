@@ -400,7 +400,6 @@ module tb_ahb_fifo_io();
 		tb_HBURST = '0;
 		tb_HWDATA = '0;
 		@(posedge tb_HCLK); #1ns;
-
 	end
 	endtask
 
@@ -426,14 +425,14 @@ module tb_ahb_fifo_io();
 
 	task select_encrypt;
 	begin
-		@(posedge tb_HCLK); #0.5ns;
+		@(posedge tb_HCLK); #1ns;
 		tb_HSELx = 1'b1;
 		tb_HADDR = 32'h04;
 		tb_HBURST = SINGLE;
 		tb_HTRANS = NONSEQ;
 		tb_HWDATA = '0;
 		tb_HWRITE = 1'b1;
-		@(posedge tb_HCLK); #0.5ns;
+		@(posedge tb_HCLK); #1ns;
 		tb_HSELx = 1'b0;
 		tb_HADDR = 32'h0;
 		tb_HBURST = SINGLE;
@@ -443,6 +442,78 @@ module tb_ahb_fifo_io();
 	end
 	endtask
 
+	task send_burst_all;
+		input [127:0] data;
+		input [127:0] data2;
+		input [127:0] data3;
+		input [127:0] data4;
+		input [127:0] data5;
+		input [127:0] data6;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_tx_enq = 1'b1;
+		tb_data_in = data;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_data_in = data2;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_data_in = data3;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_data_in = data4;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_data_in = data5;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_data_in = data6;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_tx_enq = 1'b0;
+		@(posedge tb_HCLK); #0.5ns;
+
+	end
+	endtask
+	integer i;
+
+	task get_data6_block;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h80;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWRITE = 1'b0;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h84;
+		tb_HTRANS = SEQ;
+		for (i = 32'h88; i < 32'hE0; i = i + 4) begin
+			@(posedge tb_HCLK); #0.5ns;
+			tb_HADDR = i;
+		end
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = '0;
+		tb_HTRANS = IDLE;
+		tb_HSELx = 1'b0;
+		tb_HBURST = '0;
+		tb_HWDATA = '0;
+		@(posedge tb_HCLK); #1ns;
+	end
+	endtask
+
+	task get_status;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h00;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+		@(posedge tb_HCLK); #1ns;
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+	end
+	endtask
 
 	initial begin
 		tb_test_case_num = 0;
@@ -515,6 +586,15 @@ module tb_ahb_fifo_io();
 		#0.5ns;
 		chk_is_encrypt_pulse(1);
 		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 9 : FILL THE TX FIFO
+		send_burst_all("0123456789ABCDEF", "zxcvbnmasdfghqwe", "ZXCVBNMASDFGHJKL", "poiuytrewqasdfgh","~!@#$%^&*()_+?><","!@#$%^&*&^%$#@!~");
+		get_data6_block();
+		tb_test_case_num = tb_test_case_num + 1;
+
+		// TEST 10 : GET THE STATUS
+		tb_status = 8'h41;
+		get_status();
+		chk_HRDATA('A');
 
 	end
 endmodule

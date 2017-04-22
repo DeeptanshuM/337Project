@@ -45,7 +45,6 @@ module ahb_fifo_io (
 		.HADDR(HADDR),
 		.HBURST(HBURST),
 		.HPROT(HPROT),
-		.HWDATA(HWDATA),
 		.HSIZE(HSIZE),
 		.HTRANS(HTRANS),
 		.HWDATA(HWDATA),
