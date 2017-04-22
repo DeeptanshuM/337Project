@@ -1,0 +1,145 @@
+// $Id: $
+// File name:   rcv_fifo_reg.sv
+// Created:     4/15/2017
+// Author:      Natat Sombuntham
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Registers to keep the data of the rcv_fifo.
+module rcv_fifo_reg (
+	input wire clk,
+	input wire [1:0] tail_ptr,
+	input wire [1:0] tail_side,
+	input wire [1:0] head_ptr,
+	input wire [31:0] HWDATA,
+	input wire WE,
+	output reg [127:0] rcv_fifo_out
+);
+
+	reg [2:0][3:0][31:0] arr;
+	wire [2:0][3:0][31:0] temp_arr;
+	
+	always_comb begin : OUTPUT_LOGIC
+		rcv_fifo_out = {arr[head_ptr][0], arr[head_ptr][1], arr[head_ptr][2], arr[head_ptr][3]};
+	end
+	genvar i;
+	genvar j;
+
+	generate
+		for (i = 0; i < 3; i = i + 1) begin
+			for (j = 0; j < 4; j = j + 1) begin
+				always_ff @(posedge clk) begin : REG_LOGIC
+					arr[i][j] = temp_arr[i][j];
+				end
+			end
+		end
+	endgenerate
+
+	generate
+		for (i = 0; i < 3; i = i + 1) begin
+			for (j = 0; j < 4; j = j + 1) begin
+				assign temp_arr[i][j] = (WE == 1'b1 && tail_ptr == i && tail_side == j ? HWDATA : arr[i][j]);
+			end
+		end
+	endgenerate
+endmodule
+	/*
+	reg [31:0] UU0;
+	reg [31:0] UL0;
+	reg [31:0] LU0;
+	reg [31:0] LL0;
+
+	reg [31:0] UU1;
+	reg [31:0] UL1;
+	reg [31:0] LU1;
+	reg [31:0] LL1;
+
+	reg [31:0] UU2;
+	reg [31:0] UL2;
+	reg [31:0] LU2;
+	reg [31:0] LL2;
+
+	reg [31:0] tmp_UU0;
+	reg [31:0] tmp_UL0;
+	reg [31:0] tmp_LU0;
+	reg [31:0] tmp_LL0;
+
+	reg [31:0] tmp_UU1;
+	reg [31:0] tmp_UL1;
+	reg [31:0] tmp_LU1;
+	reg [31:0] tmp_LL1;
+
+	reg [31:0] tmp_UU2;
+	reg [31:0] tmp_UL2;
+	reg [31:0] tmp_LU2;
+	reg [31:0] tmp_LL2;
+
+	always_comb begin : OUTPUT_LOGIC
+		rcv_fifo_out = {UU0, UL0, LU0, LL0};
+		if (head_ptr == 2'b01) begin
+			rcv_fifo_out = {UU1, UL1, LU1, LL1};
+		end
+		else if (head_ptr == 2'b10) begin
+			rcv_fifo_out = {UU2, UL2, LU2, LL2};
+		end
+	end
+	always_ff @(posedge clk) begin : REG_LOGIC
+		UU0 <= tmp_UU0;
+		UL0 <= tmp_UL0;
+		LU0 <= tmp_LU0;
+		LL0 <= tmp_LL0;
+
+		UU1 <= tmp_UU1;
+		UL1 <= tmp_UL1;
+		LU1 <= tmp_LU1;
+		LL1 <= tmp_LL1;
+
+		UU2 <= tmp_UU2;
+		UL2 <= tmp_UL2;
+		LU2 <= tmp_LU2;
+		LL2 <= tmp_LL2;
+	end
+	always_comb begin : NXT_STATE_LOGIC
+		tmp_UU0 = UU0;
+		tmp_UL0 = UL0;
+		tmp_LU0 = LU0;
+		tmp_LL0 = LL0;
+
+		tmp_UU1 = UU1;
+		tmp_UL1 = UL1;
+		tmp_LU1 = LU1;
+		tmp_LL1 = LL1;
+
+		tmp_UU2 = UU2;
+		tmp_UL2 = UL2;
+		tmp_LU2 = LU2;
+		tmp_LL2 = LL2;
+		
+		if          (WE == 1'b1 && tail_ptr == 2'b00 && tail_side == 2'b00) begin
+			tmp_UU0 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b00 && tail_side == 2'b01) begin
+			tmp_UL0 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b00 && tail_side == 2'b10) begin
+			tmp_LU0 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b00 && tail_side == 2'b11) begin
+			tmp_LL0 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b01 && tail_side == 2'b00) begin
+			tmp_UU1 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b01 && tail_side == 2'b01) begin
+			tmp_UL1 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b01 && tail_side == 2'b10) begin
+			tmp_LU1 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b01 && tail_side == 2'b11) begin
+			tmp_LL1 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b10 && tail_side == 2'b00) begin
+			tmp_UU2 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b10 && tail_side == 2'b01) begin
+			tmp_UL2 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b10 && tail_side == 2'b10) begin
+			tmp_LU2 = HWDATA;
+		end else if (WE == 1'b1 && tail_ptr == 2'b10 && tail_side == 2'b11) begin
+			tmp_LL2 = HWDATA;
+		end
+	end
+endmodule
+*/
+

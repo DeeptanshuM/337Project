@@ -87,7 +87,7 @@ module rcv_fifo
 		.tail_ptr(tail_ptr),
 		.tail_side(tail_side),
 		.head_ptr(head_ptr),
-		.HWDATA(HWDATA),
+		.HWDATA(temp),
 		.WE(WE),
 		.rcv_fifo_out(rcv_fifo_out)
 	);

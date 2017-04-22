@@ -1,0 +1,50 @@
+// $Id: $
+// File name:   flex_counter.sv
+// Created:     1/26/2017
+// Author:      Natat Sombuntham
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Implementation of flexible counter with rollover.
+module flex_counter
+#(
+	parameter NUM_CNT_BITS = 4
+)
+(
+	input wire clk,
+	input wire n_rst,
+	input wire clear,
+	input wire count_enable,
+	input wire [NUM_CNT_BITS-1:0] rollover_val,
+	output reg [NUM_CNT_BITS-1:0] count_out,
+	output reg rollover_flag
+);
+	reg [NUM_CNT_BITS-1:0] temp;
+	reg toRollover;
+	always_ff @(posedge clk, negedge n_rst) begin
+		if (n_rst == 1'b0) begin
+			count_out <= '0;
+			rollover_flag <= 1'b0;
+		end else begin
+			count_out <= temp;
+			rollover_flag <= toRollover;
+		end
+	end
+	always_comb begin
+		temp = '0;
+		if ((rollover_val != 0) && (clear == 1'b0) && (count_enable == 1'b1) && rollover_val <= count_out) begin
+			temp[0] = 1'b0;
+		end else if ((rollover_val != 0) && (clear == 1'b0) && (count_enable == 1'b1)) begin 
+			temp = count_out + 1;
+		end else if ((rollover_val != 0) && (clear == 1'b0)) begin
+			temp = count_out;
+		end
+	end
+	always_comb begin
+		toRollover = 1'b0;
+//		if ((!clear) && (((rollover_val <= count_out) && (count_enable == 1'b0)) || ((rollover_val - 1 == count_out) && (count_enable == 1'b1)) || ((rollover_val == 1)))) begin
+		if ((rollover_val == count_out) && (count_enable == 1'b1)) begin
+			toRollover = 1'b1;
+		end
+	end
+endmodule
+
