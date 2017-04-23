@@ -108,6 +108,7 @@ def getkeyschedule():
         else:
         #else xor the previous and 4 words ago
             keywords[i] = keywords[i-4] ^ keywords[i-1]
+        
     return keywords
 
 ##############################################
@@ -277,6 +278,18 @@ def setup():
     roundkeys = [None for i in range(11)]
     for i in range(11):
             roundkeys[i] = (keywords[i*4] + keywords[i*4+1] + keywords[i*4+2] + keywords[i*4+3])
+    fb = open("round_keys.bin","wb")
+    ft = open("round_keys.txt","w")
+    index = 0
+    for r_key in roundkeys:
+        fb.write(bytes(r_key))
+        ft.write("Round: " + str(index) + "\n")
+        ft.write(str(r_key))
+        ft.write("\n")
+        index += 1
+    fb.close()
+    ft.close()
+    print("done")
     return roundkeys
 
 
@@ -377,7 +390,6 @@ def print_genTables():
     print("IBS",ibs_str)        
 
 if __name__ == "__main__":
-    
     #print_genTables()
     encrypt()
     #decrypt()

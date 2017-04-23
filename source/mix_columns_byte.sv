@@ -23,8 +23,8 @@ module mix_columns_byte
    reg [7:0] 	    out,res;
 
    always_comb begin
-      $display("i_data:%h",i_data);
-      $display("i_coeff:%h",i_coeff);
+      //$display("i_data:%h",i_data);
+      //$display("i_coeff:%h",i_coeff);
       o_data = '0;
       for(i=0;i<4;i=i+1) begin
 	 //idx = 8*(4-i)-1;
@@ -33,8 +33,8 @@ module mix_columns_byte
 	 curr = i_data[idx-:8];
 	 coeff = i_coeff[jdx-:4];
 	 //start gf2_mult
-	 $display("curr[%0d+8:%0d]:%h",i,i,curr);
-	 $display("coeff[%0d+8:%0d]:%h",i,i,coeff);
+	 // $display("curr[%0d+8:%0d]:%h",i,i,curr);
+	 // $display("coeff[%0d+8:%0d]:%h",i,i,coeff);
 	 out = '0;
 	 for(j=0;j<4;j=j+1)
 	   begin
@@ -59,8 +59,8 @@ module mix_columns_byte
 	   end
 	  //end gf2_mult
 	      
-	 $display("out[%0d+8:%0d]:%h",i,i,out);
-	 $display("i_coeff:%h",coeff);
+	 // $display("out[%0d+8:%0d]:%h",i,i,out);
+	 // $display("i_coeff:%h",coeff);
 	 o_data = o_data ^ out;
 	 //$display("o_data:%h",o_data);
       end
