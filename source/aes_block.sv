@@ -6,7 +6,7 @@ module aes_block
    input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
    output reg [4:0]   read_addr,
    output reg [127:0] tx_fifo_in,
-   output reg         data_done,data_valid
+   output reg data_done,data_valid
    );
    
    wire [4:0] 	      enc_round_key_addr,dec_round_key_addr;

@@ -17,7 +17,7 @@ module ahb_slave (
 	input wire  [31:0]  HWDATA,
 	input wire          HWRITE,
 	input wire  [31:0]  data_out,
-	input wire  [ 7:0]  status,
+	input wire  [ 4:0]  status,
 	input wire          rcv_fifo_full,
 	input wire          rcv_fifo_empty,
 	input wire          tx_fifo_empty,
@@ -31,7 +31,6 @@ module ahb_slave (
 	output wire         key_in
 );
 	reg [31:0] status_padded;
-	reg [3:0] opcode;
 	reg is_status;
 
 	always_comb begin
@@ -46,7 +45,7 @@ module ahb_slave (
 			status_padded = '0;
 		end
 		else begin
-			status_padded = {24'b0, status};
+			status_padded = {27'b0, status};
 		end
 	end
 
