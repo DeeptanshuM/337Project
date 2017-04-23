@@ -19,11 +19,9 @@ input wire  [ 3:0]  HPROT,
 input wire  [ 2:0]  HSIZE,
 input wire  [ 1:0]  HTRANS,
 input wire          HWRITE,
-
 output reg  [31:0]  HRDATA,
 output wire         HREADY,
 output wire [ 1:0]  HRESP,
-
 );
 
 wire [127:0]  data_in;
