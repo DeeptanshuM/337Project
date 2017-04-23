@@ -36,10 +36,11 @@ module tb_aes_encryption();
    reg		tb_data_valid;
 
    //data file vars
-   integer data_file;
+   integer enc_file;
+   integer key_file;
    integer scan_file;
-   logic signed [127:0] captured_data_A;
-   logic signed [127:0] captured_data_B;
+   logic signed [127:0] captured_data_input;
+   logic signed [127:0] captured_data_output;
    reg [127:0] 	       tb_i_data_vector[NUMBER_OF_TESTS];
    reg [127:0] 	       tbe_o_data_vector[NUMBER_OF_TESTS];
    reg [31:0] 	       test_counter;
@@ -71,9 +72,14 @@ module tb_aes_encryption();
    task load_file;
       string filename;
       begin
-	 data_file = $fopen("./AES python implementation/encryptTest.txt","rb");
-	 if(data_file == 0)begin
-	    $display("data_file handle was NULL.");
+	 enc_file = $fopen("./AES python implementation/encryptTest.txt","rb");
+	 if(enc_file == 0)begin
+	    $display("enc_file handle was NULL.");
+	    $finish;
+	 end
+	 key_file = $fopen("./AES python implementation/round_key.bin","rb");
+	 if(key_file == 0)begin
+	    $display("key_file handle was NULL.");
 	    $finish;
 	 end
       end
@@ -102,11 +108,11 @@ module tb_aes_encryption();
      end
 
    always@(posedge tb_clk) begin
-      if (!$feof(data_file)) begin
-	 scan_file = $fread(captured_data_A,data_file);
-	 scan_file = $fread(captured_data_B,data_file);
-	 tb_i_data_vector[test_counter] <= captured_data_A;
-	 tbe_o_data_vector[test_counter] <= captured_data_B;
+      if (!$feof(enc_file)) begin
+	 scan_file = $fread(captured_data_input,enc_file);
+	 scan_file = $fread(captured_data_output,enc_file);
+	 tb_i_data_vector[test_counter] <= captured_data_input;
+	 tbe_o_data_vector[test_counter] <= captured_data_output;
 	 test_counter <= test_counter + 1;
       end
    end
