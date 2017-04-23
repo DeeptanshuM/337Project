@@ -39,11 +39,8 @@ output wire         framing_error,
 output reg [4:0] status_bits
 );
 
-//input wire 	      clk,n_rst,read_fifo,is_encrypt,tx_fifo_full,
-//input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
-//output reg [4:0]   read_addr,
-//output reg 	      tx_fifo_in,data_done,data_valid
 reg read_fifo, is_encrypt, data_done,data_valid,
+wire [127:0] rx_fifo_out,round_key_0,round_key_input,
 
 ahb_fifo_io AHB (
 .HCLK(HCLK),
@@ -92,10 +89,10 @@ MCU jhfgd
 .is_encrypt(is_encrypt_pulse),
 .is_decrypt(is_decrypt_pulse),
 .read_fifo(read_fifo),
-.rcv_deq(), ////????
-.fix_error(), ///???
-.trans_enq(), ////????
-.status_bits() /////????
+.rcv_deq(), ///?????????
+.fix_error(), ///?????????
+.trans_enq(), ///?????????
+.status_bits() ///?????????
 )
 
 aes_block AES
@@ -106,11 +103,25 @@ aes_block AES
 .is_encrypt(is_encrypt_pulse),
 .is_decrypt(is_decrypt_pulse),
 .tx_fifo_full(tx_fifo_full),
-input wire [127:0] rx_fifo_out,round_key_0,round_key_input, ///???????
-output reg [4:0]   read_addr,  ////??????
-output reg 	      tx_fifo_in,  /////>?
+.rx_fifo_out(), ///?????????
+.round_key_0(round_key_0),
+.round_key_input(round_key_input),
+.read_addr(),  ///?????????
+.tx_fifo_in(),  ///?????????
 .data_done(data_done),
 .data_valid(data_valid)
+);
+
+key_generator KEYGEN
+(
+.clk(HCLK),
+.n_reset(HRESETn),
+.read_addr(), ///?????????
+.WE_key_generation(read_fifo_KeyGen),
+.original_key(), ///?????????
+.round_key_0(round_key_0),
+.round_key_x(round_key_input),
+//output reg generation_done
 );
 
 endmodule

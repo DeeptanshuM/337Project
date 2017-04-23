@@ -25,6 +25,7 @@ output wire read_fifo,
 output wire rcv_deq,
 output wire fix_error,
 output wire trans_enq,
+output wire read_fifo_KeyGen,
 output reg [4:0] status_bits
 );
 
