@@ -121,8 +121,7 @@ key_generator KEYGEN
 .WE_key_generation(read_fifo_KeyGen),
 .original_key(rcv_fifo_out),
 .round_key_0(round_key_0),
-.round_key_x(round_key_input),
-//output reg generation_done
+.round_key_x(round_key_input)
 );
 
 endmodule
