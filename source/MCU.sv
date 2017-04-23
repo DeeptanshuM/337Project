@@ -26,7 +26,7 @@ output wire rcv_deq,
 output wire fix_error,
 output wire trans_enq,
 output wire read_fifo_KeyGen,
-output reg [4:0] status_bits
+output reg [3:0] status_bits
 );
 
 reg flagKeyGenDone;
@@ -48,12 +48,14 @@ typedef enum bit [4:0] {
 
 stateType state;
 stateType nxt_state;
+wire tmp_status_bits_2;
+assign tmp_status_bits_2 = (is_encrypt ? 1'b1 : (is_decrypt ? 1'b0 : status_bits[2]));
 
 always_ff @ (posedge clk, negedge n_reset) begin
   if (n_reset == 0) begin
 	state <= IDLE;
 	flagKeyGenDone <= 0;
-	status_bits <= '0;
+	status_bits <= 4'b0100;
   end
   else begin
 	state <= nxt_state;
@@ -61,9 +63,8 @@ always_ff @ (posedge clk, negedge n_reset) begin
 	//status_bits <= {flagKeyGenDone, is_encrypt, is_decrypt, !emptyTx, fullRx};
 	status_bits[0] <= fullRx;
         status_bits[1] <= !emptyTx;
-        status_bits[2] <= is_decrypt;
-        status_bits[3] <= is_encrypt;
-        status_bits[4] <= flagKeyGenDone;;
+	status_bits[2] <= tmp_status_bits_2;
+        status_bits[3] <= flagKeyGenDone;
   end
 end
 
