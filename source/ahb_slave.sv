@@ -17,7 +17,7 @@ module ahb_slave (
 	input wire  [31:0]  HWDATA,
 	input wire          HWRITE,
 	input wire  [31:0]  data_out,
-	input wire  [ 4:0]  status,
+	input wire  [ 3:0]  status,
 	input wire          rcv_fifo_full,
 	input wire          rcv_fifo_empty,
 	input wire          tx_fifo_empty,
@@ -45,7 +45,7 @@ module ahb_slave (
 			status_padded = '0;
 		end
 		else begin
-			status_padded = {27'b0, status};
+			status_padded = {28'b0, status};
 		end
 	end
 
