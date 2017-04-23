@@ -50,13 +50,14 @@ stateType state;
 stateType nxt_state;
 
 always_ff @ (posedge clk, negedge n_reset) begin
-if (n_reset == 0) begin
+  if (n_reset == 0) begin
 	state <= IDLE;
 	flagKeyGenDone <= 0;
-end
-else
+  end
+  else begin
 	state <= nxt_state;
 	flagKeyGenDone <= tmp_flagKeyGenDone;
+  end
 end
 
 always_comb
