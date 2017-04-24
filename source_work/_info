@@ -18,22 +18,23 @@ n@_opt
 Z2 OL;O;10.3b;59
 R0
 T_opt1
-!s110 1492817673
-V4B^jd4<E1H^=7?Tkh1L3S2
-04 16 4 work mix_columns_byte fast 0
-=1-3417eba01898-58fa9709-65b4c-3c0d
+!s110 1492993050
+Va^ib^D1Dia`=Dkcc;T4Pc2
+04 17 4 work tb_aes_encryption fast 0
+=12-002219a71b2e-58fd441a-7bcff-3a34
 R1
 n@_opt1
 R2
 R0
 T_opt2
-!s110 1492831364
-V3Ve1S_4Ic24iGDNO[98Kf0
+!s110 1492991695
+V^S<:e^eN=P`4L@aG7gzgM3
 04 18 4 work tb_inv_mix_columns fast 0
-=2-3417eba01898-58facc84-12b5d-54e7
+=1-002219a71b2e-58fd3ecf-bb87b-37fa
 R1
 n@_opt2
 R2
+R0
 vaes_block
 Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
 !s110 1492810718
@@ -82,25 +83,25 @@ r1
 R7
 vaes_encryption
 R3
-!s110 1492811331
+!s110 1492992897
 !i10b 1
-!s100 `IEbz==1C1kZ;l1EBU5Mc2
-ISY1PLEQzBLk2Lg53h9Od83
+!s100 @6FELJWDoH3Xd:EkfMDe:0
+Ia6fiYB381LNHK67E5`]^70
 R4
 !s105 aes_encryption_sv_unit
 S1
 R5
-w1492811251
-8source/aes_encryption.sv
-Fsource/aes_encryption.sv
+w1492992785
+8/home/ecegrid/a/mg85/ece337/337Project/source/aes_encryption.sv
+F/home/ecegrid/a/mg85/ece337/337Project/source/aes_encryption.sv
 L0 3
 R6
 r1
 !s85 0
 31
-!s108 1492811331.862105
-!s107 source/aes_encryption.sv|
-!s90 -sv|-work|source_work|source/aes_encryption.sv|
+!s108 1492992897.782808
+!s107 /home/ecegrid/a/mg85/ece337/337Project/source/aes_encryption.sv|
+!s90 -reportprogress|300|-sv|-work|source_work|-L|mtiAvm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|/home/ecegrid/a/mg85/ece337/337Project/source/aes_encryption.sv|
 !i113 0
 R7
 vbyte_sub
@@ -128,25 +129,25 @@ r1
 R7
 vdata_block_select
 R3
-!s110 1492493482
+!s110 1492992021
 !i10b 1
-!s100 mXYgEkXgE^kEaCDg7]:9K3
-IFd@c6hZol0a4F:9YZAEH92
+!s100 VD8MCAG<2P2AA_?K]N@k92
+IIXSE>fGz<E5YNQ`Tg[n4n1
 R4
 !s105 data_block_select_sv_unit
 S1
 R5
-w1492492803
-8source/data_block_select.sv
-Fsource/data_block_select.sv
+w1492992017
+8/home/ecegrid/a/mg85/ece337/337Project/source/data_block_select.sv
+F/home/ecegrid/a/mg85/ece337/337Project/source/data_block_select.sv
 L0 3
 R6
 r1
 !s85 0
 31
-!s108 1492493482.121965
-!s107 source/data_block_select.sv|
-!s90 -sv|-work|source_work|source/data_block_select.sv|
+!s108 1492992021.801020
+!s107 /home/ecegrid/a/mg85/ece337/337Project/source/data_block_select.sv|
+!s90 -reportprogress|300|-sv|-work|source_work|-L|mtiAvm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|/home/ecegrid/a/mg85/ece337/337Project/source/data_block_select.sv|
 !i113 0
 R7
 vincriment_state
@@ -471,27 +472,50 @@ r1
 !s90 -sv|-work|source_work|source/tb_aes_block.sv|
 !i113 0
 R7
-vtb_inv_mix_columns
+vtb_aes_encryption
 R3
-!s110 1492831340
+!s110 1492993059
 !i10b 1
-!s100 eD;6HEoV?i6]N:3`eNAdV0
-I9dYLnT3U`lLbH0m2PHbV52
+!s100 PffWkK<TmKL[Om8Xd=UP<3
+IPelOiOH:?HG0SAJSC5l4e2
 R4
-!s105 tb_inv_mix_columns_sv_unit
+!s105 tb_aes_encryption_sv_unit
 S1
 R5
-w1492831306
-8/home/ecegrid/a/mg85/ece337/337Project/source/tb_inv_mix_columns.sv
-F/home/ecegrid/a/mg85/ece337/337Project/source/tb_inv_mix_columns.sv
+w1492993048
+8/home/ecegrid/a/mg85/ece337/337Project/source/tb_aes_encryption.sv
+F/home/ecegrid/a/mg85/ece337/337Project/source/tb_aes_encryption.sv
 L0 9
 R6
 r1
 !s85 0
 31
-!s108 1492831340.056607
-!s107 /home/ecegrid/a/mg85/ece337/337Project/source/tb_inv_mix_columns.sv|
-!s90 -reportprogress|300|-sv|-work|source_work|-L|mtiAvm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|/home/ecegrid/a/mg85/ece337/337Project/source/tb_inv_mix_columns.sv|
+!s108 1492993059.748026
+!s107 /home/ecegrid/a/mg85/ece337/337Project/source/tb_aes_encryption.sv|
+!s90 -reportprogress|300|-sv|-work|source_work|-L|mtiAvm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|/home/ecegrid/a/mg85/ece337/337Project/source/tb_aes_encryption.sv|
+!i113 0
+R7
+vtb_inv_mix_columns
+R3
+!s110 1492991691
+!i10b 1
+!s100 eD;6HEoV?i6]N:3`eNAdV0
+IJOQWR`A4H11kb1ZTfJ>4P1
+R4
+!s105 tb_inv_mix_columns_sv_unit
+S1
+R5
+w1492831306
+8source/tb_inv_mix_columns.sv
+Fsource/tb_inv_mix_columns.sv
+L0 9
+R6
+r1
+!s85 0
+31
+!s108 1492991691.349382
+!s107 source/tb_inv_mix_columns.sv|
+!s90 -sv|-work|source_work|source/tb_inv_mix_columns.sv|
 !i113 0
 R7
 vtb_mix_columns

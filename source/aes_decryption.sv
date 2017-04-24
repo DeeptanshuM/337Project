@@ -6,7 +6,7 @@ module aes_decryption
    input wire [127:0]  fifo_in,
    input wire [127:0]  round_key_input,
    input wire [127:0]  round_key_0,
-   output wire [4:0]   round_key_addr,
+   output wire [3:0]   round_key_addr,
    output wire [127:0] data_output,
    output wire 	       data_done,
    output wire 	       data_valid
@@ -38,7 +38,7 @@ module aes_decryption
 			  .o_block_out(round_block_0_0),
 			  .o_state_out(round_state_0));
    // SECTION A
-   assign round_key_addr = round_state_0;
+   assign round_key_addr = round_state_0[3:0];
 
    xor_init XOR_INIT (.i_round_block(round_block_0_0),
 		      .i_round_state(round_state_0),

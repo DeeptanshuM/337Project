@@ -4,12 +4,12 @@ module aes_block
   (
    input wire 	      clk,n_rst,read_fifo,is_encrypt,tx_fifo_full,
    input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
-   output reg [4:0]   read_addr,
+   output reg [3:0]   read_addr,
    output reg [127:0] tx_fifo_in,
    output reg data_done,data_valid
    );
    
-   wire [4:0] 	      enc_round_key_addr,dec_round_key_addr;
+   wire [3:0] 	      enc_round_key_addr,dec_round_key_addr;
    wire [127:0]       enc_data_output,dec_data_output;
    wire 	      enc_data_done,dec_data_done;
    wire 	      enc_data_valid,dec_data_valid;

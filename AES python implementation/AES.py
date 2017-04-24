@@ -282,9 +282,10 @@ def setup():
     ft = open("round_keys.txt","w")
     index = 0
     for r_key in roundkeys:
-        fb.write(bytes(r_key))
+        r_key.write_to_file(fb)
+        # fb.write(bytes(r_key))
         ft.write("Round: " + str(index) + "\n")
-        ft.write(str(r_key))
+        ft.write(str(r_key.get_bitvector_in_hex()))
         ft.write("\n")
         index += 1
     fb.close()

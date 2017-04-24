@@ -6,7 +6,7 @@ module aes_encryption
    input wire [127:0]  fifo_in,
    input wire [127:0]  round_key_input,
    input wire [127:0]  round_key_0,
-   output wire [4:0]   round_key_addr,
+   output wire [3:0]   round_key_addr,
    output wire [127:0] data_output,
    output wire 	       data_done,
    output wire 	       data_valid
@@ -29,7 +29,7 @@ module aes_encryption
    wire [4:0] 	 round_state_2_0,round_state_2_1;
    wire [127:0]  round_block_2_0,round_block_2_1;
    assign data_valid = round_block_output[4];
-   
+
    // DATA SELECT
    data_block_select DBS (.i_read_fifo(read_fifo),
 			  .i_fifo_in(fifo_in),
@@ -50,7 +50,7 @@ module aes_encryption
    // SECTION B
    assign round_block_1_0 = block_A;
    assign round_state_1 = state_A;
-   assign round_key_addr = round_state_1;
+   assign round_key_addr = round_state_1[3:0];
    
    shift_rows SHIFT_ROWS (.i_data(round_block_1_0),
 			  .o_data(round_block_1_1));
@@ -83,6 +83,41 @@ module aes_encryption
 	round_key_register <= '0;
       else
 	round_key_register <= round_key_input;
+
+      $info("input key: %0h",round_key_input);
+
+      $info("state_A: %0b",state_A);
+      $info("state_B: %0b",state_B);
+      $info("state_C: %0b",state_C);
+
+      $info("block_A: %0h",block_A);
+      $info("block_B: %0h",block_B);
+      $info("block_C: %0h",block_C);
+
+      $info("output state: %0b",round_state_output);
+      $info("output data: %0h",round_block_output);
+
+      /*
+      $info("round_state_0: %0b",round_state_0);
+      $info("round_block_0_0: %0h",round_block_0_0);
+      $info("round_block_0_1: %0h",round_block_0_1);
+      $info("round_block_0_2: %0h",round_block_0_2);
+
+
+      $info("round_state_1: %0b",round_state_1);
+      $info("round_block_1_0: %0h",round_block_1_0);
+      $info("round_block_1_1: %0h",round_block_1_1);
+      $info("round_block_1_2: %0h",round_block_1_2);
+
+      $info("round_state_2_0: %0b",round_state_2_0);
+      $info("round_state_2_1: %0b",round_state_2_1);
+      $info("round_block_2_0: %0h",round_block_2_0);
+      $info("round_block_2_1: %0h",round_block_2_1);
+       */
+      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+
    end
 
    //BLOCK REGISTER NEXT STATE
