@@ -32,7 +32,6 @@ typedef enum bit [4:0] {
 			IDLE,
 			get_key,
 			get_data,
-			fixReceiver,
 			updateReceiver,
 			didRead,
 			enqueueTrans,
@@ -43,7 +42,7 @@ typedef enum bit [4:0] {
 stateType state;
 stateType nxt_state;
 wire tmp_status_bits_2;
-assign tmp_status_bits_2 = (is_encrypt_pulse ? 1'b1 : (is_decrypt_pulse ? 1'b0 : status_bits[2]));
+assign tmp_status_bits_2 = (is_encryption_pulse ? 1'b1 : (is_decryption_pulse ? 1'b0 : status_bits[2]));
 
 always_ff @ (posedge clk, negedge n_reset) begin
   if (n_reset == 0) begin
@@ -69,7 +68,7 @@ case(state)
 	IDLE: begin
 	if(key_in)
 		nxt_state = get_key;
-	if(!emptyRx && !framing_error)
+	if(!emptyRx)
 		nxt_state = get_data;
 	if(data_done)
 		nxt_state = enqueueTrans;
@@ -92,14 +91,7 @@ case(state)
 	end
 
 	get_data: begin
-	if(framing_error)
-		nxt_state = fixReceiver;
-	else
-		nxt_state = didRead;
-	end
-
-	fixReceiver: begin
-	nxt_state = IDLE;
+	nxt_state = didRead;
 	end
 
 	didRead: begin
@@ -119,7 +111,6 @@ assign tmp_flagKeyGenDone = ((state == dummy3) || flagKeyGenDone);
 assign read_fifo_KeyGen = (state == get_key);
 assign is_encrypt = status_bits[2];
 assign read_fifo = (state == get_data);
-assign fix_error = (state == fixReceiver);
 assign rcv_deq = ((accepted && (state == didRead)) || (state == get_key));
 assign trans_enq = (state == enqueueTrans);
 

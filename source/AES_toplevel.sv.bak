@@ -38,7 +38,7 @@ wire         rcv_fifo_empty;
 reg [3:0] status_bits;
 reg read_fifo, is_encrypt, data_done, data_valid;
 wire [127:0] round_key_0,round_key_input;
-reg [3:0]   read_addr;
+reg [4:0]   read_addr;
 
 
 ahb_fifo_io AHB (

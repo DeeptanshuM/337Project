@@ -40,7 +40,7 @@ module ahb_fifo_io (
 
 	ahb_slave AHB_SLAVE (
 		.HCLK(HCLK),
-		.HRESETn(HRESETN),
+		.HRESETn(HRESETn),
 		.HSELx(HSELx),
 		.HADDR(HADDR),
 		.HBURST(HBURST),

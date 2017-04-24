@@ -16,7 +16,7 @@ module ahb_fifo_io (
 	input wire  [ 2:0]  HSIZE,
 	input wire  [ 1:0]  HTRANS,
 	input wire          HWRITE,
-	input wire  [ 7:0]  status,
+	input wire  [ 3:0]  status,
 	input wire [127:0]  data_in,
 	input wire 	    tx_enq,
 	input wire 	    rcv_deq,

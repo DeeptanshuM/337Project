@@ -45,7 +45,7 @@ reg [ 1:0]   tb_HRESP;
 reg [15:0][31:0] tb_out_data;
 
 // DUT portmap
-theWrapperFile DUT
+AES_toplevel DUT
 (
 	.HCLK(tb_HCLK),
 	.HRESETn(tb_HRESETn),
