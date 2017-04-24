@@ -23,24 +23,28 @@ parameter CLK_PERIOD				= 5;
 typedef enum bit [3:0] {SINGLE, INCR} burstType;
 typedef enum bit [1:0] {IDLE, BUZ, NONSEQ, SEQ} htransType;
 
-integer tb_test_case_num, i, j;
+integer tb_test_case_num;
+//integer i;
+//integer j;
 
-wire          tb_HCLK;
-wire          tb_HRESETn;
-wire          tb_HSELx;
-wire  [31:0]  tb_HADDR;
-wire  [31:0]  tb_HWDATA;
-wire  [ 2:0]  tb_HBURST;
-wire  [ 3:0]  tb_HPROT;
-wire  [ 2:0]  tb_HSIZE;
-wire  [ 1:0]  tb_HTRANS;
-wire          tb_HWRITE;
+//  DUT inputs and outputs
+reg          tb_HCLK;
+reg          tb_HRESETn;
+reg          tb_HSELx;
+reg  [31:0]  tb_HADDR;
+reg  [31:0]  tb_HWDATA;
+reg  [ 2:0]  tb_HBURST;
+reg  [ 3:0]  tb_HPROT;
+reg  [ 2:0]  tb_HSIZE;
+reg  [ 1:0]  tb_HTRANS;
+reg          tb_HWRITE;
 reg  [31:0]   tb_HRDATA;
-wire          tb_HREADY;
-wire [ 1:0]   tb_HRESP;
+reg          tb_HREADY;
+reg [ 1:0]   tb_HRESP;
 
 reg [15:0][31:0] tb_out_data;
 
+// DUT portmap
 theWrapperFile DUT
 (
 	.HCLK(tb_HCLK),
@@ -165,6 +169,7 @@ endtask
 
 task get_data4_block;
 	output [15:0][31:0] output_arr;
+	integer i, j;
 	begin
 		@(posedge tb_HCLK); #0.5ns;
 		tb_HSELx = 1'b1;
@@ -252,14 +257,14 @@ initial begin
 		// TEST 2 : TEST AFTER SENDING KEY AND DATA
 		reset_dut();
 		send_key("ZXCVBNMASDFGHJKL");
-		send_4blocks("zxcvbnmasdfghjkl","1234567890123456","1234567890123456","1234567890123456","1234567890123456");
+		send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
 		@(posedge tb_HCLK); #1ns;
 		#0.5ns;
 
 		// TEST 3 : TEST AFTER SENDING KEY AND DATA AND THEN GETTING DATA
 		reset_dut();
 		send_key("ZXCVBNMASDFGHJKL");
-		send_4blocks("zxcvbnmasdfghjkl","1234567890123456","1234567890123456","1234567890123456","1234567890123456");
+		send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
 		get_data4_block(tb_out_data);
 		@(posedge tb_HCLK); #1ns;
 		#0.5ns;
