@@ -1,0 +1,80 @@
+// $Id: $
+// File name:   tx_fifo.sv
+// Created:     4/16/2017
+// Author:      Natat Sombuntham
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Top level file for transmittor FIFO.
+module tx_fifo (
+	input wire clk,
+	input wire n_rst,
+	input wire [127:0] data_in,
+	input wire tx_enq,
+	input wire tx_deq_word,
+	output wire full,
+	output wire empty,
+	output wire [31:0] tx_fifo_out
+);
+	wire [1:0] head_side;
+	wire [2:0] tail_ptr;
+	wire [2:0] head_ptr;
+	wire WE;
+	wire count_en1;	
+	wire count_en2;
+	wire tail_tog;
+	wire head_tog;
+	assign WE = 1'b1;
+	tx_fifo_fsm FSM (
+		.clk(clk),
+		.n_rst(n_rst),
+		.tx_deq_word(tx_deq_word),
+		.empty(empty),
+		.head_side(head_side),
+		.count_en1(count_en1),
+		.count_en2(count_en2)
+	);
+
+	tx_counter_tail TAIL_PTR (
+		.clk(clk),
+		.n_rst(n_rst),
+		.tx_enq(tx_enq),
+		.tail_ptr(tail_ptr),
+		.tail_tog(tail_tog)
+	);
+
+	tx_counter_head HEAD_PTR (
+		.clk(clk),
+		.n_rst(n_rst),
+		.count_en2(count_en2),
+		.head_ptr(head_ptr),
+		.head_tog(head_tog)
+	);
+
+	tx_counter_idx HEAD_IDX (
+		.clk(clk),
+		.n_rst(n_rst),
+		.count_en1(count_en1),
+		.head_side(head_side)
+	);
+
+	tx_comb_output COMB_OUT (
+		.head_ptr(head_ptr),
+		.head_side(head_side),
+		.tail_ptr(tail_ptr),
+		.tail_tog(tail_tog),
+		.head_tog(head_tog),
+		.full(full),
+		.empty(empty)
+	);
+
+	tx_fifo_reg FIFO_REG (
+		.clk(clk),
+		.tail_ptr(tail_ptr),
+		.head_side(head_side),
+		.head_ptr(head_ptr),
+		.data_in(data_in),
+		.WE(tx_enq),
+		.tx_fifo_out(tx_fifo_out)
+	);
+
+endmodule

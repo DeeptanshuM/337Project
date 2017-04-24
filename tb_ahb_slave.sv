@@ -1,0 +1,460 @@
+// $Id: $
+// File name:   tb_ahb_slave.sv
+// Created:     4/18/2017
+// Author:      Natat Sombuntham
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Test bench for AHB slave module.
+`timescale 1ns / 10ps
+module tb_ahb_slave();
+	parameter CLK_PERIOD				= 4;
+	typedef enum bit [3:0] {SINGLE, INCR} burstType;
+	typedef enum bit [1:0] {IDLE, BUZ, NONSEQ, SEQ} htransType;
+	/*
+	parameter IDLE = 2'b00;
+	parameter BUZ = 2'b01;
+	parameter NONSEQ = 2'b10;
+	parameter SEQ = 2'b11; */
+
+	reg          tb_HCLK;
+	reg          tb_HRESETn;
+	reg          tb_HSELx;
+	reg  [31:0]  tb_HADDR;
+	reg  [ 2:0]  tb_HBURST;
+	reg  [ 3:0]  tb_HPROT;
+	reg  [ 2:0]  tb_HSIZE;
+	reg  [ 1:0]  tb_HTRANS;
+	reg  [31:0]  tb_HWDATA;
+	reg          tb_HWRITE;
+	reg  [31:0]  tb_data_out;
+	reg  [ 7:0]  tb_status;
+	reg          tb_rcv_fifo_full;
+	reg          tb_rcv_fifo_empty;
+	reg          tb_tx_fifo_empty;
+	reg [31:0]   tb_HRDATA;
+	reg          tb_HREADY;
+	reg  [ 1:0]  tb_HRESP;
+	reg          tb_rcv_enq_word;
+	reg          tb_tx_deq_word;
+	reg          tb_is_encrypt_pulse;
+	reg          tb_is_decrypt_pulse;
+	reg          tb_key_in;
+	integer tb_test_case_num;
+
+	ahb_slave DUT
+	(
+		.HCLK(tb_HCLK),
+		.HRESETn(tb_HRESETn),
+		.HSELx(tb_HSELx),
+		.HADDR(tb_HADDR),
+		.HBURST(tb_HBURST),
+		.HPROT(tb_HPROT),
+		.HSIZE(tb_HSIZE),
+		.HTRANS(tb_HTRANS),
+		.HWDATA(tb_HWDATA),
+		.HWRITE(tb_HWRITE),
+		.data_out(tb_data_out),
+		.status(tb_status),
+		.rcv_fifo_full(tb_rcv_fifo_full),
+		.rcv_fifo_empty(tb_rcv_fifo_empty),
+		.tx_fifo_empty(tb_tx_fifo_empty),
+		.HRDATA(tb_HRDATA),
+		.HREADY(tb_HREADY),
+		.HRESP(tb_HRESP),
+		.rcv_enq_word(tb_rcv_enq_word),
+		.tx_deq_word(tb_tx_deq_word),
+		.is_encrypt_pulse(tb_is_encrypt_pulse),
+		.is_decrypt_pulse(tb_is_decrypt_pulse),
+		.key_in(tb_key_in)
+	);
+
+	always
+	begin : CLK_GEN
+		tb_HCLK = 1'b0;
+		#(CLK_PERIOD / 2.0);
+		tb_HCLK = 1'b1;
+		#(CLK_PERIOD / 2.0);
+	end
+
+	task reset_dut;
+	begin
+		// Activate the design's reset (does not need to be synchronize with clock)
+		tb_HRESETn = 1'b0;		
+		// Wait for a couple clock cycles
+		@(posedge tb_HCLK);
+		@(posedge tb_HCLK);
+		// Release the reset
+		@(negedge tb_HCLK);
+		tb_HRESETn = 1'b1;
+		// Wait for a while before activating the design
+		@(posedge tb_HCLK);
+		@(posedge tb_HCLK);
+	end
+	endtask
+
+	task chk_rcv_enq_word;
+		input _rcv_enq_word;
+	begin
+		assert(_rcv_enq_word == tb_rcv_enq_word)
+		begin
+			$info("Test Case #%0d: Had a correct rcv_enq_word value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect rcv_enq_word value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_tx_deq_word;
+		input _tx_deq_word;
+	begin
+		assert(_tx_deq_word == tb_tx_deq_word)
+		begin
+			$info("Test Case #%0d: Had a correct _tx_deq_word value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _tx_deq_word value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_is_encrypt_pulse;
+		input _is_encrypt_pulse;
+	begin
+		assert(_is_encrypt_pulse == tb_is_encrypt_pulse)
+		begin
+			$info("Test Case #%0d: Had a correct _is_encrypt_pulse value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _is_encrypt_pulse value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_is_decrypt_pulse;
+		input _is_decrypt_pulse;
+	begin
+		assert(_is_decrypt_pulse == tb_is_decrypt_pulse)
+		begin
+			$info("Test Case #%0d: Had a correct _is_decrypt_pulse value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _is_decrypt_pulse value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_key_in;
+		input _key_in;
+	begin
+		assert(_key_in == tb_key_in)
+		begin
+			$info("Test Case #%0d: Had a correct _key_in value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _key_in value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_HREADY;
+		input _HREADY;
+	begin
+		assert(_HREADY == tb_HREADY)
+		begin
+			$info("Test Case #%0d: Had a correct _HREADY value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _HREADY value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_HRESP;
+		input _HRESP;
+	begin
+		assert(_HRESP == tb_HRESP)
+		begin
+			$info("Test Case #%0d: Had a correct tb_HRESP value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_HRESP value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+	task chk_HRDATA;
+		input [31:0] _HRDATA;
+	begin
+		assert(_HRDATA == tb_HRDATA)
+		begin
+			$info("Test Case #%0d: Had a correct _HRDATA value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _HRDATA value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+
+	task send_key;
+		input [127:0] key;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h10;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h14;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[127:96];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h18;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[95:64];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h1B;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[63:32];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = '0;
+		tb_HTRANS = IDLE;
+		tb_HSELx = 1'b0;
+		tb_HBURST = '0;
+		tb_HWDATA = key[31:0];
+		@(posedge tb_HCLK); #1ns;
+		tb_HWDATA = '0;
+	end
+	endtask
+
+
+	task send_key_empty;
+		input [127:0] key;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h10;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		tb_rcv_fifo_empty = 0;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h14;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[127:96];
+		#0.5ns;
+		chk_HREADY(0);
+		@(posedge tb_HCLK); #0.5ns;
+		@(posedge tb_HCLK); #0.5ns;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_rcv_fifo_empty = 1;
+		tb_HADDR = 32'h14;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[127:96];
+		#0.5ns;
+		chk_HREADY(0);
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h14;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[127:96];
+		#0.5ns;
+		chk_HREADY(1);
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h18;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[95:64];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h1C;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[63:32];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = '0;
+		tb_HTRANS = IDLE;
+		tb_HSELx = 1'b0;
+		tb_HBURST = '0;
+		tb_HWDATA = key[31:0];
+		@(posedge tb_HCLK); #1ns;
+		tb_HWDATA = '0;
+	end
+	endtask
+
+	task send_key_and1block;
+		input [127:0] key;
+		input [127:0] dat;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h10;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h14;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[127:96];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h18;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[95:64];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h1C;
+		tb_HTRANS = SEQ;
+		tb_HWDATA = key[63:32];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h40;
+		tb_HTRANS = NONSEQ;
+		tb_HBURST = INCR;
+		tb_HWDATA = key[31:0];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h44;
+		tb_HTRANS = SEQ;
+		tb_HBURST = INCR;
+		tb_HWDATA = dat[127:96];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h48;
+		tb_HTRANS = SEQ;
+		tb_HBURST = INCR;
+		tb_HWDATA = dat[95:64];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h4B;
+		tb_HTRANS = SEQ;
+		tb_HBURST = INCR;
+		tb_HWDATA = dat[63:32];
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = '0;
+		tb_HTRANS = '0;
+		tb_HBURST = '0;
+		tb_HWDATA = dat[31:0];
+		tb_HSELx = 1'b0;
+		chk_rcv_enq_word(1);
+		@(posedge tb_HCLK); #1ns;
+		chk_rcv_enq_word(0);
+		tb_HWDATA = '0;
+		
+	end
+	endtask
+
+	task send_error;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h128;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #1ns;
+		chk_HREADY(0); chk_HRESP(1);
+		@(posedge tb_HCLK); #1ns;
+		chk_HREADY(1); chk_HRESP(1);
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h128;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #1ns;
+	end
+	endtask
+
+	task get_status;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h00;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+		@(posedge tb_HCLK); #1ns;
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+	end
+	endtask
+
+	task select_decrypt;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h08;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+	end
+	endtask
+
+	task select_encrypt;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h04;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+	end
+	endtask
+
+	reg exp_rcv_enq_word;
+	reg exp_tx_deq_word;
+	reg exp_is_encrypt_pulse;
+	reg exp_is_decrypt_pulse;
+	reg exp_key_in;
+	initial begin
+		tb_test_case_num = 0;
+		tb_HSELx = '0;
+		tb_HADDR = '0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = '0;
+		tb_HPROT = '0;
+		tb_HSIZE = 2;
+		tb_data_out = '0;
+		tb_status = 8'hA5;
+		tb_rcv_fifo_full = '0;
+		tb_rcv_fifo_empty = '1;
+		tb_tx_fifo_empty = '1;
+		// TEST 0 : TEST AFTER RESET
+		reset_dut();
+		exp_rcv_enq_word = 0; exp_tx_deq_word = 0; exp_is_encrypt_pulse = 0; exp_is_decrypt_pulse = 0; exp_key_in = 0;
+		chk_rcv_enq_word(exp_rcv_enq_word);
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 1 : TEST AFTER SENDING IN KEY
+		send_key("ABCDEFGHIJKLMNOP");
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 2 : TEST AFTER SENDING IN KEY BUT FIFO IS NOT EMPTY
+		send_key_empty("ABCDEFGHIJKLMNOP");
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 3 : TEST AFTER SENDING IN KEY AND THEN FOLLOWED WITH DATA (PIPELINED)
+		send_key_and1block("ABCDEFGHIJKLMNOP", "zxcvbnmasdfghjkl");
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 4 : TEST AFTER SENDING ERROR
+		send_error();
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 5 : TEST AFTER READING STATUS
+		get_status();
+		chk_HRDATA(32'hA5);
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 6 : TEST SELECT DECRYPT
+		select_decrypt();
+		#0.5ns;
+		exp_rcv_enq_word = 0; exp_tx_deq_word = 0; exp_is_encrypt_pulse = 0; exp_is_decrypt_pulse = 1; exp_key_in = 0;
+		chk_is_decrypt_pulse(exp_is_decrypt_pulse);
+		tb_test_case_num = tb_test_case_num + 1;
+		// TEST 7 : TEST SELECT ENCRYPT
+		select_encrypt();
+		#0.5ns;
+		exp_rcv_enq_word = 0; exp_tx_deq_word = 0; exp_is_encrypt_pulse = 1; exp_is_decrypt_pulse = 0; exp_key_in = 0;
+		chk_is_encrypt_pulse(exp_is_encrypt_pulse);
+		tb_test_case_num = tb_test_case_num + 1;
+	end
+endmodule

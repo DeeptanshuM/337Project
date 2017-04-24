@@ -196,16 +196,6 @@ module tb_tx_fifo();
 		end
 	end
 	endtask
-
-	task deq_data;
-	begin
-		@(negedge tb_clk);
-		tb_rcv_deq = 1'b1;
-		@(negedge tb_clk);
-		tb_rcv_deq = 1'b0;
-		@(negedge tb_clk);
-	end
-	endtask
 	
 	reg e_full;
 	reg e_empty;
