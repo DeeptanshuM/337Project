@@ -16,16 +16,12 @@ input wire emptyRx,
 input wire fullRx,
 input wire emptyTx,
 input wire fullTx,
-input wire framing_error,
 input wire data_done,
 input wire accepted,
 output wire is_encrypt,
-output wire is_decrypt,
 output wire read_fifo,
 output wire rcv_deq,
-output wire fix_error,
 output wire trans_enq,
-output wire read_fifo_KeyGen,
 output reg [3:0] status_bits
 );
 
@@ -35,8 +31,6 @@ wire tmp_flagKeyGenDone;
 typedef enum bit [4:0] {
 			IDLE,
 			get_key,
-			decryption,
-			encryption,
 			get_data,
 			fixReceiver,
 			updateReceiver,
@@ -49,7 +43,7 @@ typedef enum bit [4:0] {
 stateType state;
 stateType nxt_state;
 wire tmp_status_bits_2;
-assign tmp_status_bits_2 = (is_encrypt ? 1'b1 : (is_decrypt ? 1'b0 : status_bits[2]));
+assign tmp_status_bits_2 = (is_encrypt_pulse ? 1'b1 : (is_decrypt_pulse ? 1'b0 : status_bits[2]));
 
 always_ff @ (posedge clk, negedge n_reset) begin
   if (n_reset == 0) begin
@@ -75,10 +69,6 @@ case(state)
 	IDLE: begin
 	if(key_in)
 		nxt_state = get_key;
-	if(is_decryption_pulse)
-		nxt_state = decryption;
-	if(is_encryption_pulse)
-		nxt_state = encryption;
 	if(!emptyRx && !framing_error)
 		nxt_state = get_data;
 	if(data_done)
@@ -98,14 +88,6 @@ case(state)
 	end
 
 	dummy3: begin
-	nxt_state = IDLE;
-	end
-
-	decryption: begin
-	nxt_state = IDLE;
-	end
-
-	encryption: begin
 	nxt_state = IDLE;
 	end
 
@@ -135,8 +117,7 @@ end
 
 assign tmp_flagKeyGenDone = ((state == dummy3) || flagKeyGenDone);
 assign read_fifo_KeyGen = (state == get_key);
-assign is_encrypt = (state == encryption);
-assign is_decrypt = (state == decryption);
+assign is_encrypt = status_bits[2];
 assign read_fifo = (state == get_data);
 assign fix_error = (state == fixReceiver);
 assign rcv_deq = ((accepted && (state == didRead)) || (state == get_key));
