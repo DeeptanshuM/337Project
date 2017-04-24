@@ -89,7 +89,7 @@ MCU jhfgd
 .rcv_deq(rcv_deq),
 .trans_enq(tx_enq),
 .status_bits(status_bits)
-)
+);
 
 aes_block AES
 (
