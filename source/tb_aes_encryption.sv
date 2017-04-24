@@ -19,7 +19,7 @@ module tb_aes_encryption();
    reg 	   tb_is_full;
    reg [127:0] tb_round_key_input;
    reg [127:0]	tb_round_key_0;
-   reg [4:0]	tb_round_key_addr;
+   reg [3:0]	tb_round_key_addr;
 
    //output
    reg [127:0] 	tb_o_data;
@@ -95,37 +95,58 @@ module tb_aes_encryption();
 	tb_test_case_num = 0;
 	tb_test_sample_num = 0;
 	tb_n_rst = 1;
-	tb_read_fifo = 0;
-	tb_is_full = 0;
 
 	#(1ns);
 	load_file;
+
+	#(1ns);	
+	tb_n_rst = 0;
+	#(1ns);	
+	tb_n_rst = 1;
+	tb_read_fifo = 0;
+	tb_is_full = 0;
 	
 	#(100*CLK_PERIOD);
 	$info("-----------------------------------============================-------------------------\n");
 	$info("-----------------------------------============================-------------------------\n");
 	$info("-----------------------------------============================-------------------------\n");
 	$info("-----------------------------------============================-------------------------\n");
-	$info("-----------------------------------============================-------------------------\n");
 	$info("enc_counter: %0d",enc_counter);
-
-	for(i = 0;i<enc_counter;i=i+1)
+	
+	//single test
+	tb_i_data = tb_i_data_vector[0];
+	tbe_o_data = tbe_o_data_vector[0];
+	$info("tb_i_data: %0h",tb_i_data);
+	@(negedge tb_clk);
+	tb_read_fifo = 1;
+	@(negedge tb_clk);
+	tb_read_fifo = 0;
+	//$info("TBE: %b",tbe_o_data);
+	while(!tb_data_done)
 	  begin
-	     tb_i_data = tb_i_data_vector[i];
-	     tbe_o_data = tbe_o_data_vector[i];
-	     $info("tb_i_data: %0d",tb_i_data);
 	     @(negedge tb_clk);
-	     tb_read_fifo = 1;
-	     @(negedge tb_clk);
-	     tb_read_fifo = 0;
-	     //$info("TBE: %b",tbe_o_data);
-	     while(!tb_data_done)
-	       begin
-		  @(negedge tb_clk);
-	       end
-	     check_output;
-	     tb_test_sample_num = tb_test_sample_num + 1;
 	  end
+	check_output;
+	tb_test_sample_num = tb_test_sample_num + 1;
+
+
+	// for(i = 0;i<enc_counter;i=i+1)
+	//   begin
+	//      tb_i_data = tb_i_data_vector[i];
+	//      tbe_o_data = tbe_o_data_vector[i];
+	//      $info("tb_i_data: %0d",tb_i_data);
+	//      @(negedge tb_clk);
+	//      tb_read_fifo = 1;
+	//      @(negedge tb_clk);
+	//      tb_read_fifo = 0;
+	//      //$info("TBE: %b",tbe_o_data);
+	//      while(!tb_data_done)
+	//        begin
+	// 	  @(negedge tb_clk);
+	//        end
+	//      check_output;
+	//      tb_test_sample_num = tb_test_sample_num + 1;
+	//   end
      end
 
    always@(posedge tb_clk) begin
@@ -135,7 +156,7 @@ module tb_aes_encryption();
 	 tb_i_data_vector[enc_counter] <= captured_data_A;
 	 tbe_o_data_vector[enc_counter] <= captured_data_B;
 	 enc_counter <= enc_counter + 1;
-	 //$info("enc_counter: %0d",captured_data_A);
+	 $info("enc_counter: %0h",captured_data_A);
       end
       if (!$feof(key_file)) begin
 	 scan_file = $fread(captured_data_A,key_file);
@@ -144,15 +165,17 @@ module tb_aes_encryption();
 	 else
 	   tb_round_key_vector[key_counter-1] <= captured_data_A;
 	 key_counter <= key_counter + 1;
-	 //$info("key_counter: %0h",captured_data_A);
+	 //$info("key_data: %0h",captured_data_A);
       end
    end
    
    always@(posedge tb_clk,negedge tb_n_rst)begin
-      if(tb_n_rst)
+      if(tb_n_rst == 0)
 	tb_round_key_input <= tb_round_key_vector[0];
       else
-	tb_round_key_input <= tb_round_key_vector[tb_round_key_addr[3:0]];
+	tb_round_key_input <= tb_round_key_vector[tb_round_key_addr];
+      // $info("tb_round_key_addr: %0b",tb_round_key_addr);
+      // $info("tb_round_key_input: %0h",tb_round_key_input);
    end
 
 endmodule

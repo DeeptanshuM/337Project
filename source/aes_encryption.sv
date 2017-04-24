@@ -84,12 +84,12 @@ module aes_encryption
       else
 	round_key_register <= round_key_input;
 
-      $info("fifo_in: %0h",fifo_in);
+      // $info("fifo_in: %0h",fifo_in);
       $info("input key: %0h",round_key_input);
 
-      $info("state_A: %0b",state_A);
-      $info("state_B: %0b",state_B);
-      $info("state_C: %0b",state_C);
+      $info("state_A: %8b",state_A);
+      $info("state_B: %8b",state_B);
+      $info("state_C: %8b",state_C);
 
       $info("block_A: %0h",block_A);
       $info("block_B: %0h",block_B);
@@ -98,27 +98,25 @@ module aes_encryption
       $info("output state: %0b",round_state_output);
       $info("output data: %0h",round_block_output);
 
+      $info("pre-xor_init: %0b",round_state_0);
+      $info("post-xor_init/pre-subbytes-rows: %0h",round_block_0_0);
+      $info("post-subbytes-rows: %0h",round_block_0_1);
 
-      $info("round_state_0: %0b",round_state_0);
-      $info("round_block_0_0: %0h",round_block_0_0);
-      /*
-      $info("round_block_0_1: %0h",round_block_0_1);
       $info("round_block_0_2: %0h",round_block_0_2);
 
-
       $info("round_state_1: %0b",round_state_1);
-      $info("round_block_1_0: %0h",round_block_1_0);
-      $info("round_block_1_1: %0h",round_block_1_1);
-      $info("round_block_1_2: %0h",round_block_1_2);
+      $info("pre-shift-rows: %0h",round_block_1_0);
+      $info("post-shift-rows/pre-mix-columns: %0h",round_block_1_1);
+      $info("post-mix_columns: %0h",round_block_1_2);
 
       $info("round_state_2_0: %0b",round_state_2_0);
       $info("round_state_2_1: %0b",round_state_2_1);
-      $info("round_block_2_0: %0h",round_block_2_0);
-      $info("round_block_2_1: %0h",round_block_2_1);
-       */
-      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
-      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
-      $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+      $info("pre-round_key_adder: %0h",round_block_2_0);
+      $info("post-round_key_adder: %0h",round_block_2_1);
+
+      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
 
    end
 

@@ -299,27 +299,46 @@ def setup():
 ##############################################
 def encrypt():
     roundkeys = setup()
-    #intextBV = BitVector(filename = "plaintext.txt")
-    intextBV = BitVector(filename = "plaintext2.txt")
+    intextBV = BitVector(filename = "plaintext.txt")
+    #intextBV = BitVector(filename = "plaintext2.txt")
     outFile = open("encrypted2.txt", "w")
     cleartext = ""
     outFile.write(cleartext)
     outFile.close()
+    count = 0
     while (intextBV.more_to_read):
         inBV = intextBV.read_bits_from_file(128)
         #If the plaintextvec is not 128 bits, add padding
         while (len(inBV) < 128):
             inBV.pad_from_right(8)
         #Add round key first (words 0 to word 3)
+        if count == 0:
+            print(inBV.get_bitvector_in_hex())
         inBV ^= roundkeys[0]
+        if count == 0:
+            print(inBV.get_bitvector_in_hex())
         for rounds in range(1, 11):
             statearray = makestatearray(inBV)
+            inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-make-state-array",inBV.get_bitvector_in_hex())
             statearray = substitution(statearray, 0)
+            inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-sub-bytes",inBV.get_bitvector_in_hex())
             statearray = shiftrows(statearray, 0)
+            inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-shift-rows",inBV.get_bitvector_in_hex())
             if (rounds != 10):
                 statearray = mixcol(statearray, 0)
             inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"pre-mix-columns",inBV.get_bitvector_in_hex())
             inBV ^= roundkeys[rounds]
+            if count == 0:
+                print(rounds,"post-key-xor",inBV.get_bitvector_in_hex())
+        count += 1
         outFile = open("encrypted.txt", 'ab')   #outFile is the file that contains the resulted text
         inBV.write_to_file(outFile)
         outFile.close()        

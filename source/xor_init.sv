@@ -10,7 +10,7 @@ module xor_init
 
    always_comb begin
       o_round_block = i_round_block;
-      if (i_round_state == 5'b00000)
+      if (i_round_state[3:0] == 4'b0000)
 	o_round_block = i_round_block ^ i_round_key_0;
    end
    
