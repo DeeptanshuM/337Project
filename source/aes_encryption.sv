@@ -84,6 +84,7 @@ module aes_encryption
       else
 	round_key_register <= round_key_input;
 
+      $info("fifo_in: %0h",fifo_in);
       $info("input key: %0h",round_key_input);
 
       $info("state_A: %0b",state_A);
@@ -97,9 +98,10 @@ module aes_encryption
       $info("output state: %0b",round_state_output);
       $info("output data: %0h",round_block_output);
 
-      /*
+
       $info("round_state_0: %0b",round_state_0);
       $info("round_block_0_0: %0h",round_block_0_0);
+      /*
       $info("round_block_0_1: %0h",round_block_0_1);
       $info("round_block_0_2: %0h",round_block_0_2);
 
