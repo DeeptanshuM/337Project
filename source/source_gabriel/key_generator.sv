@@ -11,7 +11,7 @@ module key_generator
   input wire n_rst,
   input wire [3:0] read_addr,
   input wire WE_key_generation,
-  input wire [127:0] original_key,
+  input wire [127:0] input_key,
   output reg [127:0] round_key_0,
   output reg [127:0] round_key_x,
   output reg generation_done
@@ -20,8 +20,8 @@ module key_generator
 reg [127:0] round_key[1:10];
 reg [31:0] gee_word;
 reg [7:0] round_constant;
-reg [127:0] current_key_input;
-reg [127:0] select_og_key;
+reg [127:0] original_key;
+reg [127:0] tmp_original_key;
 reg [31:0] wordZero, nextwordZero, nextwordOne, nextwordTwo, nextwordThree;
 reg [31:0] wordOne;
 reg [31:0] wordTwo;
@@ -38,16 +38,24 @@ g_function GFUNCTION (.input_word(wordThree), .current_round_constant(round_cons
 
 always_comb begin
   if (WE_key_generation) begin
-    select_og_key =  original_key;
+    tmp_original_key = input_key;
   end
   else begin
-    select_og_key = current_key_input;
+    tmp_original_key = original_key;
   end
 end
 
 always_ff @ (posedge clk, negedge n_rst) begin
   if (n_rst == 0) begin
-    current_key_input <= 128'b0;
+    original_key <= '0;
+  end
+  else begin
+    original_key <= tmp_original_key;
+  end
+end
+
+always_ff @ (posedge clk, negedge n_rst) begin
+  if (n_rst == 0) begin
     state <= IDLE;
     wordZero <= original_key[127:96];
     wordOne <= original_key[95:64];
@@ -57,7 +65,6 @@ always_ff @ (posedge clk, negedge n_rst) begin
   end
   else begin
     if (WE_key_generation) begin
-      current_key_input <= select_og_key;
       state <= nextstate;
       wordZero <= nextwordZero;
       wordOne <= nextwordOne;

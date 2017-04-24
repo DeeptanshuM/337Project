@@ -28,11 +28,10 @@ module tb_key_generator ();
 	end
 
 	// Default Config Test Variables & constants
-	
 	reg	tb_n_rst;
 	reg	[3:0] tb_read_addr;
 	reg	tb_WE_key_generation;
-	reg	[127:0] tb_original_key;
+	reg	[127:0] tb_input_key;
 	reg	[127:0] tb_round_key_0;
 	reg	[127:0] tb_round_key_x;
 	reg	tb_generation_done;
@@ -45,7 +44,7 @@ module tb_key_generator ();
 	
 	
 	// DUT port map
-	key_generator DUT(.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_read_addr), .WE_key_generation(tb_WE_key_generation), .original_key(tb_original_key), .round_key_0(tb_round_key_0), .round_key_x(tb_round_key_x), .generation_done(tb_generation_done));
+	key_generator DUT(.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_read_addr), .WE_key_generation(tb_WE_key_generation), .original_key(tb_input_key), .round_key_0(tb_round_key_0), .round_key_x(tb_round_key_x), .generation_done(tb_generation_done));
 	
 	// Test bench process
 	initial
@@ -56,7 +55,7 @@ module tb_key_generator ();
 
 		tb_read_addr = 4'b0;
 		tb_WE_key_generation = 0;
-		tb_original_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
+		tb_input_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
 		//Key: thisisthekey -> with padding: thisisthekey0000
 
 		tb_expected_round_key_0 = 0;
@@ -76,7 +75,7 @@ module tb_key_generator ();
 		tb_n_rst = 1;
 		tb_read_addr = 4'b1;
 		tb_WE_key_generation = 0;
-		tb_original_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
+		tb_input_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
 		//Key: thisisthekey -> with padding: thisisthekey0000
 
 		tb_expected_round_key_0 = 0;
@@ -92,7 +91,7 @@ module tb_key_generator ();
 		tb_n_rst = 1;
 		tb_read_addr = 4'b1;
 		tb_WE_key_generation = 1;
-		tb_original_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
+		tb_oinput_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
 		//Key: thisisthekey -> with padding: thisisthekey0000
 
 		tb_expected_round_key_0 = 128'h7468697369737468656b657930303030;
