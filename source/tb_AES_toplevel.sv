@@ -171,7 +171,6 @@ task send_4blocks;
 endtask
 
 task get_data4_block;
-	output [15:0][31:0] output_arr;
 	integer i, j;
 	begin
 		@(posedge tb_HCLK); #0.5ns;
@@ -185,11 +184,11 @@ task get_data4_block;
 		tb_HTRANS = SEQ;
 		for (i = 32'h88, j = 0; i < 32'hC0; i = i + 4, j = j + 1) begin
 			@(posedge tb_HCLK); #0.5ns;
-			output_arr[j] = tb_HRDATA;
+			tb_out_data[j] = tb_HRDATA;
 			tb_HADDR = i;
 		end
 		@(posedge tb_HCLK); #0.5ns;
-		output_arr[15] = tb_HRDATA;
+		tb_out_data[15] = tb_HRDATA;
 		tb_HADDR = '0;
 		tb_HTRANS = IDLE;
 		tb_HSELx = 1'b0;
@@ -236,7 +235,7 @@ task select_encrypt;
 		tb_HWRITE = 1'b0;
 	end
 endtask
-/*
+
 task load_file;
       string filename;
       begin
@@ -256,13 +255,61 @@ task check_output;
 	   begin
 	      $error("Test Case #%0d Sample #%0d: INCORRECT OUTPUT", tb_test_case_num, tb_test_case_num);
 	      //$info("should be: %b, but is: %b",tbe_o_data,tb_o_data);
-	      $info("input: %h",tb_i_data);
+	      //$info("input: %h",tb_i_data);
 	      $info("should be: %h, but is: %h",tbe_o_data,tb_o_data);
 	   end
      end
    endtask
-*/
+
+integer input_idx;
+
+task send_4blocks_from_file;
+      begin
+           send_4blocks(tb_i_data_vector[input_idx],tb_i_data_vector[input_idx+1],tb_i_data_vector[input_idx+2],tb_i_data_vector[input_idx+3]);	
+           input_idx = input_idx + 4;
+      end
+endtask
+
+task wait_long_time;
+	integer z;
+	begin
+		for (z = 0; z < 50; z = z + 1) begin
+			@(posedge tb_HCLK); #1ns;
+		end
+	end
+endtask
+
+task chk_4data_blocks;
+	begin
+		assert(tbe_o_data_vector[input_idx-4] == {tb_out_data[0],tb_out_data[1],tb_out_data[2],tb_out_data[3]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tbe_o_data_vector[input_idx-3] == {tb_out_data[4],tb_out_data[5],tb_out_data[6],tb_out_data[7]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tbe_o_data_vector[input_idx-2] == {tb_out_data[8],tb_out_data[9],tb_out_data[10],tb_out_data[11]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tbe_o_data_vector[input_idx-1] == {tb_out_data[12],tb_out_data[13],tb_out_data[14],tb_out_data[15]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+	end
+endtask
+
 initial begin
+		input_idx = 0;
 		tb_test_case_num = 0;
 		tb_HSELx = '0;
 		tb_HADDR = '0;
@@ -273,7 +320,10 @@ initial begin
 		tb_HPROT = '0;
 		tb_HSIZE = 2;
 		test_counter = 0;
-
+		tb_out_data = '0;
+		#(1ns);
+		load_file;
+		#(400ns);
 		// TEST 0 : TEST AFTER RESET
 		reset_dut();
 		tb_test_case_num = tb_test_case_num + 1;
@@ -282,34 +332,32 @@ initial begin
 		send_key("thisisthekey0000");
 		@(posedge tb_HCLK); @(posedge tb_HCLK); #1ns;
 		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
+
 		tb_test_case_num = tb_test_case_num + 1;
 		
 		// TEST 2 : TEST AFTER SENDING KEY AND DATA
 		reset_dut();
-		send_key("ZXCVBNMASDFGHJKL");
-		send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
-		@(posedge tb_HCLK); #1ns;
-		#0.5ns;
+		send_key("thisisthekey0000");
+		while (input_idx < NUMBER_OF_TESTS) begin
+			send_4blocks_from_file;
+			wait_long_time;
+			get_data4_block;
+			chk_4data_blocks;
+		end
+
+		//send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
+		//@(posedge tb_HCLK); #1ns;
+		//#0.5ns;
 
 		// TEST 3 : TEST AFTER SENDING KEY AND DATA AND THEN GETTING DATA
-		reset_dut();
-		send_key("ZXCVBNMASDFGHJKL");
-		send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
-		get_data4_block(tb_out_data);
-		@(posedge tb_HCLK); #1ns;
-		#0.5ns;
+	//	reset_dut();
+	//	send_key("ZXCVBNMASDFGHJKL");
+	//	send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
+	//	get_data4_block(tb_out_data);
+	//	@(posedge tb_HCLK); #1ns;
+	//	#0.5ns;
 	end
-/*
+
 always@(posedge tb_HCLK) begin
       if (!$feof(data_file)) begin
 	 scan_file = $fread(captured_data_A,data_file);
@@ -319,5 +367,5 @@ always@(posedge tb_HCLK) begin
 	 test_counter <= test_counter + 1;
       end
    end
-*/
+
 endmodule
