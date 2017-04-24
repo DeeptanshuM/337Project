@@ -1,11 +1,11 @@
 // $Id: $
-// File name:   theWrapperFile.sv
+// File name:   AES_toplevel.sv
 // Created:     4/23/2017
 // Author:      Deeptanshu Malik
 // Lab Section: 337-03
 // Version:     1.0  Initial Design Entry
 // Description: top level wrapper file
-module theWrapperFile
+module AES_toplevel
 (
 input wire          HCLK,
 input wire          HRESETn,

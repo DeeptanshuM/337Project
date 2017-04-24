@@ -1,5 +1,5 @@
 // $Id: $
-// File name:   tb_top_level.sv
+// File name:   tb_AES_toplevel.sv
 // Created:     4/23/2017
 // Author:      Deeptanshu Malik
 // Lab Section: 337-03
@@ -7,7 +7,7 @@
 // Description: Top level test bench.
 
 `timescale 1ns / 10ps
-module tb_top_level();
+module tb_AES_toplevel();
 
 //gameplan is to follow flowchart for top level design
 

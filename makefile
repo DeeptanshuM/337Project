@@ -27,7 +27,7 @@ COMPONENT_FILES	+= key_generator.sv g_function.sv
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-TOP_LEVEL_FILE	:= theWrapperFile.sv
+TOP_LEVEL_FILE	:= AES_toplevel.sv
 
 # define values for making AES 
 AES_TOP_LEVEL := aes_block.sv
