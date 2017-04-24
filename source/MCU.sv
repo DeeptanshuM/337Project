@@ -26,7 +26,7 @@ output wire rcv_deq,
 output wire fix_error,
 output wire trans_enq,
 output wire read_fifo_KeyGen,
-output reg [4:0] status_bits
+output reg [3:0] status_bits
 );
 
 reg flagKeyGenDone;
@@ -48,15 +48,23 @@ typedef enum bit [4:0] {
 
 stateType state;
 stateType nxt_state;
+wire tmp_status_bits_2;
+assign tmp_status_bits_2 = (is_encrypt ? 1'b1 : (is_decrypt ? 1'b0 : status_bits[2]));
 
 always_ff @ (posedge clk, negedge n_reset) begin
   if (n_reset == 0) begin
 	state <= IDLE;
 	flagKeyGenDone <= 0;
+	status_bits <= 4'b0100;
   end
   else begin
 	state <= nxt_state;
 	flagKeyGenDone <= tmp_flagKeyGenDone;
+	//status_bits <= {flagKeyGenDone, is_encrypt, is_decrypt, !emptyTx, fullRx};
+	status_bits[0] <= fullRx;
+        status_bits[1] <= !emptyTx;
+	status_bits[2] <= tmp_status_bits_2;
+        status_bits[3] <= flagKeyGenDone;
   end
 end
 
@@ -126,17 +134,12 @@ endcase
 end
 
 assign tmp_flagKeyGenDone = ((state == dummy3) || flagKeyGenDone);
-assign read_fifo_KeyGen= (state == get_key);
+assign read_fifo_KeyGen = (state == get_key);
 assign is_encrypt = (state == encryption);
 assign is_decrypt = (state == decryption);
 assign read_fifo = (state == get_data);
 assign fix_error = (state == fixReceiver);
-assign rcv_deq = accepted && (state == didRead);
+assign rcv_deq = ((accepted && (state == didRead)) || (state == get_key));
 assign trans_enq = (state == enqueueTrans);
 
-assign status_bits[0] = fullRx;
-assign status_bits[1] = !emptyTx;
-assign status_bits[2] = is_decrypt;
-assign status_bits[3] = is_encrypt;
-assign status_bits[4] = flagKeyGenDone;;
 endmodule
