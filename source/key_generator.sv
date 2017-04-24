@@ -27,6 +27,7 @@ reg [31:0] wordOne;
 reg [31:0] wordTwo;
 reg [31:0] wordThree;
 reg [3:0] round_count;
+reg startGen;
 
 typedef enum bit [3:0] {IDLE, ROUND1, ROUND2, ROUND3, ROUND4, ROUND5, ROUND6, ROUND7, ROUND8, ROUND9, ROUND10, DONEGEN} stateType;
   stateType state;
@@ -57,19 +58,38 @@ end
 always_ff @ (posedge clk, negedge n_rst) begin
   if (n_rst == 0) begin
     state <= IDLE;
-    wordZero <= original_key[127:96];
-    wordOne <= original_key[95:64];
-    wordTwo <= original_key[63:32];
-    wordThree <= original_key[31:0];
+    wordZero <= 0;
+    wordOne <= 0;
+    wordTwo <= 0;
+    wordThree <= 0;
+    startGen <= 0;
     round_count <= 0;
+    round_key[1] <= 0;
+    round_key[2] <= 0;
+    round_key[3] <= 0;
+    round_key[4] <= 0;
+    round_key[5] <= 0;
+    round_key[6] <= 0;
+    round_key[7] <= 0;
+    round_key[8] <= 0;
+    round_key[9] <= 0;
+    round_key[10] <= 0;
   end
   else begin
     if (WE_key_generation) begin
       state <= nextstate;
+      wordZero <= input_key[127:96];
+      wordOne <= input_key[95:64];
+      wordTwo <= input_key[63:32];
+      wordThree <= input_key[31:0];
+      startGen <= 1;
+    end
+    if (startGen) begin
       wordZero <= nextwordZero;
       wordOne <= nextwordOne;
       wordTwo <= nextwordTwo;
       wordThree <= nextwordThree;
+
       if (round_count < 11) begin
         round_count <= round_count + 1;
       end
@@ -82,11 +102,18 @@ always_ff @ (posedge clk, negedge n_rst) begin
 end
 
 always_comb begin
+
   if (!generation_done) begin
     nextwordZero = gee_word ^ wordZero;
-    nextwordOne = nextwordZero ^ wordOne;
-    nextwordTwo = nextwordOne ^ wordTwo;
-    nextwordThree = nextwordTwo ^ wordThree;
+    nextwordOne = gee_word ^ wordZero ^ wordOne;
+    nextwordTwo = gee_word ^ wordZero ^ wordOne ^ wordTwo;
+    nextwordThree = gee_word ^ wordZero ^ wordOne ^ wordTwo ^ wordThree;
+  end
+  else begin
+    nextwordZero = 0;
+    nextwordOne = 0;
+    nextwordTwo = 0;
+    nextwordThree = 0;
   end
 end
 
@@ -97,7 +124,7 @@ always_comb begin : NXT_LOGIC
   case(state)
 
     IDLE: begin
-      if (WE_key_generation) begin
+      if (startGen) begin
         nextstate = ROUND1;
       end
     end

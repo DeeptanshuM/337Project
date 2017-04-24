@@ -44,7 +44,7 @@ module tb_key_generator ();
 	
 	
 	// DUT port map
-	key_generator DUT(.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_read_addr), .WE_key_generation(tb_WE_key_generation), .original_key(tb_input_key), .round_key_0(tb_round_key_0), .round_key_x(tb_round_key_x), .generation_done(tb_generation_done));
+	key_generator DUT(.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_read_addr), .WE_key_generation(tb_WE_key_generation), .input_key(tb_input_key), .round_key_0(tb_round_key_0), .round_key_x(tb_round_key_x), .generation_done(tb_generation_done));
 	
 	// Test bench process
 	initial
@@ -91,8 +91,10 @@ module tb_key_generator ();
 		tb_n_rst = 1;
 		tb_read_addr = 4'b1;
 		tb_WE_key_generation = 1;
-		tb_oinput_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
+		tb_input_key = 128'b01110100011010000110100101110011011010010111001101110100011010000110010101101011011001010111100100110000001100000011000000110000;
 		//Key: thisisthekey -> with padding: thisisthekey0000
+		@ (negedge tb_clk);
+		//tb_WE_key_generation = 0;
 
 		tb_expected_round_key_0 = 128'h7468697369737468656b657930303030;
 		tb_expected_round_key_x = 128'h716c6d77181f191f7d747c664d444c56;

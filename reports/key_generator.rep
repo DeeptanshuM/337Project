@@ -1,0 +1,146 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'key_generator' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : key_generator
+Version: K-2015.06-SP1
+Date   : Sun Apr 23 20:28:45 2017
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: wordThree_reg[21]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: wordZero_reg[30]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  wordThree_reg[21]/CLK (DFFSR)                           0.00 #     0.00 r
+  wordThree_reg[21]/Q (DFFSR)                             0.58       0.58 f
+  GFUNCTION/input_word[21] (g_function)                   0.00       0.58 f
+  GFUNCTION/SUBS0/input_word[5] (s_box_lookup_3)          0.00       0.58 f
+  GFUNCTION/SUBS0/U220/Y (INVX2)                          0.13       0.70 r
+  GFUNCTION/SUBS0/U196/Y (AND2X2)                         0.20       0.90 r
+  GFUNCTION/SUBS0/U44/Y (AND2X2)                          0.18       1.09 r
+  GFUNCTION/SUBS0/U25/Y (INVX4)                           0.19       1.27 f
+  GFUNCTION/SUBS0/U183/Y (INVX8)                          0.16       1.43 r
+  GFUNCTION/SUBS0/U254/Y (NAND2X1)                        0.13       1.57 f
+  GFUNCTION/SUBS0/U255/Y (INVX2)                          0.09       1.65 r
+  GFUNCTION/SUBS0/U257/Y (NOR2X1)                         0.15       1.80 f
+  GFUNCTION/SUBS0/U258/Y (OAI21X1)                        0.13       1.93 r
+  GFUNCTION/SUBS0/U262/Y (NOR2X1)                         0.17       2.10 f
+  GFUNCTION/SUBS0/U263/Y (NAND3X1)                        0.15       2.25 r
+  GFUNCTION/SUBS0/U605/Y (INVX2)                          0.11       2.36 f
+  GFUNCTION/SUBS0/U606/Y (NAND2X1)                        0.15       2.50 r
+  GFUNCTION/SUBS0/U607/Y (NOR3X1)                         0.16       2.67 f
+  GFUNCTION/SUBS0/U608/Y (NAND3X1)                        0.22       2.88 r
+  GFUNCTION/SUBS0/substituted_word[6] (s_box_lookup_3)
+                                                          0.00       2.88 r
+  GFUNCTION/U10/Y (XOR2X1)                                0.25       3.14 f
+  GFUNCTION/U16/Y (INVX4)                                 0.17       3.31 r
+  GFUNCTION/gee[30] (g_function)                          0.00       3.31 r
+  U6567/Y (XNOR2X1)                                       0.18       3.48 r
+  U7711/Y (AOI22X1)                                       0.13       3.62 f
+  U7712/Y (OAI21X1)                                       0.14       3.76 r
+  wordZero_reg[30]/D (DFFSR)                              0.00       3.76 r
+  data arrival time                                                  3.76
+
+  clock clk (rise edge)                                   4.00       4.00
+  clock network delay (ideal)                             0.00       4.00
+  wordZero_reg[30]/CLK (DFFSR)                            0.00       4.00 r
+  library setup time                                     -0.24       3.76
+  data required time                                                 3.76
+  --------------------------------------------------------------------------
+  data required time                                                 3.76
+  data arrival time                                                 -3.76
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+ 
+****************************************
+Report : area
+Design : key_generator
+Version: K-2015.06-SP1
+Date   : Sun Apr 23 20:28:45 2017
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                          528
+Number of nets:                         11722
+Number of cells:                        11456
+Number of combinational cells:           8233
+Number of sequential cells:              3218
+Number of macros/black boxes:               0
+Number of buf/inv:                       3010
+Number of references:                      24
+
+Combinational area:            2132901.000000
+Buf/Inv area:                   498528.000000
+Noncombinational area:         2557872.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               4690773.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : key_generator
+Version: K-2015.06-SP1
+Date   : Sun Apr 23 20:28:46 2017
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+key_generator                           114.271  964.296 1.45e+03 1.08e+03 100.0
+  GFUNCTION (g_function)                 25.502   16.912  185.726   42.414   3.9
+    SUBS3 (s_box_lookup_0)                6.213    4.163   47.240   10.376   1.0
+    SUBS2 (s_box_lookup_1)                6.301    4.212   46.984   10.513   1.0
+    SUBS1 (s_box_lookup_2)                6.213    3.973   45.106   10.186   0.9
+    SUBS0 (s_box_lookup_3)                5.816    3.777   44.278    9.593   0.9
+1
