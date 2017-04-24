@@ -236,7 +236,7 @@ task select_encrypt;
 		tb_HWRITE = 1'b0;
 	end
 endtask
-/*
+
 task load_file;
       string filename;
       begin
@@ -261,7 +261,7 @@ task check_output;
 	   end
      end
    endtask
-*/
+
 initial begin
 		tb_test_case_num = 0;
 		tb_HSELx = '0;
@@ -309,7 +309,7 @@ initial begin
 		@(posedge tb_HCLK); #1ns;
 		#0.5ns;
 	end
-/*
+
 always@(posedge tb_HCLK) begin
       if (!$feof(data_file)) begin
 	 scan_file = $fread(captured_data_A,data_file);
@@ -319,5 +319,5 @@ always@(posedge tb_HCLK) begin
 	 test_counter <= test_counter + 1;
       end
    end
-*/
+
 endmodule

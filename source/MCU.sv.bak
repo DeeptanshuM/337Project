@@ -22,6 +22,7 @@ output wire is_encrypt,
 output wire read_fifo,
 output wire rcv_deq,
 output wire trans_enq,
+output wire mcu_key_in,
 output reg [3:0] status_bits
 );
 
@@ -113,5 +114,7 @@ assign is_encrypt = status_bits[2];
 assign read_fifo = (state == get_data);
 assign rcv_deq = ((accepted && (state == didRead)) || (state == get_key));
 assign trans_enq = (state == enqueueTrans);
+assign mcu_key_in = (state == enqueueTrans); 
+get_key
 
 endmodule
