@@ -2,7 +2,7 @@
 
 module aes_block
   (
-   input wire 	      clk,n_rst,read_fifo,is_encrypt,is_decrypt,tx_fifo_full,
+   input wire 	      clk,n_rst,read_fifo,is_encrypt,tx_fifo_full,
    input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
    output reg [3:0]   read_addr,
    output reg [127:0] tx_fifo_in,
@@ -57,20 +57,12 @@ module aes_block
 	   tx_fifo_in = enc_data_output;
 	   data_valid = enc_data_valid;
 	end
-      else if (is_decrypt)
+      else
 	begin
 	   read_addr = dec_round_key_addr;
 	   data_done = dec_data_done;
 	   tx_fifo_in = dec_data_output;
 	   data_valid = dec_data_valid;
-	end
-      //If neither is_encrypt or is_decrypt is asserted, then just encrypt
-      else
-        begin
-	  read_addr = enc_round_key_addr;
-	  data_done = enc_data_done;
-	  tx_fifo_in = enc_data_output;
-	  data_valid = enc_data_valid;	
 	end
    end
    
