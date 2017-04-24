@@ -5,8 +5,6 @@
 // Lab Section: 337-03
 // Version:     1.0  Initial Design Entry
 // Description: top level wrapper file
-
-
 module theWrapperFile
 (
 input wire          HCLK,
@@ -21,7 +19,7 @@ input wire  [ 1:0]  HTRANS,
 input wire          HWRITE,
 output reg  [31:0]  HRDATA,
 output wire         HREADY,
-output wire [ 1:0]  HRESP,
+output wire [ 1:0]  HRESP
 );
 
 wire [127:0]  data_in;
