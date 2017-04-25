@@ -35,7 +35,7 @@ reg [ 1:0]   tb_HRESP;
 reg [15:0][31:0] tb_out_data;
 
 //data file vars
-integer data_file;
+integer data_file_raw, data_file_to_write, data_file_expected;
 integer scan_file;
 logic signed [127:0] captured_data_A;
 logic signed [127:0] captured_data_B;
@@ -131,7 +131,7 @@ task send_4blocks;
 	input [127:0] dat4;
 	begin
 		@(posedge tb_HCLK); #0.5ns; tb_HSELx = 1'b1; tb_HADDR = 32'h40;	tb_HTRANS = NONSEQ;tb_HBURST = INCR;
-		tb_HWDATA = '0;
+		tb_HWDATA = '0;tb_HWRITE = 1'b1;
 		@(posedge tb_HCLK); #0.5ns;tb_HADDR = 32'h44;	tb_HTRANS = SEQ;tb_HBURST = INCR;
 		tb_HWDATA = dat1[127:96];
 		@(posedge tb_HCLK); #0.5ns;tb_HADDR = 32'h48;	tb_HTRANS = SEQ;tb_HBURST = INCR;
@@ -166,7 +166,26 @@ task send_4blocks;
 		tb_HWDATA = dat4[31:0];
 		tb_HSELx = 1'b0;
 		@(posedge tb_HCLK); #0.5ns;
-		tb_HWDATA = '0;
+		tb_HWDATA = '0;tb_HWRITE = 1'b0;
+	end
+endtask
+
+task send_1block;
+	input [127:0] dat1;
+	begin
+		@(posedge tb_HCLK); #0.5ns; tb_HSELx = 1'b1; tb_HADDR = 32'h40;	tb_HTRANS = NONSEQ;tb_HBURST = INCR;
+		tb_HWDATA = '0;tb_HWRITE = 1'b1;
+		@(posedge tb_HCLK); #0.5ns;tb_HADDR = 32'h44;	tb_HTRANS = SEQ;tb_HBURST = INCR;
+		tb_HWDATA = dat1[127:96];
+		@(posedge tb_HCLK); #0.5ns;tb_HADDR = 32'h48;	tb_HTRANS = SEQ;tb_HBURST = INCR;
+		tb_HWDATA = dat1[95:64];
+		@(posedge tb_HCLK); #0.5ns;tb_HADDR = 32'h4C;	tb_HTRANS = SEQ;tb_HBURST = INCR;
+		tb_HWDATA = dat1[63:32];
+		@(posedge tb_HCLK); #0.5ns;tb_HADDR = '0;	tb_HTRANS = '0;tb_HBURST = '0;
+		tb_HWDATA = dat1[31:0];
+		tb_HSELx = 1'b0;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HWDATA = '0;tb_HWRITE = 1'b0;
 	end
 endtask
 
@@ -182,13 +201,43 @@ task get_data4_block;
 		@(posedge tb_HCLK); #0.5ns;
 		tb_HADDR = 32'h84;
 		tb_HTRANS = SEQ;
-		for (i = 32'h88, j = 0; i < 32'hC0; i = i + 4, j = j + 1) begin
+		tb_out_data[0] = tb_HRDATA;
+		for (i = 32'h88, j = 1; i < 32'hC0; i = i + 4, j = j + 1) begin
 			@(posedge tb_HCLK); #0.5ns;
 			tb_out_data[j] = tb_HRDATA;
 			tb_HADDR = i;
 		end
 		@(posedge tb_HCLK); #0.5ns;
 		tb_out_data[15] = tb_HRDATA;
+		tb_HADDR = '0;
+		tb_HTRANS = IDLE;
+		tb_HSELx = 1'b0;
+		tb_HBURST = '0;
+		tb_HWDATA = '0;
+		@(posedge tb_HCLK); #1ns;
+	end
+endtask
+
+task get_data1_block;
+	integer i, j;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h80;
+		tb_HBURST = INCR;
+		tb_HTRANS = NONSEQ;
+		tb_HWRITE = 1'b0;
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HADDR = 32'h84;
+		tb_HTRANS = SEQ;
+		tb_out_data[0] = tb_HRDATA;
+		for (i = 32'h88, j = 1; i < 32'h90; i = i + 4, j = j + 1) begin
+			@(posedge tb_HCLK); #0.5ns;
+			tb_out_data[j] = tb_HRDATA;
+			tb_HADDR = i;
+		end
+		@(posedge tb_HCLK); #0.5ns;
+		tb_out_data[3] = tb_HRDATA;
 		tb_HADDR = '0;
 		tb_HTRANS = IDLE;
 		tb_HSELx = 1'b0;
@@ -239,8 +288,9 @@ endtask
 task load_file_to_read;
       string filename;
       begin
-	 data_file = $fopen("./AES python implementation/encryptTest.txt","rb");
-	 if(data_file == 0)begin
+	 data_file_raw = $fopen("./AES python implementation/BeforeEncryptTest.txt","rb");
+	 data_file_expected = $fopen("./AES python implementation/AfterEncryptTest.txt","rb");
+	 if(data_file_raw == 0 || data_file_expected == 0)begin
 	    $display("data_file handle was NULL.");
 	    $finish;
 	 end
@@ -251,8 +301,8 @@ endtask
 task load_file_to_write;
       string filename;
       begin
-	 data_file = $fopen("./AES python implementation/encryptTest.txt","wb+");
-	 if(data_file == 0)begin
+	 data_file_to_write = $fopen("./AES python implementation/output.txt","wb");
+	 if(data_file_to_write == 0)begin
 	    $display("data_file handle was NULL.");
 	    $finish;
 	 end
@@ -282,14 +332,65 @@ task send_4blocks_from_file;
       end
 endtask
 
+task send_1block_from_file;
+	begin
+	send_1block(tb_i_data_vector[input_idx]);
+        input_idx = input_idx + 1;
+	end
+endtask
+
 //MARK: not tested
 task write_4blocks_to_file;
-     	integer i;
+     	integer i, j;
+	reg [7:0] tmp;
       begin
-	//r = $fseek(file, 0, `SEEK_SET); NEED TO FIGURE OUT OFFSET
-	for (i = 0; i<14; i=i+1)
-    		$fwrite(data_file,"%b\n",tb_o_data[i]);
+	//$fseek(data_file, 0, `SEEK_END);
+	for (i = 0; i < 16; i=i+1) begin
+		tmp = tb_out_data[i][31:24];
+		tb_out_data[i][31:24] = tb_out_data[i][7:0];
+		tb_out_data[i][7:0] = tmp;
+	
+		tmp = tb_out_data[i][23:16];
+		tb_out_data[i][23:16] = tb_out_data[i][15:8];
+		tb_out_data[i][15:8] = tmp;
+
+		$fwrite(data_file_to_write,"%u",tb_out_data[i]);
+//		for(j = 31; j >= 0; j = j - 8) begin
+//    			$fwrite(data_file_to_write,"%c",tb_out_data[i][j -: 7]);
+//		end
+	end
       end
+endtask
+
+task write_1block_to_file;
+     	integer i, j;
+	reg [7:0] tmp;
+      begin
+	//$fseek(data_file, 0, `SEEK_END);
+	for (i = 0; i < 4; i=i+1) begin
+		tmp = tb_out_data[i][31:24];
+		tb_out_data[i][31:24] = tb_out_data[i][7:0];
+		tb_out_data[i][7:0] = tmp;
+	
+		tmp = tb_out_data[i][23:16];
+		tb_out_data[i][23:16] = tb_out_data[i][15:8];
+		tb_out_data[i][15:8] = tmp;
+
+		$fwrite(data_file_to_write,"%u",tb_out_data[i]);
+//		for(j = 31; j >= 0; j = j - 8) begin
+//    			$fwrite(data_file_to_write,"%c",tb_out_data[i][j -: 7]);
+//		end
+	end
+      end
+endtask
+
+task wait_key_gen;
+	integer z;
+	begin
+		for (z = 0; z < 14; z = z + 1) begin
+			@(posedge tb_HCLK); #1ns;
+		end
+	end
 endtask
 
 task wait_long_time;
@@ -330,6 +431,7 @@ task chk_4data_blocks;
 	end
 endtask
 
+integer cnt;
 initial begin
 		input_idx = 0;
 		tb_test_case_num = 0;
@@ -341,11 +443,13 @@ initial begin
 		tb_HWRITE = '0;
 		tb_HPROT = '0;
 		tb_HSIZE = 2;
+		cnt = 0;
 		test_counter = 0;
 		tb_out_data = '0;
 		#(1ns);
 		load_file_to_read;
-		#(400ns);
+		load_file_to_write;
+		#(2000ns);
 		// TEST 0 : TEST AFTER RESET
 		reset_dut();
 		tb_test_case_num = tb_test_case_num + 1;
@@ -359,13 +463,24 @@ initial begin
 		
 		// TEST 2 : TEST AFTER SENDING KEY AND DATA
 		reset_dut();
+
 		send_key("thisisthekey0000");
-		while (input_idx < NUMBER_OF_TESTS) begin
+		wait_key_gen;
+		while (cnt < test_counter - 4) begin
 			send_4blocks_from_file;
 			wait_long_time;
 			get_data4_block;
 			chk_4data_blocks;
-		end
+			write_4blocks_to_file;
+			cnt = cnt + 4;
+		end 
+		while (cnt < test_counter - 1) begin
+			send_1block_from_file;
+			wait_long_time;
+			get_data1_block;
+			write_1block_to_file;
+			cnt = cnt + 1;
+		end 
 
 		//send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
 		//@(posedge tb_HCLK); #1ns;
@@ -381,9 +496,9 @@ initial begin
 	end
 
 always@(posedge tb_HCLK) begin
-      if (!$feof(data_file)) begin
-	 scan_file = $fread(captured_data_A,data_file);
-	 scan_file = $fread(captured_data_B,data_file);
+      if (!$feof(data_file_raw)) begin
+	 scan_file = $fread(captured_data_A,data_file_raw);
+	 scan_file = $fread(captured_data_B,data_file_expected);
 	 tb_i_data_vector[test_counter] <= captured_data_A;
 	 tbe_o_data_vector[test_counter] <= captured_data_B;
 	 test_counter <= test_counter + 1;
