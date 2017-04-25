@@ -43,11 +43,11 @@ reg [127:0] 	       tb_i_data_vector[NUMBER_OF_TESTS];
 reg [127:0] 	       tbe_o_data_vector[NUMBER_OF_TESTS];
 reg [31:0] 	       test_counter;
 
-   //output
-   reg [127:0] 	     tb_o_data;
+//output
+reg [127:0] 	     tb_o_data;
 
-   //expected output
-   reg [127:0]		     tbe_o_data;
+//expected output
+reg [127:0]		     tbe_o_data;
 
 // DUT portmap
 AES_toplevel DUT
@@ -236,10 +236,22 @@ task select_encrypt;
 	end
 endtask
 
-task load_file;
+task load_file_to_read;
       string filename;
       begin
 	 data_file = $fopen("./AES python implementation/encryptTest.txt","rb");
+	 if(data_file == 0)begin
+	    $display("data_file handle was NULL.");
+	    $finish;
+	 end
+      end
+endtask
+
+//MARK: not tested
+task load_file_to_write;
+      string filename;
+      begin
+	 data_file = $fopen("./AES python implementation/encryptTest.txt","wb+");
 	 if(data_file == 0)begin
 	    $display("data_file handle was NULL.");
 	    $finish;
@@ -267,6 +279,16 @@ task send_4blocks_from_file;
       begin
            send_4blocks(tb_i_data_vector[input_idx],tb_i_data_vector[input_idx+1],tb_i_data_vector[input_idx+2],tb_i_data_vector[input_idx+3]);	
            input_idx = input_idx + 4;
+      end
+endtask
+
+//MARK: not tested
+task write_4blocks_to_file;
+     	integer i;
+      begin
+	//r = $fseek(file, 0, `SEEK_SET); NEED TO FIGURE OUT OFFSET
+	for (i = 0; i<14; i=i+1)
+    		$fwrite(data_file,"%b\n",tb_o_data[i]);
       end
 endtask
 
@@ -322,7 +344,7 @@ initial begin
 		test_counter = 0;
 		tb_out_data = '0;
 		#(1ns);
-		load_file;
+		load_file_to_read;
 		#(400ns);
 		// TEST 0 : TEST AFTER RESET
 		reset_dut();
