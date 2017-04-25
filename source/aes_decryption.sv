@@ -72,7 +72,7 @@ module aes_decryption
    assign round_state_output = state_C; // output of final section
 
    assign data_output = round_block_output;
-   assign data_done = round_state_output == 5'b01010;
+   assign data_done = round_state_output == 5'b11010;
 
    //PRINTING
    always_ff @(posedge clk, negedge n_rst) begin
