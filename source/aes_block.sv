@@ -3,7 +3,7 @@
 module aes_block
   (
    input wire 	      clk,n_rst,read_fifo,is_encrypt,tx_fifo_full,
-   input wire [127:0] rx_fifo_out,round_key_0,round_key_input,
+   input wire [127:0] rx_fifo_out,round_key_0,round_key_10,round_key_input,
    output reg [3:0]   read_addr,
    output reg [127:0] tx_fifo_in,
    output reg data_done,data_valid
@@ -39,7 +39,7 @@ module aes_block
     .read_fifo(read_fifo),
     .fifo_in(rx_fifo_out),
     .round_key_input(round_key_input),
-    .round_key_0(round_key_0),
+    .round_key_10(round_key_10),
     .is_full(tx_fifo_full),
     //outputs
     .round_key_addr(dec_round_key_addr),

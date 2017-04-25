@@ -88,7 +88,7 @@ module tb_aes_decryption();
    task load_file;
       string filename;
       begin
-	 enc_file = $fopen("./AES python implementation/encryptTest.txt","rb");
+	 enc_file = $fopen("./AES python implementation/decryptTest.txt","rb");
 	 if(enc_file == 0)begin
 	    $display("enc_file handle was NULL.");
 	    $finish;

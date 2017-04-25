@@ -389,7 +389,8 @@ def encrypt():
 ##############################################
 def decrypt():
     roundkeys = setup()
-    intextBV = BitVector(filename = "encrypted.txt")
+    intextBV = BitVector(filename = "decryptTest.txt")
+    #intextBV = BitVector(filename = "encrypted.txt")
     outFile = open("decrypted.txt", "w")
     cleartext = ""
     outFile.write(cleartext)
@@ -398,6 +399,8 @@ def decrypt():
     while (intextBV.more_to_read):
         inBV = intextBV.read_bits_from_file(128)
         #Add round key first (words 0 to word 3)
+        if count == 0:
+            print(0,"pre-xor-init",inBV.get_bitvector_in_hex())
         inBV ^= roundkeys[10]
         for rounds in range(1,11):
             statearray = makestatearray(inBV)
