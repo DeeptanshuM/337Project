@@ -50,7 +50,7 @@ module aes_encryption
    // SECTION B
    assign round_block_1_0 = block_A;
    assign round_state_1 = state_A;
-   assign round_key_addr = round_state_1[3:0];
+   assign round_key_addr = round_state_1[3:0] + 1;
    
    shift_rows SHIFT_ROWS (.i_data(round_block_1_0),
 			  .o_data(round_block_1_1));
@@ -79,21 +79,22 @@ module aes_encryption
 
    //KEY REGISTER
    always_ff @(posedge clk, negedge n_rst) begin
-      // if (1'b0 == n_rst)
-      // 	begin
-      // 	   round_key_register <= '0;
-      // 	end
-      // else
-      // 	round_key_register <= round_key_input;
+      if (1'b0 == n_rst)
+      	begin
+      	   round_key_register <= '0;
+      	end
+      else
+      	round_key_register <= round_key_input;
 
       // $info("fifo_in: %0h",fifo_in);
-      // $info("next input key: %0h",round_key_input);
-      // $info("input key: %0h",round_key_register);
-      // $info("round-key-address: %0h",round_key_addr);
       
-      // $info("state_A: %8b",state_A);
-      // $info("state_B: %8b",state_B);
-      // $info("state_C: %8b",state_C);
+      $info("state_A: %8b",state_A);
+      $info("state_B: %8b",state_B);
+      $info("state_C: %8b",state_C);
+
+      $info("next input key: %0h",round_key_input);
+      $info("input key: %0h",round_key_register);
+      $info("round-key-address: %0h",round_key_addr);
 
       // $info("block_A: %0h",block_A);
       // $info("block_B: %0h",block_B);
@@ -103,21 +104,22 @@ module aes_encryption
       // $info("output data: %0h",round_block_output);
 
       // $info("round_state_0: %0b",round_state_0);
-      // $info("loaded_data: %16h",round_block_0_0);
-      // $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
-      // $info("post-subbytes-rows: %16h",round_block_0_2);
+      $info("loaded_data: %16h",round_block_0_0);
+      $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
+      $info("post-subbytes-rows: %16h",round_block_0_2);
+      $info("post-shift-rows/pre-mix-columns: %16h",round_block_1_1);
+      $info("post-mix_columns: %16h",round_block_1_2);
+      $info("pre-round_key_adder: %16h",round_block_2_0);
+      $info("post-round_key_adder: %16h",round_block_2_1);
+
 
       // $info("round_block_0_2: %16h",round_block_0_2);
 
       // $info("round_state_1: %0b",round_state_1);
       //$info("pre-shift-rows: %16h",round_block_1_0);
-      // $info("post-shift-rows/pre-mix-columns: %16h",round_block_1_1);
-      // $info("post-mix_columns: %16h",round_block_1_2);
 
       // $info("round_state_2_0: %0b",round_state_2_0);
       // $info("round_state_2_1: %0b",round_state_2_1);
-      //$info("pre-round_key_adder: %16h",round_block_2_0);
-      //$info("post-round_key_adder: %16h",round_block_2_1);
 
       // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
       // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");

@@ -394,20 +394,37 @@ def decrypt():
     cleartext = ""
     outFile.write(cleartext)
     outFile.close()
+    count = 0
     while (intextBV.more_to_read):
         inBV = intextBV.read_bits_from_file(128)
         #Add round key first (words 0 to word 3)
         inBV ^= roundkeys[10]
         for rounds in range(1,11):
             statearray = makestatearray(inBV)
+            inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-makestatearray",inBV.get_bitvector_in_hex())
             statearray = shiftrows(statearray, 1)
+            inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-shift-rows",inBV.get_bitvector_in_hex())
             statearray = substitution(statearray, 1)
             inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-substitution-bytes",inBV.get_bitvector_in_hex())
+            inBV = makeBV(statearray)
             inBV ^= roundkeys[10 - rounds]
+            if count == 0:
+                print(rounds,"post-xor-key",inBV.get_bitvector_in_hex())
             statearray = makestatearray(inBV)
             if (rounds != 10):
                 statearray = mixcol(statearray, 1)
             inBV = makeBV(statearray)
+            if count == 0:
+                print(rounds,"post-mix-col",inBV.get_bitvector_in_hex())
+                print(rounds,"round key",roundkeys[rounds].get_bitvector_in_hex())
+
+        count += 1
         outFile = open("decrypted.txt", 'ab')   #outFile is the file that contains the resulted text
         inBV.write_to_file(outFile)
         outFile.close()        
@@ -451,6 +468,5 @@ def print_genTables():
 
 if __name__ == "__main__":
     #print_genTables()
-    encrypt()
-    #decrypt()
-    
+    #encrypt()
+    decrypt()

@@ -6,7 +6,7 @@
 // Version:     1.0  Initial Design Entry
 // Description: Test bench for top level module aes_encryption/
 `timescale 1ns / 10ps
-module tb_aes_encrypt_keygen();
+module tb_aes_encryption();
    parameter CLK_PERIOD				= 4;
    parameter NUMBER_OF_TESTS = 500;
    // -=-=-=-=- MIX COLUMNS -=-=-=-=-
@@ -54,7 +54,7 @@ module tb_aes_encrypt_keygen();
 
    aes_encryption AES_ENCRYPTION (.clk(tb_clk), .n_rst(tb_n_rst),.read_fifo(tb_read_fifo),.is_full(tb_is_full),.fifo_in(tb_i_data), .round_key_input(tb_round_key_input), .round_key_0(tb_round_key_0), .round_key_addr(tb_round_key_addr), .data_output(tb_o_data), .data_done(tb_data_done), .data_valid(tb_data_valid));
 
-   key_generator KEY_GEN (.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_round_key_addr), .WE_key_generation(tb_WE_key_generation), .input_key(tb_input_key), .round_key_0(tb_round_key_0), .round_key_x(round_key_input));
+   key_generator KEY_GEN (.clk(tb_clk), .n_rst(tb_n_rst), .read_addr(tb_round_key_addr), .WE_key_generation(tb_WE_key_generation), .input_key(tb_input_key), .round_key_0(tb_round_key_0), .round_key_x(tb_round_key_input));
 
    always
      begin : CLK_GEN
@@ -176,7 +176,7 @@ module tb_aes_encrypt_keygen();
 	//   end
      end
 
-/*
+
    always@(posedge tb_clk) begin
       if (!$feof(enc_file)) begin
 	 scan_file = $fread(captured_data_A,enc_file);
@@ -184,21 +184,21 @@ module tb_aes_encrypt_keygen();
 	 tb_i_data_vector[enc_counter] <= captured_data_A;
 	 tbe_o_data_vector[enc_counter] <= captured_data_B;
 	 enc_counter <= enc_counter + 1;
-	 $info("enc_counter: %0h",captured_data_A);
+	 //$info("enc_counter: %0h",captured_data_A);
       end
-      if (!$feof(key_file)) begin
-	 scan_file = $fread(captured_data_A,key_file);
-	 if (key_counter == 0)
-	   begin
-	      tb_round_key_0 <= captured_data_A;
-	   end
-	 else
-	   tb_round_key_vector[key_counter-1] <= captured_data_A;
-	 key_counter <= key_counter + 1;
+      // if (!$feof(key_file)) begin
+      // 	 scan_file = $fread(captured_data_A,key_file);
+      // 	 if (key_counter == 0)
+      // 	   begin
+      // 	      tb_round_key_0 <= captured_data_A;
+      // 	   end
+      // 	 else
+      // 	   tb_round_key_vector[key_counter-1] <= captured_data_A;
+      // 	 key_counter <= key_counter + 1;
 	 //$info("key_data: %0h",captured_data_A);
-      end
+      //end
    end
-*/
+
 /*
    always@(posedge tb_clk,negedge tb_n_rst)begin
       if(tb_n_rst == 0)

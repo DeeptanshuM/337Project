@@ -13,11 +13,12 @@ module key_generator
   input wire WE_key_generation,
   input wire [127:0] input_key,
   output reg [127:0] round_key_0,
+  output reg [127:0] round_key_10,
   output reg [127:0] round_key_x,
   output reg generation_done
 );
 
-reg [127:0] round_key[1:10];
+reg [127:0] round_key[0:10];
 reg [31:0] gee_word;
 reg [7:0] round_constant;
 reg [127:0] original_key;
@@ -34,10 +35,11 @@ typedef enum bit [3:0] {IDLE, ROUND1, ROUND2, ROUND3, ROUND4, ROUND5, ROUND6, RO
   stateType nextstate;
 
 assign round_key_0 = original_key;
-
+   
 g_function GFUNCTION (.input_word(wordThree), .current_round_constant(round_constant), .gee(gee_word));
 
 always_comb begin
+   
   if (WE_key_generation) begin
     tmp_original_key = input_key;
   end
@@ -64,6 +66,7 @@ always_ff @ (posedge clk, negedge n_rst) begin
     wordThree <= 0;
     startGen <= 0;
     round_count <= 0;
+    round_key[0] <= 0;
     round_key[1] <= 0;
     round_key[2] <= 0;
     round_key[3] <= 0;
@@ -98,6 +101,8 @@ always_ff @ (posedge clk, negedge n_rst) begin
     end
     if (generation_done) begin
       round_key_x <= round_key[read_addr];
+      round_key[0] <= round_key_0;
+      round_key_10 <= round_key[10];
     end
   end
 end

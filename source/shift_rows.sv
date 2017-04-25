@@ -12,37 +12,11 @@ module shift_rows
    output reg [127:0] o_data
    );
 
-   // state array.T
-   // {i_data[127:120], i_data[119:111], i_data[110:103], i_data[102:96],
-   //  i_data[95:88],i_data[87:80], i_data[79:72],i_data[71:64], 
-   //  i_data[63:56], i_data[55:48], i_data[47:40], i_data[39:32], 
-   //  i_data[31:24], i_data[23:16], i_data[15:8], i_data[7:0]};
-
-   // state array
-   // {i_data[127:120], i_data[95:88], i_data[63:56], i_data[31:24],
-   //  i_data[119:111],i_data[87:80], i_data[79:72],i_data[71:64], 
-   //  i_data[110:103], i_data[55:48], i_data[47:40], i_data[39:32], 
-   //  i_data[102:96], i_data[23:16], i_data[15:8], i_data[7:0]};
-
-   // shifted
-   /*
-     assign o_data = {i_data[127:120], i_data[23:16], i_data[47:40], i_data[71:64],
-     i_data[119:111], i_data[95:88], i_data[15:8], i_data[39:32],
-     i_data[110:103], i_data[87:80], i_data[63:56], i_data[7:0],
-     i_data[102:96], i_data[55:48], i_data[79:72], i_data[31:24]};
-    */
-   // assign o_data = {i_data[127:120], i_data[95:88], i_data[63:56], i_data[31:24],
-   // 		    i_data[87:80], i_data[55:48], i_data[23:16], i_data[95:88],
-   // 		    i_data[47:40], i_data[15:8], i_data[63:56],	i_data[79:72],
-   // 		    i_data[7:0],i_data[31:24], i_data[71:64], i_data[39:32]};
-   
-
    assign o_data = {i_data[127:120], i_data[87:80], i_data[47:40], i_data[7:0],
     i_data[95:88],i_data[55:48], i_data[15:8],i_data[103:96], 
     i_data[63:56], i_data[23:16], i_data[111:104], i_data[71:64], 
     i_data[31:24], i_data[119:112], i_data[79:72], i_data[39:32]};
 
-   //assign o_data = {i_data[127:96], i_data[87:64], i_data[95:88], i_data[47:32], i_data[63:48], i_data[7:0], i_data[31:8]};
 
 endmodule
 

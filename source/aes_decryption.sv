@@ -5,7 +5,7 @@ module aes_decryption
    input wire 	       clk,n_rst,read_fifo,is_full,
    input wire [127:0]  fifo_in,
    input wire [127:0]  round_key_input,
-   input wire [127:0]  round_key_0,
+   input wire [127:0]  round_key_10,
    output wire [3:0]   round_key_addr,
    output wire [127:0] data_output,
    output wire 	       data_done,
@@ -15,7 +15,6 @@ module aes_decryption
    //REGISTER DECLARATION
    reg [4:0]     state_A,state_B,state_C;
    reg [127:0]   block_A,block_B,block_C;
-   reg [127:0] 	 round_key_register;
    // DATA SELECT
    wire [4:0]  round_state_output; // output of final section
    wire [127:0]  round_block_output; // output of final section
@@ -38,11 +37,11 @@ module aes_decryption
 			  .o_block_out(round_block_0_0),
 			  .o_state_out(round_state_0));
    // SECTION A
-   assign round_key_addr = round_state_0[3:0];
+   assign round_key_addr = 9 - round_state_0[3:0];
 
    xor_init XOR_INIT (.i_round_block(round_block_0_0),
 		      .i_round_state(round_state_0),
-		      .i_round_key_0(round_key_0),
+		      .i_round_key_0(round_key_10),
 		      .o_round_block(round_block_0_1));
 
    inv_shift_rows SHIFT_ROWS (.i_data(round_block_0_1),
@@ -55,7 +54,7 @@ module aes_decryption
    assign round_block_1_0 = block_A;
    assign round_state_1 = state_A;
 
-   round_key_adder RKA (.i_key(round_key_register),
+   round_key_adder RKA (.i_key(round_key_input),
 			.i_data(round_block_1_0),
 			.o_data(round_block_1_1));
    // SECTION C
@@ -63,6 +62,7 @@ module aes_decryption
    assign round_state_2_0 = state_B;
 
    inv_mix_columns INV_MIX_COLUMNS (.i_data(round_block_2_0),
+				    .i_state(round_state_2_0),
 				    .o_data(round_block_2_1));
 
    incriment_state INC_STATE (.i_state(round_state_2_0),
@@ -74,12 +74,24 @@ module aes_decryption
    assign data_output = round_block_output;
    assign data_done = round_state_output == 5'b01010;
 
-   //KEY REGISTER
+   //PRINTING
    always_ff @(posedge clk, negedge n_rst) begin
-      if (1'b0 == n_rst)
-	round_key_register <= '0;
-      else
-	round_key_register <= round_key_input;
+
+      $info("state_A: %8b",state_A);
+      $info("state_B: %8b",state_B);
+      $info("state_C: %8b",state_C);
+
+      $info("next input key: %0h",round_key_input);
+      $info("round-key-address: %0h",round_key_addr);
+
+      $info("loaded_data: %16h",round_block_0_0);
+      $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
+      $info("post-shift-rows/pre-mix-columns: %16h",round_block_0_2);
+      $info("post-subbytes-rows: %16h",round_block_0_3);
+      $info("pre-round_key_adder: %16h",round_block_0_3);
+      $info("post-round_key_adder: %16h",round_block_1_1);      
+      $info("post-mix_columns: %16h",round_block_2_1);
+      
    end
 
    //BLOCK REGISTER NEXT STATE

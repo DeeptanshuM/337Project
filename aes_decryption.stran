@@ -8,18 +8,327 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps source_work/.aes_decryption 
-# Start time: 01:53:36 on Apr 18,2017
+# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps source_work/.tb_aes_decryption 
+# Start time: 01:46:39 on Apr 25,2017
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: source/tb_aes_decryption.sv(57): (vopt-2685) [TFMPC] - Too few port connections for 'KEY_GEN'.  Expected 9, found 7.
+# ** Warning: source/tb_aes_decryption.sv(57): (vopt-2718) [TFMPC] - Missing connection for port 'generation_done'.
+# ** Warning: source/tb_aes_decryption.sv(57): (vopt-2718) [TFMPC] - Missing connection for port 'round_key_0'.
 # Loading sv_std.std
+# Loading work.tb_aes_decryption(fast)
 # Loading work.aes_decryption(fast)
 # Loading work.data_block_select(fast)
 # Loading work.xor_init(fast)
-# Loading work.shift_rows(fast)
-# Loading work.sub_bytes(fast)
+# Loading work.inv_shift_rows(fast)
+# Loading work.inv_sub_bytes(fast)
+# Loading work.inv_s_box_lookup(fast)
 # Loading work.round_key_adder(fast)
-# Loading work.mix_columns(fast)
+# Loading work.inv_mix_columns(fast)
+# Loading work.mix_columns_byte(fast)
 # Loading work.incriment_state(fast)
+# Loading work.key_generator(fast)
+# Loading work.g_function(fast)
+# Loading work.s_box_lookup(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-# End time: 01:53:44 on Apr 18,2017, Elapsed time: 0:00:08
-# Errors: 0, Warnings: 1
+run 550ns;
+# ** Info: enc_counter: 5468697320697320616e20756e757375
+#    Time: 2 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 616c207061726167726170682e204927
+#    Time: 6 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6d20637572696f757320686f77207175
+#    Time: 10 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69636b6c7920796f752063616e206669
+#    Time: 14 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e64206f757420776861742069732073
+#    Time: 18 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f20756e757375616c2061626f757420
+#    Time: 22 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69743f204974206c6f6f6b7320736f20
+#    Time: 26 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 706c61696e20796f7520776f756c6420
+#    Time: 30 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7468696e6b206e6f7468696e67207761
+#    Time: 34 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 732077726f6e67207769746820697421
+#    Time: 38 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 20496e20666163742c206e6f7468696e
+#    Time: 42 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 672069732077726f6e67207769746820
+#    Time: 46 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69742120497420697320756e75737561
+#    Time: 50 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c2074686f7567682e20537475647920
+#    Time: 54 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69742c20616e64207468696e6b206162
+#    Time: 58 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f75742069742c2062757420796f7520
+#    Time: 62 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7374696c6c206d6179206e6f74206669
+#    Time: 66 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e6420616e797468696e67206f64642e
+#    Time: 70 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2042757420696620796f7520776f726b
+#    Time: 74 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2061742069742061206269742c20796f
+#    Time: 78 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 75206d696768742066696e64206f7574
+#    Time: 82 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 212054727920746f20646f20736f2077
+#    Time: 86 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6974686f757420616e7920636f616368
+#    Time: 90 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 696e672120596f75206d6f7374207072
+#    Time: 94 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f6261626c7920776f6e27742c206174
+#    Time: 98 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2066697273742c2066696e6420616e79
+#    Time: 102 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7468696e6720706172746963756c6172
+#    Time: 106 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c79206f6464206f7220756e75737561
+#    Time: 110 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c206f7220696e20616e792077617920
+#    Time: 114 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 64697373696d696c617220746f20616e
+#    Time: 118 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 79206f7264696e61727920636f6d706f
+#    Time: 122 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 736974696f6e2e205468617420697320
+#    Time: 126 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e6f7420617420616c6c207375727072
+#    Time: 130 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6973696e672c20666f72206974206973
+#    Time: 134 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 206e6f2073747261696e20746f206163
+#    Time: 138 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 636f6d706c69736820696e20736f2073
+#    Time: 142 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 686f7274206120706172616772617068
+#    Time: 146 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2061207374756e742073696d696c6172
+#    Time: 150 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 20746f20746861742077686963682061
+#    Time: 154 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e20617574686f722064696420746872
+#    Time: 158 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f7567686f757420616c6c206f662068
+#    Time: 162 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 697320626f6f6b2c20776974686f7574
+#    Time: 166 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2073706f696c696e67206120676f6f64
+#    Time: 170 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2077726974696e67206a6f622c20616e
+#    Time: 174 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6420697420776173206e6f20736d616c
+#    Time: 178 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c20626f6f6b20617420746861742e00
+#    Time: 182 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 0
+#    Time: 186 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 131
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 132
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 133
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 134
+# ** Info: enc_counter: 47
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 135
+# ** Info: tb_i_data: 5468697320697320616e20756e757375
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 140
+# ** Error: Test Case #0 Sample #0: INCORRECT OUTPUT
+#    Time: 500 ns  Scope: tb_aes_decryption.check_output File: source/tb_aes_decryption.sv Line: 75
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 154
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 155
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 156
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 157
+vlog -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/inv_shift_rows.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:53:18 on Apr 25,2017
+# vlog -reportprogress 300 -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/inv_shift_rows.sv 
+# -- Compiling module inv_shift_rows
+# 
+# Top level modules:
+# 	inv_shift_rows
+# End time: 01:53:18 on Apr 25,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+run 550ns;
+resatrt -f; run 530ns;
+# invalid command name "resatrt"
+restart -f; run 530ns;
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.tb_aes_decryption(fast)
+# Loading work.aes_decryption(fast)
+# Loading work.data_block_select(fast)
+# Loading work.xor_init(fast)
+# Loading work.inv_shift_rows(fast)
+# Loading work.inv_sub_bytes(fast)
+# Loading work.inv_s_box_lookup(fast)
+# Loading work.round_key_adder(fast)
+# Loading work.inv_mix_columns(fast)
+# Loading work.mix_columns_byte(fast)
+# Loading work.incriment_state(fast)
+# Loading work.key_generator(fast)
+# Loading work.g_function(fast)
+# Loading work.s_box_lookup(fast)
+# ** Warning: (vsim-8634) Code was not compiled with coverage options.
+# ** Info: enc_counter: 5468697320697320616e20756e757375
+#    Time: 2 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 616c207061726167726170682e204927
+#    Time: 6 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6d20637572696f757320686f77207175
+#    Time: 10 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69636b6c7920796f752063616e206669
+#    Time: 14 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e64206f757420776861742069732073
+#    Time: 18 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f20756e757375616c2061626f757420
+#    Time: 22 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69743f204974206c6f6f6b7320736f20
+#    Time: 26 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 706c61696e20796f7520776f756c6420
+#    Time: 30 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7468696e6b206e6f7468696e67207761
+#    Time: 34 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 732077726f6e67207769746820697421
+#    Time: 38 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 20496e20666163742c206e6f7468696e
+#    Time: 42 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 672069732077726f6e67207769746820
+#    Time: 46 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69742120497420697320756e75737561
+#    Time: 50 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c2074686f7567682e20537475647920
+#    Time: 54 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 69742c20616e64207468696e6b206162
+#    Time: 58 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f75742069742c2062757420796f7520
+#    Time: 62 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7374696c6c206d6179206e6f74206669
+#    Time: 66 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e6420616e797468696e67206f64642e
+#    Time: 70 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2042757420696620796f7520776f726b
+#    Time: 74 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2061742069742061206269742c20796f
+#    Time: 78 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 75206d696768742066696e64206f7574
+#    Time: 82 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 212054727920746f20646f20736f2077
+#    Time: 86 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6974686f757420616e7920636f616368
+#    Time: 90 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 696e672120596f75206d6f7374207072
+#    Time: 94 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f6261626c7920776f6e27742c206174
+#    Time: 98 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2066697273742c2066696e6420616e79
+#    Time: 102 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 7468696e6720706172746963756c6172
+#    Time: 106 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c79206f6464206f7220756e75737561
+#    Time: 110 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c206f7220696e20616e792077617920
+#    Time: 114 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 64697373696d696c617220746f20616e
+#    Time: 118 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 79206f7264696e61727920636f6d706f
+#    Time: 122 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 736974696f6e2e205468617420697320
+#    Time: 126 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e6f7420617420616c6c207375727072
+#    Time: 130 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6973696e672c20666f72206974206973
+#    Time: 134 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 206e6f2073747261696e20746f206163
+#    Time: 138 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 636f6d706c69736820696e20736f2073
+#    Time: 142 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 686f7274206120706172616772617068
+#    Time: 146 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2061207374756e742073696d696c6172
+#    Time: 150 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 20746f20746861742077686963682061
+#    Time: 154 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6e20617574686f722064696420746872
+#    Time: 158 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6f7567686f757420616c6c206f662068
+#    Time: 162 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 697320626f6f6b2c20776974686f7574
+#    Time: 166 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2073706f696c696e67206120676f6f64
+#    Time: 170 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 2077726974696e67206a6f622c20616e
+#    Time: 174 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6420697420776173206e6f20736d616c
+#    Time: 178 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 6c20626f6f6b20617420746861742e00
+#    Time: 182 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: enc_counter: 0
+#    Time: 186 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 187
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 131
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 132
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 133
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 134
+# ** Info: enc_counter: 47
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 135
+# ** Info: tb_i_data: 5468697320697320616e20756e757375
+#    Time: 412 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 140
+# ** Error: Test Case #0 Sample #0: INCORRECT OUTPUT
+#    Time: 500 ns  Scope: tb_aes_decryption.check_output File: source/tb_aes_decryption.sv Line: 75
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 154
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 155
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 156
+# ** Info: -----------------------------------============================-------------------------
+#    Time: 500 ns  Scope: tb_aes_decryption File: source/tb_aes_decryption.sv Line: 157
+vlog -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/inv_shift_rows.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:57:09 on Apr 25,2017
+# vlog -reportprogress 300 -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/inv_shift_rows.sv 
+# -- Compiling module inv_shift_rows
+# 
+# Top level modules:
+# 	inv_shift_rows
+# End time: 01:57:09 on Apr 25,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:57:17 on Apr 25,2017
+# vlog -reportprogress 300 -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv 
+# -- Compiling module aes_decryption
+# 
+# Top level modules:
+# 	aes_decryption
+# End time: 01:57:17 on Apr 25,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:58:03 on Apr 25,2017
+# vlog -reportprogress 300 -sv -work source_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv 
+# -- Compiling module aes_decryption
+# 
+# Top level modules:
+# 	aes_decryption
+# End time: 01:58:03 on Apr 25,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f; run 530ns;
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: (vopt-7052) /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv(85): Failed to find 'round_key_register' in hierarchical name '/round_key_register'.
+# ** Error: (vopt-7052) /home/ecegrid/a/mg85/ece337/337Project/source/aes_decryption.sv(92): Failed to find 'round_block_1_2' in hierarchical name '/round_block_1_2'.
+# Optimization failed
+# No Design Loaded!
+# End time: 02:00:10 on Apr 25,2017, Elapsed time: 0:13:31
+# Errors: 3, Warnings: 5
