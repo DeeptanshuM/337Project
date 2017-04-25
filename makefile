@@ -298,7 +298,7 @@ tbsim_%_mapped: $(M_WORK_LIB)/% $(M_WORK_LIB)/tb_%
 
 # Set the default value of the clock name and clock period to an empty string so that clock timing will
 # only be activated in the SYN_CMDS definition if they were overwritten at invocation
-CLOCK_NAME 		:= clk
+CLOCK_NAME 		:= HCLK
 CLOCK_PERIOD	:= 5.0
 
 # Set the default value of the source files for sub modules to be an empty string so that
@@ -371,7 +371,7 @@ uniquify
 $(if $(and $(CLOCK_NAME), $(CLOCK_PERIOD)), create_clock "$(CLOCK_NAME)" -name "$(CLOCK_NAME)" -period $(CLOCK_PERIOD))
 
 # Step 3: Compile the design
-compile -map_effort medium
+compile -map_effort high
 
 # Step 4: Output reports
 report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/$(MOD_NAME).rep

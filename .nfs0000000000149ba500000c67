@@ -1,0 +1,165 @@
+# //  Questa Sim-64
+# //  Version 10.3b linux_x86_64 May 29 2014
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work.tb_AES_toplevel 
+# Start time: 02:43:37 on Apr 25,2017
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: mapped/AES_toplevel.v(2818): (vopt-2685) [TFMPC] - Too few port connections for 'FLEXCNT'.  Expected 7, found 6.
+# ** Warning: mapped/AES_toplevel.v(2818): (vopt-2718) [TFMPC] - Missing connection for port 'rollover_flag'.
+# ** Warning: mapped/AES_toplevel.v(536): (vopt-2685) [TFMPC] - Too few port connections for 'FLEXCNT'.  Expected 7, found 6.
+# ** Warning: mapped/AES_toplevel.v(536): (vopt-2718) [TFMPC] - Missing connection for port 'rollover_flag'.
+# ** Warning: mapped/AES_toplevel.v(65003): (vopt-2685) [TFMPC] - Too few port connections for 'AHB'.  Expected 27, found 26.
+# ** Warning: mapped/AES_toplevel.v(65003): (vopt-2718) [TFMPC] - Missing connection for port 'framing_error'.
+# Loading sv_std.std
+# Loading work.tb_AES_toplevel(fast)
+# Loading work.AES_toplevel(fast)
+# Loading work.ahb_fifo_io(fast)
+# Loading work.ahb_slave(fast)
+# Loading work.ahb_regs(fast)
+# Loading work.rcv_fifo(fast)
+# Loading work.rcv_fifo_fsm(fast)
+# Loading work.rcv_counter_tail(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS2_3(fast)
+# Loading work.rcv_counter_head(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS2_2(fast)
+# Loading work.rcv_counter_idx(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS2_1(fast)
+# Loading work.rcv_comb_output(fast)
+# Loading work.rcv_fifo_reg(fast)
+# Loading work.tx_fifo(fast)
+# Loading work.tx_fifo_fsm(fast)
+# Loading work.tx_counter_tail(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS3_1(fast)
+# Loading work.tx_counter_head(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS3_0(fast)
+# Loading work.tx_counter_idx(fast)
+# Loading work.fifo_flex_counter_NUM_CNT_BITS2_0(fast)
+# Loading work.tx_comb_output(fast)
+# Loading work.tx_fifo_reg(fast)
+# Loading work.MCU(fast)
+# Loading work.aes_block(fast)
+# Loading work.aes_encryption(fast)
+# Loading work.data_block_select_1(fast)
+# Loading work.xor_init_1(fast)
+# Loading work.sub_bytes(fast)
+# Loading work.s_box_lookup_15(fast)
+# Loading work.s_box_lookup_14(fast)
+# Loading work.s_box_lookup_13(fast)
+# Loading work.s_box_lookup_12(fast)
+# Loading work.s_box_lookup_11(fast)
+# Loading work.s_box_lookup_10(fast)
+# Loading work.s_box_lookup_9(fast)
+# Loading work.s_box_lookup_8(fast)
+# Loading work.s_box_lookup_7(fast)
+# Loading work.s_box_lookup_6(fast)
+# Loading work.s_box_lookup_5(fast)
+# Loading work.s_box_lookup_4(fast)
+# Loading work.s_box_lookup_3(fast)
+# Loading work.s_box_lookup_2(fast)
+# Loading work.s_box_lookup_1(fast)
+# Loading work.s_box_lookup_0(fast)
+# Loading work.shift_rows(fast)
+# Loading work.mix_columns(fast)
+# Loading work.mix_columns_byte_31(fast)
+# Loading work.mix_columns_byte_30(fast)
+# Loading work.mix_columns_byte_29(fast)
+# Loading work.mix_columns_byte_28(fast)
+# Loading work.mix_columns_byte_27(fast)
+# Loading work.mix_columns_byte_26(fast)
+# Loading work.mix_columns_byte_25(fast)
+# Loading work.mix_columns_byte_24(fast)
+# Loading work.mix_columns_byte_23(fast)
+# Loading work.mix_columns_byte_22(fast)
+# Loading work.mix_columns_byte_21(fast)
+# Loading work.mix_columns_byte_20(fast)
+# Loading work.mix_columns_byte_19(fast)
+# Loading work.mix_columns_byte_18(fast)
+# Loading work.mix_columns_byte_17(fast)
+# Loading work.mix_columns_byte_16(fast)
+# Loading work.round_key_adder_1(fast)
+# Loading work.incriment_state_1(fast)
+# Loading work.aes_decryption(fast)
+# Loading work.data_block_select_0(fast)
+# Loading work.xor_init_0(fast)
+# Loading work.inv_shift_rows(fast)
+# Loading work.inv_sub_bytes(fast)
+# Loading work.inv_s_box_lookup_15(fast)
+# Loading work.inv_s_box_lookup_14(fast)
+# Loading work.inv_s_box_lookup_13(fast)
+# Loading work.inv_s_box_lookup_12(fast)
+# Loading work.inv_s_box_lookup_11(fast)
+# Loading work.inv_s_box_lookup_10(fast)
+# Loading work.inv_s_box_lookup_9(fast)
+# Loading work.inv_s_box_lookup_8(fast)
+# Loading work.inv_s_box_lookup_7(fast)
+# Loading work.inv_s_box_lookup_6(fast)
+# Loading work.inv_s_box_lookup_5(fast)
+# Loading work.inv_s_box_lookup_4(fast)
+# Loading work.inv_s_box_lookup_3(fast)
+# Loading work.inv_s_box_lookup_2(fast)
+# Loading work.inv_s_box_lookup_1(fast)
+# Loading work.inv_s_box_lookup_0(fast)
+# Loading work.round_key_adder_0(fast)
+# Loading work.inv_mix_columns(fast)
+# Loading work.mix_columns_byte_15(fast)
+# Loading work.mix_columns_byte_14(fast)
+# Loading work.mix_columns_byte_13(fast)
+# Loading work.mix_columns_byte_12(fast)
+# Loading work.mix_columns_byte_11(fast)
+# Loading work.mix_columns_byte_10(fast)
+# Loading work.mix_columns_byte_9(fast)
+# Loading work.mix_columns_byte_8(fast)
+# Loading work.mix_columns_byte_7(fast)
+# Loading work.mix_columns_byte_6(fast)
+# Loading work.mix_columns_byte_5(fast)
+# Loading work.mix_columns_byte_4(fast)
+# Loading work.mix_columns_byte_3(fast)
+# Loading work.mix_columns_byte_2(fast)
+# Loading work.mix_columns_byte_1(fast)
+# Loading work.mix_columns_byte_0(fast)
+# Loading work.incriment_state_0(fast)
+# Loading work.key_generator(fast)
+# Loading work.g_function(fast)
+# Loading work.s_box_lookup_19(fast)
+# Loading work.s_box_lookup_18(fast)
+# Loading work.s_box_lookup_17(fast)
+# Loading work.s_box_lookup_16(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.math_real(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr(metastabilitywrapperarch)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.prim(body)
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr_core(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi22x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai21x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi21x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai22x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand3x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.xor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.xnor2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx4(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.mux2x1(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffposx1(metastabilitywrapperarch)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffposx1_core(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx8(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx4(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x2(behavioral)#1
+# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor3x1(behavioral)#1
