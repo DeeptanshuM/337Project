@@ -75,24 +75,24 @@ module aes_decryption
    assign data_done = round_state_output == 5'b11010;
 
    //PRINTING
-   always_ff @(posedge clk, negedge n_rst) begin
+   // always_ff @(posedge clk, negedge n_rst) begin
 
-      $info("state_A: %8b",state_A);
-      $info("state_B: %8b",state_B);
-      $info("state_C: %8b",state_C);
+   //    $info("state_A: %8b",state_A);
+   //    $info("state_B: %8b",state_B);
+   //    $info("state_C: %8b",state_C);
 
-      $info("next input key: %0h",round_key_input);
-      $info("round-key-address: %0h",round_key_addr);
+   //    $info("next input key: %0h",round_key_input);
+   //    $info("round-key-address: %0h",round_key_addr);
 
-      $info("loaded_data: %16h",round_block_0_0);
-      $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
-      $info("post-shift-rows/pre-mix-columns: %16h",round_block_0_2);
-      $info("post-subbytes-rows: %16h",round_block_0_3);
-      $info("pre-round_key_adder: %16h",round_block_0_3);
-      $info("post-round_key_adder: %16h",round_block_1_1);      
-      $info("post-mix_columns: %16h",round_block_2_1);
+   //    $info("loaded_data: %16h",round_block_0_0);
+   //    $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
+   //    $info("post-shift-rows/pre-mix-columns: %16h",round_block_0_2);
+   //    $info("post-subbytes-rows: %16h",round_block_0_3);
+   //    $info("pre-round_key_adder: %16h",round_block_0_3);
+   //    $info("post-round_key_adder: %16h",round_block_1_1);      
+   //    $info("post-mix_columns: %16h",round_block_2_1);
       
-   end
+   // end
 
    //BLOCK REGISTER NEXT STATE
    always_ff @(posedge clk, negedge n_rst) begin

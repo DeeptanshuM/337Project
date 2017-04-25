@@ -1,0 +1,9 @@
+QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+Start time: 02:31:10 on Apr 25,2017
+vlog -sv -work source_work source/tx_counter_tail.sv 
+-- Compiling module tx_counter_tail
+
+Top level modules:
+	tx_counter_tail
+End time: 02:31:10 on Apr 25,2017, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
