@@ -28,11 +28,12 @@ module rcv_fifo
 	wire count_en2;
 	wire tail_tog;
 	wire head_tog;
+/*
 	reg [31:0] temp;
 	always_ff @(posedge clk) begin
 		temp <= HWDATA;
 	end
-	
+*/	
 	rcv_fifo_fsm FSM (
 		.clk(clk),
 		.n_rst(n_rst),
@@ -86,7 +87,7 @@ module rcv_fifo
 		.tail_ptr(tail_ptr),
 		.tail_side(tail_side),
 		.head_ptr(head_ptr),
-		.HWDATA(temp),
+		.HWDATA(HWDATA),
 		.WE(WE),
 		.rcv_fifo_out(rcv_fifo_out)
 	);

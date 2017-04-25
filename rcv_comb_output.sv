@@ -19,7 +19,7 @@ module rcv_comb_output (
 		empty = 1'b0;
 		full = 1'b0;
 		framing_error = 1'b0;
-		if (head_ptr == tail_ptr && tail_tog == head_tog && tail_side == 2'b0) begin
+		if (head_ptr == tail_ptr && tail_tog == head_tog) begin
 			empty = 1'b1;
 		end
 		if (head_ptr == tail_ptr && tail_tog != head_tog) begin

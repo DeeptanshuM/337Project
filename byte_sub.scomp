@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 00:47:56 on Apr 18,2017
+Start time: 16:13:33 on Mar 25,2017
 vlog -sv -work source_work source/byte_sub.sv 
 -- Compiling module byte_sub
 
 Top level modules:
 	byte_sub
-End time: 00:47:56 on Apr 18,2017, Elapsed time: 0:00:00
+End time: 16:13:33 on Mar 25,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0

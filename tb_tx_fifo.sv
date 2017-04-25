@@ -70,25 +70,6 @@ module tb_tx_fifo();
 	end
 	endtask
 
-	task chk_full_empty;
-		input exp_full;
-		input exp_empty;
-	begin
-		assert(exp_full == tb_full)
-		begin
-			$info("Test Case #%0d: Had a correct FIFO FULL value", tb_test_case_num);
-		end else begin
-			$error("Test Case #%0d: Had an incorrect FIFO FULL value ******************************", tb_test_case_num);
-		end
-		assert(exp_empty == tb_empty)
-		begin
-			$info("Test Case #%0d: Had a correct FIFO EMPTY value", tb_test_case_num);
-		end else begin
-			$error("Test Case #%0d: Had an incorrect FIFO EMPTY value ******************************", tb_test_case_num);
-		end
-	end
-	endtask
-
 	task send_data;
 		input [127:0] data;
 	begin
@@ -185,6 +166,25 @@ module tb_tx_fifo();
 	end
 	endtask
 
+	task chk_full_empty;
+		input e_full;
+		input e_empty;
+	begin
+		assert(e_full == tb_full)
+		begin
+			$info("Test Case #%0d: Had a correct FIFO FULL value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect FIFO FULL value ******************************", tb_test_case_num);
+		end
+		assert(e_empty == tb_empty)
+		begin
+			$info("Test Case #%0d: Had a correct FIFO tb_empty value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect FIFO tb_empty value ******************************", tb_test_case_num);
+		end
+	end
+	endtask
+
 	task chk_output;
 		input [31:0] data;
 	begin
@@ -194,6 +194,16 @@ module tb_tx_fifo();
 		end else begin
 			$error("Test Case #%0d: Had an incorrect FIFO DATA value ******************************", tb_test_case_num);
 		end
+	end
+	endtask
+
+	task deq_data;
+	begin
+		@(negedge tb_clk);
+		tb_rcv_deq = 1'b1;
+		@(negedge tb_clk);
+		tb_rcv_deq = 1'b0;
+		@(negedge tb_clk);
 	end
 	endtask
 	

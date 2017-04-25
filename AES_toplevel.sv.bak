@@ -1,13 +1,11 @@
 // $Id: $
-// File name:   theWrapperFile.sv
+// File name:   AES_toplevel.sv
 // Created:     4/23/2017
 // Author:      Deeptanshu Malik
 // Lab Section: 337-03
 // Version:     1.0  Initial Design Entry
 // Description: top level wrapper file
-
-
-module theWrapperFile
+module AES_toplevel
 (
 input wire          HCLK,
 input wire          HRESETn,
@@ -21,7 +19,7 @@ input wire  [ 1:0]  HTRANS,
 input wire          HWRITE,
 output reg  [31:0]  HRDATA,
 output wire         HREADY,
-output wire [ 1:0]  HRESP,
+output wire [ 1:0]  HRESP
 );
 
 wire [127:0]  data_in;
@@ -36,11 +34,11 @@ wire         tx_fifo_full;
 wire         tx_fifo_empty;
 wire         rcv_fifo_full;
 wire         rcv_fifo_empty;
-//wire         framing_error;
+wire         mcu_key_in;
 reg [3:0] status_bits;
 reg read_fifo, is_encrypt, data_done, data_valid;
 wire [127:0] round_key_0,round_key_input;
-reg [4:0]   read_addr;
+reg [3:0]   read_addr;
 
 
 ahb_fifo_io AHB (
@@ -90,13 +88,14 @@ MCU jhfgd
 .read_fifo(read_fifo),
 .rcv_deq(rcv_deq),
 .trans_enq(tx_enq),
-.status_bits(status_bits)
-)
+.status_bits(status_bits),
+.mcu_key_in(mcu_key_in)
+);
 
 aes_block AES
 (
 .clk(HCLK),
-.n_reset(HRESETn),
+.n_rst(HRESETn),
 .read_fifo(read_fifo),
 .is_encrypt(is_encrypt),
 .tx_fifo_full(tx_fifo_full),
@@ -112,10 +111,10 @@ aes_block AES
 key_generator KEYGEN
 (
 .clk(HCLK),
-.n_reset(HRESETn),
+.n_rst(HRESETn),
 .read_addr(read_addr),
 .WE_key_generation(key_in),
-.original_key(rcv_fifo_out),
+.input_key(rcv_fifo_out),
 .round_key_0(round_key_0),
 .round_key_x(round_key_input)
 );

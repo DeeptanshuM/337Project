@@ -1,0 +1,84 @@
+`timescale 1ns / 10ps
+module tb_i2c_slave();
+   
+   // Define local constants
+   localparam CLK_PERIOD		= 10ns;
+   localparam TB_TEST_VEC_SIZE = 256;
+
+
+   // -=-=-=-=- SLAVE -=-=-=-=-
+   //input
+   reg 	     [0:7] tb_l_table[0:3][0:3];
+   reg 	     [0:7] tb_data_i;
+
+   //output
+   reg 	     [0:7] tb_data_o;
+   
+   //expected output
+   reg 	     [0:7] tbe_data_o;
+   
+
+   byte_sub DUT (.l_table(tb_l_table),.data_i(tb_data_i),.data_o(tb_data_o));
+
+
+   //test bench vars
+   integer tb_test_case_num;
+   integer tb_test_sample_num;
+
+
+   // Generate Clock
+   always
+     begin : CLK_GEN
+	tb_clk = 1'b0;
+	#(CLK_PERIOD / 2.0);
+	tb_clk = 1'b1;
+	#(CLK_PERIOD / 2.0);
+     end
+
+   task fill_l_table;
+      begin
+	 #(CLK_PERIOD);
+	 integer i,j;
+	 for(i = 0; i < 4; i = i + 1) begin
+	    for(j = 0; j < 4; j = j + 1) begin
+	       tb_l_table[i[0:4]][j[0:4]] = i + j * i;
+	       $info("For loop: i = %0d j = %0d tb_l_table[][] = %0d",i,j,tb_l_table[i[0:4]][j[0:4]]);
+	    end
+	 end
+	 #(CLK_PERIOD);
+      end
+   endtask
+
+   task check_output;
+      input index_i,index_j
+      begin
+	 if(tbe_data_out == tb_l_lookup[index_i[0:4]][index_j[0:4]])
+	   $info("Correct index at [%0d,%0d] of %0d",index_i,index_j,tbe_data_out)
+	 else
+	   $error("------------> INCORRECT INDEX AT [%0d,%0d] of %0d",index_i,index_j,tbe_data_out)
+      end
+   endtask
+      
+   task send_data;
+      begin
+	 #(CLK_PERIOD);
+	 integer i,j;
+	 for(i = 0; i < 4; i = i + 1) begin
+	    for(j = 0; j < 4; j = j + 1) begin
+	       tb_data_i = i + j * i;
+	       #(0.1);
+	       check_output(i,j);
+	    end
+	 end
+	 #(CLK_PERIOD);
+      end
+   endtask
+
+
+   initial
+     begin
+	fill_l_table;
+	send_data;	
+     end
+
+endmodule

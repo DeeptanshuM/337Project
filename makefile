@@ -16,16 +16,18 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 # (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-# COMPONENT_FILES	:= rcv_fifo_fsm.sv rcv_counter_tail.sv rcv_counter_head.sv rcv_counter_idx.sv rcv_comb_output.sv rcv_fifo_reg.sv fifo_flex_counter.sv
-# COMPONENT_FILES	:= tx_fifo_fsm.sv tx_counter_tail.sv tx_counter_head.sv tx_counter_idx.sv tx_comb_output.sv tx_fifo_reg.sv fifo_flex_counter.sv
-COMPONENT_FILES	:= 
+COMPONENT_FILES	:= rcv_fifo_fsm.sv rcv_counter_tail.sv rcv_counter_head.sv rcv_counter_idx.sv rcv_comb_output.sv rcv_fifo_reg.sv fifo_flex_counter.sv
+COMPONENT_FILES	+= tx_fifo_fsm.sv tx_counter_tail.sv tx_counter_head.sv tx_counter_idx.sv tx_comb_output.sv tx_fifo_reg.sv 
+COMPONENT_FILES += tx_fifo.sv rcv_fifo.sv
+COMPONENT_FILES += ahb_regs.sv ahb_slave.sv
+COMPONENT_FILES +=  aes_block.sv
+COMPONENT_FILES += aes_encryption.sv aes_decryption.sv sub_bytes.sv inv_sub_bytes.sv shift_rows.sv inv_shift_rows.sv s_box_lookup.sv inv_s_box_lookup.sv mix_columns.sv inv_mix_columns.sv
+COMPONENT_FILES	+= key_generator.sv g_function.sv
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-# TOP_LEVEL_FILE	:= rcv_fifo.sv
-# TOP_LEVEL_FILE	:= tx_fifo.sv
-TOP_LEVEL_FILE	:= 
+TOP_LEVEL_FILE	:= AES_toplevel.sv
 
 # define values for making AES 
 AES_TOP_LEVEL := aes_block.sv
@@ -389,4 +391,3 @@ syn_mapped do_mapping.tcl:
 	@echo -e '$(subst $(newline),\n,$(subst \n,\\n,${SYN_CMDS}))' > do_mapping.tcl
 	$(DC_SHELL) -x "source -echo do_mapping.tcl"
 	@echo -e "Done\n\n"
-

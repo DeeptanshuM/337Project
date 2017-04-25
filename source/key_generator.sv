@@ -85,6 +85,7 @@ always_ff @ (posedge clk, negedge n_rst) begin
       startGen <= 1;
     end
     if (startGen) begin
+      state <= nextstate;
       wordZero <= nextwordZero;
       wordOne <= nextwordOne;
       wordTwo <= nextwordTwo;
