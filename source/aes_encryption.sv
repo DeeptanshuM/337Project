@@ -56,20 +56,20 @@ module aes_encryption
 			  .o_data(round_block_1_1));
    
    mix_columns MIX_COLUMNS (.i_data(round_block_1_1),
+			    .i_state(round_state_1),
 			    .o_data(round_block_1_2));
 
    // SECTION C
    assign round_block_2_0 = block_B;
    assign round_state_2_0 = state_B;
 
-   round_key_adder RKA (.i_key(round_key_register),
-			.i_data(round_block_2_0),
-			.o_data(round_block_2_1));
+   round_key_adder RKA (.i_key(round_key_input),
+   			.i_data(round_block_2_0),
+   			.o_data(round_block_2_1));
 
    incriment_state INC_STATE (.i_state(round_state_2_0),
 			      .o_state(round_state_2_1));
    
-
    // OUTPUT SECTION
    assign round_block_output = block_C; // output of final section
    assign round_state_output = state_C; // output of final section
@@ -79,15 +79,17 @@ module aes_encryption
 
    //KEY REGISTER
    always_ff @(posedge clk, negedge n_rst) begin
-      if (1'b0 == n_rst)
-	begin
-	   round_key_register <= '0;
-	end
-      else
-	round_key_register <= round_key_input;
+      // if (1'b0 == n_rst)
+      // 	begin
+      // 	   round_key_register <= '0;
+      // 	end
+      // else
+      // 	round_key_register <= round_key_input;
 
       // $info("fifo_in: %0h",fifo_in);
-      //$info("input key: %0h",round_key_input);
+      // $info("next input key: %0h",round_key_input);
+      // $info("input key: %0h",round_key_register);
+      // $info("round-key-address: %0h",round_key_addr);
       
       // $info("state_A: %8b",state_A);
       // $info("state_B: %8b",state_B);
@@ -101,21 +103,21 @@ module aes_encryption
       // $info("output data: %0h",round_block_output);
 
       // $info("round_state_0: %0b",round_state_0);
-      $info("loaded_data: %0h",round_block_0_0);
-      $info("post-xor_init/pre-subbytes-rows: %0h",round_block_0_1);
-      $info("post-subbytes-rows: %0h",round_block_0_2);
+      // $info("loaded_data: %16h",round_block_0_0);
+      // $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
+      // $info("post-subbytes-rows: %16h",round_block_0_2);
 
-      // $info("round_block_0_2: %0h",round_block_0_2);
+      // $info("round_block_0_2: %16h",round_block_0_2);
 
       // $info("round_state_1: %0b",round_state_1);
-      $info("pre-shift-rows: %0h",round_block_1_0);
-      $info("post-shift-rows/pre-mix-columns: %0h",round_block_1_1);
-      $info("post-mix_columns: %0h",round_block_1_2);
+      //$info("pre-shift-rows: %16h",round_block_1_0);
+      // $info("post-shift-rows/pre-mix-columns: %16h",round_block_1_1);
+      // $info("post-mix_columns: %16h",round_block_1_2);
 
       // $info("round_state_2_0: %0b",round_state_2_0);
       // $info("round_state_2_1: %0b",round_state_2_1);
-      $info("pre-round_key_adder: %0h",round_block_2_0);
-      $info("post-round_key_adder: %0h",round_block_2_1);
+      //$info("pre-round_key_adder: %16h",round_block_2_0);
+      //$info("post-round_key_adder: %16h",round_block_2_1);
 
       // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
       // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");

@@ -195,14 +195,14 @@ def shiftrows(statearray, encryptdecrypt):
         r1 = [row1[1],row1[2],row1[3],row1[0]]
         r2 = [row2[2],row2[3],row2[0],row2[1]]
         r3 = [row3[3],row3[0],row3[1],row3[2]]
-        print("r0",[bv.get_bitvector_in_hex() for bv in row0])
-        print("row1",[bv.get_bitvector_in_hex() for bv in row1])
-        print("row2",[bv.get_bitvector_in_hex() for bv in row2])
-        print("row3",[bv.get_bitvector_in_hex() for bv in row3])
+        # print("r0",[bv.get_bitvector_in_hex() for bv in row0])
+        # print("row1",[bv.get_bitvector_in_hex() for bv in row1])
+        # print("row2",[bv.get_bitvector_in_hex() for bv in row2])
+        # print("row3",[bv.get_bitvector_in_hex() for bv in row3])
 
-        print("r1",[bv.get_bitvector_in_hex() for bv in r1])
-        print("r2",[bv.get_bitvector_in_hex() for bv in r2])
-        print("r3",[bv.get_bitvector_in_hex() for bv in r3])
+        # print("r1",[bv.get_bitvector_in_hex() for bv in r1])
+        # print("r2",[bv.get_bitvector_in_hex() for bv in r2])
+        # print("r3",[bv.get_bitvector_in_hex() for bv in r3])
         shiftedrows = [row0, r1, r2, r3]
     elif (encryptdecrypt == 1):
         r1 = [row1[3],row1[0],row1[1],row1[2]]
@@ -216,6 +216,20 @@ def shiftrows(statearray, encryptdecrypt):
 ##encryptdecrypt for choosing which table to use, 0 encrypt, 1 decrypt
 ##############################################  
 def mixcol(statearray, encryptdecrypt):
+    fb = open("mix_cols.bin","wb")
+    ft = open("mix_cols.txt","w")
+
+    ## BINARY WRITE
+    in_mix = makeBV(statearray)
+    in_mix.write_to_file(fb)
+
+    ## CLEARTXT WRITE
+    ft.write("MixColumns: \n")
+    ft.write("Input: \n")
+    ft.write(str(in_mix.get_bitvector_in_hex()))
+    ft.write("\n")
+
+
     mixcolstatearray = [[None for i in range(4)] for j in range(4)]
     stateArr = [[None for i in range(4)] for j in range(4)]
     hex1 = BitVector(hexstring = "01")  #Declare all as bitvector
@@ -235,6 +249,7 @@ def mixcol(statearray, encryptdecrypt):
                   [hex9, hexE, hexB, hexD],
                   [hexD, hex9, hexE, hexB],
                   [hexB, hexD, hex9, hexE]]
+    
     for i in range (4):
         for j in range (4):
             stateArr[i][j] = statearray[j][i] #Make columns into rows for easier multiplication          
@@ -243,6 +258,21 @@ def mixcol(statearray, encryptdecrypt):
         for j in range (4):
             mixcolstatearray[i][j] = matrixmultiply(matrix[i], stateArr[j])    
 
+    mixBV = makeBV(mixcolstatearray)
+
+    ## BINARY WRITE
+    mixBV.write_to_file(fb)
+
+    ## CLEARTXT WRITE
+    ft.write("OUTPUT: \n")
+    ft.write(str(mixBV.get_bitvector_in_hex()))
+    ft.write("\n")
+
+    # CLOSE FILES
+    fb.close()
+    ft.close()
+
+    
     return mixcolstatearray
 
 
@@ -347,6 +377,7 @@ def encrypt():
             inBV ^= roundkeys[rounds]
             if count == 0:
                 print(rounds,"post-key-xor",inBV.get_bitvector_in_hex())
+                print(rounds,"round key",roundkeys[rounds].get_bitvector_in_hex())
         count += 1
         outFile = open("encrypted.txt", 'ab')   #outFile is the file that contains the resulted text
         inBV.write_to_file(outFile)

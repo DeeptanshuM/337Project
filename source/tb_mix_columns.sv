@@ -50,7 +50,10 @@ module tb_mix_columns();
    task check_output;
      begin
 	 if(tbe_o_data == tb_o_data)
-	   $info("Test Case #%0d Sample #%0d: correct_output", tb_test_case_num, tb_test_sample_num);
+	   begin
+	      $info("Test Case #%0d Sample #%0d: correct_output", tb_test_case_num, tb_test_sample_num);
+	      $info("input: %h",tb_i_data);
+	   end
 	 else
 	   begin
 	      $error("Test Case #%0d Sample #%0d: INCORRECT OUTPUT", tb_test_case_num, tb_test_sample_num);
@@ -64,7 +67,7 @@ module tb_mix_columns();
    task load_file;
       string filename;
       begin
-	 data_file = $fopen("./AES python implementation/mixColEncrypt.txt","rb");
+	 data_file = $fopen("./AES python implementation/mix_cols.bin","rb");
 	 if(data_file == 0)begin
 	    $display("data_file handle was NULL.");
 	    $finish;
@@ -79,7 +82,7 @@ module tb_mix_columns();
 	tb_test_sample_num = 0;
 	#(1ns);
 	load_file;
-	#(100000*CLK_PERIOD);
+	#(10*CLK_PERIOD);
 	for(i = 0;i<test_counter;i=i+1)
 	  begin
 	     tb_i_data = tb_i_data_vector[i];

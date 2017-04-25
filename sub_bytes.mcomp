@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 01:59:24 on Apr 18,2017
+Start time: 23:12:29 on Apr 24,2017
 vlog -sv -work mapped_work mapped/sub_bytes.v 
 -- Compiling module sub_bytes
 
 Top level modules:
 	sub_bytes
-End time: 01:59:25 on Apr 18,2017, Elapsed time: 0:00:01
+End time: 23:12:29 on Apr 24,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0

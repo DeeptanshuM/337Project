@@ -9,7 +9,23 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work/.sub_bytes 
-# Start time: 01:59:31 on Apr 18,2017
+# Start time: 23:12:31 on Apr 24,2017
 # ** Note: (vsim-3812) Design is being optimized...
-# Break key hit
+# ** Error: mapped/sub_bytes.v(15): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(17): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(19): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(21): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(23): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(25): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(27): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(29): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(31): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(33): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(35): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(37): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(39): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(41): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(43): Module 's_box_lookup' is not defined.
+# ** Error: mapped/sub_bytes.v(45): Module 's_box_lookup' is not defined.
+# Optimization failed
 # Error loading design

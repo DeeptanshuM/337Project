@@ -25,7 +25,7 @@ Initializing gui preferences from file  /home/ecegrid/a/mg85/.synopsys_dv_prefs.
 # Step 1:  Read in the source file
 analyze -format sverilog -lib WORK { sub_bytes.sv}
 Running PRESTO HDLC
-Compiling source file ./source/sub_bytes.sv
+Compiling source file ./sub_bytes.sv
 Presto compilation completed successfully.
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 Loading db file '/package/eda/synopsys/syn-K-2015.06-SP1/libraries/syn/dw_foundation.sldb'
@@ -35,31 +35,14 @@ Loading db file '/package/eda/synopsys/syn-K-2015.06-SP1/libraries/syn/standard.
   Loading link library 'osu05_stdcells'
   Loading link library 'gtech'
 Running PRESTO HDLC
-Statistics for MUX_OPs
-===========================================================
-| block name/line  | Inputs | Outputs | # sel inputs | MB |
-===========================================================
-|   sub_bytes/17   |  256   |    8    |      8       | N  |
-|   sub_bytes/18   |  256   |    8    |      8       | N  |
-|   sub_bytes/19   |  256   |    8    |      8       | N  |
-|   sub_bytes/20   |  256   |    8    |      8       | N  |
-|   sub_bytes/21   |  256   |    8    |      8       | N  |
-|   sub_bytes/22   |  256   |    8    |      8       | N  |
-|   sub_bytes/23   |  256   |    8    |      8       | N  |
-|   sub_bytes/24   |  256   |    8    |      8       | N  |
-|   sub_bytes/25   |  256   |    8    |      8       | N  |
-|   sub_bytes/26   |  256   |    8    |      8       | N  |
-|   sub_bytes/27   |  256   |    8    |      8       | N  |
-|   sub_bytes/28   |  256   |    8    |      8       | N  |
-|   sub_bytes/29   |  256   |    8    |      8       | N  |
-|   sub_bytes/30   |  256   |    8    |      8       | N  |
-|   sub_bytes/31   |  256   |    8    |      8       | N  |
-|   sub_bytes/32   |  256   |    8    |      8       | N  |
-===========================================================
 Presto compilation completed successfully.
 Elaborated 1 design.
 Current design is now 'sub_bytes'.
+Information: Building the design 's_box_lookup'. (HDL-193)
+Warning: Cannot find the design 's_box_lookup' in the library 'WORK'. (LBR-1)
+Warning: Design 'sub_bytes' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 uniquify
+Warning: Design 'sub_bytes' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 # Step 2: Set design constraints
 # Uncomment below to set timing, area, power, etc. constraints
 # set_max_delay <delay> -from "<input>" -to "<output>"
@@ -70,6 +53,7 @@ Warning: Can't find object 'clk' in design 'sub_bytes'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 # Step 3: Compile the design
 compile -map_effort medium
+Warning: Design 'sub_bytes' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
@@ -80,17 +64,20 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
+Information: There are 128 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'sub_bytes'
+Information: Building the design 's_box_lookup'. (HDL-193)
+Warning: Cannot find the design 's_box_lookup' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 's_box_lookup' in 'sub_bytes'. (LINK-5)
 
   Updating timing information
 Information: Updating design information... (UID-85)
 Information: Design 'sub_bytes' has no optimization constraints set. (OPT-108)
-
-  Beginning Implementation Selection
-  ----------------------------------
 
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
@@ -99,25 +86,18 @@ Information: Design 'sub_bytes' has no optimization constraints set. (OPT-108)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:50 4326336.0      0.00       0.0      31.9                          
-    0:00:52 4328640.0      0.00       0.0      26.7                          
-    0:00:52 4332096.0      0.00       0.0      21.8                          
-    0:00:54 4332096.0      0.00       0.0      21.6                          
-    0:00:55 4332096.0      0.00       0.0      21.6                          
-    0:00:55 4332096.0      0.00       0.0      21.6                          
-    0:00:55 4332096.0      0.00       0.0      21.6                          
-    0:00:55 4332096.0      0.00       0.0      21.6                          
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-    0:00:55 4332096.0      0.00       0.0      21.5                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
 
 
 
@@ -128,27 +108,9 @@ Information: Design 'sub_bytes' has no optimization constraints set. (OPT-108)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-
-
-  Beginning Design Rule Fixing  (max_capacitance)
-  ----------------------------
-
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:55 4332096.0      0.00       0.0      21.5                          
-    0:00:56 4334400.0      0.00       0.0      13.5 alt52/net131012          
-    0:00:56 4339008.0      0.00       0.0      10.4 alt52/net122888          
-    0:00:56 4343904.0      0.00       0.0       7.1 alt16/net129189          
-    0:00:57 4348224.0      0.00       0.0       4.6 alt40/net118216          
-    0:00:57 4353408.0      0.00       0.0       2.7 alt46/net120764          
-    0:00:57 4358736.0      0.00       0.0       1.0 alt10/net128869          
-    0:00:57 4363200.0      0.00       0.0       0.2 alt40/net119013          
-    0:00:57 4366368.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (cleanup)
@@ -158,31 +120,17 @@ Information: Design 'sub_bytes' has no optimization constraints set. (OPT-108)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:57 4366368.0      0.00       0.0       0.0                          
-    0:00:57 4366368.0      0.00       0.0       0.0                          
-    0:00:58 4356000.0      0.00       0.0       0.0                          
-    0:00:59 4349448.0      0.00       0.0       0.0                          
-    0:00:59 4345488.0      0.00       0.0       0.0                          
-    0:00:59 4343544.0      0.00       0.0       0.0                          
-    0:00:59 4343400.0      0.00       0.0       0.0                          
-    0:00:59 4343256.0      0.00       0.0       0.0                          
-    0:00:59 4343112.0      0.00       0.0       0.0                          
-    0:00:59 4342968.0      0.00       0.0       0.0                          
-    0:00:59 4342824.0      0.00       0.0       0.0                          
-    0:00:59 4342680.0      0.00       0.0       0.0                          
-    0:00:59 4342536.0      0.00       0.0       0.0                          
-    0:00:59 4342392.0      0.00       0.0       0.0                          
-    0:00:59 4342248.0      0.00       0.0       0.0                          
-    0:00:59 4342104.0      0.00       0.0       0.0                          
-    0:00:59 4341960.0      0.00       0.0       0.0                          
-    0:00:59 4341816.0      0.00       0.0       0.0                          
-    0:00:59 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
-    0:01:00 4341816.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
+    0:00:00       0.0      0.00       0.0       0.0                          
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 
 
@@ -197,6 +145,7 @@ report_area >> reports/sub_bytes.rep
 report_power -hier >> reports/sub_bytes.rep
 # Step 5: Output final VHDL and Verilog files
 write_file -format verilog -hierarchy -output "mapped/sub_bytes.v"
+Warning: Design 'sub_bytes' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Writing verilog file '/home/ecegrid/a/mg85/ece337/337Project/mapped/sub_bytes.v'.
 echo "\nScript Done\n"
 
@@ -207,6 +156,148 @@ echo "\nChecking Design\n"
 Checking Design
 
 check_design
+Warning: Design 'sub_bytes' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     K-2015.06-SP1
+Date:        Mon Apr 24 23:11:48 2017
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                    128
+    Multiply driven inputs (LINT-6)                               128
+--------------------------------------------------------------------------------
+
+Warning: In design 'sub_bytes', input port 'i_data[127]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[126]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[125]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[124]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[123]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[122]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[121]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[120]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[119]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[118]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[117]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[116]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[115]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[114]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[113]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[112]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[111]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[110]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[109]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[108]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[107]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[106]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[105]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[104]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[103]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[102]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[101]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[100]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[99]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[98]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[97]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[96]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[95]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[94]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[93]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[92]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[91]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[90]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[89]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[88]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[87]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[86]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[85]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[84]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[83]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[82]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[81]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[80]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[79]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[78]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[77]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[76]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[75]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[74]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[73]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[72]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[71]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[70]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[69]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[68]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[67]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[66]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[65]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[64]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[63]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[62]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[61]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[60]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[59]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[58]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[57]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[56]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[55]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[54]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[53]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[52]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[51]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[50]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[49]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[48]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[47]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[46]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[45]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[44]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[43]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[42]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[41]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[40]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[39]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[38]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[37]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[36]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[35]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[34]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[33]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[32]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[31]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[30]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[29]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[28]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[27]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[26]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[25]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[24]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[23]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[22]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[21]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[20]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[19]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[18]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[17]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[16]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[15]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[14]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[13]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[12]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'sub_bytes', input port 'i_data[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
 quit
 
 Thank you...

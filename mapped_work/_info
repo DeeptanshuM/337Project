@@ -7,329 +7,321 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/home/ecegrid/a/mg85/ece337/Project
+Z0 d/home/ecegrid/a/mg85/ece337/337Project
 T_opt
-!s110 1492495614
-VWL^YFaAn]elLgQj?SBFSg3
-04 14 4 work aes_decryption fast 0
-=1-782bcb3383d2-58f5acfc-a8dfc-5d70
+!s110 1493090054
+VHMnD6CWQ9m;LjUaXNZNG:3
+04 12 4 work s_box_lookup fast 0
+=1-5cb9017b479f-58febf06-b8160-42cf
 Z1 o-quiet -auto_acc_if_foreign -work mapped_work/ -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim +acc
 n@_opt
 Z2 OL;O;10.3b;59
 R0
 T_opt1
-!s110 1492808720
-V8I=M72lFV_T;ZcR>b7^462
-04 9 4 work aes_block fast 0
-=1-782bcb3383d2-58fa740b-70d04-2c65
+!s110 1493090126
+VY=c@YWZjVaGY47l?952fG0
+04 10 4 work shift_rows fast 0
+=1-5cb9017b479f-58febf4e-1f8be-4571
 R1
 n@_opt1
-R2
-T_opt2
-!s110 1492495239
-ViJH=o]QR?5LoDoo`U3nZQ2
-04 14 4 work aes_encryption fast 0
-=1-782bcb3383d2-58f5ab85-aae4c-4b3b
-R1
-n@_opt2
 R2
 R0
 vaes_block
 Z3 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
-!s110 1492490374
+Z4 !s110 1493089897
 !i10b 1
-!s100 KYc6RI=<4oa@FNlnJKZQ[3
-I@R1nP5kNI6?z:?TFS@6dD3
-Z4 V`JN@9S9cnhjKRR_L]QIcM3
-!s105 aes_block_v_unit
-S1
-Z5 d/home/ecegrid/a/mg85/ece337/337Project
-w1492490372
-8mapped/aes_block.v
-Fmapped/aes_block.v
-L0 8
-Z6 OL;L;10.3b;59
-r1
-!s85 0
-31
-!s108 1492490374.915690
-!s107 mapped/aes_block.v|
-!s90 -sv|-work|mapped_work|mapped/aes_block.v|
-!i113 0
-Z7 o-sv -work mapped_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-vaes_decryption
-R3
-Z8 !s110 1492495606
-!i10b 1
-!s100 hNAGcV^d9T?E_`iTNgG5z0
-I@5gR5Gz>ZenSMP^BgfVPR0
-R4
-Z9 !s105 aes_decryption_v_unit
-S1
-R5
-Z10 w1492495603
-Z11 8mapped/aes_decryption.v
-Z12 Fmapped/aes_decryption.v
-L0 24628
-R6
-r1
-!s85 0
-31
-Z13 !s108 1492495605.337978
-Z14 !s107 mapped/aes_decryption.v|
-Z15 !s90 -sv|-work|mapped_work|mapped/aes_decryption.v|
-!i113 0
-R7
-vaes_encryption
-R3
-!s110 1492495064
-!i10b 1
-!s100 D?o[_VY1g<FcSIVaKZnhY3
-I0_E4nCBJkV8[T8`1E]0dV0
-R4
-!s105 aes_encryption_v_unit
-S1
-R5
-w1492495061
-8mapped/aes_encryption.v
-Fmapped/aes_encryption.v
-L0 731
-R6
-r1
-!s85 0
-31
-!s108 1492495064.124226
-!s107 mapped/aes_encryption.v|
-!s90 -sv|-work|mapped_work|mapped/aes_encryption.v|
-!i113 0
-R7
-vbyte_sub
-R3
-!s110 1492490894
-!i10b 1
-!s100 HjVWA7PPgUm^F0;H4gb_@2
-IDCSS<fd6GoSYG9aK=Z^U53
-R4
-!s105 byte_sub_v_unit
-S1
-R5
-w1492490868
-8mapped/byte_sub.v
-Fmapped/byte_sub.v
-L0 8
-R6
-r1
-!s85 0
-31
-!s108 1492490894.112215
-!s107 mapped/byte_sub.v|
-!s90 -sv|-work|mapped_work|mapped/byte_sub.v|
-!i113 0
-R7
-vdata_block_select
-R3
-Z16 !s110 1492495605
-!i10b 1
-!s100 IXSR@nl7WbMSQLYi5A2a]1
-I5<9K4e5UBcDF;lCdcRMcK3
-R4
-R9
-S1
-R5
-R10
-R11
-R12
-L0 8
-R6
-r1
-!s85 0
-31
-R13
-R14
-R15
-!i113 0
-R7
-vincriment_state
-R3
-R8
-!i10b 1
-!s100 Ec`OLZL]7Ue15043YSV6?3
-IizHd2MNKk=1AD0EAQYRMJ2
-R4
-R9
-S1
-R5
-R10
-R11
-R12
-L0 24612
-R6
-r1
-!s85 0
-31
-R13
-R14
-R15
-!i113 0
-R7
-vmix_columns
-R3
-R8
-!i10b 1
-!s100 h76=B3>RCGL[RO6Y4Vf670
-I@g71Vf5G[4AeP:@PdkoMb3
-R4
-R9
-S1
-R5
-R10
-R11
-R12
-L0 24475
-R6
-r1
-!s85 0
-31
-R13
-R14
-R15
-!i113 0
-R7
-vmux_4bits
-R3
-!s110 1490750518
-!i10b 1
-!s100 ERhnZ;j^bO3YC:z_?>PV52
-IWF7z5_^S=947LI0UVkBX;3
-R4
-!s105 mux_4bits_v_unit
+!s100 k0eUg:W?81X^T:^5Jm83N3
+IWE^SEXWakUOM2z9C]KO0T3
+Z5 V`JN@9S9cnhjKRR_L]QIcM3
+Z6 !s105 aes_block_v_unit
 S1
 R0
-w1490750389
-8mapped/mux_4bits.v
-Fmapped/mux_4bits.v
-L0 8
-R6
+Z7 w1493089895
+Z8 8mapped/aes_block.v
+Z9 Fmapped/aes_block.v
+L0 2442
+Z10 OL;L;10.3b;59
 r1
 !s85 0
 31
-!s108 1490750518.817545
-!s107 mapped/mux_4bits.v|
-!s90 -sv|-work|mapped_work|mapped/mux_4bits.v|
+Z11 !s108 1493089897.423651
+Z12 !s107 mapped/aes_block.v|
+Z13 !s90 -sv|-work|mapped_work|mapped/aes_block.v|
 !i113 0
-R7
-vround_key_adder
+Z14 o-sv -work mapped_work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vaes_decryption
 R3
-R8
+!s110 1493089905
 !i10b 1
-!s100 M[:=TQf9966EYzdY;9iO?3
-I]OHFemXMbbH;m2H@hnSV01
-R4
-R9
-S1
+!s100 SIO8<YoH<1I_ID[WSm3M;2
+I1K1nGiZ<Sgm[W24:Y8LAo1
 R5
+!s105 aes_decryption_v_unit
+S1
+R0
+w1493089903
+8mapped/aes_decryption.v
+Fmapped/aes_decryption.v
+L0 8
 R10
+r1
+!s85 0
+31
+!s108 1493089905.051206
+!s107 mapped/aes_decryption.v|
+!s90 -sv|-work|mapped_work|mapped/aes_decryption.v|
+!i113 0
+R14
+vaes_encryption
+R3
+R4
+!i10b 1
+!s100 o5i@dBEXDK7U0CD7j5Di>1
+IcFGk6>Q?`ZeE39LNfKkhL1
+R5
+R6
+S1
+R0
+R7
+R8
+R9
+L0 8
+R10
+r1
+!s85 0
+31
 R11
 R12
-L0 24338
-R6
+R13
+!i113 0
+R14
+vinv_mix_columns
+R3
+!s110 1493090326
+!i10b 1
+!s100 do5VQM:c?@7zgbKNlf[3j3
+IM1d]heUcKLUZmNA7EC7263
+R5
+!s105 inv_mix_columns_v_unit
+S1
+R0
+w1493090309
+8mapped/inv_mix_columns.v
+Fmapped/inv_mix_columns.v
+L0 8
+R10
 r1
 !s85 0
 31
-R13
-R14
-R15
+!s108 1493090326.055706
+!s107 mapped/inv_mix_columns.v|
+!s90 -sv|-work|mapped_work|mapped/inv_mix_columns.v|
 !i113 0
-R7
+R14
+vinv_s_box_lookup
+R3
+!s110 1493090275
+!i10b 1
+!s100 QVkhFO=gEo=^bi9nBeLaY0
+I9@Za4@YoS^lI]0TbXlRMB0
+R5
+!s105 inv_s_box_lookup_v_unit
+S1
+R0
+w1493090250
+8mapped/inv_s_box_lookup.v
+Fmapped/inv_s_box_lookup.v
+L0 8
+R10
+r1
+!s85 0
+31
+!s108 1493090275.525568
+!s107 mapped/inv_s_box_lookup.v|
+!s90 -sv|-work|mapped_work|mapped/inv_s_box_lookup.v|
+!i113 0
+R14
+vinv_shift_rows
+R3
+!s110 1493090242
+!i10b 1
+!s100 7e^KaZSibS9YXNM:<[5^H3
+I0TYE_lo2A?h49REjIaAa?3
+R5
+!s105 inv_shift_rows_v_unit
+S1
+R0
+w1493090136
+8mapped/inv_shift_rows.v
+Fmapped/inv_shift_rows.v
+L0 8
+R10
+r1
+!s85 0
+31
+!s108 1493090242.882663
+!s107 mapped/inv_shift_rows.v|
+!s90 -sv|-work|mapped_work|mapped/inv_shift_rows.v|
+!i113 0
+R14
+vinv_sub_bytes
+R3
+!s110 1493090092
+!i10b 1
+!s100 hBGgXUi`GclKD9KFJDgDA2
+I47TVh?d4d7bHgo@GB6l_Q0
+R5
+!s105 inv_sub_bytes_v_unit
+S1
+R0
+w1493089979
+8mapped/inv_sub_bytes.v
+Fmapped/inv_sub_bytes.v
+L0 8
+R10
+r1
+!s85 0
+31
+!s108 1493090092.601312
+!s107 mapped/inv_sub_bytes.v|
+!s90 -sv|-work|mapped_work|mapped/inv_sub_bytes.v|
+!i113 0
+R14
+vmix_columns
+R3
+!s110 1493090306
+!i10b 1
+!s100 NUkQ_=8nc?g]g^TaFW^dk3
+ILD;JNFz6Be5Id`_4m?g]T0
+R5
+!s105 mix_columns_v_unit
+S1
+R0
+w1493090278
+8mapped/mix_columns.v
+Fmapped/mix_columns.v
+L0 8
+R10
+r1
+!s85 0
+31
+!s108 1493090305.983602
+!s107 mapped/mix_columns.v|
+!s90 -sv|-work|mapped_work|mapped/mix_columns.v|
+!i113 0
+R14
+vs_box_lookup
+R3
+!s110 1493090052
+!i10b 1
+!s100 Vc4A^fJ2PMJT[8Ejnz`h60
+I:3JPfP7j`431lO6Aa@fRo2
+R5
+!s105 s_box_lookup_v_unit
+S1
+R0
+w1493090029
+8mapped/s_box_lookup.v
+Fmapped/s_box_lookup.v
+L0 8
+R10
+r1
+!s85 0
+31
+!s108 1493090052.442117
+!s107 mapped/s_box_lookup.v|
+!s90 -sv|-work|mapped_work|mapped/s_box_lookup.v|
+!i113 0
+R14
 vshift_rows
 R3
-R16
+!s110 1493090123
 !i10b 1
-!s100 eEiCWPVR8B;eQ@J<nI:RU3
-Ikl4iCYW5=<3Zo_X4AB=CJ2
-R4
-R9
-S1
+!s100 O[@VAT>c<@HF8fM9<N]kQ3
+IPDi556:mdV9lW99W4=:W`1
 R5
+!s105 shift_rows_v_unit
+S1
+R0
+w1493090096
+8mapped/shift_rows.v
+Fmapped/shift_rows.v
+L0 8
 R10
-R11
-R12
-L0 825
-R6
 r1
 !s85 0
 31
-R13
-R14
-R15
+!s108 1493090123.959265
+!s107 mapped/shift_rows.v|
+!s90 -sv|-work|mapped_work|mapped/shift_rows.v|
 !i113 0
-R7
+R14
 vsub_bytes
 R3
-R8
+!s110 1493089949
 !i10b 1
-!s100 ?czYg<[>8UiYTfJ6SNmT=0
-IlO0e4oY_f[hoDPSmFcHTL2
-R4
-R9
-S1
+!s100 TC;_UjXYiRkE2EeR52jVd0
+IL29mMdacB@C@>lhgazlKI0
 R5
-R10
-R11
-R12
-L0 962
-R6
-r1
-!s85 0
-31
-R13
-R14
-R15
-!i113 0
-R7
-vsub_bytes_byte
-R3
-!s110 1492491149
-!i10b 1
-!s100 0KSePiRMKiJPb_cUcecTU2
-IgH<n1:nMazFlj<no3z5fi3
-R4
-!s105 sub_bytes_byte_v_unit
+!s105 sub_bytes_v_unit
 S1
-R5
-w1492491146
-8mapped/sub_bytes_byte.v
-Fmapped/sub_bytes_byte.v
+R0
+w1493089908
+8mapped/sub_bytes.v
+Fmapped/sub_bytes.v
 L0 8
-R6
-r1
-!s85 0
-31
-!s108 1492491149.132849
-!s107 mapped/sub_bytes_byte.v|
-!s90 -sv|-work|mapped_work|mapped/sub_bytes_byte.v|
-!i113 0
-R7
-vxor_init
-R3
-R16
-!i10b 1
-!s100 >_BhnmRHSH0gbYbVme@GK1
-IBY3VJcgA_eb<k^6f0P]ge2
-R4
-R9
-S1
-R5
 R10
-R11
-R12
-L0 436
-R6
 r1
 !s85 0
 31
-R13
-R14
-R15
+!s108 1493089949.118436
+!s107 mapped/sub_bytes.v|
+!s90 -sv|-work|mapped_work|mapped/sub_bytes.v|
 !i113 0
-R7
+R14
+vtb_aes_block
+R3
+R4
+!i10b 1
+!s100 0b7PCaXzQbM4;?a_YX5a81
+INHUhX`@d`n]Xm1MG`4DH^0
+R5
+!s105 tb_aes_block_sv_unit
+S1
+R0
+w1492816633
+8source/tb_aes_block.sv
+Fsource/tb_aes_block.sv
+L0 9
+R10
+r1
+!s85 0
+31
+!s108 1493089897.540045
+!s107 source/tb_aes_block.sv|
+!s90 -sv|-work|mapped_work|source/tb_aes_block.sv|
+!i113 0
+R14
+vtb_aes_encryption
+R3
+!s110 1493089676
+!i10b 1
+!s100 d1oG>Z0[;`aF8jIID0F]l2
+IXTHY7:6GQV<d5DaCMSBzh3
+R5
+!s105 tb_aes_encryption_sv_unit
+S1
+R0
+w1493089523
+8source/tb_aes_encryption.sv
+Fsource/tb_aes_encryption.sv
+L0 9
+R10
+r1
+!s85 0
+31
+!s108 1493089676.438221
+!s107 source/tb_aes_encryption.sv|
+!s90 -sv|-work|mapped_work|source/tb_aes_encryption.sv|
+!i113 0
+R14

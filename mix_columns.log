@@ -25,7 +25,7 @@ Initializing gui preferences from file  /home/ecegrid/a/mg85/.synopsys_dv_prefs.
 # Step 1:  Read in the source file
 analyze -format sverilog -lib WORK { mix_columns.sv}
 Running PRESTO HDLC
-Compiling source file ./source/mix_columns.sv
+Compiling source file ./mix_columns.sv
 Presto compilation completed successfully.
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 Loading db file '/package/eda/synopsys/syn-K-2015.06-SP1/libraries/syn/dw_foundation.sldb'
@@ -38,7 +38,11 @@ Running PRESTO HDLC
 Presto compilation completed successfully.
 Elaborated 1 design.
 Current design is now 'mix_columns'.
+Information: Building the design 'mix_columns_byte'. (HDL-193)
+Warning: Cannot find the design 'mix_columns_byte' in the library 'WORK'. (LBR-1)
+Warning: Design 'mix_columns' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 uniquify
+Warning: Design 'mix_columns' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 # Step 2: Set design constraints
 # Uncomment below to set timing, area, power, etc. constraints
 # set_max_delay <delay> -from "<input>" -to "<output>"
@@ -49,6 +53,7 @@ Warning: Can't find object 'clk' in design 'mix_columns'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 # Step 3: Compile the design
 compile -map_effort medium
+Warning: Design 'mix_columns' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
@@ -59,13 +64,16 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
-Information: There are 129 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 132 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'mix_columns'
+Information: Building the design 'mix_columns_byte'. (HDL-193)
+Warning: Cannot find the design 'mix_columns_byte' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'mix_columns_byte' in 'mix_columns'. (LINK-5)
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -137,8 +145,8 @@ report_area >> reports/mix_columns.rep
 report_power -hier >> reports/mix_columns.rep
 # Step 5: Output final VHDL and Verilog files
 write_file -format verilog -hierarchy -output "mapped/mix_columns.v"
+Warning: Design 'mix_columns' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Writing verilog file '/home/ecegrid/a/mg85/ece337/337Project/mapped/mix_columns.v'.
-Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 echo "\nScript Done\n"
 
 Script Done
@@ -148,149 +156,160 @@ echo "\nChecking Design\n"
 Checking Design
 
 check_design
+Warning: Design 'mix_columns' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 check_design summary:
 Version:     K-2015.06-SP1
-Date:        Tue Apr 18 00:55:10 2017
+Date:        Mon Apr 24 23:17:58 2017
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                    129
-    Unconnected ports (LINT-28)                                     1
-    Feedthrough (LINT-29)                                         128
+Inputs/Outputs                                                    128
+    Multiply driven inputs (LINT-6)                               128
+
+Nets                                                                3
+    Multiply driven net with constant driver (LINT-54)              3
+
+Tristate                                                            3
+    A tristate bus has a non tri-state driver (LINT-34)             3
 --------------------------------------------------------------------------------
 
-Warning: In design 'mix_columns', port 'i_mode' is not connected to any nets. (LINT-28)
-Warning: In design 'mix_columns', input port 'i_data[127]' is connected directly to output port 'o_data[127]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[126]' is connected directly to output port 'o_data[126]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[125]' is connected directly to output port 'o_data[125]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[124]' is connected directly to output port 'o_data[124]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[123]' is connected directly to output port 'o_data[123]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[122]' is connected directly to output port 'o_data[122]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[121]' is connected directly to output port 'o_data[121]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[120]' is connected directly to output port 'o_data[120]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[119]' is connected directly to output port 'o_data[119]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[118]' is connected directly to output port 'o_data[118]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[117]' is connected directly to output port 'o_data[117]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[116]' is connected directly to output port 'o_data[116]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[115]' is connected directly to output port 'o_data[115]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[114]' is connected directly to output port 'o_data[114]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[113]' is connected directly to output port 'o_data[113]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[112]' is connected directly to output port 'o_data[112]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[111]' is connected directly to output port 'o_data[111]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[110]' is connected directly to output port 'o_data[110]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[109]' is connected directly to output port 'o_data[109]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[108]' is connected directly to output port 'o_data[108]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[107]' is connected directly to output port 'o_data[107]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[106]' is connected directly to output port 'o_data[106]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[105]' is connected directly to output port 'o_data[105]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[104]' is connected directly to output port 'o_data[104]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[103]' is connected directly to output port 'o_data[103]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[102]' is connected directly to output port 'o_data[102]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[101]' is connected directly to output port 'o_data[101]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[100]' is connected directly to output port 'o_data[100]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[99]' is connected directly to output port 'o_data[99]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[98]' is connected directly to output port 'o_data[98]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[97]' is connected directly to output port 'o_data[97]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[96]' is connected directly to output port 'o_data[96]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[95]' is connected directly to output port 'o_data[95]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[94]' is connected directly to output port 'o_data[94]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[93]' is connected directly to output port 'o_data[93]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[92]' is connected directly to output port 'o_data[92]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[91]' is connected directly to output port 'o_data[91]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[90]' is connected directly to output port 'o_data[90]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[89]' is connected directly to output port 'o_data[89]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[88]' is connected directly to output port 'o_data[88]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[87]' is connected directly to output port 'o_data[87]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[86]' is connected directly to output port 'o_data[86]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[85]' is connected directly to output port 'o_data[85]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[84]' is connected directly to output port 'o_data[84]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[83]' is connected directly to output port 'o_data[83]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[82]' is connected directly to output port 'o_data[82]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[81]' is connected directly to output port 'o_data[81]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[80]' is connected directly to output port 'o_data[80]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[79]' is connected directly to output port 'o_data[79]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[78]' is connected directly to output port 'o_data[78]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[77]' is connected directly to output port 'o_data[77]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[76]' is connected directly to output port 'o_data[76]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[75]' is connected directly to output port 'o_data[75]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[74]' is connected directly to output port 'o_data[74]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[73]' is connected directly to output port 'o_data[73]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[72]' is connected directly to output port 'o_data[72]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[71]' is connected directly to output port 'o_data[71]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[70]' is connected directly to output port 'o_data[70]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[69]' is connected directly to output port 'o_data[69]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[68]' is connected directly to output port 'o_data[68]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[67]' is connected directly to output port 'o_data[67]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[66]' is connected directly to output port 'o_data[66]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[65]' is connected directly to output port 'o_data[65]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[64]' is connected directly to output port 'o_data[64]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[63]' is connected directly to output port 'o_data[63]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[62]' is connected directly to output port 'o_data[62]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[61]' is connected directly to output port 'o_data[61]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[60]' is connected directly to output port 'o_data[60]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[59]' is connected directly to output port 'o_data[59]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[58]' is connected directly to output port 'o_data[58]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[57]' is connected directly to output port 'o_data[57]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[56]' is connected directly to output port 'o_data[56]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[55]' is connected directly to output port 'o_data[55]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[54]' is connected directly to output port 'o_data[54]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[53]' is connected directly to output port 'o_data[53]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[52]' is connected directly to output port 'o_data[52]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[51]' is connected directly to output port 'o_data[51]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[50]' is connected directly to output port 'o_data[50]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[49]' is connected directly to output port 'o_data[49]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[48]' is connected directly to output port 'o_data[48]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[47]' is connected directly to output port 'o_data[47]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[46]' is connected directly to output port 'o_data[46]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[45]' is connected directly to output port 'o_data[45]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[44]' is connected directly to output port 'o_data[44]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[43]' is connected directly to output port 'o_data[43]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[42]' is connected directly to output port 'o_data[42]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[41]' is connected directly to output port 'o_data[41]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[40]' is connected directly to output port 'o_data[40]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[39]' is connected directly to output port 'o_data[39]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[38]' is connected directly to output port 'o_data[38]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[37]' is connected directly to output port 'o_data[37]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[36]' is connected directly to output port 'o_data[36]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[35]' is connected directly to output port 'o_data[35]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[34]' is connected directly to output port 'o_data[34]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[33]' is connected directly to output port 'o_data[33]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[32]' is connected directly to output port 'o_data[32]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[31]' is connected directly to output port 'o_data[31]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[30]' is connected directly to output port 'o_data[30]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[29]' is connected directly to output port 'o_data[29]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[28]' is connected directly to output port 'o_data[28]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[27]' is connected directly to output port 'o_data[27]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[26]' is connected directly to output port 'o_data[26]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[25]' is connected directly to output port 'o_data[25]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[24]' is connected directly to output port 'o_data[24]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[23]' is connected directly to output port 'o_data[23]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[22]' is connected directly to output port 'o_data[22]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[21]' is connected directly to output port 'o_data[21]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[20]' is connected directly to output port 'o_data[20]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[19]' is connected directly to output port 'o_data[19]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[18]' is connected directly to output port 'o_data[18]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[17]' is connected directly to output port 'o_data[17]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[16]' is connected directly to output port 'o_data[16]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[15]' is connected directly to output port 'o_data[15]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[14]' is connected directly to output port 'o_data[14]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[13]' is connected directly to output port 'o_data[13]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[12]' is connected directly to output port 'o_data[12]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[11]' is connected directly to output port 'o_data[11]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[10]' is connected directly to output port 'o_data[10]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[9]' is connected directly to output port 'o_data[9]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[8]' is connected directly to output port 'o_data[8]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[7]' is connected directly to output port 'o_data[7]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[6]' is connected directly to output port 'o_data[6]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[5]' is connected directly to output port 'o_data[5]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[4]' is connected directly to output port 'o_data[4]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[3]' is connected directly to output port 'o_data[3]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[2]' is connected directly to output port 'o_data[2]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[1]' is connected directly to output port 'o_data[1]'. (LINT-29)
-Warning: In design 'mix_columns', input port 'i_data[0]' is connected directly to output port 'o_data[0]'. (LINT-29)
+Warning: In design 'mix_columns', input port 'i_data[127]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[126]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[125]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[124]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[123]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[122]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[121]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[120]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[119]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[118]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[117]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[116]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[115]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[114]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[113]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[112]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[111]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[110]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[109]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[108]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[107]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[106]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[105]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[104]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[103]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[102]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[101]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[100]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[99]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[98]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[97]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[96]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[95]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[94]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[93]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[92]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[91]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[90]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[89]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[88]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[87]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[86]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[85]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[84]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[83]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[82]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[81]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[80]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[79]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[78]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[77]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[76]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[75]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[74]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[73]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[72]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[71]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[70]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[69]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[68]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[67]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[66]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[65]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[64]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[63]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[62]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[61]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[60]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[59]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[58]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[57]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[56]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[55]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[54]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[53]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[52]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[51]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[50]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[49]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[48]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[47]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[46]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[45]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[44]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[43]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[42]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[41]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[40]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[39]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[38]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[37]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[36]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[35]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[34]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[33]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[32]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[31]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[30]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[29]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[28]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[27]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[26]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[25]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[24]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[23]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[22]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[21]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[20]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[19]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[18]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[17]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[16]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[15]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[14]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[13]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[12]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', input port 'i_data[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'mix_columns', three-state bus 'net3' has non three-state driver 'C0/**logic_0**'. (LINT-34)
+Warning: In design 'mix_columns', three-state bus '*Logic0*' has non three-state driver 'U2/**logic_0**'. (LINT-34)
+Warning: In design 'mix_columns', three-state bus '*Logic1*' has non three-state driver 'U1/**logic_1**'. (LINT-34)
+Warning: In design 'mix_columns', multiply-driven net 'net3' is driven by constant 0. (LINT-54)
+Warning: In design 'mix_columns', multiply-driven net '*Logic0*' is driven by constant 0. (LINT-54)
+Warning: In design 'mix_columns', multiply-driven net '*Logic1*' is driven by constant 1. (LINT-54)
 quit
 
 Thank you...

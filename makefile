@@ -31,7 +31,7 @@ TOP_LEVEL_FILE	:= AES_toplevel.sv
 
 # define values for making AES 
 AES_TOP_LEVEL := aes_block.sv
-AES_HELPER_FILES += aes_encryption.sv aes_decryption.sv sub_bytes.sv inv_sub_bytes.sv shift_rows.sv inv_shift_rows.sv s_box_lookup.sv inv_s_box_lookup.sv mix_columns.sv inv_mix_columns.sv
+AES_HELPER_FILES += aes_encryption.sv aes_decryption.sv sub_bytes.sv inv_sub_bytes.sv shift_rows.sv inv_shift_rows.sv s_box_lookup.sv inv_s_box_lookup.sv mix_columns.sv inv_mix_columns.sv xor_init.sv data_block_select.sv round_key_adder.sv incriment_state.sv 
 AES_TEST_BENCH := tb_$(AES_TOP_LEVEL)
 AES_TB_MODULE		:= $(notdir $(basename $(AES_TEST_BENCH)))
 AES_TOP_MODULE	:= $(notdir $(basename $(AES_TOP_LEVEL)))
@@ -224,6 +224,12 @@ aes_sim_source: $(addprefix $(S_WORK_LIB)/, $(notdir $(basename $(AES_TOP_LEVEL)
 	@echo -e "Simulating Source Design"
 	@$(SIMULATE) -i -t ps $(S_WORK_LIB).$(AES_TOP_MODULE)
 	@cp -f transcript $(basename $(AES_TOP_LEVEL)).stran
+	@echo -e "Done simulating the source design\n\n"
+
+aes_sim_mapped: $(addprefix $(M_WORK_LIB)/, $(notdir $(basename $(AES_TOP_LEVEL) $(AES_TEST_BENCH) $(AES_HELPER_FILES))))
+	@echo -e "Simulating Source Design"
+	@$(SIMULATE) -i -t ps $(M_WORK_LIB).$(AES_TOP_MODULE)
+	@cp -f transcript $(basename $(AES_TOP_LEVEL)).mtran
 	@echo -e "Done simulating the source design\n\n"
 
 aes_tbsim_source: $(addprefix $(S_WORK_LIB)/, $(notdir $(basename $(AES_TOP_LEVEL) $(AES_TEST_BENCH) $(AES_HELPER_FILES))))
