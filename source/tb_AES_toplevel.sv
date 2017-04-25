@@ -7,6 +7,11 @@
 // Description: Top level test bench.
 
 `timescale 1ns / 10ps
+`define INPUT_READY 1
+`define DATA_DONE 2
+`define ENCRYPT_NOT_DECRYPT 4
+`define KEY_GEN_DONE 8
+
 module tb_AES_toplevel();
 
 parameter CLK_PERIOD				= 5;
@@ -35,13 +40,14 @@ reg [ 1:0]   tb_HRESP;
 reg [15:0][31:0] tb_out_data;
 
 //data file vars
-integer data_file_raw, data_file_to_write, data_file_expected;
+integer data_file_raw, data_file_to_write_encrypt, data_file_to_write_decrypt, data_file_expected;
 integer scan_file;
 logic signed [127:0] captured_data_A;
 logic signed [127:0] captured_data_B;
 reg [127:0] 	       tb_i_data_vector[NUMBER_OF_TESTS];
 reg [127:0] 	       tbe_o_data_vector[NUMBER_OF_TESTS];
 reg [31:0] 	       test_counter;
+reg [31:0] tmp_status;
 
 //output
 reg [127:0] 	     tb_o_data;
@@ -247,6 +253,28 @@ task get_data1_block;
 	end
 endtask
 
+
+
+task get_status;
+	begin
+		@(posedge tb_HCLK); #0.5ns;
+		tb_HSELx = 1'b1;
+		tb_HADDR = 32'h00;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = NONSEQ;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+		@(posedge tb_HCLK); #1ns;
+		tb_HSELx = 1'b0;
+		tb_HADDR = 32'h0;
+		tb_HBURST = SINGLE;
+		tb_HTRANS = IDLE;
+		tb_HWDATA = '0;
+		tb_HWRITE = 1'b0;
+		tmp_status = tb_HRDATA;
+	end
+endtask
+
 task select_decrypt;
 	begin
 		@(posedge tb_HCLK); #1ns;
@@ -301,8 +329,9 @@ endtask
 task load_file_to_write;
       string filename;
       begin
-	 data_file_to_write = $fopen("./AES python implementation/output.txt","wb");
-	 if(data_file_to_write == 0)begin
+	 data_file_to_write_encrypt = $fopen("./AES python implementation/output_encrypt.txt","wb");
+	 data_file_to_write_decrypt = $fopen("./AES python implementation/output_decrypt.txt","wb");
+	 if(data_file_to_write_encrypt == 0 || data_file_to_write_decrypt == 0) begin
 	    $display("data_file handle was NULL.");
 	    $finish;
 	 end
@@ -325,22 +354,36 @@ task check_output;
 
 integer input_idx;
 
-task send_4blocks_from_file;
+task send_4blocks_from_file_encrypt;
       begin
            send_4blocks(tb_i_data_vector[input_idx],tb_i_data_vector[input_idx+1],tb_i_data_vector[input_idx+2],tb_i_data_vector[input_idx+3]);	
            input_idx = input_idx + 4;
       end
 endtask
 
-task send_1block_from_file;
+task send_4blocks_from_file_decrypt;
+      begin
+           send_4blocks(tbe_o_data_vector[input_idx],tbe_o_data_vector[input_idx+1],tbe_o_data_vector[input_idx+2],tbe_o_data_vector[input_idx+3]);	
+           input_idx = input_idx + 4;
+      end
+endtask
+
+task send_1block_from_file_encrypt;
 	begin
 	send_1block(tb_i_data_vector[input_idx]);
         input_idx = input_idx + 1;
 	end
 endtask
 
+task send_1block_from_file_decrypt;
+	begin
+	send_1block(tbe_o_data_vector[input_idx]);
+        input_idx = input_idx + 1;
+	end
+endtask
+
 //MARK: not tested
-task write_4blocks_to_file;
+task write_4blocks_to_file_encrypt;
      	integer i, j;
 	reg [7:0] tmp;
       begin
@@ -354,7 +397,7 @@ task write_4blocks_to_file;
 		tb_out_data[i][23:16] = tb_out_data[i][15:8];
 		tb_out_data[i][15:8] = tmp;
 
-		$fwrite(data_file_to_write,"%u",tb_out_data[i]);
+		$fwrite(data_file_to_write_encrypt,"%u",tb_out_data[i]);
 //		for(j = 31; j >= 0; j = j - 8) begin
 //    			$fwrite(data_file_to_write,"%c",tb_out_data[i][j -: 7]);
 //		end
@@ -362,11 +405,32 @@ task write_4blocks_to_file;
       end
 endtask
 
-task write_1block_to_file;
+task write_4blocks_to_file_decrypt;
      	integer i, j;
 	reg [7:0] tmp;
       begin
 	//$fseek(data_file, 0, `SEEK_END);
+	for (i = 0; i < 16; i=i+1) begin
+		tmp = tb_out_data[i][31:24];
+		tb_out_data[i][31:24] = tb_out_data[i][7:0];
+		tb_out_data[i][7:0] = tmp;
+	
+		tmp = tb_out_data[i][23:16];
+		tb_out_data[i][23:16] = tb_out_data[i][15:8];
+		tb_out_data[i][15:8] = tmp;
+
+		$fwrite(data_file_to_write_decrypt,"%u",tb_out_data[i]);
+//		for(j = 31; j >= 0; j = j - 8) begin
+//    			$fwrite(data_file_to_write,"%c",tb_out_data[i][j -: 7]);
+//		end
+	end
+      end
+endtask
+
+task write_1block_to_file_encrypt;
+     	integer i, j;
+	reg [7:0] tmp;
+      begin
 	for (i = 0; i < 4; i=i+1) begin
 		tmp = tb_out_data[i][31:24];
 		tb_out_data[i][31:24] = tb_out_data[i][7:0];
@@ -376,10 +440,25 @@ task write_1block_to_file;
 		tb_out_data[i][23:16] = tb_out_data[i][15:8];
 		tb_out_data[i][15:8] = tmp;
 
-		$fwrite(data_file_to_write,"%u",tb_out_data[i]);
-//		for(j = 31; j >= 0; j = j - 8) begin
-//    			$fwrite(data_file_to_write,"%c",tb_out_data[i][j -: 7]);
-//		end
+		$fwrite(data_file_to_write_encrypt,"%u",tb_out_data[i]);
+	end
+      end
+endtask
+
+task write_1block_to_file_decrypt;
+     	integer i, j;
+	reg [7:0] tmp;
+      begin
+	for (i = 0; i < 4; i=i+1) begin
+		tmp = tb_out_data[i][31:24];
+		tb_out_data[i][31:24] = tb_out_data[i][7:0];
+		tb_out_data[i][7:0] = tmp;
+	
+		tmp = tb_out_data[i][23:16];
+		tb_out_data[i][23:16] = tb_out_data[i][15:8];
+		tb_out_data[i][15:8] = tmp;
+
+		$fwrite(data_file_to_write_decrypt,"%u",tb_out_data[i]);
 	end
       end
 endtask
@@ -387,22 +466,34 @@ endtask
 task wait_key_gen;
 	integer z;
 	begin
+		/*
+		get_status;
+		while (tmp_status & KEY_GEN_DONE) begin
+			get_status;
+		end
+		*/
 		for (z = 0; z < 14; z = z + 1) begin
 			@(posedge tb_HCLK); #1ns;
 		end
 	end
 endtask
 
-task wait_long_time;
+task wait_output_done;
 	integer z;
 	begin
+		/*
+		get_status;
+		while (tmp_status & DATA_DONE) begin
+			get_status;
+		end
+		*/
 		for (z = 0; z < 50; z = z + 1) begin
 			@(posedge tb_HCLK); #1ns;
 		end
 	end
 endtask
 
-task chk_4data_blocks;
+task chk_4data_blocks_encrypt;
 	begin
 		assert(tbe_o_data_vector[input_idx-4] == {tb_out_data[0],tb_out_data[1],tb_out_data[2],tb_out_data[3]})
 		begin
@@ -423,6 +514,36 @@ task chk_4data_blocks;
 			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
 		end
 		assert(tbe_o_data_vector[input_idx-1] == {tb_out_data[12],tb_out_data[13],tb_out_data[14],tb_out_data[15]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+	end
+endtask
+
+
+task chk_4data_blocks_decrypt;
+	begin
+		assert(tb_i_data_vector[input_idx-4] == {tb_out_data[0],tb_out_data[1],tb_out_data[2],tb_out_data[3]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tb_i_data_vector[input_idx-3] == {tb_out_data[4],tb_out_data[5],tb_out_data[6],tb_out_data[7]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tb_i_data_vector[input_idx-2] == {tb_out_data[8],tb_out_data[9],tb_out_data[10],tb_out_data[11]})
+		begin
+			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+		end
+		assert(tb_i_data_vector[input_idx-1] == {tb_out_data[12],tb_out_data[13],tb_out_data[14],tb_out_data[15]})
 		begin
 			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
 		end else begin
@@ -461,28 +582,44 @@ initial begin
 
 		tb_test_case_num = tb_test_case_num + 1;
 		
-		// TEST 2 : TEST AFTER SENDING KEY AND DATA
+		// TEST 2 : TEST AFTER SENDING KEY AND DATA BLOCKS FOR ENCRYPTION
 		reset_dut();
 
 		send_key("thisisthekey0000");
 		wait_key_gen;
 		while (cnt < test_counter - 4) begin
-			send_4blocks_from_file;
-		        // while(status_bit == 0)
-			//   begin
-			//      @(posedge tb_HCLK);
-			//   end
-			wait_long_time;
+			send_4blocks_from_file_encrypt;
+			wait_output_done;
 			get_data4_block;
-			chk_4data_blocks;
-			write_4blocks_to_file;
+			chk_4data_blocks_encrypt;
+			write_4blocks_to_file_encrypt;
 			cnt = cnt + 4;
 		end 
-		while (cnt < test_counter - 1) begin
-			send_1block_from_file;
-			wait_long_time;
+		while (cnt < test_counter - 1) begin // take care when data % 4 != 0
+			send_1block_from_file_encrypt;
+			wait_output_done;
 			get_data1_block;
-			write_1block_to_file;
+			write_1block_to_file_encrypt;
+			cnt = cnt + 1;
+		end 
+
+		// TEST 3 : TEST AFTER SENDING KEY AND DATA BLOCKS FOR DECRYPTION
+		select_decrypt;
+		input_idx = 0;
+		cnt = 0;
+		while (cnt < test_counter - 4) begin
+			send_4blocks_from_file_decrypt;
+			wait_output_done;
+			get_data4_block;
+			chk_4data_blocks_decrypt;
+			write_4blocks_to_file_decrypt;
+			cnt = cnt + 4;
+		end 
+		while (cnt < test_counter - 1) begin // take care when data % 4 != 0
+			send_1block_from_file_decrypt;
+			wait_output_done;
+			get_data1_block;
+			write_1block_to_file_decrypt;
 			cnt = cnt + 1;
 		end 
 
