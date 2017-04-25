@@ -7,7 +7,7 @@
 // Description: Test bench for top level module aes_encryption/
 `timescale 1ns / 10ps
 module tb_aes_encryption();
-   parameter CLK_PERIOD				= 4;
+   parameter CLK_PERIOD				= 8;
    parameter NUMBER_OF_TESTS = 500;
    // -=-=-=-=- MIX COLUMNS -=-=-=-=-
 
@@ -73,7 +73,7 @@ module tb_aes_encryption();
 	 else
 	   begin
 	      $error("Test Case #%0d Sample #%0d: INCORRECT OUTPUT", tb_test_case_num, tb_test_sample_num);
-	      //$info("should be: %b, but is: %b",tbe_o_data,tb_o_data);
+	      $info("should be: %h, but is: %h",tbe_o_data,tb_o_data);
 	      // $info("input: %h",tb_i_data);
 	      // $info("should be: %h, but is: %h",tbe_o_data,tb_o_data);
 	      // $info("\n\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n\n\n");

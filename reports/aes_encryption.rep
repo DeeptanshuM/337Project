@@ -1,5 +1,5 @@
-Warning: Design 'aes_encryption' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Information: Updating design information... (UID-85)
+Warning: Design 'aes_encryption' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
  
 ****************************************
 Report : timing
@@ -8,82 +8,110 @@ Report : timing
         -max_paths 1
 Design : aes_encryption
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:07:54 2017
+Date   : Tue Apr 25 17:48:34 2017
 ****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
 
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: block_B_reg[0]
+  Startpoint: state_C_reg[4]
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: block_C_reg[0]
+  Endpoint: block_A_reg[106]
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  block_B_reg[0]/CLK (DFFSR)               0.00       0.00 r
-  block_B_reg[0]/Q (DFFSR)                 0.45       0.45 f
-  U956/Y (INVX1)                           0.19       0.65 r
-  U953/Y (XOR2X1)                          0.21       0.85 f
-  U951/Y (OAI21X1)                         0.12       0.97 r
-  block_C_reg[0]/D (DFFSR)                 0.00       0.97 r
-  data arrival time                                   0.97
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  state_C_reg[4]/CLK (DFFSR)                              0.00       0.00 r
+  state_C_reg[4]/Q (DFFSR)                                0.50       0.50 r
+  DBS/i_round_state[4] (data_block_select)                0.00       0.50 r
+  DBS/U31/Y (INVX2)                                       0.10       0.60 f
+  DBS/U32/Y (NAND2X1)                                     0.14       0.73 r
+  DBS/U36/Y (AND2X2)                                      0.16       0.89 r
+  DBS/o_state_out[3] (data_block_select)                  0.00       0.89 r
+  XOR_INIT/i_round_state[3] (xor_init)                    0.00       0.89 r
+  XOR_INIT/U128/Y (NOR2X1)                                0.15       1.04 f
+  XOR_INIT/U121/Y (NAND2X1)                               0.20       1.25 r
+  XOR_INIT/U122/Y (INVX4)                                 0.19       1.43 f
+  XOR_INIT/U117/Y (BUFX4)                                 0.36       1.79 f
+  XOR_INIT/U307/Y (NAND2X1)                               0.17       1.95 r
+  XOR_INIT/U54/Y (INVX1)                                  0.10       2.05 f
+  XOR_INIT/U74/Y (NAND2X1)                                0.10       2.15 r
+  XOR_INIT/U76/Y (NAND2X1)                                0.08       2.23 f
+  XOR_INIT/o_round_block[106] (xor_init)                  0.00       2.23 f
+  SUB_BYTES/i_data[106] (sub_bytes)                       0.00       2.23 f
+  SUB_BYTES/U435/Y (INVX2)                                0.15       2.38 r
+  SUB_BYTES/U1576/Y (INVX2)                               0.11       2.49 f
+  SUB_BYTES/U1988/Y (INVX1)                               0.25       2.74 r
+  SUB_BYTES/U9010/Y (NAND2X1)                             0.10       2.84 f
+  SUB_BYTES/U274/Y (BUFX2)                                0.23       3.07 f
+  SUB_BYTES/U273/Y (INVX4)                                0.16       3.23 r
+  SUB_BYTES/U9174/Y (NAND2X1)                             0.17       3.40 f
+  SUB_BYTES/U2335/Y (AND2X1)                              0.28       3.68 f
+  SUB_BYTES/U1868/Y (NAND2X1)                             0.14       3.82 r
+  SUB_BYTES/U9187/Y (OAI21X1)                             0.09       3.91 f
+  SUB_BYTES/U9188/Y (AND2X2)                              0.22       4.13 f
+  SUB_BYTES/U1279/Y (MUX2X1)                              0.14       4.26 r
+  SUB_BYTES/U2148/Y (NOR2X1)                              0.15       4.41 f
+  SUB_BYTES/U9222/Y (MUX2X1)                              0.15       4.56 r
+  SUB_BYTES/o_data[106] (sub_bytes)                       0.00       4.56 r
+  U1236/Y (MUX2X1)                                        0.10       4.66 f
+  U1344/Y (INVX1)                                         0.12       4.78 r
+  block_A_reg[106]/D (DFFSR)                              0.00       4.78 r
+  data arrival time                                                  4.78
 
-  clock clk (rise edge)                    5.00       5.00
-  clock network delay (ideal)              0.00       5.00
-  block_C_reg[0]/CLK (DFFSR)               0.00       5.00 r
-  library setup time                      -0.22       4.78
-  data required time                                  4.78
-  -----------------------------------------------------------
-  data required time                                  4.78
-  data arrival time                                  -0.97
-  -----------------------------------------------------------
-  slack (MET)                                         3.81
+  clock clk (rise edge)                                   5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  block_A_reg[106]/CLK (DFFSR)                            0.00       5.00 r
+  library setup time                                     -0.22       4.78
+  data required time                                                 4.78
+  --------------------------------------------------------------------------
+  data required time                                                 4.78
+  data arrival time                                                 -4.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
 
 
 1
-Warning: Design 'aes_encryption' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 Report : area
 Design : aes_encryption
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:07:54 2017
+Date   : Tue Apr 25 17:48:34 2017
 ****************************************
 
 Library(s) Used:
 
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
-Number of ports:                          522
-Number of nets:                          3182
-Number of cells:                         2150
-Number of combinational cells:           1090
-Number of sequential cells:              1060
+Number of ports:                         3369
+Number of nets:                         21297
+Number of cells:                        18087
+Number of combinational cells:          17264
+Number of sequential cells:               800
 Number of macros/black boxes:               0
-Number of buf/inv:                        289
-Number of references:                      15
+Number of buf/inv:                       3582
+Number of references:                      18
 
-Combinational area:             267597.000000
-Buf/Inv area:                    41616.000000
-Noncombinational area:          834768.000000
+Combinational area:            4814811.000000
+Buf/Inv area:                   593424.000000
+Noncombinational area:          632016.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:               1102365.000000
+Total cell area:               5446827.000000
 Total area:                 undefined
-
-Information: This design contains black box (unknown) components. (RPT-8)
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
 Warning: Design has unannotated sequential cell outputs. (PWR-415)
-Warning: Design has unannotated black box outputs. (PWR-428)
  
 ****************************************
 Report : power
@@ -91,7 +119,7 @@ Report : power
         -analysis_effort low
 Design : aes_encryption
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:07:54 2017
+Date   : Tue Apr 25 17:48:35 2017
 ****************************************
 
 
@@ -117,5 +145,28 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-aes_encryption                           15.829  265.905  359.224  281.734 100.0
+aes_encryption                          452.614  620.142 1.67e+03 1.07e+03 100.0
+  INC_STATE (incriment_state)          4.05e-02 4.70e-02    0.947 8.75e-02   0.0
+  RKA (round_key_adder)                   2.193    6.545   23.077    8.737   0.8
+  MIX_COLUMNS (mix_columns)              72.983  113.937  605.481  186.921  17.4
+    MC_B15 (mix_columns_byte_0)           3.994    6.775   36.617   10.769   1.0
+    MC_B14 (mix_columns_byte_1)           3.871    6.807   36.555   10.678   1.0
+    MC_B13 (mix_columns_byte_2)           3.871    6.800   36.555   10.672   1.0
+    MC_B12 (mix_columns_byte_3)           3.971    6.743   36.617   10.714   1.0
+    MC_B11 (mix_columns_byte_4)           3.874    6.786   36.493   10.659   1.0
+    MC_B10 (mix_columns_byte_5)           3.867    6.786   36.493   10.653   1.0
+    MC_B9 (mix_columns_byte_6)            3.863    6.773   36.493   10.636   1.0
+    MC_B8 (mix_columns_byte_7)            3.858    6.763   36.493   10.621   1.0
+    MC_B7 (mix_columns_byte_8)            3.982    6.757   36.554   10.738   1.0
+    MC_B6 (mix_columns_byte_9)            4.088    6.741   36.615   10.829   1.0
+    MC_B5 (mix_columns_byte_10)           4.079    6.722   36.615   10.801   1.0
+    MC_B4 (mix_columns_byte_11)           4.085    6.724   36.615   10.810   1.0
+    MC_B3 (mix_columns_byte_12)           4.090    6.782   36.615   10.872   1.0
+    MC_B2 (mix_columns_byte_13)           4.078    6.778   36.615   10.856   1.0
+    MC_B1 (mix_columns_byte_14)           4.078    6.777   36.615   10.855   1.0
+    MC_B0 (mix_columns_byte_15)           3.964    6.777   36.554   10.741   1.0
+  SHIFT_ROWS (shift_rows)                 0.000    0.000    0.000    0.000   0.0
+  SUB_BYTES (sub_bytes)                 326.978  257.977  714.466  584.955  54.5
+  XOR_INIT (xor_init)                     9.643    9.079   33.271   18.722   1.7
+  DBS (data_block_select)                 6.560    6.589   22.678   13.150   1.2
 1

@@ -471,5 +471,5 @@ def print_genTables():
 
 if __name__ == "__main__":
     #print_genTables()
-    #encrypt()
-    decrypt()
+    encrypt()
+    #decrypt()
