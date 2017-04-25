@@ -40,7 +40,6 @@ reg read_fifo, is_encrypt, data_done, data_valid;
 wire [127:0] round_key_0,round_key_input, round_key_10;
 reg [3:0]   read_addr;
 wire generation_done;
-round_key_10
 
 ahb_fifo_io AHB (
 .HCLK(HCLK),
