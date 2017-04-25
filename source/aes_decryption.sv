@@ -19,15 +19,15 @@ module aes_decryption
    wire [4:0]  round_state_output; // output of final section
    wire [127:0]  round_block_output; // output of final section
    // SECTION A
-   wire [4:0] 	 round_state_0;
-   wire [127:0]  round_block_0_0,round_block_0_1,round_block_0_2,round_block_0_3;
+   reg [4:0] 	 round_state_0_a,round_state_0_b;
+   reg [127:0]  round_block_0_0,round_block_0_1_a,round_block_0_1_b,round_block_0_2,round_block_0_3;
    // SECTION B
    wire [4:0] 	 round_state_1;
    wire [127:0]  round_block_1_0,round_block_1_1;
    // SECTION C
    wire [4:0] 	 round_state_2_0,round_state_2_1;
    wire [127:0]  round_block_2_0,round_block_2_1;
-   assign data_valid = round_block_output[4];
+   assign data_valid = round_state_output[4];
 
    // DATA SELECT
    data_block_select DBS (.i_read_fifo(read_fifo),
@@ -35,16 +35,28 @@ module aes_decryption
 			  .i_round_block(round_block_output),
 			  .i_round_state(round_state_output),
 			  .o_block_out(round_block_0_0),
-			  .o_state_out(round_state_0));
+			  .o_state_out(round_state_0_a));
    // SECTION A
-   assign round_key_addr = 9 - round_state_0[3:0];
+   assign round_key_addr = 9 - round_state_0_b[3:0];
 
    xor_init XOR_INIT (.i_round_block(round_block_0_0),
-		      .i_round_state(round_state_0),
+		      .i_round_state(round_state_0_a),
 		      .i_round_key_0(round_key_10),
-		      .o_round_block(round_block_0_1));
+		      .o_round_block(round_block_0_1_a));
 
-   inv_shift_rows SHIFT_ROWS (.i_data(round_block_0_1),
+   always_ff @(posedge clk)begin
+      round_block_0_1_b <= round_block_0_1_a;
+   end
+
+   always_ff @(posedge clk,negedge n_rst)begin
+      if(n_rst == 1'b0)
+	round_state_0_b <= '0;
+      else
+	round_state_0_b <= round_state_0_a;
+   end
+
+     
+   inv_shift_rows SHIFT_ROWS (.i_data(round_block_0_1_b),
 			      .o_data(round_block_0_2));
 
    inv_sub_bytes INV_SUB_BYTES (.i_data(round_block_0_2),
@@ -95,14 +107,8 @@ module aes_decryption
    // end
 
    //BLOCK REGISTER NEXT STATE
-   always_ff @(posedge clk, negedge n_rst) begin
-      if (1'b0 == n_rst)
-	begin
-	   block_A <= '0;
-	   block_B <= '0;
-	   block_C <= '0;
-	end
-      else if (is_full)
+   always_ff @(posedge clk) begin
+      if (is_full)
 	begin
 	   block_A <= block_A;
 	   block_B <= block_B;
@@ -117,14 +123,8 @@ module aes_decryption
    end
 
    //STATE REGISTER NEXT STATE
-   always_ff @(posedge clk, negedge n_rst) begin
-      if (1'b0 == n_rst)
-	begin
-	   state_A <= '0;
-	   state_B <= '0;
-	   state_C <= '0;
-	end
-      else if (is_full)
+   always_ff @(posedge clk) begin
+      if (is_full)
 	begin
 	   //IS THIS OKAY?
 	   state_A <= state_A;
@@ -133,7 +133,7 @@ module aes_decryption
 	end
       else
 	begin
-	   state_A <= round_state_0;
+	   state_A <= round_state_0_b;
 	   state_B <= round_state_1;
 	   state_C <= round_state_2_1;
 	end

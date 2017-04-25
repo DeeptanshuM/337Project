@@ -468,6 +468,10 @@ initial begin
 		wait_key_gen;
 		while (cnt < test_counter - 4) begin
 			send_4blocks_from_file;
+		        // while(status_bit == 0)
+			//   begin
+			//      @(posedge tb_HCLK);
+			//   end
 			wait_long_time;
 			get_data4_block;
 			chk_4data_blocks;

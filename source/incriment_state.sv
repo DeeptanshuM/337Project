@@ -6,7 +6,7 @@ module incriment_state
 
    always_comb begin
       o_state[3:0] = i_state[3:0] + 1;
-      if (i_state[4] == 1 && i_state[3:0] > 10)
+      if ((i_state[4] == 1) && (i_state[3:0] > 10))
 	o_state[4] = 0;
       else
 	o_state[4] = i_state[4];

@@ -371,7 +371,8 @@ uniquify
 $(if $(and $(CLOCK_NAME), $(CLOCK_PERIOD)), create_clock "$(CLOCK_NAME)" -name "$(CLOCK_NAME)" -period $(CLOCK_PERIOD))
 
 # Step 3: Compile the design
-compile -map_effort high
+#compile -map_effort high -incremental_mapping
+compile -map_effort medium
 
 # Step 4: Output reports
 report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/$(MOD_NAME).rep

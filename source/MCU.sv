@@ -72,8 +72,8 @@ case(state)
 		nxt_state = get_key;
 	if(!emptyRx)
 		nxt_state = get_data;
-	if(data_done)
-		nxt_state = enqueueTrans;
+	//if(data_done)
+	//	nxt_state = enqueueTrans;
 	end
 
 	get_key: begin
@@ -95,14 +95,15 @@ case(state)
 	end
 
 	get_data: begin
+	//nxt_state = didRead;
+	if(!accepted)
 	nxt_state = didRead;
+	else
+	nxt_state = get_data;
 	end
 
 	didRead: begin
-	if(accepted)
 	nxt_state = IDLE;
-	else
-	nxt_state = get_data;
 	end
 	
 	enqueueTrans: begin
@@ -115,8 +116,8 @@ assign tmp_flagKeyGenDone = ((state == dummy3) || flagKeyGenDone);
 assign read_fifo_KeyGen = (state == get_key);
 assign is_encrypt = status_bits[2];
 assign read_fifo = (state == get_data);
-assign rcv_deq = ((accepted && (state == didRead)) || (state == get_key));
-assign trans_enq = (state == enqueueTrans);
+assign rcv_deq = ((state == didRead) || (state == get_key));
+assign trans_enq = data_done;
 assign mcu_key_in = (state == get_key); 
 
 endmodule

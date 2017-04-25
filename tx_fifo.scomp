@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 02:31:11 on Apr 25,2017
+Start time: 03:59:37 on Apr 25,2017
 vlog -sv -work source_work source/tx_fifo.sv 
 -- Compiling module tx_fifo
 
 Top level modules:
 	tx_fifo
-End time: 02:31:11 on Apr 25,2017, Elapsed time: 0:00:00
+End time: 03:59:37 on Apr 25,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0

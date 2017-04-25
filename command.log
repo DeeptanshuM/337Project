@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version K-2015.06-SP1 for linux64 -- Jul 21, 2015
-#@ # Date:   Tue Apr 25 02:48:12 2017
+#@ # Date:   Tue Apr 25 05:21:08 2017
 #@ # Run by: mg85@ecegrid-thin6.ecn.purdue.edu
 #@ 
 
@@ -3850,4 +3850,17 @@ source -echo do_mapping.tcl
 #@ create_clock "HCLK" -name "HCLK" -period 5.0
 #@ 
 #@ # Step 3: Compile the design
-#@ compile -map_effort high
+#@ #compile -map_effort high -incremental_mapping
+#@ compile -map_effort medium
+#@ 
+#@ # Step 4: Output reports
+#@ report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/AES_toplevel.rep
+#@ report_area >> reports/AES_toplevel.rep
+#@ report_power -hier >> reports/AES_toplevel.rep
+#@ 
+#@ # Step 5: Output final VHDL and Verilog files
+#@ write_file -format verilog -hierarchy -output "mapped/AES_toplevel.v"
+#@ echo "\nScript Done\n"
+#@ echo "\nChecking Design\n"
+#@ check_design
+#@ quit

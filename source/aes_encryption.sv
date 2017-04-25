@@ -28,7 +28,7 @@ module aes_encryption
    // SECTION C
    wire [4:0] 	 round_state_2_0,round_state_2_1;
    wire [127:0]  round_block_2_0,round_block_2_1;
-   assign data_valid = round_block_output[4];
+   assign data_valid = round_state_output[4];
 
    // DATA SELECT
    data_block_select DBS (.i_read_fifo(read_fifo),
@@ -171,6 +171,5 @@ module aes_encryption
 	   state_A <= round_state_0;
 	end
    end
-
 
 endmodule

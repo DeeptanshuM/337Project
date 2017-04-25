@@ -1,0 +1,241 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'AES_toplevel' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : AES_toplevel
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 05:24:23 2017
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: jhfgd/state_reg[2]
+              (rising edge-triggered flip-flop clocked by HCLK)
+  Endpoint: AES/E_AES/block_A_reg[32]
+            (rising edge-triggered flip-flop clocked by HCLK)
+  Path Group: HCLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock HCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  jhfgd/state_reg[2]/CLK (DFFSR)                          0.00 #     0.00 r
+  jhfgd/state_reg[2]/Q (DFFSR)                            0.46       0.46 r
+  jhfgd/U15/Y (NOR2X1)                                    0.21       0.67 f
+  jhfgd/U10/Y (NAND3X1)                                   0.16       0.83 r
+  jhfgd/U9/Y (INVX2)                                      0.15       0.98 f
+  jhfgd/read_fifo (MCU)                                   0.00       0.98 f
+  AES/read_fifo (aes_block)                               0.00       0.98 f
+  AES/E_AES/read_fifo (aes_encryption)                    0.00       0.98 f
+  AES/E_AES/DBS/i_read_fifo (data_block_select_1)         0.00       0.98 f
+  AES/E_AES/DBS/U6/Y (INVX1)                              0.11       1.09 r
+  AES/E_AES/DBS/U5/Y (OR2X2)                              0.27       1.36 r
+  AES/E_AES/DBS/U4/Y (INVX2)                              0.23       1.59 f
+  AES/E_AES/DBS/U41/Y (BUFX4)                             0.34       1.93 f
+  AES/E_AES/DBS/U114/Y (MUX2X1)                           0.24       2.17 r
+  AES/E_AES/DBS/U115/Y (INVX2)                            0.11       2.28 f
+  AES/E_AES/DBS/o_block_out[34] (data_block_select_1)     0.00       2.28 f
+  AES/E_AES/XOR_INIT/i_round_block[34] (xor_init_1)       0.00       2.28 f
+  AES/E_AES/XOR_INIT/U74/Y (INVX2)                        0.07       2.35 r
+  AES/E_AES/XOR_INIT/U72/Y (NAND2X1)                      0.07       2.42 f
+  AES/E_AES/XOR_INIT/U73/Y (NAND2X1)                      0.17       2.59 r
+  AES/E_AES/XOR_INIT/o_round_block[34] (xor_init_1)       0.00       2.59 r
+  AES/E_AES/SUB_BYTES/i_data[34] (sub_bytes)              0.00       2.59 r
+  AES/E_AES/SUB_BYTES/U2543/Y (INVX2)                     0.13       2.72 f
+  AES/E_AES/SUB_BYTES/U1547/Y (INVX4)                     0.11       2.83 r
+  AES/E_AES/SUB_BYTES/U4180/Y (AND2X2)                    0.19       3.01 r
+  AES/E_AES/SUB_BYTES/U4619/Y (AND2X2)                    0.24       3.25 r
+  AES/E_AES/SUB_BYTES/U3880/Y (INVX4)                     0.12       3.37 f
+  AES/E_AES/SUB_BYTES/U3879/Y (INVX8)                     0.13       3.50 r
+  AES/E_AES/SUB_BYTES/U6748/Y (NAND2X1)                   0.07       3.57 f
+  AES/E_AES/SUB_BYTES/U6750/Y (NAND3X1)                   0.14       3.72 r
+  AES/E_AES/SUB_BYTES/U6751/Y (NOR2X1)                    0.13       3.85 f
+  AES/E_AES/SUB_BYTES/U6752/Y (OAI21X1)                   0.16       4.01 r
+  AES/E_AES/SUB_BYTES/U3212/Y (INVX2)                     0.07       4.09 f
+  AES/E_AES/SUB_BYTES/U3209/Y (NAND2X1)                   0.09       4.18 r
+  AES/E_AES/SUB_BYTES/U3210/Y (NAND2X1)                   0.08       4.26 f
+  AES/E_AES/SUB_BYTES/U6763/Y (OAI21X1)                   0.12       4.38 r
+  AES/E_AES/SUB_BYTES/U6764/Y (OAI21X1)                   0.11       4.48 f
+  AES/E_AES/SUB_BYTES/U138/Y (INVX2)                      0.08       4.57 r
+  AES/E_AES/SUB_BYTES/o_data[32] (sub_bytes)              0.00       4.57 r
+  AES/E_AES/U410/Y (MUX2X1)                               0.09       4.66 f
+  AES/E_AES/U298/Y (INVX1)                                0.12       4.78 r
+  AES/E_AES/block_A_reg[32]/D (DFFSR)                     0.00       4.78 r
+  data arrival time                                                  4.78
+
+  clock HCLK (rise edge)                                  5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  AES/E_AES/block_A_reg[32]/CLK (DFFSR)                   0.00       5.00 r
+  library setup time                                     -0.22       4.78
+  data required time                                                 4.78
+  --------------------------------------------------------------------------
+  data required time                                                 4.78
+  data arrival time                                                 -4.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+ 
+****************************************
+Report : area
+Design : AES_toplevel
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 05:24:23 2017
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                         9595
+Number of nets:                         64238
+Number of cells:                        54804
+Number of combinational cells:          48520
+Number of sequential cells:              6205
+Number of macros/black boxes:               0
+Number of buf/inv:                      12412
+Number of references:                       5
+
+Combinational area:           13064940.000000
+Buf/Inv area:                  2059632.000000
+Noncombinational area:         5037840.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:              18102780.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : AES_toplevel
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 05:24:26 2017
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+AES_toplevel                            465.628 1.96e+03 5.46e+03 2.42e+03 100.0
+  KEYGEN (key_generator)                 23.685  771.243 1.59e+03  794.930  32.8
+    GFUNCTION (g_function)                0.000    0.000  182.758 1.83e-04   0.0
+      SUBS3 (s_box_lookup_0)              0.000    0.000   45.083 4.51e-05   0.0
+      SUBS2 (s_box_lookup_1)              0.000    0.000   44.296 4.43e-05   0.0
+      SUBS1 (s_box_lookup_2)              0.000    0.000   44.657 4.47e-05   0.0
+      SUBS0 (s_box_lookup_3)              0.000    0.000   47.219 4.72e-05   0.0
+  AES (aes_block)                       436.615  794.788 3.25e+03 1.23e+03  50.8
+    D_AES (aes_decryption)              247.443  432.422 1.44e+03  679.866  28.0
+      INC_STATE (incriment_state_0)    9.41e-02    0.106    0.947    0.200   0.0
+      INV_MIX_COLUMNS (inv_mix_columns)
+                                         79.002  115.334  604.409  194.337   8.0
+        MC_B15 (mix_columns_byte_0)       4.438    7.164   36.403   11.602   0.5
+        MC_B14 (mix_columns_byte_1)       4.438    7.164   36.403   11.602   0.5
+        MC_B13 (mix_columns_byte_2)       4.438    7.164   36.403   11.602   0.5
+        MC_B12 (mix_columns_byte_3)       4.438    7.164   36.403   11.602   0.5
+        MC_B11 (mix_columns_byte_4)       4.383    7.152   36.403   11.535   0.5
+        MC_B10 (mix_columns_byte_5)       4.383    7.152   36.403   11.535   0.5
+        MC_B9 (mix_columns_byte_6)        4.383    7.152   36.403   11.535   0.5
+        MC_B8 (mix_columns_byte_7)        4.383    7.152   36.403   11.535   0.5
+        MC_B7 (mix_columns_byte_8)        4.700    6.795   36.648   11.495   0.5
+        MC_B6 (mix_columns_byte_9)        4.700    6.795   36.648   11.495   0.5
+        MC_B5 (mix_columns_byte_10)       4.700    6.795   36.648   11.495   0.5
+        MC_B4 (mix_columns_byte_11)       4.700    6.795   36.648   11.495   0.5
+        MC_B3 (mix_columns_byte_12)       4.625    6.516   36.679   11.141   0.5
+        MC_B2 (mix_columns_byte_13)       4.625    6.516   36.679   11.141   0.5
+        MC_B1 (mix_columns_byte_14)       4.625    6.516   36.679   11.141   0.5
+        MC_B0 (mix_columns_byte_15)       4.625    6.516   36.679   11.141   0.5
+      RKA (round_key_adder_0)             1.292    4.109   23.077    5.401   0.2
+      INV_SUB_BYTES (inv_sub_bytes)     118.569   99.375  565.318  217.945   9.0
+      SHIFT_ROWS (inv_shift_rows)         0.000    0.000    0.000    0.000   0.0
+      XOR_INIT (xor_init_0)               0.647    3.683   31.218    4.330   0.2
+      DBS (data_block_select_0)           3.515    5.329   19.248    8.843   0.4
+    E_AES (aes_encryption)              184.229  359.823 1.79e+03  544.053  22.4
+      INC_STATE (incriment_state_1)    9.44e-02 9.35e-02    0.947    0.188   0.0
+      RKA (round_key_adder_1)             0.879    3.204   23.077    4.084   0.2
+      MIX_COLUMNS (mix_columns)          46.327   77.963  605.392  124.291   5.1
+        MC_B15 (mix_columns_byte_16)      2.783    4.970   36.617    7.753   0.3
+        MC_B14 (mix_columns_byte_17)      2.738    4.974   36.493    7.712   0.3
+        MC_B13 (mix_columns_byte_18)      2.732    4.982   36.586    7.714   0.3
+        MC_B12 (mix_columns_byte_19)      2.783    4.970   36.617    7.754   0.3
+        MC_B11 (mix_columns_byte_20)      2.484    4.531   36.493    7.015   0.3
+        MC_B10 (mix_columns_byte_21)      2.484    4.494   36.493    6.978   0.3
+        MC_B9 (mix_columns_byte_22)       2.433    4.544   36.463    6.977   0.3
+        MC_B8 (mix_columns_byte_23)       2.484    4.531   36.493    7.015   0.3
+        MC_B7 (mix_columns_byte_24)       2.555    4.568   36.554    7.122   0.3
+        MC_B6 (mix_columns_byte_25)       2.600    4.515   36.616    7.115   0.3
+        MC_B5 (mix_columns_byte_26)       2.503    4.588   36.523    7.091   0.3
+        MC_B4 (mix_columns_byte_27)       2.555    4.568   36.554    7.123   0.3
+        MC_B3 (mix_columns_byte_28)       2.562    4.521   36.615    7.083   0.3
+        MC_B2 (mix_columns_byte_29)       2.562    4.484   36.678    7.046   0.3
+        MC_B1 (mix_columns_byte_30)       2.562    4.481   36.615    7.043   0.3
+        MC_B0 (mix_columns_byte_31)       2.562    4.521   36.615    7.083   0.3
+      SHIFT_ROWS (shift_rows)             0.000    0.000    0.000    0.000   0.0
+      SUB_BYTES (sub_bytes)             107.147   77.350  821.263  184.498   7.6
+      XOR_INIT (xor_init_1)               2.463    2.794   33.545    5.257   0.2
+      DBS (data_block_select_1)           2.312    2.514   23.441    4.826   0.2
+  jhfgd (MCU)                          2.20e-04    3.691    7.657    3.691   0.2
+  AHB (ahb_fifo_io)                       5.333  388.913  618.067  394.247  16.3
+    TX_FIFO (tx_fifo)                     1.560  253.910  390.252  255.470  10.5
+      FIFO_REG (tx_fifo_reg)              1.560  247.768  374.439  249.328  10.3
+      COMB_OUT (tx_comb_output)           0.000    0.000    1.124 1.12e-06   0.0
+      HEAD_IDX (tx_counter_idx)           0.000    1.228    2.974    1.228   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS2_0)
+                                          0.000    1.228    2.974    1.228   0.1
+      HEAD_PTR (tx_counter_head)          0.000    2.047    4.717    2.047   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS3_0)
+                                          0.000    1.638    4.003    1.638   0.1
+      TAIL_PTR (tx_counter_tail)          0.000    2.047    4.717    2.047   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS3_1)
+                                          0.000    1.638    4.003    1.638   0.1
+      FSM (tx_fifo_fsm)                   0.000    0.819    2.282    0.819   0.0
+    RCV_FIFO (rcv_fifo)                   2.582  128.962  205.554  131.545   5.4
+      FIFO_REG (rcv_fifo_reg)             2.582  123.640  191.731  126.222   5.2
+      COMB_OUT (rcv_comb_output)          0.000    0.000    0.889 8.89e-07   0.0
+      TAIL_IDX (rcv_counter_idx)          0.000    1.228    2.974    1.228   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS2_1)
+                                          0.000    1.228    2.974    1.228   0.1
+      HEAD_PTR (rcv_counter_head)         0.000    1.638    3.812    1.638   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS2_2)
+                                          0.000    1.228    3.099    1.228   0.1
+      TAIL_PTR (rcv_counter_tail)         0.000    1.638    3.688    1.638   0.1
+        FLEXCNT (fifo_flex_counter_NUM_CNT_BITS2_3)
+                                          0.000    1.228    2.974    1.228   0.1
+      FSM (rcv_fifo_fsm)                  0.000    0.819    2.317    0.819   0.0
+    AHB_SLAVE (ahb_slave)                 1.190    6.038   22.260    7.228   0.3
+      REGS (ahb_regs)                     1.182    4.361   16.323    5.543   0.2
+1
