@@ -17,7 +17,7 @@ module data_block_select
       if(i_read_fifo && i_round_state[4] == 0)
 	begin
 	   o_block_out = i_fifo_in;
-	   o_state_out = 5'b00001;
+	   o_state_out = 5'b10000;
 	end
    end
 

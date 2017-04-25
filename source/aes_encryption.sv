@@ -75,42 +75,45 @@ module aes_encryption
    assign round_state_output = state_C; // output of final section
 
    assign data_output = round_block_output;
-   assign data_done = round_state_output == 5'b01010;
+   assign data_done = round_state_output == 5'b11010;
 
    //KEY REGISTER
    always_ff @(posedge clk, negedge n_rst) begin
       if (1'b0 == n_rst)
-	round_key_register <= '0;
+	begin
+	   round_key_register <= '0;
+	end
       else
 	round_key_register <= round_key_input;
 
       // $info("fifo_in: %0h",fifo_in);
-      $info("input key: %0h",round_key_input);
+      //$info("input key: %0h",round_key_input);
+      
+      // $info("state_A: %8b",state_A);
+      // $info("state_B: %8b",state_B);
+      // $info("state_C: %8b",state_C);
 
-      $info("state_A: %8b",state_A);
-      $info("state_B: %8b",state_B);
-      $info("state_C: %8b",state_C);
+      // $info("block_A: %0h",block_A);
+      // $info("block_B: %0h",block_B);
+      // $info("block_C: %0h",block_C);
 
-      $info("block_A: %0h",block_A);
-      $info("block_B: %0h",block_B);
-      $info("block_C: %0h",block_C);
+      // $info("output state: %0b",round_state_output);
+      // $info("output data: %0h",round_block_output);
 
-      $info("output state: %0b",round_state_output);
-      $info("output data: %0h",round_block_output);
+      // $info("round_state_0: %0b",round_state_0);
+      $info("loaded_data: %0h",round_block_0_0);
+      $info("post-xor_init/pre-subbytes-rows: %0h",round_block_0_1);
+      $info("post-subbytes-rows: %0h",round_block_0_2);
 
-      $info("pre-xor_init: %0b",round_state_0);
-      $info("post-xor_init/pre-subbytes-rows: %0h",round_block_0_0);
-      $info("post-subbytes-rows: %0h",round_block_0_1);
+      // $info("round_block_0_2: %0h",round_block_0_2);
 
-      $info("round_block_0_2: %0h",round_block_0_2);
-
-      $info("round_state_1: %0b",round_state_1);
+      // $info("round_state_1: %0b",round_state_1);
       $info("pre-shift-rows: %0h",round_block_1_0);
       $info("post-shift-rows/pre-mix-columns: %0h",round_block_1_1);
       $info("post-mix_columns: %0h",round_block_1_2);
 
-      $info("round_state_2_0: %0b",round_state_2_0);
-      $info("round_state_2_1: %0b",round_state_2_1);
+      // $info("round_state_2_0: %0b",round_state_2_0);
+      // $info("round_state_2_1: %0b",round_state_2_1);
       $info("pre-round_key_adder: %0h",round_block_2_0);
       $info("post-round_key_adder: %0h",round_block_2_1);
 
@@ -136,9 +139,9 @@ module aes_encryption
 	end
       else
 	begin
-	   block_A <= round_block_0_2;
-	   block_B <= round_block_1_1;
 	   block_C <= round_block_2_1;
+	   block_B <= round_block_1_2;
+	   block_A <= round_block_0_2;
 	end
    end
 
@@ -159,9 +162,9 @@ module aes_encryption
 	end
       else
 	begin
-	   state_A <= round_state_0;
-	   state_B <= round_state_1;
 	   state_C <= round_state_2_1;
+	   state_B <= round_state_1;
+	   state_A <= round_state_0;
 	end
    end
 

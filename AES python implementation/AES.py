@@ -191,9 +191,18 @@ def shiftrows(statearray, encryptdecrypt):
     row2 = statearray[2]
     row3 = statearray[3]
     if (encryptdecrypt == 0):
+
         r1 = [row1[1],row1[2],row1[3],row1[0]]
         r2 = [row2[2],row2[3],row2[0],row2[1]]
         r3 = [row3[3],row3[0],row3[1],row3[2]]
+        print("r0",[bv.get_bitvector_in_hex() for bv in row0])
+        print("row1",[bv.get_bitvector_in_hex() for bv in row1])
+        print("row2",[bv.get_bitvector_in_hex() for bv in row2])
+        print("row3",[bv.get_bitvector_in_hex() for bv in row3])
+
+        print("r1",[bv.get_bitvector_in_hex() for bv in r1])
+        print("r2",[bv.get_bitvector_in_hex() for bv in r2])
+        print("r3",[bv.get_bitvector_in_hex() for bv in r3])
         shiftedrows = [row0, r1, r2, r3]
     elif (encryptdecrypt == 1):
         r1 = [row1[3],row1[0],row1[1],row1[2]]
@@ -334,7 +343,7 @@ def encrypt():
                 statearray = mixcol(statearray, 0)
             inBV = makeBV(statearray)
             if count == 0:
-                print(rounds,"pre-mix-columns",inBV.get_bitvector_in_hex())
+                print(rounds,"post-mix-columns",inBV.get_bitvector_in_hex())
             inBV ^= roundkeys[rounds]
             if count == 0:
                 print(rounds,"post-key-xor",inBV.get_bitvector_in_hex())
