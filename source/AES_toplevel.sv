@@ -34,12 +34,13 @@ wire         tx_fifo_full;
 wire         tx_fifo_empty;
 wire         rcv_fifo_full;
 wire         rcv_fifo_empty;
-//wire         framing_error;
+wire         mcu_key_in;
 reg [3:0] status_bits;
 reg read_fifo, is_encrypt, data_done, data_valid;
-wire [127:0] round_key_0,round_key_input;
+wire [127:0] round_key_0,round_key_input, round_key_10;
 reg [3:0]   read_addr;
-
+wire generation_done;
+round_key_10
 
 ahb_fifo_io AHB (
 .HCLK(HCLK),
@@ -75,6 +76,7 @@ MCU jhfgd
 (
 .clk(HCLK),
 .n_reset(HRESETn),
+.generation_done(generation_done),
 .key_in(key_in),
 .is_decryption_pulse(is_decrypt_pulse),
 .is_encryption_pulse(is_encrypt_pulse),
@@ -88,7 +90,8 @@ MCU jhfgd
 .read_fifo(read_fifo),
 .rcv_deq(rcv_deq),
 .trans_enq(tx_enq),
-.status_bits(status_bits)
+.status_bits(status_bits),
+.mcu_key_in(mcu_key_in)
 );
 
 aes_block AES
@@ -101,6 +104,7 @@ aes_block AES
 .rx_fifo_out(rcv_fifo_out),
 .round_key_0(round_key_0),
 .round_key_input(round_key_input),
+.round_key_10(round_key_10),
 .read_addr(read_addr),
 .tx_fifo_in(data_in),
 .data_done(data_done),
@@ -112,10 +116,12 @@ key_generator KEYGEN
 .clk(HCLK),
 .n_rst(HRESETn),
 .read_addr(read_addr),
-.WE_key_generation(key_in),
+.WE_key_generation(mcu_key_in),
 .input_key(rcv_fifo_out),
 .round_key_0(round_key_0),
-.round_key_x(round_key_input)
+.round_key_x(round_key_input),
+.round_key_10(round_key_10),
+.generation_done(generation_done)
 );
 
 endmodule

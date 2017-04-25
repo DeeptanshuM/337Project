@@ -9,6 +9,7 @@ module MCU
 (
 input wire clk,
 input wire n_reset,
+input wire generation_done,
 input wire key_in,
 input wire is_decryption_pulse,
 input wire is_encryption_pulse,
@@ -88,7 +89,9 @@ case(state)
 	end
 
 	dummy3: begin
-	nxt_state = IDLE;
+	if (generation_done) begin
+		nxt_state = IDLE;
+	end
 	end
 
 	get_data: begin
