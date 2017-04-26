@@ -7,26 +7,26 @@ Report : timing
         -max_paths 1
 Design : incriment_state
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:56:33 2017
+Date   : Tue Apr 25 20:04:36 2017
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: i_state[1] (input port)
-  Endpoint: o_state[4] (output port)
+  Startpoint: i_state[0] (input port)
+  Endpoint: o_state[3] (output port)
   Path Group: (none)
   Path Type: max
 
   Point                                    Incr       Path
   -----------------------------------------------------------
   input external delay                     0.00       0.00 f
-  i_state[1] (in)                          0.00       0.00 f
-  U6/Y (NAND3X1)                           0.25       0.25 r
-  U3/Y (NOR2X1)                            0.31       0.55 f
-  U2/Y (XOR2X1)                            0.18       0.73 f
-  o_state[4] (out)                         0.00       0.73 f
-  data arrival time                                   0.73
+  i_state[0] (in)                          0.00       0.00 f
+  U16/Y (AND2X1)                           0.38       0.38 f
+  U14/Y (AND2X1)                           0.34       0.71 f
+  U13/Y (XOR2X1)                           0.16       0.88 f
+  o_state[3] (out)                         0.00       0.88 f
+  data arrival time                                   0.88
   -----------------------------------------------------------
   (Path is unconstrained)
 
@@ -37,7 +37,7 @@ Wire Load Model Mode: top
 Report : area
 Design : incriment_state
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:56:33 2017
+Date   : Tue Apr 25 20:04:36 2017
 ****************************************
 
 Library(s) Used:
@@ -45,21 +45,21 @@ Library(s) Used:
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
 Number of ports:                           10
-Number of nets:                            14
-Number of cells:                            9
-Number of combinational cells:              9
+Number of nets:                            13
+Number of cells:                            8
+Number of combinational cells:              8
 Number of sequential cells:                 0
 Number of macros/black boxes:               0
-Number of buf/inv:                          2
-Number of references:                       6
+Number of buf/inv:                          1
+Number of references:                       4
 
-Combinational area:               3060.000000
-Buf/Inv area:                      288.000000
+Combinational area:               2727.000000
+Buf/Inv area:                      144.000000
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                  3060.000000
+Total cell area:                  2727.000000
 Total area:                 undefined
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
@@ -73,7 +73,7 @@ Report : power
         -analysis_effort low
 Design : incriment_state
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:56:33 2017
+Date   : Tue Apr 25 20:04:36 2017
 ****************************************
 
 
@@ -99,5 +99,5 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-incriment_state                           0.310    0.910    0.968    1.220 100.0
+incriment_state                           0.238    0.860    0.995    1.098 100.0
 1

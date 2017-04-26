@@ -48,6 +48,7 @@ create_clock "clk" -name "clk" -period 5.0
 Warning: Can't find object 'clk' in design 'incriment_state'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 # Step 3: Compile the design
+#compile -map_effort high -incremental_mapping
 compile -map_effort medium
 Information: Checking out the license 'DesignWare'. (SEC-104)
 Information: Evaluating DesignWare library utilization. (UISN-27)
@@ -69,10 +70,6 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 Information: Updating design information... (UID-85)
 Information: Design 'incriment_state' has no optimization constraints set. (OPT-108)
 
-  Beginning Implementation Selection
-  ----------------------------------
-  Processing 'incriment_state_DW01_inc_0'
-
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
   Structuring 'incriment_state'
@@ -82,18 +79,18 @@ Information: Design 'incriment_state' has no optimization constraints set. (OPT-
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
 
 
 
@@ -104,9 +101,9 @@ Information: Design 'incriment_state' has no optimization constraints set. (OPT-
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (cleanup)
@@ -116,17 +113,17 @@ Information: Design 'incriment_state' has no optimization constraints set. (OPT-
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
-    0:00:01    3060.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
+    0:00:00    2727.0      0.00       0.0       0.0                          
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 
 

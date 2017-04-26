@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : round_key_adder
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:54:01 2017
+Date   : Tue Apr 25 20:03:47 2017
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
@@ -37,7 +37,7 @@ Wire Load Model Mode: top
 Report : area
 Design : round_key_adder
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:54:01 2017
+Date   : Tue Apr 25 20:03:47 2017
 ****************************************
 
 Library(s) Used:
@@ -73,7 +73,7 @@ Report : power
         -analysis_effort low
 Design : round_key_adder
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 00:54:02 2017
+Date   : Tue Apr 25 20:03:47 2017
 ****************************************
 
 

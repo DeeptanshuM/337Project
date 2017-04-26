@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 23:18:46 on Apr 24,2017
+Start time: 20:04:18 on Apr 25,2017
 vlog -sv -work mapped_work mapped/inv_mix_columns.v 
 -- Compiling module inv_mix_columns
 
 Top level modules:
 	inv_mix_columns
-End time: 23:18:46 on Apr 24,2017, Elapsed time: 0:00:00
+End time: 20:04:18 on Apr 25,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0

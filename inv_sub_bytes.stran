@@ -1,0 +1,31 @@
+# //  Questa Sim-64
+# //  Version 10.3b linux_x86_64 May 29 2014
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps source_work/.inv_sub_bytes 
+# Start time: 20:20:05 on Apr 25,2017
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: source/inv_sub_bytes.sv(14): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(15): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(16): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(17): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(18): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(19): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(20): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(21): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(22): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(23): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(24): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(25): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(26): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(27): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(28): Module 'inv_s_box_lookup' is not defined.
+# ** Error: source/inv_sub_bytes.sv(29): Module 'inv_s_box_lookup' is not defined.
+# Optimization failed
+# Error loading design

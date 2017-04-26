@@ -25,7 +25,7 @@ Initializing gui preferences from file  /home/ecegrid/a/mg85/.synopsys_dv_prefs.
 # Step 1:  Read in the source file
 analyze -format sverilog -lib WORK { xor_init.sv}
 Running PRESTO HDLC
-Compiling source file ./xor_init.sv
+Compiling source file ./source/xor_init.sv
 Presto compilation completed successfully.
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 Loading db file '/package/eda/synopsys/syn-K-2015.06-SP1/libraries/syn/dw_foundation.sldb'
@@ -48,6 +48,7 @@ create_clock "clk" -name "clk" -period 5.0
 Warning: Can't find object 'clk' in design 'xor_init'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 # Step 3: Compile the design
+#compile -map_effort high -incremental_mapping
 compile -map_effort medium
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -154,7 +155,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     K-2015.06-SP1
-Date:        Mon Apr 24 23:18:50 2017
+Date:        Tue Apr 25 20:01:28 2017
 ****************************************
 
                    Name                                            Total

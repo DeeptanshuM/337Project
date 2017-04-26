@@ -13,15 +13,17 @@ module aes_encryption
    );
 
    //REGISTER DECLARATION
-   reg [4:0]     state_A,state_B,state_C;
-   reg [127:0]   block_A,block_B,block_C;
-   reg [127:0] 	 round_key_register;
+   reg [4:0] 	       state_A,state_B,state_C;
+   reg [127:0] 	       block_A,block_B,block_C;
    // DATA SELECT
    wire [4:0]  round_state_output; // output of final section
    wire [127:0]  round_block_output; // output of final section
    // SECTION A
    wire [4:0] 	 round_state_0;
    wire [127:0]  round_block_0_0,round_block_0_1,round_block_0_2;
+   // EXTRA REGISTER (Z)
+   reg [4:0] 	 round_state_0_Z;
+   reg [127:0]  round_block_0_1_Z;
    // SECTION B
    wire [4:0] 	 round_state_1;
    wire [127:0]  round_block_1_0,round_block_1_1,round_block_1_2;
@@ -44,7 +46,20 @@ module aes_encryption
 		      .i_round_key_0(round_key_0),
 		      .o_round_block(round_block_0_1));
 
-   sub_bytes SUB_BYTES (.i_data(round_block_0_1),
+   // *extra register (Z)*
+   always_ff @(posedge clk, negedge n_rst) begin
+      if (n_rst == 0)begin
+	 round_state_0_Z <= '0;
+	 round_block_0_1_Z <= '0;
+      end
+      else begin
+	 round_state_0_Z <= round_state_0;
+	 round_block_0_1_Z <= round_block_0_1;
+      end
+   end
+   
+
+   sub_bytes SUB_BYTES (.i_data(round_block_0_1_Z),
 			.o_data(round_block_0_2));
 
    // SECTION B
@@ -78,54 +93,54 @@ module aes_encryption
    assign data_done = round_state_output == 5'b11010;
 
    //KEY REGISTER
-   always_ff @(posedge clk, negedge n_rst) begin
-      if (1'b0 == n_rst)
-      	begin
-      	   round_key_register <= '0;
-      	end
-      else
-      	round_key_register <= round_key_input;
+   // always_ff @(posedge clk, negedge n_rst) begin
+   //    if (1'b0 == n_rst)
+   //    	begin
+   //    	   round_key_register <= '0;
+   //    	end
+   //    else
+   //    	round_key_register <= round_key_input;
 
-      // $info("fifo_in: %0h",fifo_in);
+   //    // $info("fifo_in: %0h",fifo_in);
       
-      // $info("state_A: %8b",state_A);
-      // $info("state_B: %8b",state_B);
-      // $info("state_C: %8b",state_C);
+   //    // $info("state_A: %8b",state_A);
+   //    // $info("state_B: %8b",state_B);
+   //    // $info("state_C: %8b",state_C);
 
-      // $info("next input key: %0h",round_key_input);
-      // $info("input key: %0h",round_key_register);
-      // $info("round-key-address: %0h",round_key_addr);
+   //    // $info("next input key: %0h",round_key_input);
+   //    // $info("input key: %0h",round_key_register);
+   //    // $info("round-key-address: %0h",round_key_addr);
 
-      // $info("block_A: %0h",block_A);
-      // $info("block_B: %0h",block_B);
-      // $info("block_C: %0h",block_C);
+   //    // $info("block_A: %0h",block_A);
+   //    // $info("block_B: %0h",block_B);
+   //    // $info("block_C: %0h",block_C);
 
-      // $info("output state: %0b",round_state_output);
-      // $info("output data: %0h",round_block_output);
+   //    // $info("output state: %0b",round_state_output);
+   //    // $info("output data: %0h",round_block_output);
 
-      // $info("round_state_0: %0b",round_state_0);
-      // $info("loaded_data: %16h",round_block_0_0);
-      // $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
-      // $info("post-subbytes-rows: %16h",round_block_0_2);
-      // $info("post-shift-rows/pre-mix-columns: %16h",round_block_1_1);
-      // $info("post-mix_columns: %16h",round_block_1_2);
-      // $info("pre-round_key_adder: %16h",round_block_2_0);
-      // $info("post-round_key_adder: %16h",round_block_2_1);
+   //    // $info("round_state_0: %0b",round_state_0);
+   //    // $info("loaded_data: %16h",round_block_0_0);
+   //    // $info("post-xor_init/pre-subbytes-rows: %16h",round_block_0_1);
+   //    // $info("post-subbytes-rows: %16h",round_block_0_2);
+   //    // $info("post-shift-rows/pre-mix-columns: %16h",round_block_1_1);
+   //    // $info("post-mix_columns: %16h",round_block_1_2);
+   //    // $info("pre-round_key_adder: %16h",round_block_2_0);
+   //    // $info("post-round_key_adder: %16h",round_block_2_1);
 
 
-      // $info("round_block_0_2: %16h",round_block_0_2);
+   //    // $info("round_block_0_2: %16h",round_block_0_2);
 
-      // $info("round_state_1: %0b",round_state_1);
-      //$info("pre-shift-rows: %16h",round_block_1_0);
+   //    // $info("round_state_1: %0b",round_state_1);
+   //    //$info("pre-shift-rows: %16h",round_block_1_0);
 
-      // $info("round_state_2_0: %0b",round_state_2_0);
-      // $info("round_state_2_1: %0b",round_state_2_1);
+   //    // $info("round_state_2_0: %0b",round_state_2_0);
+   //    // $info("round_state_2_1: %0b",round_state_2_1);
 
-      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
-      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
-      // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+   //    // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+   //    // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+   //    // $info("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
 
-   end
+   // end
 
    //BLOCK REGISTER NEXT STATE
    always_ff @(posedge clk, negedge n_rst) begin
@@ -168,7 +183,7 @@ module aes_encryption
 	begin
 	   state_C <= round_state_2_1;
 	   state_B <= round_state_1;
-	   state_A <= round_state_0;
+	   state_A <= round_state_0_Z;
 	end
    end
 

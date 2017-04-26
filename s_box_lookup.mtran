@@ -9,8 +9,8 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work/.s_box_lookup 
-# Start time: 23:14:14 on Apr 24,2017
-# ** Note: (vsim-3812) Design is being optimized...
+# Start time: 20:09:18 on Apr 25,2017
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
 # Loading sv_std.std
 # Loading work.s_box_lookup(fast)
 # Loading std.standard
@@ -30,5 +30,5 @@
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x1(behavioral)#1
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx1(behavioral)#1
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi21x1(behavioral)#1
-# End time: 23:14:18 on Apr 24,2017, Elapsed time: 0:00:04
+# End time: 20:09:22 on Apr 25,2017, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 0

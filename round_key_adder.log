@@ -48,6 +48,7 @@ create_clock "clk" -name "clk" -period 5.0
 Warning: Can't find object 'clk' in design 'round_key_adder'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 # Step 3: Compile the design
+#compile -map_effort high -incremental_mapping
 compile -map_effort medium
 Information: Evaluating DesignWare library utilization. (UISN-27)
 

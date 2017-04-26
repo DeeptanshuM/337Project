@@ -9,11 +9,10 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps source_work/.xor_init 
-# Start time: 00:46:36 on Apr 18,2017
+# Start time: 20:01:15 on Apr 25,2017
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.xor_init(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-# Window cannot be closed because the modal window "Quit Vsim" is still open.
-# End time: 00:46:42 on Apr 18,2017, Elapsed time: 0:00:06
-# Errors: 0, Warnings: 2
+# End time: 20:01:20 on Apr 25,2017, Elapsed time: 0:00:05
+# Errors: 0, Warnings: 1

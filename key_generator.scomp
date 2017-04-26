@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 03:59:38 on Apr 25,2017
+Start time: 20:08:21 on Apr 25,2017
 vlog -sv -work source_work source/key_generator.sv 
 -- Compiling module key_generator
 
 Top level modules:
 	key_generator
-End time: 03:59:38 on Apr 25,2017, Elapsed time: 0:00:00
+End time: 20:08:21 on Apr 25,2017, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0

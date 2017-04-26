@@ -8,7 +8,7 @@ Report : timing
         -max_paths 1
 Design : key_generator
 Version: K-2015.06-SP1
-Date   : Sun Apr 23 20:28:45 2017
+Date   : Tue Apr 25 20:10:59 2017
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -16,9 +16,9 @@ Date   : Sun Apr 23 20:28:45 2017
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: wordThree_reg[21]
+  Startpoint: wordThree_reg[19]
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: wordZero_reg[30]
+  Endpoint: wordThree_reg[25]
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
@@ -27,44 +27,48 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  wordThree_reg[21]/CLK (DFFSR)                           0.00 #     0.00 r
-  wordThree_reg[21]/Q (DFFSR)                             0.58       0.58 f
-  GFUNCTION/input_word[21] (g_function)                   0.00       0.58 f
-  GFUNCTION/SUBS0/input_word[5] (s_box_lookup_3)          0.00       0.58 f
-  GFUNCTION/SUBS0/U220/Y (INVX2)                          0.13       0.70 r
-  GFUNCTION/SUBS0/U196/Y (AND2X2)                         0.20       0.90 r
-  GFUNCTION/SUBS0/U44/Y (AND2X2)                          0.18       1.09 r
-  GFUNCTION/SUBS0/U25/Y (INVX4)                           0.19       1.27 f
-  GFUNCTION/SUBS0/U183/Y (INVX8)                          0.16       1.43 r
-  GFUNCTION/SUBS0/U254/Y (NAND2X1)                        0.13       1.57 f
-  GFUNCTION/SUBS0/U255/Y (INVX2)                          0.09       1.65 r
-  GFUNCTION/SUBS0/U257/Y (NOR2X1)                         0.15       1.80 f
-  GFUNCTION/SUBS0/U258/Y (OAI21X1)                        0.13       1.93 r
-  GFUNCTION/SUBS0/U262/Y (NOR2X1)                         0.17       2.10 f
-  GFUNCTION/SUBS0/U263/Y (NAND3X1)                        0.15       2.25 r
-  GFUNCTION/SUBS0/U605/Y (INVX2)                          0.11       2.36 f
-  GFUNCTION/SUBS0/U606/Y (NAND2X1)                        0.15       2.50 r
-  GFUNCTION/SUBS0/U607/Y (NOR3X1)                         0.16       2.67 f
-  GFUNCTION/SUBS0/U608/Y (NAND3X1)                        0.22       2.88 r
-  GFUNCTION/SUBS0/substituted_word[6] (s_box_lookup_3)
-                                                          0.00       2.88 r
-  GFUNCTION/U10/Y (XOR2X1)                                0.25       3.14 f
-  GFUNCTION/U16/Y (INVX4)                                 0.17       3.31 r
-  GFUNCTION/gee[30] (g_function)                          0.00       3.31 r
-  U6567/Y (XNOR2X1)                                       0.18       3.48 r
-  U7711/Y (AOI22X1)                                       0.13       3.62 f
-  U7712/Y (OAI21X1)                                       0.14       3.76 r
-  wordZero_reg[30]/D (DFFSR)                              0.00       3.76 r
-  data arrival time                                                  3.76
+  wordThree_reg[19]/CLK (DFFSR)                           0.00 #     0.00 r
+  wordThree_reg[19]/Q (DFFSR)                             0.58       0.58 f
+  GFUNCTION/input_word[19] (g_function)                   0.00       0.58 f
+  GFUNCTION/SUBS0/input_word[3] (s_box_lookup_3)          0.00       0.58 f
+  GFUNCTION/SUBS0/U197/Y (INVX2)                          0.17       0.74 r
+  GFUNCTION/SUBS0/U256/Y (AND2X2)                         0.20       0.94 r
+  GFUNCTION/SUBS0/U296/Y (NAND2X1)                        0.08       1.02 f
+  GFUNCTION/SUBS0/U28/Y (BUFX2)                           0.22       1.25 f
+  GFUNCTION/SUBS0/U27/Y (INVX4)                           0.19       1.44 r
+  GFUNCTION/SUBS0/U389/Y (NAND2X1)                        0.13       1.57 f
+  GFUNCTION/SUBS0/U88/Y (AND2X2)                          0.22       1.78 f
+  GFUNCTION/SUBS0/U248/Y (NAND2X1)                        0.10       1.88 r
+  GFUNCTION/SUBS0/U339/Y (NOR2X1)                         0.15       2.03 f
+  GFUNCTION/SUBS0/U12/Y (AND2X2)                          0.24       2.27 f
+  GFUNCTION/SUBS0/U330/Y (NAND3X1)                        0.12       2.39 r
+  GFUNCTION/SUBS0/U241/Y (NOR2X1)                         0.13       2.52 f
+  GFUNCTION/SUBS0/U173/Y (NAND2X1)                        0.12       2.64 r
+  GFUNCTION/SUBS0/U172/Y (NOR2X1)                         0.18       2.83 f
+  GFUNCTION/SUBS0/U266/Y (NAND2X1)                        0.16       2.99 r
+  GFUNCTION/SUBS0/U293/Y (NOR2X1)                         0.12       3.11 f
+  GFUNCTION/SUBS0/U47/Y (NAND2X1)                         0.18       3.30 r
+  GFUNCTION/SUBS0/substituted_word[1] (s_box_lookup_3)
+                                                          0.00       3.30 r
+  GFUNCTION/U7/Y (XOR2X1)                                 0.24       3.53 f
+  GFUNCTION/gee[25] (g_function)                          0.00       3.53 f
+  U8068/Y (XOR2X1)                                        0.27       3.81 f
+  U8066/Y (XOR2X1)                                        0.25       4.06 f
+  U7295/Y (XOR2X1)                                        0.28       4.34 f
+  U2498/Y (OAI21X1)                                       0.16       4.50 r
+  U2497/Y (AOI22X1)                                       0.12       4.62 f
+  U7290/Y (NAND2X1)                                       0.16       4.78 r
+  wordThree_reg[25]/D (DFFSR)                             0.00       4.78 r
+  data arrival time                                                  4.78
 
-  clock clk (rise edge)                                   4.00       4.00
-  clock network delay (ideal)                             0.00       4.00
-  wordZero_reg[30]/CLK (DFFSR)                            0.00       4.00 r
-  library setup time                                     -0.24       3.76
-  data required time                                                 3.76
+  clock clk (rise edge)                                   5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  wordThree_reg[25]/CLK (DFFSR)                           0.00       5.00 r
+  library setup time                                     -0.22       4.78
+  data required time                                                 4.78
   --------------------------------------------------------------------------
-  data required time                                                 3.76
-  data arrival time                                                 -3.76
+  data required time                                                 4.78
+  data arrival time                                                 -4.78
   --------------------------------------------------------------------------
   slack (MET)                                                        0.00
 
@@ -75,29 +79,29 @@ Wire Load Model Mode: top
 Report : area
 Design : key_generator
 Version: K-2015.06-SP1
-Date   : Sun Apr 23 20:28:45 2017
+Date   : Tue Apr 25 20:10:59 2017
 ****************************************
 
 Library(s) Used:
 
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
-Number of ports:                          528
-Number of nets:                         11722
-Number of cells:                        11456
-Number of combinational cells:           8233
-Number of sequential cells:              3218
+Number of ports:                          656
+Number of nets:                         12872
+Number of cells:                        12606
+Number of combinational cells:           8999
+Number of sequential cells:              3602
 Number of macros/black boxes:               0
-Number of buf/inv:                       3010
+Number of buf/inv:                       3121
 Number of references:                      24
 
-Combinational area:            2132901.000000
-Buf/Inv area:                   498528.000000
-Noncombinational area:         2557872.000000
+Combinational area:            2244861.000000
+Buf/Inv area:                   508824.000000
+Noncombinational area:         2871216.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:               4690773.000000
+Total cell area:               5116077.000000
 Total area:                 undefined
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
@@ -111,7 +115,7 @@ Report : power
         -analysis_effort low
 Design : key_generator
 Version: K-2015.06-SP1
-Date   : Sun Apr 23 20:28:46 2017
+Date   : Tue Apr 25 20:11:00 2017
 ****************************************
 
 
@@ -137,10 +141,10 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-key_generator                           114.271  964.296 1.45e+03 1.08e+03 100.0
-  GFUNCTION (g_function)                 25.502   16.912  185.726   42.414   3.9
-    SUBS3 (s_box_lookup_0)                6.213    4.163   47.240   10.376   1.0
-    SUBS2 (s_box_lookup_1)                6.301    4.212   46.984   10.513   1.0
-    SUBS1 (s_box_lookup_2)                6.213    3.973   45.106   10.186   0.9
-    SUBS0 (s_box_lookup_3)                5.816    3.777   44.278    9.593   0.9
+key_generator                            84.627  863.879 1.57e+03  948.508 100.0
+  GFUNCTION (g_function)                 13.868    9.260  178.582   23.128   2.4
+    SUBS3 (s_box_lookup_0)                3.287    2.139   43.089    5.426   0.6
+    SUBS2 (s_box_lookup_1)                3.314    2.175   43.826    5.489   0.6
+    SUBS1 (s_box_lookup_2)                3.357    2.235   43.936    5.592   0.6
+    SUBS0 (s_box_lookup_3)                3.689    2.412   46.227    6.102   0.6
 1

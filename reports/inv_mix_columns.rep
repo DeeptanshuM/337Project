@@ -8,24 +8,30 @@ Report : timing
         -max_paths 1
 Design : inv_mix_columns
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:18:29 2017
+Date   : Tue Apr 25 20:04:15 2017
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: MC_B0/o_data[127] (internal pin)
+  Startpoint: i_state[2] (input port)
   Endpoint: o_data[127]
             (output port)
   Path Group: (none)
   Path Type: max
 
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  MC_B0/o_data[127] (mix_columns_byte)                    0.00       0.00 r
-  o_data[127] (out)                                       0.00       0.00 r
-  data arrival time                                                  0.00
-  --------------------------------------------------------------------------
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  i_state[2] (in)                          0.00       0.00 r
+  U529/Y (NOR2X1)                          0.14       0.14 f
+  U528/Y (NAND3X1)                         0.38       0.52 r
+  U270/Y (BUFX2)                           0.64       1.16 r
+  U467/Y (MUX2X1)                          0.31       1.47 f
+  U466/Y (INVX1)                           0.05       1.52 r
+  o_data[127] (out)                        0.00       1.52 r
+  data arrival time                                   1.52
+  -----------------------------------------------------------
   (Path is unconstrained)
 
 
@@ -36,33 +42,34 @@ Warning: Design 'inv_mix_columns' has '1' unresolved references. For more detail
 Report : area
 Design : inv_mix_columns
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:18:29 2017
+Date   : Tue Apr 25 20:04:15 2017
 ****************************************
 
 Library(s) Used:
 
-    No libraries used.
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
-Number of ports:                          256
-Number of nets:                           259
-Number of cells:                           19
-Number of combinational cells:              0
+Number of ports:                          261
+Number of nets:                           531
+Number of cells:                          287
+Number of combinational cells:            268
 Number of sequential cells:                19
 Number of macros/black boxes:               0
-Number of buf/inv:                          0
-Number of references:                       1
+Number of buf/inv:                        138
+Number of references:                       6
 
-Combinational area:                  0.000000
-Buf/Inv area:                        0.000000
+Combinational area:              76428.000000
+Buf/Inv area:                    20592.000000
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                     0.000000
+Total cell area:                 76428.000000
 Total area:                 undefined
 
 Information: This design contains black box (unknown) components. (RPT-8)
 1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: There is no defined clock in the design. (PWR-80)
 Warning: Design has unannotated primary inputs. (PWR-414)
@@ -74,13 +81,13 @@ Report : power
         -analysis_effort low
 Design : inv_mix_columns
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:18:29 2017
+Date   : Tue Apr 25 20:04:16 2017
 ****************************************
 
 
 Library(s) Used:
 
-    No libraries used.
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
 
 Operating Conditions: typical   Library: osu05_stdcells
@@ -100,5 +107,5 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-inv_mix_columns                           0.000    0.000    0.000    0.000   N/A
+inv_mix_columns                          15.280   18.609   21.513   33.889 100.0
 1

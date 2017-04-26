@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : inv_s_box_lookup
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:17:30 2017
+Date   : Tue Apr 25 20:02:50 2017
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
@@ -52,7 +52,7 @@ Wire Load Model Mode: top
 Report : area
 Design : inv_s_box_lookup
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:17:30 2017
+Date   : Tue Apr 25 20:02:50 2017
 ****************************************
 
 Library(s) Used:
@@ -88,7 +88,7 @@ Report : power
         -analysis_effort low
 Design : inv_s_box_lookup
 Version: K-2015.06-SP1
-Date   : Mon Apr 24 23:17:30 2017
+Date   : Tue Apr 25 20:02:50 2017
 ****************************************
 
 

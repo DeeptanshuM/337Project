@@ -1,6 +1,6 @@
 # Step 1:  Read in the source file
-analyze -format sverilog -lib WORK { sub_bytes.sv}
-elaborate sub_bytes -lib WORK
+analyze -format sverilog -lib WORK { aes_decryption.sv}
+elaborate aes_decryption -lib WORK
 uniquify
 # Step 2: Set design constraints
 # Uncomment below to set timing, area, power, etc. constraints
@@ -14,12 +14,12 @@ uniquify
 compile -map_effort medium
 
 # Step 4: Output reports
-report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/sub_bytes.rep
-report_area >> reports/sub_bytes.rep
-report_power -hier >> reports/sub_bytes.rep
+report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/aes_decryption.rep
+report_area >> reports/aes_decryption.rep
+report_power -hier >> reports/aes_decryption.rep
 
 # Step 5: Output final VHDL and Verilog files
-write_file -format verilog -hierarchy -output "mapped/sub_bytes.v"
+write_file -format verilog -hierarchy -output "mapped/aes_decryption.v"
 echo "\nScript Done\n"
 echo "\nChecking Design\n"
 check_design

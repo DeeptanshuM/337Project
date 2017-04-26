@@ -1,9 +1,9 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 00:54:05 on Apr 18,2017
+Start time: 20:03:51 on Apr 25,2017
 vlog -sv -work mapped_work mapped/round_key_adder.v 
 -- Compiling module round_key_adder
 
 Top level modules:
 	round_key_adder
-End time: 00:54:05 on Apr 18,2017, Elapsed time: 0:00:00
+End time: 20:03:52 on Apr 25,2017, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0

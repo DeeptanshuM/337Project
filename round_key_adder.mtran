@@ -9,7 +9,7 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work/.round_key_adder 
-# Start time: 00:54:10 on Apr 18,2017
+# Start time: 20:03:55 on Apr 25,2017
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.round_key_adder(fast)
@@ -20,5 +20,5 @@
 # Loading ieee.vital_primitives(body)
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.prim(body)
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.xor2x1(behavioral)#1
-# End time: 00:54:19 on Apr 18,2017, Elapsed time: 0:00:09
+# End time: 20:03:58 on Apr 25,2017, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0

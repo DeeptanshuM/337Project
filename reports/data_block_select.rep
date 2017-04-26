@@ -7,15 +7,15 @@ Report : timing
         -max_paths 1
 Design : data_block_select
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 02:00:08 2017
+Date   : Tue Apr 25 20:00:37 2017
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: i_read_fifo
+  Startpoint: i_round_state[4]
               (input port)
-  Endpoint: o_state_out[4]
+  Endpoint: o_block_out[127]
             (output port)
   Path Group: (none)
   Path Type: max
@@ -23,11 +23,14 @@ Wire Load Model Mode: top
   Point                                    Incr       Path
   -----------------------------------------------------------
   input external delay                     0.00       0.00 r
-  i_read_fifo (in)                         0.00       0.00 r
-  U269/Y (INVX1)                           0.26       0.26 f
-  U264/Y (AND2X1)                          0.21       0.48 f
-  o_state_out[4] (out)                     0.00       0.48 f
-  data arrival time                                   0.48
+  i_round_state[4] (in)                    0.00       0.00 r
+  U540/Y (INVX1)                           0.12       0.12 f
+  U539/Y (NAND2X1)                         0.39       0.51 r
+  U275/Y (BUFX2)                           0.64       1.15 r
+  U478/Y (MUX2X1)                          0.31       1.46 f
+  U477/Y (INVX1)                           0.05       1.50 r
+  o_block_out[127] (out)                   0.00       1.50 r
+  data arrival time                                   1.50
   -----------------------------------------------------------
   (Path is unconstrained)
 
@@ -38,7 +41,7 @@ Wire Load Model Mode: top
 Report : area
 Design : data_block_select
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 02:00:08 2017
+Date   : Tue Apr 25 20:00:37 2017
 ****************************************
 
 Library(s) Used:
@@ -46,21 +49,21 @@ Library(s) Used:
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
 Number of ports:                          395
-Number of nets:                           524
-Number of cells:                          262
-Number of combinational cells:            262
+Number of nets:                           536
+Number of cells:                          274
+Number of combinational cells:            274
 Number of sequential cells:                 0
 Number of macros/black boxes:               0
-Number of buf/inv:                        129
-Number of references:                       3
+Number of buf/inv:                        140
+Number of references:                       5
 
-Combinational area:              75312.000000
-Buf/Inv area:                    18576.000000
+Combinational area:              77832.000000
+Buf/Inv area:                    20952.000000
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                 75312.000000
+Total cell area:                 77832.000000
 Total area:                 undefined
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
@@ -74,7 +77,7 @@ Report : power
         -analysis_effort low
 Design : data_block_select
 Version: K-2015.06-SP1
-Date   : Tue Apr 18 02:00:08 2017
+Date   : Tue Apr 25 20:00:37 2017
 ****************************************
 
 
@@ -100,5 +103,5 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-data_block_select                         3.876   19.244   21.189   23.120 100.0
+data_block_select                         9.871   23.920   22.073   33.791 100.0
 1
