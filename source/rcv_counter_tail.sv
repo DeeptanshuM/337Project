@@ -25,7 +25,7 @@ module rcv_counter_tail (
 	end
 	always_comb begin
 		temp_tail_tog = tail_tog;
-		if (rollover_flag) begin
+		if ((2'b10 == head_ptr) && (count_en2 == 1'b1)) begin
 			temp_tail_tog = ~tail_tog;
 		end
 	end

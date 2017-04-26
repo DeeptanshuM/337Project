@@ -25,7 +25,7 @@ module rcv_counter_head (
 	end
 	always_comb begin
 		temp_head_tog = head_tog;
-		if (rollover_flag) begin
+		if ((2'b10 == head_ptr) && (rcv_deq == 1'b1)) begin
 			temp_head_tog = ~head_tog;
 		end
 	end
