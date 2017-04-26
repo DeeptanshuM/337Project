@@ -27,7 +27,7 @@ reg tb_read_fifo;
 reg tb_rcv_deq;
 reg tb_trans_enq;
 reg tb_mcu_key_in;
-reg [3:0] tb_status_bit;
+reg [3:0] tb_status_bits;
 
 // DUT portmap
 MCU djkdfsajkhhjksdajk
