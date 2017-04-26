@@ -8,7 +8,7 @@
 module tb_MCU();
 
 parameter CLK_PERIOD = 5;
-integer tb_test_case_num;
+integer tb_test_num;
 
 reg tb_clk;
 reg tb_n_reset;
@@ -76,8 +76,21 @@ begin
 end
 endtask
 
-initial begin
+task is_status_bits_After_reset;
+        begin
+                assert if(tb_status_bits == 4'b0100)
+                begin
+                        $info("Test Case #%0d: Had correct status bits after reset", tb_test_num);
+                end else begin
+                        $error("Test Case #%0d: Had incorrect status bits after reset", tb_test_num);
+                end
+        end
 
+initial begin
+	//UNO: test after reset
+	tb_test_num = tb_test_num + 1;
+	reset_dut;
+	is_status_bits_After_reset;
 end
 
 endmodule
