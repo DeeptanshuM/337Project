@@ -1,0 +1,9 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+create_rc_corner -name osu05 -cap_table {osu05.capTbl} -T {30} -preRoute_res {1.0} -preRoute_cap {1.0} -preRoute_clkres {0.0} -preRoute_clkcap {0.0} -postRoute_res {1.0} -postRoute_cap {1.0} -postRoute_xcap {1.0} -postRoute_clkres {0.0} -postRoute_clkcap {0.0}
+create_op_cond -name osu05 -library_file {/package/eda/cells/OSU/v2.7/cadence/lib/ami05/signalstorm/osu05_stdcells.lib} -P {1.0} -V {5.0} -T {30.0}
+create_library_set -name OSUv2.7 -timing {/package/eda/cells/OSU/v2.7/cadence/lib/ami05/signalstorm/osu05_stdcells.lib}
+create_constraint_mode -name osu05 -sdc_files {prects.sdc postcts.sdc}
+create_delay_corner -name osu05 -library_set {OSUv2.7} -rc_corner {osu05}
+create_analysis_view -name osu05 -constraint_mode {osu05} -delay_corner {osu05}
+set_analysis_view -setup {osu05} -hold {osu05}

@@ -153,7 +153,7 @@ Presto compilation completed successfully.
 Information: Building the design 'ahb_slave'. (HDL-193)
 
 Inferred memory devices in process
-	in routine ahb_slave line 43 in file
+	in routine ahb_slave line 45 in file
 		'./source/ahb_slave.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -168,7 +168,17 @@ Presto compilation completed successfully.
 Information: Building the design 'aes_encryption'. (HDL-193)
 
 Inferred memory devices in process
-	in routine aes_encryption line 131 in file
+	in routine aes_encryption line 50 in file
+		'./source/aes_encryption.sv'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+| round_block_0_1_Z_reg | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
+|  round_state_0_Z_reg  | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine aes_encryption line 146 in file
 		'./source/aes_encryption.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -179,7 +189,7 @@ Inferred memory devices in process
 ===============================================================================
 
 Inferred memory devices in process
-	in routine aes_encryption line 153 in file
+	in routine aes_encryption line 168 in file
 		'./source/aes_encryption.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -188,72 +198,63 @@ Inferred memory devices in process
 |     state_A_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
 |     state_B_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
 ===============================================================================
-Warning:  ./source/aes_encryption.sv:81: Netlist for always_ff block is empty. (ELAB-984)
 Presto compilation completed successfully.
 Information: Building the design 'aes_decryption'. (HDL-193)
 
 Inferred memory devices in process
-	in routine aes_decryption line 47 in file
+	in routine aes_decryption line 51 in file
 		'./source/aes_decryption.sv'.
 =================================================================================
 |     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 =================================================================================
-| round_block_0_1_b_reg | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+| round_block_0_1_Z_reg | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
+|  round_state_0_Z_reg  | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
 =================================================================================
 
 Inferred memory devices in process
-	in routine aes_decryption line 51 in file
+	in routine aes_decryption line 116 in file
 		'./source/aes_decryption.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
-| round_state_0_b_reg | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     block_C_reg     | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
+|     block_A_reg     | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
+|     block_B_reg     | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
 ===============================================================================
 
 Inferred memory devices in process
-	in routine aes_decryption line 110 in file
+	in routine aes_decryption line 138 in file
 		'./source/aes_decryption.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
-|     block_C_reg     | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
-|     block_A_reg     | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
-|     block_B_reg     | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-
-Inferred memory devices in process
-	in routine aes_decryption line 126 in file
-		'./source/aes_decryption.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|     state_C_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
-|     state_A_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
-|     state_B_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|     state_C_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     state_A_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     state_B_reg     | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
 ===============================================================================
 Presto compilation completed successfully.
 Information: Building the design 'g_function'. (HDL-193)
 Presto compilation completed successfully.
 Information: Building the design 'ahb_regs'. (HDL-193)
 
-Statistics for case statements in always block at line 72 in file
+Statistics for case statements in always block at line 73 in file
 	'./source/ahb_regs.sv'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            74            |     no/auto      |
+|            75            |     no/auto      |
 ===============================================
 
-Statistics for case statements in always block at line 121 in file
+Statistics for case statements in always block at line 122 in file
 	'./source/ahb_regs.sv'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|           124            |     no/auto      |
+|           125            |     no/auto      |
 ===============================================
 
 Inferred memory devices in process
-	in routine ahb_regs line 50 in file
+	in routine ahb_regs line 51 in file
 		'./source/ahb_regs.sv'.
 ================================================================================
 |    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -265,7 +266,7 @@ Inferred memory devices in process
 ================================================================================
 
 Inferred memory devices in process
-	in routine ahb_regs line 64 in file
+	in routine ahb_regs line 65 in file
 		'./source/ahb_regs.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -465,15 +466,26 @@ Inferred memory devices in process
 Presto compilation completed successfully.
 Information: Building the design 'mix_columns_byte'. (HDL-193)
 Presto compilation completed successfully.
+Information: Building the design 'inv_s_box_lookup'. (HDL-193)
+
+Statistics for case statements in always block at line 14 in file
+	'./source/inv_s_box_lookup.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            15            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
 uniquify
 Information: Uniquified 2 instances of design 'data_block_select'. (OPT-1056)
 Information: Uniquified 2 instances of design 'xor_init'. (OPT-1056)
 Information: Uniquified 2 instances of design 'round_key_adder'. (OPT-1056)
 Information: Uniquified 2 instances of design 'incriment_state'. (OPT-1056)
-Information: Uniquified 4 instances of design 's_box_lookup'. (OPT-1056)
+Information: Uniquified 20 instances of design 's_box_lookup'. (OPT-1056)
 Information: Uniquified 4 instances of design 'fifo_flex_counter_NUM_CNT_BITS2'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fifo_flex_counter_NUM_CNT_BITS3'. (OPT-1056)
 Information: Uniquified 32 instances of design 'mix_columns_byte'. (OPT-1056)
+Information: Uniquified 16 instances of design 'inv_s_box_lookup'. (OPT-1056)
 # Step 2: Set design constraints
 # Uncomment below to set timing, area, power, etc. constraints
 # set_max_delay <delay> -from "<input>" -to "<output>"
@@ -494,13 +506,13 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
-Information: There are 915 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 919 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 's_box_lookup_0'
+  Processing 's_box_lookup_16'
   Processing 'g_function'
   Processing 'key_generator'
 Information: Added key list 'DesignWare' to design 'key_generator'. (DDB-72)
@@ -509,6 +521,7 @@ Information: Added key list 'DesignWare' to design 'incriment_state_0'. (DDB-72)
   Processing 'mix_columns_byte_0'
   Processing 'inv_mix_columns'
   Processing 'round_key_adder_0'
+  Processing 'inv_s_box_lookup_0'
   Processing 'inv_sub_bytes'
   Processing 'inv_shift_rows'
   Processing 'xor_init_0'
@@ -586,47 +599,45 @@ Information: Updating design information... (UID-85)
 Information: Added key list 'DesignWare' to design 'ahb_regs'. (DDB-72)
   Mapping Optimization (Phase 1)
   Mapping Optimization (Phase 2)
-  Mapping Optimization (Phase 3)
-  Mapping Optimization (Phase 4)
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:01:13 17462250.0     14.01   14796.6     158.5                          
-    0:01:13 17462250.0     14.01   14796.6     158.5                          
-    0:01:13 17559306.0     14.01   14794.2     142.6                          
-    0:01:21 18555606.0      1.24     192.1       4.7                          
-    0:01:21 18555606.0      1.24     192.1       4.7                          
-    0:01:21 18555606.0      1.24     192.1       4.7                          
-    0:01:22 18555606.0      1.24     191.8       4.6                          
-    0:01:22 18555606.0      1.24     191.8       4.6                          
-    0:01:27 17836758.0      2.21     322.1       4.6                          
-    0:01:29 17854398.0      1.92     239.1       4.6                          
-    0:01:30 17855838.0      1.51     218.4       4.6                          
-    0:01:31 17857782.0      1.33     212.1       4.6                          
-    0:01:32 17859654.0      1.31     198.2       4.6                          
-    0:01:33 17863254.0      1.15     183.5       4.6                          
-    0:01:34 17863542.0      1.12     181.0       4.6                          
-    0:01:35 17865414.0      1.07     178.5       4.6                          
-    0:01:36 17867286.0      1.06     172.9       4.6                          
-    0:01:37 17868366.0      1.06     174.0       4.6                          
-    0:01:38 17870886.0      1.02     168.7       4.6                          
-    0:01:39 17871678.0      1.00     167.9       4.6                          
-    0:01:39 17873694.0      0.99     167.3       4.6                          
-    0:01:40 17875278.0      0.98     166.1       4.6                          
-    0:01:41 17876358.0      0.98     165.4       4.6                          
-    0:01:41 17878590.0      0.96     164.5       4.6                          
-    0:01:42 17880246.0      0.95     164.1       4.6                          
-    0:01:43 17881542.0      0.94     162.0       4.6                          
-    0:01:43 17883306.0      0.94     161.5       4.6                          
-    0:01:44 17883306.0      0.94     161.5       4.6                          
-    0:01:44 17883306.0      0.94     161.5       4.6                          
-    0:01:44 17891946.0      0.93     157.7       0.3                          
-    0:01:45 17895402.0      0.93     157.2       0.0                          
-    0:01:45 17895402.0      0.93     157.2       0.0                          
-    0:01:45 17895402.0      0.93     157.2       0.0                          
-    0:01:45 17895402.0      0.93     157.2       0.0                          
+    0:00:31 18326394.0     14.05   16976.1     157.0                          
+    0:00:31 18326394.0     14.05   16976.1     157.0                          
+    0:00:31 18424170.0     14.05   16976.1     127.0                          
+    0:00:39 19324962.0      0.31      15.7       7.0                          
+    0:00:39 19324962.0      0.31      15.7       7.0                          
+    0:00:39 19324962.0      0.31      15.7       7.0                          
+    0:00:39 19324962.0      0.31      15.7       7.0                          
+    0:00:39 19324962.0      0.31      15.7       7.0                          
+    0:00:44 18591858.0      0.68      31.8       7.0                          
+    0:00:44 18595386.0      0.47      21.8       7.0                          
+    0:00:45 18595530.0      0.38      19.6       7.0                          
+    0:00:46 18596754.0      0.37      17.8       7.0                          
+    0:00:47 18597330.0      0.29      17.2       7.0                          
+    0:00:48 18597834.0      0.27      15.4       7.0                          
+    0:00:49 18598482.0      0.26      15.6       7.0                          
+    0:00:49 18599562.0      0.24      14.5       7.0                          
+    0:00:50 18599850.0      0.22      13.6       7.0                          
+    0:00:51 18600786.0      0.29      13.6       6.9                          
+    0:00:52 18601974.0      0.21      12.2       6.9                          
+    0:00:52 18602694.0      0.20      11.5       6.9                          
+    0:00:53 18604278.0      0.17      10.7       6.9                          
+    0:00:54 18605466.0      0.17       9.5       6.9                          
+    0:00:54 18606186.0      0.16       8.5       6.8                          
+    0:00:55 18607302.0      0.15       8.2       6.8                          
+    0:00:56 18607446.0      0.14       8.1       6.8                          
+    0:00:56 18607734.0      0.14       7.9       6.8                          
+    0:00:57 18608670.0      0.14       7.6       6.8                          
+    0:00:57 18608670.0      0.14       7.6       6.8                          
+    0:00:57 18608670.0      0.14       7.6       6.8                          
+    0:00:58 18617310.0      0.14       3.5       0.3                          
+    0:00:58 18619038.0      0.14       3.5       0.0                          
+    0:00:58 18619038.0      0.14       3.5       0.0                          
+    0:00:58 18619038.0      0.14       3.5       0.0                          
+    0:00:58 18619038.0      0.14       3.5       0.0                          
 
 
 
@@ -637,563 +648,28 @@ Information: Added key list 'DesignWare' to design 'ahb_regs'. (DDB-72)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:01:45 17895402.0      0.93     157.2       0.0                          
-    0:01:45 17899218.0      0.90     154.5       0.0 KEYGEN/wordThree_reg[25]/D
-    0:01:45 17904267.0      0.85     151.0       0.0 AES/E_AES/block_A_reg[63]/D
-    0:01:45 17905212.0      0.83     149.5       0.0 AES/E_AES/block_A_reg[73]/D
-    0:01:46 17906760.0      0.82     147.4       0.0 KEYGEN/wordThree_reg[29]/D
-    0:01:46 17908560.0      0.81     145.9       0.0 AES/E_AES/block_A_reg[3]/D
-    0:01:46 17910162.0      0.80     145.8       0.0 AES/E_AES/block_A_reg[75]/D
-    0:01:46 17909910.0      0.80     145.4       0.0 AES/E_AES/block_A_reg[96]/D
-    0:01:46 17912259.0      0.79     144.6       0.0 AES/E_AES/block_A_reg[85]/D
-    0:01:46 17913645.0      0.78     144.0       0.0 AES/E_AES/block_A_reg[31]/D
-    0:01:46 17915094.0      0.78     143.4       0.0 AES/E_AES/block_A_reg[43]/D
-    0:01:46 17916831.0      0.77     141.9       0.0 AES/E_AES/block_A_reg[12]/D
-    0:01:46 17916984.0      0.77     141.2       0.0 AES/E_AES/block_A_reg[59]/D
-    0:01:46 17918946.0      0.77     140.6       0.0 AES/E_AES/block_A_reg[12]/D
-    0:01:47 17920251.0      0.76     140.2       0.0 AES/E_AES/block_A_reg[57]/D
-    0:01:47 17922438.0      0.76     139.4       0.0 AES/E_AES/block_A_reg[59]/D
-    0:01:47 17925192.0      0.75     138.5       0.0 AES/E_AES/block_A_reg[76]/D
-    0:01:47 17925129.0      0.75     138.1       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:47 17926650.0      0.74     137.5       0.0 AES/E_AES/block_A_reg[57]/D
-    0:01:47 17927748.0      0.74     137.1       0.0 AES/E_AES/block_A_reg[95]/D
-    0:01:47 17931294.0      0.73     136.7       0.0 AES/E_AES/block_A_reg[35]/D
-    0:01:47 17933742.0      0.72     135.4       0.0 AES/E_AES/block_A_reg[12]/D
-    0:01:47 17934723.0      0.72     134.7       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:47 17936028.0      0.72     134.4       0.0 AES/E_AES/block_A_reg[21]/D
-    0:01:48 17937117.0      0.71     133.7       0.0 AES/E_AES/block_A_reg[51]/D
-    0:01:48 17938917.0      0.71     133.4       0.0 AES/E_AES/block_A_reg[31]/D
-    0:01:48 17940033.0      0.70     132.6       0.0 AES/E_AES/block_A_reg[57]/D
-    0:01:48 17941419.0      0.70     132.1       0.0 AES/E_AES/block_A_reg[75]/D
-    0:01:48 17943219.0      0.70     131.5       0.0 AES/E_AES/block_A_reg[85]/D
-    0:01:48 17944587.0      0.69     131.0       0.0 AES/E_AES/block_A_reg[91]/D
-    0:01:48 17946819.0      0.69     130.6       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:48 17949060.0      0.68     129.3       0.0 AES/E_AES/block_A_reg[115]/D
-    0:01:49 17950149.0      0.68     128.6       0.0 AES/E_AES/block_A_reg[8]/D
-    0:01:49 17953758.0      0.67     128.0       0.0 AES/E_AES/block_A_reg[67]/D
-    0:01:49 17954487.0      0.67     127.5       0.0 KEYGEN/wordThree_reg[29]/D
-    0:01:49 17955531.0      0.67     127.1       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:49 17958276.0      0.66     126.7       0.0 AES/E_AES/block_A_reg[59]/D
-    0:01:49 17959068.0      0.66     126.3       0.0 AES/E_AES/block_A_reg[109]/D
-    0:01:49 17960661.0      0.66     126.0       0.0 AES/E_AES/block_A_reg[31]/D
-    0:01:49 17963010.0      0.65     125.0       0.0 AES/E_AES/block_A_reg[115]/D
-    0:01:49 17964837.0      0.65     124.7       0.0 AES/E_AES/block_A_reg[3]/D
-    0:01:49 17964837.0      0.65     124.6       0.0 AES/E_AES/block_A_reg[51]/D
-    0:01:50 17965917.0      0.65     124.2       0.0 AES/E_AES/block_A_reg[67]/D
-    0:01:50 17966277.0      0.65     123.5       0.0 AES/E_AES/block_A_reg[123]/D
-    0:01:50 17966745.0      0.64     120.8       0.0 AES/E_AES/block_A_reg[69]/D
-    0:01:50 17968158.0      0.63     119.4       0.0 KEYGEN/wordThree_reg[28]/D
-    0:01:50 17970201.0      0.62     119.2       0.0 AES/E_AES/block_A_reg[43]/D
-    0:01:50 17971605.0      0.62     118.6       0.0 AES/E_AES/block_A_reg[83]/D
-    0:01:50 17972685.0      0.62     118.1       0.0 AES/E_AES/block_A_reg[9]/D
-    0:01:50 17973477.0      0.61     117.5       0.0 AES/E_AES/block_A_reg[45]/D
-    0:01:50 17974485.0      0.61     117.0       0.0 AES/E_AES/block_A_reg[121]/D
-    0:01:50 17975925.0      0.61     116.9       0.0 AES/E_AES/block_A_reg[115]/D
-    0:01:51 17976429.0      0.60     116.3       0.0 AES/E_AES/block_A_reg[21]/D
-    0:01:51 17978310.0      0.60     115.8       0.0 KEYGEN/wordThree_reg[30]/D
-    0:01:51 17980488.0      0.60     115.6       0.0 AES/E_AES/block_A_reg[23]/D
-    0:01:51 17981676.0      0.59     115.2       0.0 AES/E_AES/block_A_reg[107]/D
-    0:01:51 17982648.0      0.59     115.0       0.0 AES/E_AES/block_A_reg[64]/D
-    0:01:51 17985114.0      0.59     114.2       0.0 AES/E_AES/block_A_reg[96]/D
-    0:01:51 17986626.0      0.58     113.5       0.0 AES/E_AES/block_A_reg[127]/D
-    0:01:51 17988210.0      0.58     113.2       0.0 AES/E_AES/block_A_reg[98]/D
-    0:01:51 17988219.0      0.57     112.9       0.0 AES/E_AES/block_A_reg[67]/D
-    0:01:52 17989020.0      0.57     112.7       0.0 AES/E_AES/block_A_reg[35]/D
-    0:01:52 17991405.0      0.57     111.5       0.0 AES/E_AES/block_A_reg[127]/D
-    0:01:52 17993241.0      0.57     111.2       0.0 AES/E_AES/block_A_reg[104]/D
-    0:01:52 17994762.0      0.57     111.1       0.0 AES/E_AES/block_A_reg[25]/D
-    0:01:52 17995554.0      0.57     111.1       0.0 AES/E_AES/block_A_reg[9]/D
-    0:01:52 17996787.0      0.57     110.8       0.0 AES/E_AES/block_A_reg[84]/D
-    0:01:52 17996859.0      0.56     110.6       0.0 AES/E_AES/block_A_reg[37]/D
-    0:01:52 17998128.0      0.56     110.4       0.0 AES/E_AES/block_A_reg[29]/D
-    0:01:52 17999649.0      0.56     110.0       0.0 AES/E_AES/block_A_reg[43]/D
-    0:01:52 18001026.0      0.56     109.7       0.0 AES/E_AES/block_A_reg[47]/D
-    0:01:52 18002223.0      0.55     109.3       0.0 AES/E_AES/block_A_reg[113]/D
-    0:01:53 18003384.0      0.55     109.1       0.0 AES/E_AES/block_A_reg[15]/D
-    0:01:53 18004689.0      0.55     108.7       0.0 AES/E_AES/block_A_reg[113]/D
-    0:01:53 18006561.0      0.54     107.5       0.0 KEYGEN/wordThree_reg[25]/D
-    0:01:53 18008289.0      0.54     107.3       0.0 AES/E_AES/block_A_reg[35]/D
-    0:01:53 18010467.0      0.54     106.5       0.0 KEYGEN/wordThree_reg[22]/D
-    0:01:53 18012357.0      0.54     106.3       0.0 AES/E_AES/block_A_reg[67]/D
-    0:01:53 18012717.0      0.54     105.3       0.0 AES/E_AES/block_A_reg[97]/D
-    0:01:53 18013833.0      0.54     105.3       0.0 AES/E_AES/block_A_reg[18]/D
-    0:01:53 18016686.0      0.54     104.8       0.0 AES/E_AES/block_A_reg[51]/D
-    0:01:54 18018144.0      0.53     104.2       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:54 18019557.0      0.53     102.3       0.0 KEYGEN/wordThree_reg[8]/D
-    0:01:54 18020979.0      0.52     101.9       0.0 AES/E_AES/block_A_reg[18]/D
-    0:01:54 18020691.0      0.52     101.7       0.0 AES/E_AES/block_A_reg[96]/D
-    0:01:54 18021348.0      0.52     101.5       0.0 AES/E_AES/block_A_reg[25]/D
-    0:01:54 18023265.0      0.52     101.0       0.0 AES/E_AES/block_A_reg[122]/D
-    0:01:54 18025425.0      0.51     100.9       0.0 AES/E_AES/block_A_reg[48]/D
-    0:01:54 18026325.0      0.51     100.8       0.0 AES/E_AES/block_A_reg[91]/D
-    0:01:54 18026802.0      0.51     100.6       0.0 AES/E_AES/block_A_reg[75]/D
-    0:01:54 18027378.0      0.51     100.3       0.0 AES/E_AES/block_A_reg[127]/D
-    0:01:54 18028323.0      0.51     100.1       0.0 AES/E_AES/block_A_reg[45]/D
-    0:01:55 18029583.0      0.50     100.0       0.0 AES/E_AES/block_A_reg[85]/D
-    0:01:55 18030384.0      0.50      99.8       0.0 AES/E_AES/block_A_reg[83]/D
-    0:01:55 18031905.0      0.50      98.9       0.0 AES/E_AES/block_A_reg[32]/D
-    0:01:55 18033201.0      0.50      98.3       0.0 AES/E_AES/block_A_reg[27]/D
-    0:01:55 18034074.0      0.50      97.6       0.0 KEYGEN/wordThree_reg[29]/D
-    0:01:55 18035415.0      0.50      97.3       0.0 AES/E_AES/block_A_reg[69]/D
-    0:01:55 18036288.0      0.49      96.5       0.1 AES/E_AES/block_A_reg[29]/D
-    0:01:55 18037989.0      0.49      96.2       0.1 KEYGEN/wordThree_reg[27]/D
-    0:01:55 18037845.0      0.49      96.1       0.1 AES/E_AES/block_A_reg[19]/D
-    0:01:55 18039438.0      0.49      95.7       0.2 AES/E_AES/block_A_reg[98]/D
-    0:01:55 18040374.0      0.49      95.6       0.2 AES/E_AES/block_A_reg[45]/D
-    0:01:56 18040230.0      0.49      95.4       0.2 AES/E_AES/block_A_reg[19]/D
-    0:01:56 18041652.0      0.49      95.0       0.2 AES/E_AES/block_A_reg[72]/D
-    0:01:56 18042876.0      0.48      94.8       0.2 AES/E_AES/block_A_reg[61]/D
-    0:01:56 18044316.0      0.48      94.5       0.2 AES/E_AES/block_A_reg[19]/D
-    0:01:56 18046188.0      0.48      93.8       0.2 AES/E_AES/block_A_reg[40]/D
-    0:01:56 18047529.0      0.47      93.6       0.2 AES/E_AES/block_A_reg[85]/D
-    0:01:56 18048393.0      0.47      93.4       0.2 AES/E_AES/block_A_reg[107]/D
-    0:01:56 18050085.0      0.47      93.1       0.2 AES/E_AES/block_A_reg[109]/D
-    0:01:56 18050517.0      0.47      92.9       0.2 AES/E_AES/block_A_reg[69]/D
-    0:01:56 18052731.0      0.47      92.8       0.2 AES/E_AES/block_A_reg[35]/D
-    0:01:56 18053739.0      0.47      92.8       0.2 AES/E_AES/block_A_reg[90]/D
-    0:01:57 18054315.0      0.47      92.3       0.2 AES/E_AES/block_A_reg[45]/D
-    0:01:57 18054387.0      0.46      92.2       0.2 AES/E_AES/block_A_reg[98]/D
-    0:01:57 18056052.0      0.46      91.9       0.2 AES/E_AES/block_A_reg[1]/D
-    0:01:57 18056592.0      0.46      91.3       0.2 AES/E_AES/block_A_reg[122]/D
-    0:01:57 18057969.0      0.46      91.2       0.2 AES/E_AES/block_A_reg[83]/D
-    0:01:57 18058257.0      0.46      90.8       0.2 AES/E_AES/block_A_reg[80]/D
-    0:01:57 18059481.0      0.46      90.3       0.2 AES/E_AES/block_A_reg[35]/D
-    0:01:57 18060417.0      0.46      90.2       0.2 AES/E_AES/block_A_reg[115]/D
-    0:01:57 18061461.0      0.46      90.2       0.2 AES/E_AES/block_A_reg[64]/D
-    0:01:57 18061326.0      0.46      90.1       0.2 AES/E_AES/block_A_reg[59]/D
-    0:01:58 18062523.0      0.45      90.0       0.2 AES/E_AES/block_A_reg[3]/D
-    0:01:58 18062595.0      0.45      89.6       0.2 AES/E_AES/block_A_reg[20]/D
-    0:01:58 18063459.0      0.45      89.5       0.2 AES/E_AES/block_A_reg[60]/D
-    0:01:58 18063747.0      0.45      89.2       0.2 AES/E_AES/block_A_reg[27]/D
-    0:01:58 18064971.0      0.45      88.9       0.2 AES/E_AES/block_A_reg[51]/D
-    0:01:58 18065925.0      0.45      88.6       0.2 AES/E_AES/block_A_reg[127]/D
-    0:01:58 18067401.0      0.44      88.5       0.2 AES/E_AES/block_A_reg[25]/D
-    0:01:58 18068049.0      0.44      88.3       0.2 AES/E_AES/block_A_reg[24]/D
-    0:01:58 18069129.0      0.44      88.2       0.2 AES/E_AES/block_A_reg[59]/D
-    0:01:58 18069201.0      0.44      88.1       0.2 AES/E_AES/block_A_reg[59]/D
-    0:01:58 18070578.0      0.44      87.9       0.2 AES/E_AES/block_A_reg[60]/D
-    0:01:59 18070794.0      0.44      87.8       0.2 AES/E_AES/block_A_reg[80]/D
-    0:01:59 18071226.0      0.44      87.7       0.2 AES/E_AES/block_A_reg[32]/D
-    0:01:59 18071226.0      0.44      87.6       0.2 AES/E_AES/block_A_reg[91]/D
-    0:01:59 18072891.0      0.44      87.3       0.2 AES/E_AES/block_A_reg[9]/D
-    0:01:59 18073755.0      0.44      87.1       0.2 AES/E_AES/block_A_reg[98]/D
-    0:01:59 18074907.0      0.43      87.0       0.2 AES/E_AES/block_A_reg[90]/D
-    0:01:59 18077085.0      0.43      86.8       0.2 AES/E_AES/block_A_reg[61]/D
-    0:01:59 18078255.0      0.43      86.7       0.2 AES/E_AES/block_A_reg[110]/D
-    0:01:59 18080505.0      0.43      86.2       0.3 AES/E_AES/block_A_reg[107]/D
-    0:01:59 18081873.0      0.43      86.0       0.3 AES/E_AES/block_A_reg[83]/D
-    0:01:59 18082026.0      0.43      85.8       0.3 AES/E_AES/block_A_reg[40]/D
-    0:01:59 18082242.0      0.42      85.7       0.3 AES/E_AES/block_A_reg[91]/D
-    0:02:00 18082683.0      0.42      85.5       0.3 AES/E_AES/block_A_reg[23]/D
-    0:02:00 18084123.0      0.42      85.3       0.3 AES/E_AES/block_A_reg[91]/D
-    0:02:00 18084699.0      0.42      85.1       0.3 AES/E_AES/block_A_reg[1]/D
-    0:02:00 18087120.0      0.42      84.8       0.3 KEYGEN/wordThree_reg[26]/D
-    0:02:00 18087777.0      0.42      84.8       0.3 AES/E_AES/block_A_reg[105]/D
-    0:02:00 18088650.0      0.42      84.5       0.3 AES/E_AES/block_A_reg[12]/D
-    0:02:00 18089010.0      0.42      84.4       0.3 AES/E_AES/block_A_reg[85]/D
-    0:02:00 18089010.0      0.42      84.3       0.2 AES/E_AES/block_A_reg[9]/D
-    0:02:00 18089919.0      0.41      84.1       0.2 AES/E_AES/block_A_reg[96]/D
-    0:02:00 18090567.0      0.41      83.8       0.2 AES/E_AES/block_A_reg[91]/D
-    0:02:00 18091287.0      0.41      83.6       0.2 AES/E_AES/block_A_reg[83]/D
-    0:02:01 18093024.0      0.41      79.3       0.2 AES/E_AES/block_A_reg[26]/D
-    0:02:01 18094977.0      0.40      78.8       0.2 KEYGEN/wordThree_reg[26]/D
-    0:02:01 18097614.0      0.39      77.9       0.2 KEYGEN/wordThree_reg[18]/D
-    0:02:01 18099270.0      0.38      77.0       0.2 KEYGEN/wordThree_reg[28]/D
-    0:02:01 18101403.0      0.38      76.6       0.2 AES/E_AES/block_A_reg[115]/D
-    0:02:01 18102699.0      0.37      76.3       0.3 AES/E_AES/block_A_reg[95]/D
-    0:02:01 18104220.0      0.37      72.7       0.3 KEYGEN/wordThree_reg[31]/D
-    0:02:01 18106164.0      0.36      70.9       0.3 AES/E_AES/block_A_reg[83]/D
-    0:02:01 18108144.0      0.36      70.2       0.3 AES/E_AES/block_A_reg[49]/D
-    0:02:02 18110556.0      0.35      69.3       0.3 AES/E_AES/block_A_reg[51]/D
-    0:02:02 18111564.0      0.34      69.2       0.3 AES/E_AES/block_A_reg[85]/D
-    0:02:02 18112752.0      0.34      66.9       0.3 AES/E_AES/block_A_reg[115]/D
-    0:02:02 18114453.0      0.33      66.1       0.3 AES/E_AES/block_A_reg[87]/D
-    0:02:02 18115389.0      0.33      65.1       0.4 KEYGEN/wordThree_reg[16]/D
-    0:02:02 18117603.0      0.33      64.9       0.4 AES/E_AES/block_A_reg[63]/D
-    0:02:02 18120060.0      0.32      64.4       0.4 AES/E_AES/block_A_reg[33]/D
-    0:02:02 18120852.0      0.32      64.3       0.4 KEYGEN/wordThree_reg[28]/D
-    0:02:02 18122724.0      0.31      63.8       0.4 AES/E_AES/block_A_reg[115]/D
-    0:02:02 18123552.0      0.31      63.5       0.4 AES/E_AES/block_A_reg[96]/D
-    0:02:03 18124488.0      0.31      63.2       0.4 AES/E_AES/block_A_reg[27]/D
-    0:02:03 18126072.0      0.31      62.4       0.4 AES/E_AES/block_A_reg[21]/D
-    0:02:03 18127629.0      0.31      62.1       0.4 AES/E_AES/block_A_reg[70]/D
-    0:02:03 18128493.0      0.30      61.6       0.4 AES/E_AES/block_A_reg[81]/D
-    0:02:03 18128637.0      0.30      61.5       0.4 AES/E_AES/block_A_reg[49]/D
-    0:02:03 18129501.0      0.30      61.5       0.4 AES/E_AES/block_A_reg[107]/D
-    0:02:03 18129870.0      0.30      61.3       0.4 AES/E_AES/block_A_reg[32]/D
-    0:02:03 18134064.0      0.30      46.3       0.4 AES/E_AES/block_A_reg[93]/D
-    0:02:03 18134136.0      0.30      46.2       0.4 AES/E_AES/block_A_reg[123]/D
-    0:02:04 18134937.0      0.30      45.8       0.4 AES/E_AES/block_A_reg[1]/D
-    0:02:04 18136242.0      0.29      44.9       0.4 AES/E_AES/block_A_reg[67]/D
-    0:02:04 18137394.0      0.29      44.8       0.4 KEYGEN/wordThree_reg[22]/D
-    0:02:04 18137466.0      0.29      44.7       0.4 KEYGEN/wordThree_reg[28]/D
-    0:02:04 18137835.0      0.29      44.3       0.4 KEYGEN/wordThree_reg[8]/D
-    0:02:04 18138555.0      0.29      44.2       0.4 AES/E_AES/block_A_reg[21]/D
-    0:02:04 18139455.0      0.29      44.1       0.4 AES/E_AES/block_A_reg[3]/D
-    0:02:04 18139959.0      0.28      43.7       0.4 KEYGEN/wordThree_reg[1]/D
-    0:02:04 18140823.0      0.28      43.4       0.4 AES/E_AES/block_A_reg[107]/D
-    0:02:04 18142587.0      0.28      43.1       0.4 AES/E_AES/block_A_reg[119]/D
-    0:02:04 18143163.0      0.28      42.9       0.4 AES/E_AES/block_A_reg[59]/D
-    0:02:05 18144405.0      0.27      42.8       0.4 AES/E_AES/block_A_reg[123]/D
-    0:02:05 18145197.0      0.27      42.6       0.4 AES/E_AES/block_A_reg[23]/D
-    0:02:05 18145989.0      0.27      41.5       0.4 AES/E_AES/block_A_reg[83]/D
-    0:02:05 18146565.0      0.27      40.4       0.4 KEYGEN/wordThree_reg[18]/D
-    0:02:05 18146565.0      0.26      40.4       0.4 AES/E_AES/block_A_reg[102]/D
-    0:02:05 18147177.0      0.26      40.3       0.5 AES/E_AES/block_A_reg[83]/D
-    0:02:05 18148770.0      0.26      40.0       0.5 AES/E_AES/block_A_reg[54]/D
-    0:02:05 18149922.0      0.26      39.3       0.5 KEYGEN/wordThree_reg[22]/D
-    0:02:05 18151218.0      0.26      39.1       0.5 AES/E_AES/block_A_reg[20]/D
-    0:02:05 18152532.0      0.26      39.0       0.5 AES/E_AES/block_A_reg[5]/D
-    0:02:05 18152532.0      0.25      38.8       0.5 AES/E_AES/block_A_reg[69]/D
-    0:02:06 18152676.0      0.25      38.7       0.5 AES/E_AES/block_A_reg[49]/D
-    0:02:06 18155043.0      0.25      38.6       0.5 AES/E_AES/block_A_reg[82]/D
-    0:02:06 18155772.0      0.25      38.6       0.5 AES/E_AES/block_A_reg[59]/D
-    0:02:06 18156348.0      0.25      38.4       0.5 AES/E_AES/block_A_reg[91]/D
-    0:02:06 18157761.0      0.25      38.1       0.5 AES/E_AES/block_A_reg[60]/D
-    0:02:06 18157725.0      0.25      38.1       0.5 AES/E_AES/block_A_reg[12]/D
-    0:02:06 18159111.0      0.25      37.7       0.5 KEYGEN/wordThree_reg[8]/D
-    0:02:06 18159759.0      0.25      37.7       0.5 AES/E_AES/block_A_reg[3]/D
-    0:02:06 18160704.0      0.24      37.3       0.5 AES/E_AES/block_A_reg[32]/D
-    0:02:06 18162306.0      0.24      37.2       0.5 AES/E_AES/block_A_reg[34]/D
-    0:02:06 18162666.0      0.24      37.0       0.6 AES/E_AES/block_A_reg[96]/D
-    0:02:06 18162522.0      0.24      36.9       0.6 AES/E_AES/block_A_reg[27]/D
-    0:02:06 18164079.0      0.24      36.7       0.6 KEYGEN/wordThree_reg[28]/D
-    0:02:07 18165015.0      0.24      36.6       0.3 AES/E_AES/block_A_reg[107]/D
-    0:02:07 18165888.0      0.24      36.3       0.3 KEYGEN/wordThree_reg[28]/D
-    0:02:07 18167418.0      0.24      36.1       0.3 AES/E_AES/block_A_reg[61]/D
-    0:02:07 18167130.0      0.23      36.0       0.3 AES/E_AES/block_A_reg[90]/D
-    0:02:07 18167067.0      0.23      35.8       0.3 KEYGEN/wordThree_reg[18]/D
-    0:02:07 18167139.0      0.23      35.8       0.3 AES/E_AES/block_A_reg[59]/D
-    0:02:07 18169011.0      0.23      35.5       0.3 AES/E_AES/block_A_reg[115]/D
-    0:02:07 18169443.0      0.23      35.4       0.3 AES/E_AES/block_A_reg[59]/D
-    0:02:07 18170100.0      0.23      35.4       0.3 AES/E_AES/block_A_reg[67]/D
-    0:02:07 18170109.0      0.23      35.2       0.3 AES/E_AES/block_A_reg[53]/D
-    0:02:07 18171450.0      0.23      34.9       0.3 AES/E_AES/block_A_reg[8]/D
-    0:02:07 18172755.0      0.23      34.8       0.3 AES/E_AES/block_A_reg[4]/D
-    0:02:08 18173331.0      0.23      34.8       0.3 AES/E_AES/block_A_reg[65]/D
-    0:02:08 18174492.0      0.23      34.9       0.3 AES/E_AES/block_A_reg[1]/D
-    0:02:08 18175860.0      0.23      34.3       0.3 AES/E_AES/block_A_reg[25]/D
-    0:02:08 18176436.0      0.22      34.0       0.3 AES/E_AES/block_A_reg[44]/D
-    0:02:08 18176652.0      0.22      34.0       0.3 AES/E_AES/block_A_reg[108]/D
-    0:02:08 18178173.0      0.22      33.9       0.3 KEYGEN/wordThree_reg[28]/D
-    0:02:08 18178389.0      0.22      33.8       0.3 AES/E_AES/block_A_reg[61]/D
-    0:02:08 18181179.0      0.22      33.5       0.3 AES/E_AES/block_A_reg[19]/D
-    0:02:08 18182088.0      0.22      33.4       0.3 AES/E_AES/block_A_reg[28]/D
-    0:02:08 18182970.0      0.22      33.1       0.3 AES/E_AES/block_A_reg[32]/D
-    0:02:08 18183078.0      0.22      33.1       0.3 AES/E_AES/block_A_reg[3]/D
-    0:02:08 18184383.0      0.22      32.9       0.3 AES/E_AES/block_A_reg[17]/D
-    0:02:08 18185256.0      0.22      32.8       0.3 AES/E_AES/block_A_reg[43]/D
-    0:02:08 18186849.0      0.22      32.6       0.3 AES/E_AES/block_A_reg[29]/D
-    0:02:09 18187641.0      0.22      32.5       0.3 AES/E_AES/block_A_reg[67]/D
-    0:02:09 18189234.0      0.21      32.5       0.3 AES/E_AES/block_A_reg[51]/D
-    0:02:09 18190683.0      0.21      31.8       0.3 KEYGEN/wordThree_reg[28]/D
-    0:02:09 18191511.0      0.21      31.5       0.3 AES/E_AES/block_A_reg[77]/D
-    0:02:09 18192735.0      0.20      28.9       0.3 KEYGEN/wordThree_reg[1]/D
-    0:02:09 18194679.0      0.20      28.1       0.3 AES/E_AES/block_A_reg[75]/D
-    0:02:09 18196308.0      0.19      27.9       0.3 KEYGEN/wordThree_reg[0]/D
-    0:02:09 18196452.0      0.19      27.9       0.3 AES/E_AES/block_A_reg[45]/D
-    0:02:09 18196821.0      0.19      27.8       0.3 AES/E_AES/block_A_reg[29]/D
-    0:02:09 18198054.0      0.19      27.8       0.3 AES/E_AES/block_A_reg[82]/D
-    0:02:09 18198954.0      0.19      27.7       0.3 AES/E_AES/block_A_reg[107]/D
-    0:02:10 18200187.0      0.19      27.6       0.3 KEYGEN/wordThree_reg[18]/D
-    0:02:10 18199899.0      0.19      27.5       0.3 AES/E_AES/block_A_reg[83]/D
-    0:02:10 18200331.0      0.19      27.5       0.3 AES/E_AES/block_A_reg[43]/D
-    0:02:10 18200691.0      0.19      27.3       0.3 AES/E_AES/block_A_reg[121]/D
-    0:02:10 18201555.0      0.19      27.1       0.3 AES/E_AES/block_A_reg[27]/D
-    0:02:10 18202347.0      0.19      27.1       0.3 AES/E_AES/block_A_reg[67]/D
-    0:02:10 18202635.0      0.19      27.0       0.3 AES/E_AES/block_A_reg[123]/D
-    0:02:10 18202779.0      0.19      27.0       0.3 AES/E_AES/block_A_reg[19]/D
-    0:02:10 18205029.0      0.19      26.8       0.3 AES/E_AES/block_A_reg[76]/D
-    0:02:10 18206352.0      0.18      26.7       0.3 AES/E_AES/block_A_reg[43]/D
-    0:02:10 18208170.0      0.18      26.6       0.3 AES/E_AES/block_A_reg[87]/D
-    0:02:10 18209223.0      0.18      26.6       0.3 AES/E_AES/block_A_reg[41]/D
-    0:02:11 18212175.0      0.18      26.3       0.3 AES/E_AES/block_A_reg[64]/D
-    0:02:11 18212607.0      0.18      26.4       0.3 AES/E_AES/block_A_reg[60]/D
-    0:02:11 18214137.0      0.18      26.3       0.3 AES/E_AES/block_A_reg[85]/D
-    0:02:11 18214425.0      0.18      26.1       0.3 AES/E_AES/block_A_reg[56]/D
-    0:02:11 18216018.0      0.18      26.1       0.3 AES/E_AES/block_A_reg[26]/D
-    0:02:11 18216963.0      0.18      26.0       0.3 AES/E_AES/block_A_reg[45]/D
-    0:02:11 18217395.0      0.18      25.9       0.3 AES/E_AES/block_A_reg[12]/D
-    0:02:11 18217980.0      0.18      25.8       0.3 AES/E_AES/block_A_reg[117]/D
-    0:02:11 18218628.0      0.18      25.7       0.3 AES/E_AES/block_A_reg[60]/D
-    0:02:11 18219276.0      0.18      25.6       0.3 AES/E_AES/block_A_reg[115]/D
-    0:02:11 18220797.0      0.17      25.5       0.3 AES/E_AES/block_A_reg[115]/D
-    0:02:11 18220581.0      0.17      25.4       0.3 AES/E_AES/block_A_reg[102]/D
-    0:02:11 18221751.0      0.17      25.3       0.3 AES/E_AES/block_A_reg[1]/D
-    0:02:12 18222480.0      0.17      25.2       0.3 KEYGEN/wordThree_reg[17]/D
-    0:02:12 18222480.0      0.17      24.9       0.3 AES/E_AES/block_A_reg[1]/D
-    0:02:12 18223209.0      0.17      24.9       0.3 AES/E_AES/block_A_reg[33]/D
-    0:02:12 18223713.0      0.17      24.3       0.3 AES/E_AES/block_A_reg[60]/D
-    0:02:12 18224001.0      0.17      24.3       0.3 AES/E_AES/block_A_reg[123]/D
-    0:02:12 18225369.0      0.17      24.2       0.3 AES/E_AES/block_A_reg[8]/D
-    0:02:12 18225513.0      0.17      24.1       0.3 AES/E_AES/block_A_reg[39]/D
-    0:02:12 18225297.0      0.17      24.1       0.3 AES/E_AES/block_A_reg[17]/D
-    0:02:12 18226242.0      0.17      23.9       0.3 AES/E_AES/block_A_reg[12]/D
-    0:02:12 18227547.0      0.17      23.8       0.3 AES/E_AES/block_A_reg[106]/D
-    0:02:12 18227916.0      0.17      23.7       0.3 AES/E_AES/block_A_reg[9]/D
-    0:02:12 18228861.0      0.17      23.7       0.3 AES/E_AES/block_A_reg[59]/D
-    0:02:12 18230427.0      0.17      23.6       0.3 AES/E_AES/block_A_reg[117]/D
-    0:02:13 18233001.0      0.16      23.3       0.3 KEYGEN/wordThree_reg[30]/D
-    0:02:13 18233433.0      0.16      23.2       0.3 AES/E_AES/block_A_reg[46]/D
-    0:02:13 18234297.0      0.16      23.1       0.3 AES/E_AES/block_A_reg[83]/D
-    0:02:13 18234954.0      0.16      23.0       0.3 AES/E_AES/block_A_reg[20]/D
-    0:02:13 18236331.0      0.16      23.0       0.3 AES/E_AES/block_A_reg[75]/D
-    0:02:13 18236628.0      0.16      22.8       0.3 AES/E_AES/block_A_reg[122]/D
-    0:02:13 18237276.0      0.16      22.7       0.3 AES/E_AES/block_A_reg[51]/D
-    0:02:13 18237204.0      0.16      22.7       0.3 AES/E_AES/block_A_reg[91]/D
-    0:02:13 18238365.0      0.16      22.6       0.3 AES/E_AES/block_A_reg[22]/D
-    0:02:13 18239013.0      0.16      22.5       0.3 AES/E_AES/block_A_reg[51]/D
-    0:02:13 18241362.0      0.16      22.1       0.3 AES/E_AES/block_A_reg[19]/D
-    0:02:13 18242091.0      0.16      22.0       0.3 AES/E_AES/block_A_reg[87]/D
-    0:02:13 18243333.0      0.16      21.9       0.3 AES/E_AES/block_A_reg[72]/D
-    0:02:13 18244710.0      0.16      21.7       0.3 AES/E_AES/block_A_reg[73]/D
-    0:02:14 18245358.0      0.15      21.4       0.3 AES/E_AES/block_A_reg[43]/D
-    0:02:14 18245142.0      0.15      21.4       0.3 AES/E_AES/block_A_reg[105]/D
-    0:02:14 18246042.0      0.15      21.1       0.3 AES/E_AES/block_A_reg[18]/D
-    0:02:14 18246402.0      0.15      21.0       0.3 AES/E_AES/block_A_reg[65]/D
-    0:02:14 18247356.0      0.15      20.9       0.3 AES/E_AES/block_A_reg[33]/D
-    0:02:14 18247860.0      0.15      20.8       0.3 AES/E_AES/block_A_reg[43]/D
-    0:02:14 18248157.0      0.15      20.7       0.3 AES/E_AES/block_A_reg[65]/D
-    0:02:14 18249093.0      0.15      20.2       0.3 AES/E_AES/block_A_reg[25]/D
-    0:02:14 18249237.0      0.15      20.0       0.3 AES/E_AES/block_A_reg[123]/D
-    0:02:15 18249741.0      0.15      19.9       0.3 KEYGEN/wordThree_reg[3]/D
-    0:02:15 18250389.0      0.15      19.7       0.3 AES/E_AES/block_A_reg[39]/D
-    0:02:15 18250677.0      0.15      19.5       0.3 AES/E_AES/block_A_reg[60]/D
-    0:02:15 18251334.0      0.14      19.3       0.3 AES/E_AES/block_A_reg[60]/D
-    0:02:15 18253566.0      0.14      19.2       0.3 AES/E_AES/block_A_reg[107]/D
-    0:02:15 18255195.0      0.14      18.9       0.3 AES/E_AES/block_A_reg[48]/D
-    0:02:15 18255339.0      0.14      18.7       0.3 AES/E_AES/block_A_reg[75]/D
-    0:02:15 18255123.0      0.14      18.6       0.3 KEYGEN/wordThree_reg[25]/D
-    0:02:15 18256284.0      0.14      18.4       0.3 AES/E_AES/block_A_reg[122]/D
-    0:02:15 18256284.0      0.14      18.2       0.1 AES/E_AES/block_A_reg[28]/D
-    0:02:15 18256500.0      0.14      18.1       0.1 AES/E_AES/block_A_reg[67]/D
-    0:02:15 18257589.0      0.14      17.9       0.1 AES/E_AES/block_A_reg[24]/D
-    0:02:15 18258273.0      0.13      17.9       0.1 AES/E_AES/block_A_reg[59]/D
-    0:02:15 18258273.0      0.13      17.7       0.1 AES/E_AES/block_A_reg[16]/D
-    0:02:16 18259182.0      0.13      17.6       0.1 AES/E_AES/block_A_reg[78]/D
-    0:02:16 18259650.0      0.13      17.3       0.1 KEYGEN/wordThree_reg[9]/D
-    0:02:16 18260595.0      0.13      17.3       0.1 AES/E_AES/block_A_reg[20]/D
-    0:02:16 18261531.0      0.13      17.1       0.1 AES/E_AES/block_A_reg[60]/D
-    0:02:16 18263223.0      0.13      17.0       0.1 AES/E_AES/block_A_reg[112]/D
-    0:02:16 18263655.0      0.13      17.0       0.1 AES/E_AES/block_A_reg[74]/D
-    0:02:16 18264555.0      0.13      16.7       0.1 AES/E_AES/block_A_reg[82]/D
-    0:02:16 18265284.0      0.13      16.6       0.1 AES/E_AES/block_A_reg[67]/D
-    0:02:16 18265824.0      0.13      16.5       0.1 AES/E_AES/block_A_reg[77]/D
-    0:02:16 18267390.0      0.12      16.4       0.1 AES/E_AES/block_A_reg[90]/D
-    0:02:16 18268263.0      0.12      16.4       0.1 AES/E_AES/block_A_reg[56]/D
-    0:02:16 18268407.0      0.12      16.3       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:16 18269712.0      0.12      16.1       0.1 AES/E_AES/block_A_reg[20]/D
-    0:02:17 18269424.0      0.12      16.0       0.1 AES/E_AES/block_A_reg[4]/D
-    0:02:17 18269712.0      0.12      15.9       0.1 AES/E_AES/block_A_reg[49]/D
-    0:02:17 18270144.0      0.12      15.9       0.1 AES/E_AES/block_A_reg[111]/D
-    0:02:17 18270936.0      0.12      15.8       0.1 AES/E_AES/block_A_reg[65]/D
-    0:02:17 18271809.0      0.12      15.7       0.1 AES/E_AES/block_A_reg[67]/D
-    0:02:17 18272394.0      0.12      15.7       0.1 KEYGEN/wordThree_reg[26]/D
-    0:02:17 18272898.0      0.12      15.6       0.1 AES/E_AES/block_A_reg[43]/D
-    0:02:17 18272898.0      0.12      15.5       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:17 18273915.0      0.12      15.4       0.1 AES/E_AES/block_A_reg[24]/D
-    0:02:17 18274635.0      0.12      15.4       0.1 AES/E_AES/block_A_reg[41]/D
-    0:02:17 18275436.0      0.12      15.3       0.1 AES/E_AES/block_A_reg[87]/D
-    0:02:17 18275616.0      0.11      15.0       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:17 18276849.0      0.11      14.9       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:17 18276993.0      0.11      14.9       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:18 18277209.0      0.11      14.9       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:18 18277506.0      0.11      14.7       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:18 18278946.0      0.11      14.6       0.1 AES/E_AES/block_A_reg[17]/D
-    0:02:18 18279810.0      0.11      14.5       0.1 AES/E_AES/block_A_reg[76]/D
-    0:02:18 18279882.0      0.11      14.5       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:18 18279522.0      0.11      14.3       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:18 18280026.0      0.11      14.2       0.1 AES/E_AES/block_A_reg[84]/D
-    0:02:18 18281196.0      0.11      14.1       0.1 KEYGEN/wordThree_reg[26]/D
-    0:02:18 18282213.0      0.11      13.9       0.1 KEYGEN/wordThree_reg[26]/D
-    0:02:18 18283797.0      0.10      13.6       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:18 18284409.0      0.10      13.5       0.1 AES/E_AES/block_A_reg[82]/D
-    0:02:18 18284922.0      0.10      13.4       0.1 AES/E_AES/block_A_reg[81]/D
-    0:02:18 18285723.0      0.10      13.3       0.1 AES/E_AES/block_A_reg[47]/D
-    0:02:18 18286020.0      0.10      13.2       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:19 18286029.0      0.10      13.1       0.1 AES/E_AES/block_A_reg[67]/D
-    0:02:19 18287253.0      0.10      13.0       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:19 18288693.0      0.10      12.9       0.1 AES/E_AES/block_A_reg[114]/D
-    0:02:19 18289206.0      0.10      12.8       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:19 18290142.0      0.10      12.7       0.1 AES/E_AES/block_A_reg[74]/D
-    0:02:19 18288270.0      0.10      12.6       0.1 AES/E_AES/block_A_reg[86]/D
-    0:02:19 18289854.0      0.10      12.5       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:19 18290070.0      0.10      12.5       0.1 KEYGEN/wordThree_reg[11]/D
-    0:02:19 18291042.0      0.10      12.4       0.1 AES/E_AES/block_A_reg[50]/D
-    0:02:19 18291474.0      0.09      12.2       0.1 AES/E_AES/block_A_reg[53]/D
-    0:02:19 18292203.0      0.09      12.2       0.1 AES/E_AES/block_A_reg[60]/D
-    0:02:19 18292563.0      0.09      11.9       0.1 AES/E_AES/block_A_reg[22]/D
-    0:02:19 18293643.0      0.09      11.8       0.1 AES/E_AES/block_A_reg[126]/D
-    0:02:20 18293940.0      0.09      11.6       0.1 AES/E_AES/block_A_reg[1]/D
-    0:02:20 18293940.0      0.09      11.6       0.1 KEYGEN/wordThree_reg[11]/D
-    0:02:20 18293940.0      0.09      11.5       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:20 18294156.0      0.09      11.5       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:20 18295056.0      0.09      11.4       0.1 AES/E_AES/block_A_reg[123]/D
-    0:02:20 18296136.0      0.09      11.4       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:20 18296793.0      0.09      11.3       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:20 18297333.0      0.09      11.3       0.1 AES/E_AES/block_A_reg[49]/D
-    0:02:20 18299133.0      0.09      11.2       0.1 AES/E_AES/block_A_reg[102]/D
-    0:02:20 18299313.0      0.09      11.1       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:20 18300546.0      0.09      10.9       0.1 KEYGEN/wordThree_reg[29]/D
-    0:02:20 18300330.0      0.09      10.8       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:20 18301410.0      0.09      10.8       0.1 AES/E_AES/block_A_reg[29]/D
-    0:02:20 18301914.0      0.09      10.7       0.1 KEYGEN/wordThree_reg[26]/D
-    0:02:21 18302922.0      0.08      10.7       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:21 18303219.0      0.08      10.7       0.1 AES/E_AES/block_A_reg[91]/D
-    0:02:21 18303948.0      0.08      10.6       0.1 AES/E_AES/block_A_reg[98]/D
-    0:02:21 18305316.0      0.08      10.4       0.1 AES/E_AES/block_A_reg[29]/D
-    0:02:21 18305604.0      0.08      10.4       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:21 18307098.0      0.08      10.3       0.1 AES/E_AES/block_A_reg[86]/D
-    0:02:21 18308394.0      0.08      10.2       0.1 AES/E_AES/block_A_reg[113]/D
-    0:02:21 18308682.0      0.08      10.2       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:21 18309366.0      0.08      10.2       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:21 18309879.0      0.08      10.1       0.1 AES/E_AES/block_A_reg[44]/D
-    0:02:21 18310104.0      0.08      10.0       0.1 AES/E_AES/block_A_reg[26]/D
-    0:02:21 18310176.0      0.08       9.9       0.1 AES/E_AES/block_A_reg[56]/D
-    0:02:21 18310464.0      0.08       9.9       0.1 AES/E_AES/block_A_reg[41]/D
-    0:02:22 18310392.0      0.08       9.7       0.1 AES/E_AES/block_A_reg[6]/D
-    0:02:22 18310608.0      0.08       9.6       0.1 AES/E_AES/block_A_reg[82]/D
-    0:02:22 18310752.0      0.08       9.5       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:22 18310968.0      0.08       9.3       0.1 AES/E_AES/block_A_reg[45]/D
-    0:02:22 18311409.0      0.08       9.3       0.1 AES/E_AES/block_A_reg[119]/D
-    0:02:22 18311985.0      0.08       9.2       0.1 AES/E_AES/block_A_reg[43]/D
-    0:02:22 18312273.0      0.08       9.1       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:22 18313245.0      0.08       9.0       0.1 AES/E_AES/block_A_reg[116]/D
-    0:02:22 18313902.0      0.07       8.9       0.1 AES/E_AES/block_A_reg[67]/D
-    0:02:22 18315198.0      0.07       8.8       0.1 AES/E_AES/block_A_reg[36]/D
-    0:02:22 18315486.0      0.07       8.7       0.1 AES/E_AES/block_A_reg[121]/D
-    0:02:22 18316107.0      0.07       8.6       0.1 AES/E_AES/block_A_reg[114]/D
-    0:02:22 18316179.0      0.07       8.5       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:22 18316251.0      0.07       8.5       0.1 AES/E_AES/block_A_reg[62]/D
-    0:02:23 18316683.0      0.07       8.4       0.1 AES/E_AES/block_A_reg[27]/D
-    0:02:23 18318240.0      0.07       8.3       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:23 18318960.0      0.07       8.2       0.1 AES/E_AES/block_A_reg[30]/D
-    0:02:23 18319356.0      0.07       8.0       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:23 18321093.0      0.07       7.9       0.1 AES/E_AES/block_A_reg[108]/D
-    0:02:23 18321777.0      0.07       7.8       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:23 18321561.0      0.07       7.7       0.1 AES/E_AES/block_A_reg[69]/D
-    0:02:23 18321993.0      0.07       7.7       0.1 AES/E_AES/block_A_reg[85]/D
-    0:02:23 18321921.0      0.07       7.7       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:23 18321057.0      0.07       7.7       0.1 AES/E_AES/block_A_reg[91]/D
-    0:02:23 18321417.0      0.06       7.4       0.1 AES/E_AES/block_A_reg[92]/D
-    0:02:23 18321885.0      0.06       7.2       0.1 AES/E_AES/block_A_reg[86]/D
-    0:02:23 18323118.0      0.06       7.1       0.1 AES/E_AES/block_A_reg[53]/D
-    0:02:23 18323118.0      0.06       7.0       0.1 AES/E_AES/block_A_reg[25]/D
-    0:02:23 18323982.0      0.06       6.9       0.1 AES/E_AES/block_A_reg[34]/D
-    0:02:24 18324630.0      0.06       6.8       0.1 AES/E_AES/block_A_reg[7]/D
-    0:02:24 18325800.0      0.06       6.7       0.1 AES/E_AES/block_A_reg[55]/D
-    0:02:24 18325944.0      0.06       6.6       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:24 18325872.0      0.06       6.6       0.1 AES/E_AES/block_A_reg[125]/D
-    0:02:24 18326412.0      0.06       6.5       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:24 18326412.0      0.06       6.4       0.1 AES/E_AES/block_A_reg[85]/D
-    0:02:24 18326916.0      0.06       6.3       0.1 AES/E_AES/block_A_reg[85]/D
-    0:02:24 18326916.0      0.06       6.2       0.1 AES/E_AES/block_A_reg[50]/D
-    0:02:24 18326916.0      0.06       6.2       0.1 AES/E_AES/block_A_reg[43]/D
-    0:02:24 18327240.0      0.06       6.2       0.1 AES/E_AES/block_A_reg[82]/D
-    0:02:24 18327024.0      0.06       6.2       0.1 AES/E_AES/block_A_reg[1]/D
-    0:02:24 18327969.0      0.06       6.1       0.1 AES/E_AES/block_A_reg[21]/D
-    0:02:24 18328122.0      0.06       6.0       0.1 AES/E_AES/block_A_reg[84]/D
-    0:02:24 18328986.0      0.05       5.9       0.1 AES/E_AES/block_A_reg[20]/D
-    0:02:25 18330030.0      0.05       5.9       0.1 AES/E_AES/block_A_reg[8]/D
-    0:02:25 18330174.0      0.05       5.8       0.1 AES/E_AES/block_A_reg[62]/D
-    0:02:25 18330318.0      0.05       5.8       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:25 18330606.0      0.05       5.8       0.1 AES/E_AES/block_A_reg[10]/D
-    0:02:25 18330822.0      0.05       5.8       0.1 AES/E_AES/block_A_reg[43]/D
-    0:02:25 18331254.0      0.05       5.6       0.1 AES/E_AES/block_A_reg[81]/D
-    0:02:25 18331686.0      0.05       5.5       0.1 AES/E_AES/block_A_reg[45]/D
-    0:02:25 18331758.0      0.05       5.5       0.1 AES/E_AES/block_A_reg[82]/D
-    0:02:25 18331686.0      0.05       5.5       0.1 AES/E_AES/block_A_reg[36]/D
-    0:02:26 18332910.0      0.05       5.4       0.1 AES/E_AES/block_A_reg[9]/D
-    0:02:26 18332982.0      0.05       5.4       0.1 AES/E_AES/block_A_reg[1]/D
-    0:02:26 18333270.0      0.05       5.2       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:26 18333702.0      0.05       5.1       0.1 AES/E_AES/block_A_reg[68]/D
-    0:02:26 18334062.0      0.05       5.0       0.1 AES/E_AES/block_A_reg[18]/D
-    0:02:26 18334278.0      0.05       4.7       0.1 KEYGEN/wordThree_reg[9]/D
-    0:02:26 18335070.0      0.05       4.6       0.1 AES/E_AES/block_A_reg[56]/D
-    0:02:26 18335790.0      0.05       4.6       0.1 AES/E_AES/block_A_reg[2]/D
-    0:02:26 18335934.0      0.04       4.5       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:26 18336294.0      0.04       4.3       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:27 18336222.0      0.04       4.3       0.1 AES/E_AES/block_A_reg[116]/D
-    0:02:27 18336366.0      0.04       4.1       0.1 AES/E_AES/block_A_reg[81]/D
-    0:02:27 18337230.0      0.04       4.0       0.1 AES/E_AES/block_A_reg[1]/D
-    0:02:27 18337878.0      0.04       3.9       0.1 AES/E_AES/block_A_reg[110]/D
-    0:02:27 18338382.0      0.04       3.7       0.1 KEYGEN/wordThree_reg[23]/D
-    0:02:27 18338382.0      0.04       3.7       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:27 18338814.0      0.04       3.5       0.1 AES/E_AES/block_A_reg[84]/D
-    0:02:27 18339318.0      0.04       3.3       0.1 AES/E_AES/block_A_reg[30]/D
-    0:02:27 18339246.0      0.04       3.2       0.1 AES/E_AES/block_A_reg[24]/D
-    0:02:27 18339822.0      0.04       3.1       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:27 18340038.0      0.03       2.9       0.1 AES/E_AES/block_A_reg[32]/D
-    0:02:28 18340398.0      0.03       2.9       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:28 18341118.0      0.03       2.8       0.1 AES/E_AES/block_A_reg[122]/D
-    0:02:28 18341622.0      0.03       2.7       0.1 AES/E_AES/block_A_reg[40]/D
-    0:02:28 18342054.0      0.03       2.6       0.1 AES/E_AES/block_A_reg[24]/D
-    0:02:28 18342342.0      0.03       2.5       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:28 18346446.0      0.03       2.4       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:28 18346158.0      0.03       2.3       0.1 AES/E_AES/block_A_reg[65]/D
-    0:02:28 18346734.0      0.03       2.2       0.1 AES/E_AES/block_A_reg[94]/D
-    0:02:28 18346878.0      0.03       2.2       0.1 AES/E_AES/block_A_reg[66]/D
-    0:02:28 18347022.0      0.03       2.1       0.1 AES/E_AES/block_A_reg[2]/D
-    0:02:28 18347310.0      0.03       2.0       0.1 KEYGEN/wordThree_reg[10]/D
-    0:02:29 18347598.0      0.03       2.0       0.1 AES/E_AES/block_A_reg[60]/D
-    0:02:29 18347886.0      0.03       1.9       0.1 AES/E_AES/block_A_reg[107]/D
-    0:02:29 18347886.0      0.02       1.9       0.1 AES/E_AES/block_A_reg[20]/D
-    0:02:29 18347670.0      0.02       1.8       0.1 AES/E_AES/block_A_reg[63]/D
-    0:02:29 18347814.0      0.02       1.7       0.1 AES/E_AES/block_A_reg[9]/D
-    0:02:29 18347886.0      0.02       1.6       0.1 AES/E_AES/block_A_reg[123]/D
-    0:02:29 18348102.0      0.02       1.5       0.1 AES/E_AES/block_A_reg[122]/D
-    0:02:29 18348102.0      0.02       1.5       0.1 AES/E_AES/block_A_reg[127]/D
-    0:02:29 18348390.0      0.02       1.4       0.1 AES/E_AES/block_A_reg[5]/D
-    0:02:29 18348390.0      0.02       1.3       0.1 AES/E_AES/block_A_reg[114]/D
-    0:02:29 18348606.0      0.02       1.2       0.1 AES/E_AES/block_A_reg[35]/D
-    0:02:29 18349326.0      0.02       1.1       0.1 AES/E_AES/block_A_reg[121]/D
-    0:02:30 18349758.0      0.02       1.1       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:30 18350478.0      0.02       1.0       0.1 AES/E_AES/block_A_reg[90]/D
-    0:02:30 18350334.0      0.02       0.9       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:30 18350262.0      0.02       0.9       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:30 18350622.0      0.01       0.8       0.1 AES/E_AES/block_A_reg[21]/D
-    0:02:30 18350766.0      0.01       0.8       0.1 AES/E_AES/block_A_reg[63]/D
-    0:02:30 18351270.0      0.01       0.8       0.1 AES/E_AES/block_A_reg[43]/D
-    0:02:30 18351270.0      0.01       0.7       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:30 18351990.0      0.01       0.7       0.1 KEYGEN/wordThree_reg[14]/D
-    0:02:30 18352278.0      0.01       0.6       0.1 AES/E_AES/block_A_reg[3]/D
-    0:02:30 18352215.0      0.01       0.6       0.1 AES/E_AES/block_A_reg[93]/D
-    0:02:30 18352719.0      0.01       0.6       0.1 AES/E_AES/block_A_reg[91]/D
-    0:02:31 18352719.0      0.01       0.5       0.1 AES/E_AES/block_A_reg[51]/D
-    0:02:31 18352647.0      0.01       0.5       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:31 18352863.0      0.01       0.5       0.1 AES/E_AES/block_A_reg[121]/D
-    0:02:31 18353079.0      0.01       0.4       0.1 AES/E_AES/block_A_reg[56]/D
-    0:02:31 18353439.0      0.01       0.4       0.1 AES/E_AES/block_A_reg[115]/D
-    0:02:31 18353295.0      0.01       0.4       0.1 AES/E_AES/block_A_reg[65]/D
-    0:02:31 18353511.0      0.01       0.3       0.1 AES/E_AES/block_A_reg[60]/D
-    0:02:31 18353367.0      0.01       0.3       0.1 AES/E_AES/block_A_reg[84]/D
-    0:02:31 18353151.0      0.01       0.3       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:31 18353583.0      0.01       0.2       0.1 KEYGEN/wordTwo_reg[18]/D 
-    0:02:31 18353727.0      0.00       0.1       0.1 AES/E_AES/block_A_reg[44]/D
-    0:02:31 18354087.0      0.00       0.1       0.1 AES/E_AES/block_A_reg[1]/D
-    0:02:32 18353943.0      0.00       0.1       0.1 AES/E_AES/block_A_reg[63]/D
-    0:02:32 18353727.0      0.00       0.1       0.1 AES/E_AES/block_A_reg[108]/D
-    0:02:32 18353799.0      0.00       0.1       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:32 18354015.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[19]/D
-    0:02:32 18354231.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:32 18353943.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[24]/D
-    0:02:32 18354159.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[75]/D
-    0:02:32 18354087.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[83]/D
-    0:02:32 18353655.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[12]/D
-    0:02:32 18353799.0      0.00       0.0       0.1 AES/E_AES/block_A_reg[106]/D
-    0:02:32 18353727.0      0.00       0.0       0.1                          
-    0:02:33 18353727.0      0.00       0.0       0.1                          
-
-
-  Beginning Design Rule Fixing  (max_capacitance)
-  ----------------------------
-
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:02:33 18353727.0      0.00       0.0       0.1                          
-    0:02:33 18353511.0      0.00       0.0       0.0                          
+    0:00:58 18619038.0      0.14       3.5       0.0                          
+    0:00:58 18621063.0      0.11       2.4       0.0 KEYGEN/wordThree_reg[28]/D
+    0:00:58 18622215.0      0.10       2.4       0.0 KEYGEN/wordThree_reg[28]/D
+    0:00:58 18622899.0      0.10       2.3       0.0 KEYGEN/wordThree_reg[22]/D
+    0:00:59 18624519.0      0.09       1.9       0.0 KEYGEN/wordThree_reg[28]/D
+    0:00:59 18625347.0      0.08       1.7       0.0 KEYGEN/wordThree_reg[0]/D
+    0:00:59 18626463.0      0.08       1.6       0.0 KEYGEN/wordThree_reg[3]/D
+    0:00:59 18627264.0      0.08       1.5       0.0 KEYGEN/wordThree_reg[26]/D
+    0:00:59 18627129.0      0.08       1.4       0.0 KEYGEN/wordThree_reg[25]/D
+    0:00:59 18629145.0      0.07       1.4       0.0 KEYGEN/wordThree_reg[17]/D
+    0:00:59 18629793.0      0.06       1.3       0.0 KEYGEN/wordThree_reg[11]/D
+    0:00:59 18631593.0      0.06       1.1       0.0 KEYGEN/wordThree_reg[20]/D
+    0:00:59 18633258.0      0.06       0.9       0.0 KEYGEN/wordThree_reg[29]/D
+    0:00:59 18634311.0      0.05       0.7       0.0 KEYGEN/wordThree_reg[29]/D
+    0:00:59 18634059.0      0.05       0.6       0.0 KEYGEN/wordThree_reg[0]/D
+    0:00:59 18634284.0      0.03       0.3       0.0 KEYGEN/wordThree_reg[16]/D
+    0:00:59 18636228.0      0.02       0.2       0.0 KEYGEN/wordThree_reg[18]/D
+    0:00:59 18636660.0      0.02       0.1       0.0 KEYGEN/wordThree_reg[18]/D
+    0:00:59 18637668.0      0.01       0.1       0.0 KEYGEN/wordThree_reg[27]/D
+    0:01:00 18638820.0      0.00       0.0       0.0 KEYGEN/wordThree_reg[25]/D
+    0:01:00 18638757.0      0.00       0.0       0.0                          
+    0:01:00 18638757.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (cleanup)
@@ -1203,159 +679,40 @@ Information: Added key list 'DesignWare' to design 'ahb_regs'. (DDB-72)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:02:33 18353511.0      0.00       0.0       0.0                          
-    0:02:33 18353511.0      0.00       0.0       0.0                          
-    0:02:38 18192807.0      0.21       2.9       0.0                          
-    0:02:40 18124551.0      0.22       4.0       0.0                          
-    0:02:41 18085023.0      0.22       4.2       0.0                          
-    0:02:42 18070119.0      0.24       4.5       0.0                          
-    0:02:43 18061695.0      0.24       4.7       0.0                          
-    0:02:43 18054711.0      0.24       4.8       0.0                          
-    0:02:44 18050895.0      0.24       4.8       0.0                          
-    0:02:44 18048879.0      0.24       4.8       0.0                          
-    0:02:44 18047079.0      0.24       4.8       0.0                          
-    0:02:44 18045495.0      0.24       4.8       0.0                          
-    0:02:45 18044415.0      0.24       4.8       0.0                          
-    0:02:45 18043695.0      0.24       4.8       0.0                          
-    0:02:45 18043119.0      0.24       4.8       0.0                          
-    0:02:45 18042399.0      0.24       4.8       0.0                          
-    0:02:46 18041823.0      0.24       4.8       0.0                          
-    0:02:46 18041247.0      0.24       4.8       0.0                          
-    0:02:46 18041247.0      0.24       4.8       0.0                          
-    0:02:46 18045927.0      0.12      11.0       0.0 AES/E_AES/block_A_reg[82]/D
-    0:02:46 18046575.0      0.11      10.4       0.0 AES/E_AES/block_A_reg[9]/D
-    0:02:47 18047223.0      0.10      10.2       0.0 AES/E_AES/block_A_reg[12]/D
-    0:02:47 18048483.0      0.10       9.0       0.0 AES/E_AES/block_A_reg[25]/D
-    0:02:47 18049500.0      0.09       8.9       0.0 KEYGEN/wordThree_reg[26]/D
-    0:02:47 18049644.0      0.09       8.7       0.0 AES/E_AES/block_A_reg[84]/D
-    0:02:47 18050220.0      0.08       8.5       0.0 AES/E_AES/block_A_reg[37]/D
-    0:02:47 18050724.0      0.08       8.4       0.0 AES/E_AES/block_A_reg[122]/D
-    0:02:47 18051372.0      0.08       8.4       0.0 AES/E_AES/block_A_reg[84]/D
-    0:02:47 18052101.0      0.08       8.3       0.0 AES/E_AES/block_A_reg[86]/D
-    0:02:47 18053190.0      0.08       8.0       0.0 AES/E_AES/block_A_reg[25]/D
-    0:02:47 18054630.0      0.07       7.7       0.0 AES/E_AES/block_A_reg[75]/D
-    0:02:47 18056286.0      0.07       7.6       0.0 AES/E_AES/block_A_reg[32]/D
-    0:02:48 18057231.0      0.07       7.4       0.0 AES/E_AES/block_A_reg[79]/D
-    0:02:48 18058572.0      0.07       7.3       0.0 AES/E_AES/block_A_reg[18]/D
-    0:02:48 18059157.0      0.06       6.5       0.0 AES/E_AES/block_A_reg[42]/D
-    0:02:48 18060669.0      0.06       6.2       0.0 AES/E_AES/block_A_reg[20]/D
-    0:02:48 18061758.0      0.06       6.0       0.0 AES/E_AES/block_A_reg[73]/D
-    0:02:48 18062919.0      0.06       5.7       0.0 AES/E_AES/block_A_reg[83]/D
-    0:02:48 18064071.0      0.05       5.4       0.0 AES/E_AES/block_A_reg[32]/D
-    0:02:48 18064755.0      0.05       5.4       0.0 AES/E_AES/block_A_reg[36]/D
-    0:02:48 18064971.0      0.05       5.3       0.0 AES/E_AES/block_A_reg[69]/D
-    0:02:48 18065619.0      0.05       5.2       0.0 AES/E_AES/block_A_reg[68]/D
-    0:02:48 18065907.0      0.05       5.1       0.0 AES/E_AES/block_A_reg[28]/D
-    0:02:49 18067644.0      0.05       5.0       0.0 KEYGEN/wordThree_reg[0]/D
-    0:02:49 18067860.0      0.05       4.9       0.0 AES/E_AES/block_A_reg[2]/D
-    0:02:49 18067716.0      0.05       4.9       0.0 AES/E_AES/block_A_reg[12]/D
-    0:02:49 18067716.0      0.05       4.8       0.0 AES/E_AES/block_A_reg[113]/D
-    0:02:49 18067860.0      0.05       4.7       0.0 AES/E_AES/block_A_reg[88]/D
-    0:02:49 18068400.0      0.05       4.7       0.0 AES/E_AES/block_A_reg[25]/D
-    0:02:49 18069489.0      0.05       4.5       0.0 AES/E_AES/block_A_reg[43]/D
-    0:02:49 18070209.0      0.05       4.5       0.0 AES/E_AES/block_A_reg[70]/D
-    0:02:49 18071010.0      0.04       4.3       0.0 AES/E_AES/block_A_reg[5]/D
-    0:02:49 18071514.0      0.04       4.2       0.0 AES/E_AES/block_A_reg[105]/D
-    0:02:49 18072234.0      0.04       4.1       0.0 AES/E_AES/block_A_reg[105]/D
-    0:02:50 18073467.0      0.04       4.0       0.0 AES/E_AES/block_A_reg[28]/D
-    0:02:50 18075051.0      0.04       3.9       0.0 AES/E_AES/block_A_reg[69]/D
-    0:02:50 18075987.0      0.04       3.8       0.0 AES/E_AES/block_A_reg[57]/D
-    0:02:50 18075987.0      0.04       3.7       0.0 AES/E_AES/block_A_reg[19]/D
-    0:02:50 18076356.0      0.04       3.7       0.0 AES/E_AES/block_A_reg[15]/D
-    0:02:50 18076941.0      0.04       3.6       0.0 AES/E_AES/block_A_reg[94]/D
-    0:02:50 18078669.0      0.04       3.5       0.0 AES/E_AES/block_A_reg[121]/D
-    0:02:50 18079389.0      0.04       3.4       0.0 AES/E_AES/block_A_reg[29]/D
-    0:02:50 18079677.0      0.04       3.3       0.0 AES/E_AES/block_A_reg[25]/D
-    0:02:50 18080190.0      0.04       3.2       0.0 AES/E_AES/block_A_reg[66]/D
-    0:02:57 18107118.0      0.03       3.0       0.0                          
-    0:02:57 18107118.0      0.03       2.9       0.0                          
-    0:02:57 18107478.0      0.03       2.8       0.0                          
-    0:02:57 18107262.0      0.03       2.8       0.0                          
-    0:02:57 18107838.0      0.03       2.7       0.0                          
-    0:02:57 18108486.0      0.03       2.6       0.0                          
-    0:02:57 18109062.0      0.03       2.6       0.0                          
-    0:02:57 18109494.0      0.03       2.6       0.0                          
-    0:02:58 18110070.0      0.03       2.5       0.0                          
-    0:02:58 18110790.0      0.03       2.5       0.0                          
-    0:02:58 18111078.0      0.03       2.4       0.0                          
-    0:02:58 18111726.0      0.03       2.3       0.0                          
-    0:02:58 18112302.0      0.03       2.2       0.0                          
-    0:02:58 18112302.0      0.03       2.1       0.0                          
-    0:02:58 18112518.0      0.03       2.1       0.0                          
-    0:02:58 18112662.0      0.02       2.0       0.0                          
-    0:02:58 18112806.0      0.02       2.0       0.0                          
-    0:02:58 18113022.0      0.02       2.0       0.0                          
-    0:02:58 18113166.0      0.02       1.9       0.0                          
-    0:02:58 18113238.0      0.02       1.8       0.0                          
-    0:02:58 18113526.0      0.02       1.7       0.0                          
-    0:02:58 18114246.0      0.02       1.6       0.0                          
-    0:02:58 18115254.0      0.02       1.5       0.0                          
-    0:02:58 18115830.0      0.02       1.4       0.0                          
-    0:02:58 18116550.0      0.02       1.4       0.0                          
-    0:02:59 18116478.0      0.02       1.3       0.0                          
-    0:02:59 18116622.0      0.02       1.3       0.0                          
-    0:02:59 18117054.0      0.02       1.2       0.0                          
-    0:02:59 18116910.0      0.02       1.2       0.0                          
-    0:02:59 18117342.0      0.02       1.1       0.0                          
-    0:02:59 18117630.0      0.02       1.0       0.0                          
-    0:03:00 18117990.0      0.02       1.0       0.0                          
-    0:03:00 18072918.0      0.24      11.8       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:00 18066870.0      0.24      11.9       0.0                          
-    0:03:01 18074646.0      0.12       6.2       0.0 AES/D_AES/block_A_reg[126]/D
-    0:03:01 18076806.0      0.06       2.7       0.0 KEYGEN/wordThree_reg[27]/D
-    0:03:01 18078966.0      0.03       1.8       0.0 AES/E_AES/block_A_reg[80]/D
-    0:03:01 18080190.0      0.03       1.6       0.0 AES/E_AES/block_A_reg[63]/D
-    0:03:01 18084375.0      0.02       1.2       0.0 KEYGEN/wordThree_reg[31]/D
-    0:03:01 18084447.0      0.02       1.2       0.0 AES/E_AES/block_A_reg[54]/D
-    0:03:02 18084816.0      0.02       1.1       0.0 AES/E_AES/block_A_reg[83]/D
-    0:03:02 18085977.0      0.02       1.0       0.0 AES/E_AES/block_A_reg[59]/D
-    0:03:02 18087489.0      0.01       1.0       0.0 KEYGEN/wordThree_reg[8]/D
-    0:03:02 18087561.0      0.01       0.9       0.0 AES/E_AES/block_A_reg[69]/D
-    0:03:02 18088902.0      0.01       0.8       0.0 AES/E_AES/block_A_reg[104]/D
-    0:03:02 18089838.0      0.01       0.7       0.0 AES/E_AES/block_A_reg[65]/D
-    0:03:02 18090486.0      0.01       0.7       0.0 AES/E_AES/block_A_reg[19]/D
-    0:03:02 18090486.0      0.01       0.7       0.0 AES/E_AES/block_A_reg[60]/D
-    0:03:02 18090702.0      0.01       0.7       0.0 AES/E_AES/block_A_reg[43]/D
-    0:03:02 18091206.0      0.01       0.6       0.0 AES/E_AES/block_A_reg[75]/D
-    0:03:02 18092358.0      0.01       0.6       0.0 AES/E_AES/block_A_reg[20]/D
-    0:03:03 18093078.0      0.01       0.5       0.0 AES/E_AES/block_A_reg[3]/D
-    0:03:03 18093078.0      0.01       0.4       0.0 AES/E_AES/block_A_reg[83]/D
-    0:03:03 18093510.0      0.01       0.4       0.0 AES/E_AES/block_A_reg[6]/D
-    0:03:03 18093510.0      0.01       0.4       0.0 AES/E_AES/block_A_reg[41]/D
-    0:03:03 18093663.0      0.01       0.4       0.0 AES/E_AES/block_A_reg[73]/D
-    0:03:03 18093735.0      0.01       0.4       0.0 AES/E_AES/block_A_reg[75]/D
-    0:03:03 18094671.0      0.01       0.3       0.0 AES/E_AES/block_A_reg[6]/D
-    0:03:03 18095040.0      0.01       0.3       0.0 AES/E_AES/block_A_reg[43]/D
-    0:03:03 18095625.0      0.01       0.3       0.0 AES/E_AES/block_A_reg[100]/D
-    0:03:03 18095841.0      0.01       0.3       0.0 AES/E_AES/block_A_reg[17]/D
-    0:03:03 18096210.0      0.01       0.2       0.0 AES/E_AES/block_A_reg[42]/D
-    0:03:04 18096210.0      0.01       0.2       0.0 AES/E_AES/block_A_reg[73]/D
-    0:03:04 18096498.0      0.01       0.2       0.0 AES/E_AES/block_A_reg[59]/D
-    0:03:04 18097182.0      0.00       0.2       0.0 AES/E_AES/block_A_reg[34]/D
-    0:03:04 18097182.0      0.00       0.2       0.0 AES/E_AES/block_A_reg[44]/D
-    0:03:04 18096750.0      0.00       0.2       0.0 AES/E_AES/block_A_reg[89]/D
-    0:03:04 18096966.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[89]/D
-    0:03:04 18097407.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[39]/D
-    0:03:04 18097551.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[113]/D
-    0:03:04 18098163.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[102]/D
-    0:03:04 18098523.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[97]/D
-    0:03:04 18098523.0      0.00       0.1       0.0 AES/E_AES/block_A_reg[121]/D
-    0:03:04 18099036.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[81]/D
-    0:03:04 18099864.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[113]/D
-    0:03:04 18100008.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[93]/D
-    0:03:05 18100800.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[17]/D
-    0:03:05 18101304.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[76]/D
-    0:03:05 18102024.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[107]/D
-    0:03:05 18102240.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[49]/D
-    0:03:05 18102492.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[59]/D
-    0:03:05 18102348.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[83]/D
-    0:03:05 18102420.0      0.00       0.0       0.0 AES/E_AES/block_A_reg[113]/D
-    0:03:05 18102780.0      0.00       0.0       0.0                          
+    0:01:00 18638757.0      0.00       0.0       0.0                          
+    0:01:00 18638757.0      0.00       0.0       0.0                          
+    0:01:08 18531045.0      0.08       0.6       0.0                          
+    0:01:09 18473589.0      0.09       1.0       0.0                          
+    0:01:11 18440541.0      0.10       1.4       0.0                          
+    0:01:11 18424053.0      0.10       1.7       0.0                          
+    0:01:12 18417429.0      0.12       2.1       0.0                          
+    0:01:13 18414189.0      0.12       2.1       0.0                          
+    0:01:13 18411165.0      0.12       2.1       0.0                          
+    0:01:13 18409653.0      0.12       2.1       0.0                          
+    0:01:14 18408141.0      0.12       2.1       0.0                          
+    0:01:14 18406989.0      0.12       2.1       0.0                          
+    0:01:14 18406557.0      0.12       2.1       0.0                          
+    0:01:14 18406125.0      0.12       2.1       0.0                          
+    0:01:14 18405549.0      0.12       2.1       0.0                          
+    0:01:14 18405117.0      0.12       2.1       0.0                          
+    0:01:14 18405117.0      0.12       2.1       0.0                          
+    0:01:15 18408285.0      0.06       1.1       0.0 KEYGEN/wordThree_reg[10]/D
+    0:01:15 18414306.0      0.03       0.4       0.0 KEYGEN/wordThree_reg[12]/D
+    0:01:15 18416997.0      0.02       0.2       0.0 KEYGEN/wordThree_reg[25]/D
+    0:01:15 18418644.0      0.01       0.1       0.0 KEYGEN/wordThree_reg[12]/D
+    0:01:15 18419697.0      0.01       0.0       0.0 KEYGEN/wordThree_reg[9]/D
+    0:01:15 18420273.0      0.00       0.0       0.0 KEYGEN/wordThree_reg[0]/D
+    0:01:16 18420345.0      0.00       0.0       0.0                          
+    0:01:16 18408897.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18407745.0      0.17       1.6       0.0                          
+    0:01:16 18411057.0      0.02       0.2       0.0 KEYGEN/wordThree_reg[0]/D
+    0:01:16 18411777.0      0.01       0.0       0.0 KEYGEN/wordThree_reg[25]/D
+    0:01:17 18412281.0      0.00       0.0       0.0                          
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
 
 
@@ -1365,7 +722,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   Optimization Complete
   ---------------------
 Warning: Design 'AES_toplevel' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'AHB/TX_FIFO/HEAD_PTR/FLEXCNT/clk': 4060 load(s), 1 driver(s)
+     Net 'AHB/TX_FIFO/HEAD_PTR/FLEXCNT/clk': 4193 load(s), 1 driver(s)
      Net 'AES/D_AES/INV_MIX_COLUMNS/MC_B0/i_coeff[0]': 1336 load(s), 1 driver(s)
      Net 'AES/E_AES/MIX_COLUMNS/MC_B1/i_coeff[1]': 1336 load(s), 1 driver(s)
 # Step 4: Output reports
@@ -1390,7 +747,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     K-2015.06-SP1
-Date:        Tue Apr 25 05:24:28 2017
+Date:        Wed Apr 26 01:04:49 2017
 ****************************************
 
                    Name                                            Total
@@ -1409,7 +766,7 @@ Nets                                                                2
     Unloaded nets (LINT-2)                                          2
 --------------------------------------------------------------------------------
 
-Warning: In design 'AES_toplevel', net 'n19' driven by pin 'AHB/HRESP[1]' has no loads. (LINT-2)
+Warning: In design 'AES_toplevel', net 'n2' driven by pin 'AHB/HRESP[1]' has no loads. (LINT-2)
 Warning: In design 'AES_toplevel', net 'AHB/n2' driven by pin 'AHB/AHB_SLAVE/HRESP[1]' has no loads. (LINT-2)
 Warning: In design 'MCU', port 'fullTx' is not connected to any nets. (LINT-28)
 Warning: In design 'ahb_slave', port 'HWDATA[31]' is not connected to any nets. (LINT-28)

@@ -1,0 +1,267 @@
+#
+# Copyright (c) 2003 Cadence Design Systems, Inc.
+#
+ 
+#########################################################################
+# Process declaration.
+#########################################################################
+ 
+process "DIFFERENT_KINDS_OF_DIELECTRIC" {
+    background_dielectric_constant 1.0
+}
+ 
+#########################################################################
+# Well declarations.
+#########################################################################
+ 
+well nwell {}
+#well pwell {}
+ 
+#########################################################################
+# Diffusion declarations.
+#########################################################################
+ 
+diffusion "N_SOURCE_DRAIN" {
+# Tox is (height of POLYCIDE - thickness of diffusion) = (0.35 - 0.3455) = 0.0045um
+    thickness 0.3455
+    resistivity 7.7
+}
+diffusion "P_SOURCE_DRAIN" {
+    thickness 0.3455
+    resistivity 8.3
+}
+ 
+#########################################################################
+# Conducting layer declarations.
+#########################################################################
+ 
+conductor "poly" {
+    min_spacing 0.9
+    min_width 0.5
+    height 0.35
+    thickness 0.20
+    resistivity 8.6
+    gate_forming_layer true
+}
+conductor "metal1" {
+    min_spacing 0.9
+    min_width 0.9
+    height 1.05
+    thickness 0.53
+    resistivity 0.09
+    gate_forming_layer false
+}
+conductor "metal2" {
+    min_spacing 0.9
+    min_width 0.9
+    height 2.38
+    thickness 0.53
+    resistivity 0.09
+# The key words TRUE and FALSE are not case sensitive.
+    gate_forming_layer FALSE
+}
+conductor "metal3" {
+    min_spacing 0.9
+    min_width 1.5
+    height 3.71
+    thickness 0.53
+    resistivity 0.05
+    gate_forming_layer false
+}
+ 
+#########################################################################
+# Dielectric and passivation layer declarations.
+#########################################################################
+ 
+#########################################################################
+# Base dielectric from substrate...
+#########################################################################
+ 
+dielectric "First_dielectric" {
+# Starts at height zero.
+    conformal FALSE
+    height 0.00
+    thickness 0.35
+    dielectric_constant 3.90
+}
+ 
+# Simple planar dielectric starts at the bottom of POLYCIDE
+# and ends at 1.08um which is 0.03um above the bottom of M1.
+ 
+dielectric "SimplePlanar1" {
+# Starts at height of Poly
+    conformal FALSE
+    height 0.35
+    thickness 0.73
+    dielectric_constant 4.00
+}
+ 
+#########################################################################
+# M1 level...
+#########################################################################
+ 
+# Now a planar intra-metal (M1) dielectric starts 0.03um above from the
+# bottom of M1.
+ 
+dielectric "PlanarIntraMetal1" {
+    conformal FALSE
+#
+# Starts at height of M1
+    height 1.08
+# Laterally intersect with M1
+    thickness 0.03
+    dielectric_constant 7.00
+}
+ 
+# The second intra-metal dielectric across M1
+# and on top of "PlanarIntraMetal1".
+ 
+dielectric "PlanarIntraMetal2" {
+# Yet another intra-metal planar dielectric layer.
+    conformal FALSE
+    height 1.11
+    upto 1.15
+# OR
+#    thickness 0.04
+    dielectric_constant 3.00
+}
+ 
+# A conformal dielectric.
+# When specifying a conformal dielectric (whether it is uniform or
+# non-uniform, we must use "conformal TRUE", "expandedFrom", "sideExpand",
+# and "topThickness" together.
+#
+# 1. "conformal" must be set to TRUE.
+# 2. "expandedFrom" can be a metal layer or a dielectric/passivation layer.
+# The conformal dielectric layer must be expanded from its immediate
+# lower (metal/dielectric/passivation) layer. It cannot be expanded
+# from a planar dielectric layer.
+# 3. "thickness" is the bottom dielectric thickness.
+# 4. "sideExpand" specifies the side thickness.
+# 5. "topThickness" is the thickness of the dielectric above the
+# top of the "expandedFrom" layer.
+ 
+dielectric "conformalAtTopOFM1" {
+# Conformal above M1
+    conformal TRUE
+    expandedFrom metal1
+ 
+# and starts from the top of "PlanarIntraMetal2"
+    height 1.15
+ 
+# Base/Bottom thickness of the conformal dielectric.
+    thickness 0.43
+ 
+# The thickness of the dielectric above the "expandedFrom" object, i.e. M1.
+    topThickness 0.43
+ 
+# This is the side thickness of the dielectric.
+    sideExpand 0.43
+    dielectric_constant 4.10
+}
+ 
+dielectric "SimplePlanar2" {
+# From top of M1 to bottom of M2
+    conformal FALSE
+    height 1.58
+    thickness 0.80
+    dielectric_constant 4.00
+}
+ 
+#########################################################################
+# M2 level...
+#########################################################################
+ 
+# An uniform conformal dielectric starting from the bottom of M2.
+ 
+dielectric "UniformConformal1" {
+    conformal TRUE
+    expandedFrom metal2
+# Height of M2
+    delta_height 0.00
+        delta_layer SimplePlanar2
+#    height 2.38
+    thickness 0.50
+    topThickness 0.50
+    sideExpand 0.50
+    dielectric_constant 3.00
+}
+ 
+# A nonuniform conformal dielectric is one when any one of "thickness",
+# "sideExpand", and "topThickness" are different.
+ 
+dielectric "NonuniformConformal1" {
+    conformal TRUE
+    height 2.88
+    thickness 0.10
+    expandedFrom UniformConformal1
+    sideExpand 0.03
+    topThickness 0.05
+    dielectric_constant 7.00
+}
+ 
+ 
+dielectric "SimplePlanar3" {
+    conformal FALSE
+    height 2.98
+    thickness 0.73
+    dielectric_constant 4.10
+}
+ 
+#########################################################################
+# M3 level...
+#########################################################################
+ 
+# A special case of conformal dielectric.
+dielectric "NonuniformConformal2" {
+# Humps over M3 with side and top thicknesses equal to 0.17 um and 0.50 um, respectively.
+    conformal TRUE
+    expandedFrom metal3
+    height 3.71
+# Note that the bottom thickness is thicker than M3!
+    thickness 0.90
+    topThickness 0.50
+    sideExpand 0.17
+    dielectric_constant 4.10
+}
+ 
+ 
+#########################################################################
+ 
+passivation "PlanarPass1" {
+# From top of M5 to bottom of M6.
+    conformal FALSE
+    height 4.61
+    thickness 0.70
+    dielectric_constant 4.00
+}
+ 
+#########################################################################
+# Contacts and Via declarations.
+#########################################################################
+ 
+via "cc" {
+    top_layer metal1 
+    bottom_layer poly
+    contact_resistance 7.8
+}
+via "cc" {
+    top_layer metal1
+    bottom_layer N_SOURCE_DRAIN
+    contact_resistance 11
+}
+via "cc" {
+    top_layer metal1
+    bottom_layer P_SOURCE_DRAIN
+    contact_resistance 10
+}
+via "via" {
+    top_layer metal2
+    bottom_layer metal1
+    contact_resistance 7.9
+}
+via "via2" {
+    top_layer metal3
+    bottom_layer metal2
+    contact_resistance 8.2
+}
