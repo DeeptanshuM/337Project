@@ -30,7 +30,7 @@ output reg [3:0] status_bits
 reg flagKeyGenDone;
 wire tmp_flagKeyGenDone;
 
-	typedef enum bit [3:0] {
+typedef enum bit [4:0] {
 			IDLE,
 			get_key,
 			get_data,
@@ -55,7 +55,7 @@ always_ff @ (posedge clk, negedge n_reset) begin
   else begin
 	state <= nxt_state;
 	flagKeyGenDone <= tmp_flagKeyGenDone;
-	//status_bits <= {key generation is complete, is_encrypt/not_is_decrypt, encryption/decrption complete, buffer is full};
+	//status_bits <= {flagKeyGenDone, is_encrypt, is_decrypt, !emptyTx, fullRx};
 	status_bits[0] <= fullRx;
         status_bits[1] <= !emptyTx;
 	status_bits[2] <= tmp_status_bits_2;

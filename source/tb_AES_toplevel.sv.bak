@@ -7,13 +7,12 @@
 // Description: Top level test bench.
 
 `timescale 1ns / 10ps
-`define INPUT_READY 1
-`define DATA_DONE 2
-`define ENCRYPT_NOT_DECRYPT 4
-`define KEY_GEN_DONE 8
 
 module tb_AES_toplevel();
-
+parameter INPUT_READY = 1;
+parameter DATA_DONE  = 2;
+parameter ENCRYPT_NOT_DECRYPT = 4;
+parameter KEY_GEN_DONE  = 8;
 parameter CLK_PERIOD				= 5;
 parameter NUMBER_OF_TESTS = 500;
 
@@ -38,6 +37,7 @@ reg          tb_HREADY;
 reg [ 1:0]   tb_HRESP;
 
 reg [15:0][31:0] tb_out_data;
+reg [3:0][127:0] tb_data_rcv;
 
 //data file vars
 integer data_file_raw, data_file_to_write_encrypt, data_file_to_write_decrypt, data_file_expected;
@@ -397,13 +397,15 @@ task write_4blocks_to_file_encrypt;
       begin
 	//$fseek(data_file, 0, `SEEK_END);
 	for (i = 0; i < 16; i=i+1) begin
+		if (i % 4 == 0)
+			tb_data_rcv[3 - i / 4] = {tb_out_data[i],tb_out_data[i+1],tb_out_data[i+2],tb_out_data[i+3]};
 		tmp = tb_out_data[i][31:24];
 		tb_out_data[i][31:24] = tb_out_data[i][7:0];
 		tb_out_data[i][7:0] = tmp;
 	
 		tmp = tb_out_data[i][23:16];
 		tb_out_data[i][23:16] = tb_out_data[i][15:8];
-		tb_out_data[i][15:8] = tmp;
+		tb_out_data[i][15:8] = tmp;		
 
 		$fwrite(data_file_to_write_encrypt,"%u",tb_out_data[i]);
 //		for(j = 31; j >= 0; j = j - 8) begin
@@ -419,6 +421,8 @@ task write_4blocks_to_file_decrypt;
       begin
 	//$fseek(data_file, 0, `SEEK_END);
 	for (i = 0; i < 16; i=i+1) begin
+		if (i % 4 == 0)
+			tb_data_rcv[3 - i / 4] = {tb_out_data[i],tb_out_data[i+1],tb_out_data[i+2],tb_out_data[i+3]};
 		tmp = tb_out_data[i][31:24];
 		tb_out_data[i][31:24] = tb_out_data[i][7:0];
 		tb_out_data[i][7:0] = tmp;
@@ -440,6 +444,8 @@ task write_1block_to_file_encrypt;
 	reg [7:0] tmp;
       begin
 	for (i = 0; i < 4; i=i+1) begin
+		if (i % 4 == 0)
+			tb_data_rcv[3] = {tb_out_data[i],tb_out_data[i+1],tb_out_data[i+2],tb_out_data[i+3]};
 		tmp = tb_out_data[i][31:24];
 		tb_out_data[i][31:24] = tb_out_data[i][7:0];
 		tb_out_data[i][7:0] = tmp;
@@ -458,6 +464,8 @@ task write_1block_to_file_decrypt;
 	reg [7:0] tmp;
       begin
 	for (i = 0; i < 4; i=i+1) begin
+		if (i % 4 == 0)
+			tb_data_rcv[3 - i / 4] = {tb_out_data[i],tb_out_data[i+1],tb_out_data[i+2],tb_out_data[i+3]};
 		tmp = tb_out_data[i][31:24];
 		tb_out_data[i][31:24] = tb_out_data[i][7:0];
 		tb_out_data[i][7:0] = tmp;
@@ -473,14 +481,11 @@ endtask
 
 task wait_key_gen;
 	integer z;
-	begin		
+	begin
 		get_status;
-		while (tmp_status & KEY_GEN_DONE) begin
+		while (tmp_status[3] == 0) begin
 			get_status;
-		end		
-//		for (z = 0; z < 14; z = z + 1) begin
-//			@(posedge tb_HCLK); #1ns;
-//		end
+		end
 	end
 endtask
 
@@ -488,12 +493,9 @@ task wait_output_done;
 	integer z;
 	begin
 		get_status;
-		while (tmp_status & DATA_DONE) begin
+		while (tmp_status[1] == 0) begin
 			get_status;
 		end
-//		for (z = 0; z < 50; z = z + 1) begin
-//			@(posedge tb_HCLK); #1ns;
-//		end
 	end
 endtask
 
@@ -501,27 +503,27 @@ task chk_4data_blocks_encrypt;
 	begin
 		assert(tbe_o_data_vector[input_idx-4] == {tb_out_data[0],tb_out_data[1],tb_out_data[2],tb_out_data[3]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA ENCRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA ENCRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tbe_o_data_vector[input_idx-3] == {tb_out_data[4],tb_out_data[5],tb_out_data[6],tb_out_data[7]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA ENCRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA ENCRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tbe_o_data_vector[input_idx-2] == {tb_out_data[8],tb_out_data[9],tb_out_data[10],tb_out_data[11]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA ENCRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA ENCRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tbe_o_data_vector[input_idx-1] == {tb_out_data[12],tb_out_data[13],tb_out_data[14],tb_out_data[15]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA ENCRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA ENCRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 	end
 endtask
@@ -531,28 +533,63 @@ task chk_4data_blocks_decrypt;
 	begin
 		assert(tb_i_data_vector[input_idx-4] == {tb_out_data[0],tb_out_data[1],tb_out_data[2],tb_out_data[3]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA DECRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA DECRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tb_i_data_vector[input_idx-3] == {tb_out_data[4],tb_out_data[5],tb_out_data[6],tb_out_data[7]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA DECRYPTIONt value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA DECRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tb_i_data_vector[input_idx-2] == {tb_out_data[8],tb_out_data[9],tb_out_data[10],tb_out_data[11]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA DECRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA DECRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
 		assert(tb_i_data_vector[input_idx-1] == {tb_out_data[12],tb_out_data[13],tb_out_data[14],tb_out_data[15]})
 		begin
-			$info("Test Case #%0d: Had a correct tb_rcv_fifo_out value", tb_test_case_num);
+			$info("Test Case #%0d, index #%0d: Had a correct HRDATA DECRYPTION value", tb_test_case_num, input_idx);
 		end else begin
-			$error("Test Case #%0d: Had an incorrect tb_rcv_fifo_out value ******************************", tb_test_case_num);
+			$error("Test Case #%0d, index #%0d: Had an incorrect HRDATA DECRYPTION value ******************************", tb_test_case_num, input_idx);
 		end
+	end
+endtask
+
+task chk_HREADY;
+		input _HREADY;
+	begin
+		assert(_HREADY == tb_HREADY)
+		begin
+			$info("Test Case #%0d: Had a correct _HREADY value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect _HREADY value ******************************", tb_test_case_num);
+		end
+	end
+endtask
+task chk_HRESP;
+	input [1:0] _HRESP;
+	begin
+		assert(_HRESP == tb_HRESP)
+		begin
+			$info("Test Case #%0d: Had a correct tb_HRESP value", tb_test_case_num);
+		end else begin
+			$error("Test Case #%0d: Had an incorrect tb_HRESP %d value ******************************", tb_test_case_num, tb_HRESP);
+		end
+	end
+endtask
+
+task send_initial_data;
+	begin
+		@(posedge tb_HCLK); #0.5ns; tb_HSELx = 1'b1; tb_HADDR = 32'h40;	tb_HTRANS = NONSEQ;tb_HBURST = INCR; tb_HWDATA = '0;
+		@(posedge tb_HCLK); #0.5ns; tb_HADDR = 32'h44; tb_HTRANS = NONSEQ;tb_HBURST = INCR; tb_HSELx = 1'b1; tb_HWDATA = tb_i_data_vector[3];
+		#1.5ns;chk_HREADY(0);chk_HRESP(1);
+		@(posedge tb_HCLK); #0.5ns; tb_HADDR = '0; tb_HTRANS = '0;tb_HBURST = '0; tb_HSELx = 1'b0;tb_HWDATA = '0;
+		#1.5ns;chk_HREADY(1);chk_HRESP(1);
+		@(posedge tb_HCLK); #1.5ns;
+		chk_HREADY(1);chk_HRESP(0);
 	end
 endtask
 
@@ -580,16 +617,13 @@ initial begin
 		reset_dut();
 		tb_test_case_num = tb_test_case_num + 1;
 		
-		// TEST 1 : TEST AFTER SENDING A KEY
-		send_key("thisisthekey0000");
-		@(posedge tb_HCLK); @(posedge tb_HCLK); #1ns;
-		@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;@(posedge tb_HCLK); #1ns;
+		// TEST 1 : TRY SENDING DATA FOR ENCRYPTION
+		send_initial_data;
+		input_idx = 0;
 
 		tb_test_case_num = tb_test_case_num + 1;
 		
 		// TEST 2 : TEST AFTER SENDING KEY AND DATA BLOCKS FOR ENCRYPTION
-		reset_dut();
-
 		send_key("thisisthekey0000");
 		wait_key_gen;
 		while (cnt < test_counter - 4) begin
@@ -629,18 +663,6 @@ initial begin
 			write_1block_to_file_decrypt;
 			cnt = cnt + 1;
 		end 
-
-		//send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
-		//@(posedge tb_HCLK); #1ns;
-		//#0.5ns;
-
-		// TEST 3 : TEST AFTER SENDING KEY AND DATA AND THEN GETTING DATA
-	//	reset_dut();
-	//	send_key("ZXCVBNMASDFGHJKL");
-	//	send_4blocks("1234567890123456","1234567890123456","1234567890123456","1234567890123456");
-	//	get_data4_block(tb_out_data);
-	//	@(posedge tb_HCLK); #1ns;
-	//	#0.5ns;
 	end
 
 always@(posedge tb_HCLK) begin
