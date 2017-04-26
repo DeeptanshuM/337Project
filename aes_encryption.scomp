@@ -1,9 +1,0 @@
-QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-Start time: 18:23:21 on Apr 25,2017
-vlog -sv -work source_work source/aes_encryption.sv 
--- Compiling module aes_encryption
-
-Top level modules:
-	aes_encryption
-End time: 18:23:21 on Apr 25,2017, Elapsed time: 0:00:00
-Errors: 0, Warnings: 0
