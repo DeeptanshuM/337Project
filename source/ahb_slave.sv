@@ -32,6 +32,8 @@ module ahb_slave (
 );
 	reg [31:0] status_padded;
 	reg is_status;
+	wire key_done;
+	assign key_done = status[3];
 
 	always_comb begin
 		HRDATA = data_out;
@@ -59,6 +61,7 @@ module ahb_slave (
 		.HSIZE(HSIZE),
 		.HWRITE(HWRITE),
 		.HTRANS(HTRANS),
+		.key_done(key_done),
 		.rcv_fifo_full(rcv_fifo_full),
 		.rcv_fifo_empty(rcv_fifo_empty),
 		.tx_fifo_empty(tx_fifo_empty),

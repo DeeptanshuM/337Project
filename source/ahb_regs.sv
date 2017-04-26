@@ -15,6 +15,7 @@ module ahb_regs (
 	input wire  [ 2:0]  HSIZE,
 	input wire  [ 1:0]  HTRANS,
 	input wire          HWRITE,
+	input wire 	 key_done,
 	input wire       rcv_fifo_full,
 	input wire       rcv_fifo_empty,
 	input wire       tx_fifo_empty,
@@ -162,7 +163,8 @@ module ahb_regs (
 		if (HSELx == 1'b0 || HTRANS == IDLE) begin
 			//
 		end
-		else if (HSIZE != 2) begin
+		else if (HSIZE != 2 || ((HADDR >= 32'h80 && HADDR < 32'hE0  || HADDR >= 32'h40 && HADDR < 32'h80) && key_done == 1'b0)) begin
+//		else if (HSIZE != 2) begin
 			opcode = ERROR;
 		end
 		else if (HADDR >= 32'h80 && HADDR < 32'hE0 && !HWRITE && HBURST == INCR && HTRANS != BUSY && !tx_fifo_empty) begin
