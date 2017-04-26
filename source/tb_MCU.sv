@@ -32,18 +32,20 @@ reg [3:0] tb_status_bit;
 // DUT portmap
 MCU djkdfsajkhhjksdajk
 (
+	//input
 	.clk(tb_clk),
 	.n_reset(tb_n_reset),
 	.generation_done(tb_generation_done),
 	.key_in(tb_key_in),
-	.is_decryption_pulse(tb_is_decryption),
-	.is_encryption_pulse(tb_is_encryption),
+	.is_decryption_pulse(tb_is_decryption_pulse),
+	.is_encryption_pulse(tb_is_encryption_pulse),
 	.emptyRx(tb_emptyRx),
 	.fullRx(tb_fullRx),
 	.emptyTx(tb_emptyTx),
 	.fullTx(tb_fullTx),
 	.data_done(tb_data_done),
 	.accepted(tb_accepted),
+	//output
 	.is_encrypt(tb_is_encrypt),
 	.read_fifo(tb_read_fifo),
 	.rcv_deq(tb_rcv_deq),
@@ -76,21 +78,55 @@ begin
 end
 endtask
 
-task is_status_bits_After_reset;
-        begin
-                assert if(tb_status_bits == 4'b0100)
-                begin
-                        $info("Test Case #%0d: Had correct status bits after reset", tb_test_num);
-                end else begin
-                        $error("Test Case #%0d: Had incorrect status bits after reset", tb_test_num);
-                end
-        end
-
 initial begin
-	//UNO: test after reset
-	tb_test_num = tb_test_num + 1;
+	tb_generation_done = 0;
+	tb_key_in = 0;
+	tb_is_decryption_pulse = 0;
+	tb_is_encryption_pulse = 1;
+	tb_emptyRx = 1;
+	tb_fullRx = 0;
+	tb_emptyTx = 0;
+	tb_fullTx = 0;
+	tb_data_done = 0;
+	tb_accepted = 0;
+	
+	//reset
+	@(posedge tb_clk);
 	reset_dut;
-	is_status_bits_After_reset;
+	@(posedge tb_clk);
+	//assert (tb_is_encrypt == 1)
+        //        begin
+        //                $info("Test Case #%0d: Passed: default is_encrypt value is correct", tb_test_num);
+        //        end else begin
+        //                $error("Test Case #%0d: Failed: default is_encrypt value is not correct", tb_test_num);
+        //        end
+	@(posedge tb_clk);
+
+	//assert key_in
+	tb_key_in = 1;
+	@(posedge tb_clk);
+	tb_key_in = 0;
+	@(posedge tb_clk);
+	@(posedge tb_clk);
+	tb_generation_done = 1;
+	@(posedge tb_clk);
+	@(posedge tb_clk);
+	@(posedge tb_clk);
+
+	//when receiver fifo is not empty
+	tb_emptyRx = 0;
+	@(posedge tb_clk);
+	tb_emptyRx = 1;
+
+	//when AES is ready to accept data
+	#10;
+	tb_accepted = 1;
+	@(posedge tb_clk);
+	@(posedge tb_clk);
+	@(posedge tb_clk);
+	tb_accepted = 0;
+	
+	
 end
 
 endmodule
