@@ -10,7 +10,7 @@
 # //
 # vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -i -t ps mapped_work.tb_AES_toplevel 
 # ** Warning: (vsim-3201) Problem loading Tcl init file: ./init.tcl.
-# Start time: 01:04:55 on Apr 26,2017
+# Start time: 11:20:58 on Apr 26,2017
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: mapped/AES_toplevel.v(64552): (vopt-2685) [TFMPC] - Too few port connections for 'AHB'.  Expected 27, found 26.
 # ** Warning: mapped/AES_toplevel.v(64552): (vopt-2718) [TFMPC] - Missing connection for port 'framing_error'.
@@ -172,7 +172,8 @@
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x2(behavioral)#1
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx4(behavioral)#1
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.mux2x1(behavioral)#1
-run 50us;
+do /home/ecegrid/a/mg85/Documents/337Project/wave_final_demonstration.do
+run 12us;
 # ** Warning: DFFPOSX1 instance grabbed an invalid value and is propagating a metastable value
 #    Time: 2810 ps  Iteration: 0  Instance: /tb_AES_toplevel/DUT/AHB/RCV_FIFO/FIFO_REG/\arr_reg[0][0][31] 
 # ** Warning: DFFPOSX1 instance grabbed an invalid value and is propagating a metastable value
@@ -5805,184 +5806,192 @@ run 50us;
 #    Time: 2950 ps  Iteration: 0  Instance: /tb_AES_toplevel/DUT/KEYGEN/\round_key_10_reg[1] 
 # ** Warning: DFFPOSX1 instance metastable output value decayed to a '1' value
 #    Time: 2950 ps  Iteration: 0  Instance: /tb_AES_toplevel/DUT/KEYGEN/\round_key_10_reg[0] 
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 2623500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 2623500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 2623500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 2623500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3053500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3053500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3053500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3053500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3483500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3483500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3483500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3483500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3913500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3913500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3913500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 3913500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4343500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4343500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4343500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4343500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4773500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4773500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4773500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 4773500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5203500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5203500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5203500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5203500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5633500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5633500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5633500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 5633500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6063500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6063500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6063500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6063500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6493500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6493500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6493500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6493500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6923500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 508
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6923500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 514
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6923500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 520
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 6923500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 526
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 7983500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 7983500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 7983500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 7983500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8413500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8413500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8413500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8413500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8843500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8843500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8843500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 8843500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9273500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9273500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9273500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9273500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9703500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9703500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9703500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 9703500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10133500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10133500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10133500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10133500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10563500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10563500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10563500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10563500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10993500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10993500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10993500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 10993500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11423500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11423500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11423500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11423500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11853500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11853500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11853500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 11853500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 12283500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 538
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 12283500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 544
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 12283500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 550
-# ** Info: Test Case #2: Had a correct tb_rcv_fifo_out value
-#    Time: 12283500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 556
-run 100ns;
-run 100ns;
-run 100ns;
-# End time: 01:12:29 on Apr 26,2017, Elapsed time: 0:07:34
-# Errors: 0, Warnings: 2831
+# ** Info: Test Case #1: Had a correct _HREADY value
+#    Time: 2029500 ps  Scope: tb_AES_toplevel.chk_HREADY File: source/tb_AES_toplevel.sv Line: 566
+# ** Info: Test Case #1: Had a correct tb_HRESP value
+#    Time: 2029500 ps  Scope: tb_AES_toplevel.chk_HRESP File: source/tb_AES_toplevel.sv Line: 577
+# ** Info: Test Case #1: Had a correct _HREADY value
+#    Time: 2034500 ps  Scope: tb_AES_toplevel.chk_HREADY File: source/tb_AES_toplevel.sv Line: 566
+# ** Info: Test Case #1: Had a correct tb_HRESP value
+#    Time: 2034500 ps  Scope: tb_AES_toplevel.chk_HRESP File: source/tb_AES_toplevel.sv Line: 577
+# ** Info: Test Case #1: Had a correct _HREADY value
+#    Time: 2039 ns  Scope: tb_AES_toplevel.chk_HREADY File: source/tb_AES_toplevel.sv Line: 566
+# ** Info: Test Case #1: Had a correct tb_HRESP value
+#    Time: 2039 ns  Scope: tb_AES_toplevel.chk_HRESP File: source/tb_AES_toplevel.sv Line: 577
+# ** Info: Test Case #2, index #4: Had a correct HRDATA ENCRYPTION value
+#    Time: 2448500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #4: Had a correct HRDATA ENCRYPTION value
+#    Time: 2448500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #4: Had a correct HRDATA ENCRYPTION value
+#    Time: 2448500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #4: Had a correct HRDATA ENCRYPTION value
+#    Time: 2448500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #8: Had a correct HRDATA ENCRYPTION value
+#    Time: 2788500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #8: Had a correct HRDATA ENCRYPTION value
+#    Time: 2788500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #8: Had a correct HRDATA ENCRYPTION value
+#    Time: 2788500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #8: Had a correct HRDATA ENCRYPTION value
+#    Time: 2788500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #12: Had a correct HRDATA ENCRYPTION value
+#    Time: 3128500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #12: Had a correct HRDATA ENCRYPTION value
+#    Time: 3128500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #12: Had a correct HRDATA ENCRYPTION value
+#    Time: 3128500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #12: Had a correct HRDATA ENCRYPTION value
+#    Time: 3128500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #16: Had a correct HRDATA ENCRYPTION value
+#    Time: 3468500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #16: Had a correct HRDATA ENCRYPTION value
+#    Time: 3468500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #16: Had a correct HRDATA ENCRYPTION value
+#    Time: 3468500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #16: Had a correct HRDATA ENCRYPTION value
+#    Time: 3468500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #20: Had a correct HRDATA ENCRYPTION value
+#    Time: 3808500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #20: Had a correct HRDATA ENCRYPTION value
+#    Time: 3808500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #20: Had a correct HRDATA ENCRYPTION value
+#    Time: 3808500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #20: Had a correct HRDATA ENCRYPTION value
+#    Time: 3808500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #24: Had a correct HRDATA ENCRYPTION value
+#    Time: 4148500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #24: Had a correct HRDATA ENCRYPTION value
+#    Time: 4148500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #24: Had a correct HRDATA ENCRYPTION value
+#    Time: 4148500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #24: Had a correct HRDATA ENCRYPTION value
+#    Time: 4148500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #28: Had a correct HRDATA ENCRYPTION value
+#    Time: 4488500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #28: Had a correct HRDATA ENCRYPTION value
+#    Time: 4488500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #28: Had a correct HRDATA ENCRYPTION value
+#    Time: 4488500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #28: Had a correct HRDATA ENCRYPTION value
+#    Time: 4488500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #32: Had a correct HRDATA ENCRYPTION value
+#    Time: 4828500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #32: Had a correct HRDATA ENCRYPTION value
+#    Time: 4828500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #32: Had a correct HRDATA ENCRYPTION value
+#    Time: 4828500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #32: Had a correct HRDATA ENCRYPTION value
+#    Time: 4828500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #36: Had a correct HRDATA ENCRYPTION value
+#    Time: 5168500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #36: Had a correct HRDATA ENCRYPTION value
+#    Time: 5168500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #36: Had a correct HRDATA ENCRYPTION value
+#    Time: 5168500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #36: Had a correct HRDATA ENCRYPTION value
+#    Time: 5168500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #40: Had a correct HRDATA ENCRYPTION value
+#    Time: 5508500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #40: Had a correct HRDATA ENCRYPTION value
+#    Time: 5508500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #40: Had a correct HRDATA ENCRYPTION value
+#    Time: 5508500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #40: Had a correct HRDATA ENCRYPTION value
+#    Time: 5508500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #44: Had a correct HRDATA ENCRYPTION value
+#    Time: 5848500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 506
+# ** Info: Test Case #2, index #44: Had a correct HRDATA ENCRYPTION value
+#    Time: 5848500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 512
+# ** Info: Test Case #2, index #44: Had a correct HRDATA ENCRYPTION value
+#    Time: 5848500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 518
+# ** Info: Test Case #2, index #44: Had a correct HRDATA ENCRYPTION value
+#    Time: 5848500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_encrypt File: source/tb_AES_toplevel.sv Line: 524
+# ** Info: Test Case #2, index #4: Had a correct HRDATA DECRYPTION value
+#    Time: 6758500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #4: Had a correct HRDATA DECRYPTIONt value
+#    Time: 6758500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #4: Had a correct HRDATA DECRYPTION value
+#    Time: 6758500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #4: Had a correct HRDATA DECRYPTION value
+#    Time: 6758500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #8: Had a correct HRDATA DECRYPTION value
+#    Time: 7098500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #8: Had a correct HRDATA DECRYPTIONt value
+#    Time: 7098500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #8: Had a correct HRDATA DECRYPTION value
+#    Time: 7098500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #8: Had a correct HRDATA DECRYPTION value
+#    Time: 7098500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #12: Had a correct HRDATA DECRYPTION value
+#    Time: 7438500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #12: Had a correct HRDATA DECRYPTIONt value
+#    Time: 7438500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #12: Had a correct HRDATA DECRYPTION value
+#    Time: 7438500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #12: Had a correct HRDATA DECRYPTION value
+#    Time: 7438500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #16: Had a correct HRDATA DECRYPTION value
+#    Time: 7778500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #16: Had a correct HRDATA DECRYPTIONt value
+#    Time: 7778500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #16: Had a correct HRDATA DECRYPTION value
+#    Time: 7778500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #16: Had a correct HRDATA DECRYPTION value
+#    Time: 7778500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #20: Had a correct HRDATA DECRYPTION value
+#    Time: 8118500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #20: Had a correct HRDATA DECRYPTIONt value
+#    Time: 8118500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #20: Had a correct HRDATA DECRYPTION value
+#    Time: 8118500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #20: Had a correct HRDATA DECRYPTION value
+#    Time: 8118500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #24: Had a correct HRDATA DECRYPTION value
+#    Time: 8458500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #24: Had a correct HRDATA DECRYPTIONt value
+#    Time: 8458500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #24: Had a correct HRDATA DECRYPTION value
+#    Time: 8458500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #24: Had a correct HRDATA DECRYPTION value
+#    Time: 8458500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #28: Had a correct HRDATA DECRYPTION value
+#    Time: 8798500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #28: Had a correct HRDATA DECRYPTIONt value
+#    Time: 8798500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #28: Had a correct HRDATA DECRYPTION value
+#    Time: 8798500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #28: Had a correct HRDATA DECRYPTION value
+#    Time: 8798500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #32: Had a correct HRDATA DECRYPTION value
+#    Time: 9138500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #32: Had a correct HRDATA DECRYPTIONt value
+#    Time: 9138500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #32: Had a correct HRDATA DECRYPTION value
+#    Time: 9138500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #32: Had a correct HRDATA DECRYPTION value
+#    Time: 9138500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #36: Had a correct HRDATA DECRYPTION value
+#    Time: 9478500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #36: Had a correct HRDATA DECRYPTIONt value
+#    Time: 9478500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #36: Had a correct HRDATA DECRYPTION value
+#    Time: 9478500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #36: Had a correct HRDATA DECRYPTION value
+#    Time: 9478500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #40: Had a correct HRDATA DECRYPTION value
+#    Time: 9818500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #40: Had a correct HRDATA DECRYPTIONt value
+#    Time: 9818500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #40: Had a correct HRDATA DECRYPTION value
+#    Time: 9818500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #40: Had a correct HRDATA DECRYPTION value
+#    Time: 9818500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# ** Info: Test Case #2, index #44: Had a correct HRDATA DECRYPTION value
+#    Time: 10158500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 536
+# ** Info: Test Case #2, index #44: Had a correct HRDATA DECRYPTIONt value
+#    Time: 10158500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 542
+# ** Info: Test Case #2, index #44: Had a correct HRDATA DECRYPTION value
+#    Time: 10158500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 548
+# ** Info: Test Case #2, index #44: Had a correct HRDATA DECRYPTION value
+#    Time: 10158500 ps  Scope: tb_AES_toplevel.chk_4data_blocks_decrypt File: source/tb_AES_toplevel.sv Line: 554
+# Causality operation skipped due to absence of debug database file
