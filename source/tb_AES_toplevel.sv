@@ -210,16 +210,18 @@ task get_data4_block;
 		tb_out_data[0] = tb_HRDATA;
 		for (i = 32'h88, j = 1; i < 32'hC0; i = i + 4, j = j + 1) begin
 			@(posedge tb_HCLK); #0.5ns;
-			tb_out_data[j] = tb_HRDATA;
 			tb_HADDR = i;
+			#2ns;
+			tb_out_data[j] = tb_HRDATA;
 		end
 		@(posedge tb_HCLK); #0.5ns;
-		tb_out_data[15] = tb_HRDATA;
 		tb_HADDR = '0;
 		tb_HTRANS = IDLE;
 		tb_HSELx = 1'b0;
 		tb_HBURST = '0;
 		tb_HWDATA = '0;
+		#2ns;
+		tb_out_data[15] = tb_HRDATA;
 		@(posedge tb_HCLK); #1ns;
 	end
 endtask
@@ -239,8 +241,12 @@ task get_data1_block;
 		tb_out_data[0] = tb_HRDATA;
 		for (i = 32'h88, j = 1; i < 32'h90; i = i + 4, j = j + 1) begin
 			@(posedge tb_HCLK); #0.5ns;
-			tb_out_data[j] = tb_HRDATA;
 			tb_HADDR = i;
+			#2ns;
+			tb_out_data[j] = tb_HRDATA;
+//			@(posedge tb_HCLK); #0.5ns;
+//			tb_out_data[j] = tb_HRDATA;
+//			tb_HADDR = i;
 		end
 		@(posedge tb_HCLK); #0.5ns;
 		tb_out_data[3] = tb_HRDATA;
@@ -249,6 +255,8 @@ task get_data1_block;
 		tb_HSELx = 1'b0;
 		tb_HBURST = '0;
 		tb_HWDATA = '0;
+		#2ns;
+		tb_out_data[j] = tb_HRDATA;
 		@(posedge tb_HCLK); #1ns;
 	end
 endtask
@@ -554,6 +562,7 @@ endtask
 
 integer cnt;
 initial begin
+		tb_HRESETn = '0;
 		input_idx = 0;
 		tb_test_case_num = 0;
 		tb_HSELx = '0;
@@ -595,6 +604,7 @@ initial begin
 			write_4blocks_to_file_encrypt;
 			cnt = cnt + 4;
 		end 
+
 		while (cnt < test_counter - 1) begin // take care when data % 4 != 0
 			send_1block_from_file_encrypt;
 			wait_output_done;
@@ -603,7 +613,8 @@ initial begin
 			cnt = cnt + 1;
 		end 
 
-		// TEST 3 : TEST AFTER SENDING KEY AND DATA BLOCKS FOR DECRYPTION
+		// TEST 3 : TEST AFTER SENDING KEY AND DATA BLOCKS FOR DECRYPTION 
+		
 		select_decrypt;
 		input_idx = 0;
 		cnt = 0;

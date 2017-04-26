@@ -25,7 +25,7 @@ module tx_counter_head (
 	end
 	always_comb begin
 		temp_head_tog = head_tog;
-		if (rollover_flag) begin
+		if ((3'd5 == head_ptr) && (count_en2 == 1'b1)) begin
 			temp_head_tog = ~head_tog;
 		end
 	end

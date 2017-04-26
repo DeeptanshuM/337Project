@@ -25,7 +25,7 @@ module tx_counter_tail (
 	end
 	always_comb begin
 		temp_tail_tog = tail_tog;
-		if (rollover_flag) begin
+		if ((3'd5 == tail_ptr) && (tx_enq == 1'b1)) begin
 			temp_tail_tog = ~tail_tog;
 		end
 	end

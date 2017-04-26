@@ -9,7 +9,7 @@ module tx_counter_head (
 	input wire clk,
 	input wire n_rst,
 	input wire count_en2,
-	output reg [1:0] head_ptr,
+	output reg [2:0] head_ptr,
 	output reg head_tog
 );
 	wire sys_clr;
@@ -25,7 +25,7 @@ module tx_counter_head (
 	end
 	always_comb begin
 		temp_head_tog = head_tog;
-		if (rollover_flag) begin
+		if ((3'd5 == head_ptr) && (rcv_deq == 1'b1)) begin
 			temp_head_tog = ~head_tog;
 		end
 	end
