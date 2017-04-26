@@ -30,7 +30,7 @@ output reg [3:0] status_bits
 reg flagKeyGenDone;
 wire tmp_flagKeyGenDone;
 
-typedef enum bit [4:0] {
+	typedef enum bit [3:0] {
 			IDLE,
 			get_key,
 			get_data,
