@@ -55,7 +55,7 @@ always_ff @ (posedge clk, negedge n_reset) begin
   else begin
 	state <= nxt_state;
 	flagKeyGenDone <= tmp_flagKeyGenDone;
-	//status_bits <= {flagKeyGenDone, is_encrypt, is_decrypt, !emptyTx, fullRx};
+	//status_bits <= {key generation is complete, is_encrypt/not_is_decrypt, encryption/decrption complete, buffer is full};
 	status_bits[0] <= fullRx;
         status_bits[1] <= !emptyTx;
 	status_bits[2] <= tmp_status_bits_2;
