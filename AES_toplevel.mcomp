@@ -1,9 +1,17 @@
 QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+<<<<<<< HEAD
 Start time: 02:10:03 on Apr 26,2017
+=======
+Start time: 11:20:55 on Apr 26,2017
+>>>>>>> 961deb15d72939544619307cf119e9c21a361c74
 vlog -sv -work mapped_work source/tb_AES_toplevel.sv 
 -- Compiling module tb_AES_toplevel
 
 Top level modules:
 	tb_AES_toplevel
+<<<<<<< HEAD
 End time: 02:10:03 on Apr 26,2017, Elapsed time: 0:00:00
+=======
+End time: 11:20:55 on Apr 26,2017, Elapsed time: 0:00:00
+>>>>>>> 961deb15d72939544619307cf119e9c21a361c74
 Errors: 0, Warnings: 0

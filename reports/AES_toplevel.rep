@@ -8,7 +8,11 @@ Report : timing
         -max_paths 1
 Design : AES_toplevel
 Version: K-2015.06-SP1
+<<<<<<< HEAD
 Date   : Wed Apr 26 02:09:56 2017
+=======
+Date   : Wed Apr 26 11:20:42 2017
+>>>>>>> 961deb15d72939544619307cf119e9c21a361c74
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -81,7 +85,11 @@ Wire Load Model Mode: top
 Report : area
 Design : AES_toplevel
 Version: K-2015.06-SP1
+<<<<<<< HEAD
 Date   : Wed Apr 26 02:09:56 2017
+=======
+Date   : Wed Apr 26 11:20:42 2017
+>>>>>>> 961deb15d72939544619307cf119e9c21a361c74
 ****************************************
 
 Library(s) Used:
@@ -117,7 +125,11 @@ Report : power
         -analysis_effort low
 Design : AES_toplevel
 Version: K-2015.06-SP1
+<<<<<<< HEAD
 Date   : Wed Apr 26 02:09:59 2017
+=======
+Date   : Wed Apr 26 11:20:45 2017
+>>>>>>> 961deb15d72939544619307cf119e9c21a361c74
 ****************************************
 
 
