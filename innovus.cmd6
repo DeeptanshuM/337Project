@@ -1,0 +1,285 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Sun Apr 30 16:49:16 2017                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v16.12-s051_1 (64bit) 08/17/2016 12:18 (Linux 2.6.18-194.el5)
+#@(#)CDS: NanoRoute 16.12-s051_1 NR160816-1350/16_12-UB (database version 2.30, 347.6.1) {superthreading v1.30}
+#@(#)CDS: AAE 16.12-s026 (64bit) 08/17/2016 (Linux 2.6.18-194.el5)
+#@(#)CDS: CTE 16.12-s023_1 () Aug 12 2016 01:35:46 ( )
+#@(#)CDS: SYNTECH 16.12-s009_1 () Aug 11 2016 01:33:09 ( )
+#@(#)CDS: CPE v16.12-s054
+#@(#)CDS: IQRC/TQRC 15.2.4-s467 (64bit) Wed Jul 20 17:12:38 PDT 2016 (Linux 2.6.18-194.el5)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getDrawView
+loadWorkspace -name Physical
+win
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getDrawView
+loadWorkspace -name Physical
+win
+set ::TimeLib::tsgMarkCellLatchConstructFlag 1
+set conf_qxconf_file NULL
+set conf_qxlib_file NULL
+set defHierChar /
+set delaycal_input_transition_delay 0.1ps
+set distributed_client_message_echo 1
+set distributed_mmmc_disable_reports_auto_redirection 0
+set floorplan_default_site core
+set fpIsMaxIoHeight 0
+set init_gnd_net gnd
+set init_io_file innovus.io
+set init_lef_file {/package/eda/cells/OSU/v2.7/cadence/lib/ami05/lib/osu05_stdcells.lef /package/eda/cells/OSU/v2.7/cadence/lib/ami05/lib/osu05_stdcells.stacks.lef}
+set init_mmmc_file osu05_MMMC.view
+set init_oa_search_lib {}
+set init_pwr_net vdd
+set init_verilog mapped/AES_toplevel.v
+set latch_time_borrow_mode max_borrow
+set pegDefaultResScaleFactor 1
+set pegDetailResScaleFactor 1
+set report_inactive_arcs_format {from to when arc_type sense reason}
+set timing_library_ccs_noise_vin_clip_points {}
+set timing_library_ccs_noise_vout_clip_points {}
+set timing_library_load_pin_cap_indices {}
+set timing_library_write_library_to_directory {}
+set tso_post_client_restore_command {update_timing ; write_eco_opt_db ;}
+init_design
+floorPlan -r 1.0 0.6 50 50 50 50
+unfixAllIos
+legalizePin
+addRing -spacing_bottom 9.9 -width_left 9.9 -width_bottom 9.9 -width_top 9.9 -spacing_top 9.9 -layer_bottom metal1 -width_right 9.9 -around default_power_domain -center 1 -layer_top metal1 -spacing_right 9.9 -spacing_left 9.9 -layer_right metal2 -layer_left metal2 -offset 9.9 -nets { gnd vdd }
+setPlaceMode -congEffort medium
+placeDesign -inPlaceOpt
+checkPlace
+sroute
+trialRoute
+timeDesign -preCTS
+setMultiCpuUsage -localCpu 10
+setOptMode -yieldEffort none
+setOptMode -highEffort
+setOptMode -maxDensity 0.95
+setOptMode -drcMargin 0.0
+setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+setOptMode -noSimplifyNetlist
+optDesign -preCTS -drv
+clockDesign
+trialRoute
+timeDesign -postCTS
+setExtractRCMode -assumeMetFill
+extractRC -outfile encounter.cap
+setOptMode -yieldEffort none
+setOptMode -highEffort
+setOptMode -maxDensity 0.95
+setOptMode -drcMargin 0.0
+setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+setOptMode -noSimplifyNetlist
+optDesign -postCTS -hold
+optDesign -postCTS -drv
+all_hold_analysis_views
+all_setup_analysis_views
+getPlaceMode -doneQuickCTS -quiet
+addFiller -cell FILL
+setMetalFill -layer {1 2 3} -preferredDensity 35 -gapSpacing 0.2 -minWidth 0.1 -maxWidth 1.0 -minLength 0.1 -maxLength 10.0
+globalNetConnect vdd -type tiehi
+globalNetConnect vdd -type pgpin -pin vdd -all -override
+globalNetConnect gnd -type tielo
+globalNetConnect gnd -type pgpin -pin gnd -all -override
+sroute
+globalDetailRoute
+setExtractRCMode -engine postRoute -effortLevel low -reduce 0.0
+extractRC
+setAnalysisMode -analysisType onChipVariation
+setOptMode -yieldEffort none
+setOptMode -effort high
+setOptMode -maxDensity 0.95
+setOptMode -drcMargin 0.0
+setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+setOptMode -simplifyNetlist false
+setOptMode -usefulSkew false
+optDesign -postRoute -incr
+addFiller -cell FILL -prefix FIL -fillBoundary
+ecoRoute
+verifyConnectivity -type all -error 1000 -warning 50
+verify_drc
+streamOut final.gds2 -mapFile gds2_innovus.map -outputMacros -stripes 1 -units 1000 -mode ALL
+saveNetlist -excludeLeafCell final.v
+rcOut -spf final.dspf
+selectWire 5652.7500 30.4500 5662.6500 5621.5500 2 gnd
+deselectAll
+pan 327.709 21.847
+gui_select -rect {1158.565 5291.639 3146.662 2855.674}
+zoomSelected
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+getCTSMode -engine -quiet
+zoomIn
+gui_select -rect {2419.012 3163.694 2417.518 3159.875}
+gui_select -rect {2419.494 3108.247 2415.980 3135.825}
+pan -13.518 57.048
+pan 174.919 -31.542
+pan 119.719 69.537
+pan -14.337 17.922
+pan -487.360 1021.885
+pan -34.076 -68.152
+selectInst KEYGEN/FE_RC_4837_0
+deselectAll
+selectInst KEYGEN/FE_RC_4837_0
+deselectAll
+selectInst KEYGEN/FE_RC_2902_0
+deselectAll
+selectInst FE_OFC4854_rcv_fifo_out_79
+gui_select -rect {2621.624 3175.947 2793.415 2950.547}
+deselectAll
+selectInst AHB/RCV_FIFO/FIFO_REG/U412
+deselectAll
+selectInst FILLER_95719
+deselectAll
+selectInst {AHB/RCV_FIFO/FIFO_REG/arr_reg[1][3][8]}
+gui_select -rect {3013.061 3088.143 3186.054 2959.085}
+gui_select -rect {2812.609 2884.945 2867.528 2835.518}
+gui_select -rect {3015.807 2994.781 3065.234 2959.085}
+gui_select -rect {3290.399 3066.175 3342.571 3019.495}
+gui_select -rect {3147.611 3005.765 3180.562 2992.036}
+gui_select -rect {3361.793 3099.126 3400.235 3063.429}
+gui_select -rect {3455.154 3090.889 3477.121 3074.413}
+deselectAll
+selectInst FILLER_93965
+deselectAll
+selectWire 3288.4500 3002.2500 3354.7500 3003.7500 3 KEYGEN/FE_OFN1478_n3453
+gui_select -rect {3468.883 3123.839 3540.277 3055.192}
+gui_select -rect {3625.400 3211.709 3677.573 3167.774}
+gui_select -rect {3765.442 3236.422 3823.106 3189.741}
+gui_select -rect {3389.252 3167.774 3411.219 3156.790}
+gui_select -rect {3111.914 3173.266 3136.627 3159.536}
+selectInst AHB/RCV_FIFO/FIFO_REG/U1070
+deselectAll
+selectWire 3062.8500 2952.7500 3292.3500 2954.2500 3 KEYGEN/n3389
+deselectAll
+selectInst FILLER_85922
+deselectAll
+selectWire 4229.2500 2991.7500 4319.5500 2993.2500 3 KEYGEN/FE_OCPN10926_n3449
+deselectAll
+selectInst {AHB/RCV_FIFO/FIFO_REG/arr_reg[0][0][4]}
+deselectAll
+selectInst FILLER_88537
+deselectAll
+selectWire 2033.2500 2996.2500 2070.7500 2997.7500 3 AHB/RCV_FIFO/FIFO_REG/FE_OFN1334_n306
+deselectAll
+selectWire 1915.6500 3348.7500 2027.5500 3350.2500 3 KEYGEN/FE_OFN1656_FE_DBTN23_n7396
+deselectAll
+selectWire 2554.0500 2928.7500 2601.1500 2930.2500 3 AHB/RCV_FIFO/FIFO_REG/FE_OFN1335_n341
+deselectAll
+selectWire 3012.4500 3255.7500 3013.9500 3258.7500 3 AHB/RCV_FIFO/FIFO_REG/FE_OFN1327_n259
+deselectAll
+selectInst {AHB/RCV_FIFO/FIFO_REG/arr_reg[2][1][3]}
+deselectAll
+selectWire 2842.3500 3571.0500 2845.6500 3571.9500 2 AES/FE_OFN9890_n215
+deselectAll
+selectInst AHB/RCV_FIFO/FIFO_REG/U1174
+gui_select -rect {3073.471 3134.823 3279.415 3011.257}
+deselectAll
+selectWire 2143.6500 3243.7500 2200.3500 3245.2500 3 FE_OFN15_HRESETn
+deselectAll
+selectWire 2863.9500 3211.0500 2864.8500 3277.9500 2 {rcv_fifo_out[121]}
+deselectAll
+selectInst FILLER_93927
+gui_select -rect {4376.945 2518.018 4460.558 2392.599}
+gui_select -rect {4723.297 2316.916 4844.284 2022.339}
+deselectAll
+selectInst AES/D_AES/INV_SUB_BYTES/ISUB11/U105
+gui_select -rect {4768.256 2302.847 4854.269 2086.972}
+deselectAll
+selectInst FILLER_74582
+gui_select -rect {4867.761 2431.023 4953.774 2294.415}
+gui_select -rect {4744.645 2152.747 4862.701 1980.721}
+gui_select -rect {5329.868 2198.283 5478.282 2054.928}
+gui_select -rect {5339.987 2297.788 5410.821 2208.402}
+gui_select -rect {4867.608 2272.663 4906.060 2182.026}
+gui_select -rect {5252.127 2289.142 5345.510 2223.225}
+gui_select -rect {4711.054 2272.663 4746.759 2250.690}
+gui_select -rect {5260.367 1830.466 5383.962 1706.871}
+gui_select -rect {5197.196 1682.152 5285.086 1594.262}
+gui_select -rect {5170.020 1174.282 5311.729 1061.253}
+gui_select -rect {3340.049 2362.452 3442.706 2198.962}
+gui_select -rect {3746.874 3054.435 3849.531 2913.757}
+gui_select -rect {5214.485 1069.738 5298.131 989.894}
+gui_select -rect {4438.856 959.477 4621.357 853.018}
+gui_select -rect {3917.969 1708.491 4024.427 1670.470}
+gui_select -rect {3201.303 2242.406 3364.114 2071.026}
+gui_select -rect {1667.457 3142.148 1770.284 3065.027}
+deselectAll
+selectWire 2496.4500 4503.7500 2543.5500 4505.2500 3 KEYGEN/GFUNCTION/SUBS3/FE_OCPN9797_FE_RN_146
+gui_select -rect {2772.855 4881.650 2909.958 4633.150}
+gui_select -rect {3544.062 5087.306 3638.321 4898.788}
+gui_select -rect {2730.010 4821.668 2858.544 4727.409}
+gui_select -rect {2693.924 5597.671 2814.966 5534.519}
+gui_select -rect {3430.702 5360.850 3614.896 5218.757}
+gui_select -rect {4130.641 5387.163 4341.149 5087.189}
+gui_select -rect {3588.583 4813.529 3704.362 4734.589}
+gui_select -rect {3504.380 5381.901 3604.371 5339.799}
+gui_select -rect {4151.692 5360.850 4262.208 5276.647}
+gui_select -rect {4662.173 5434.528 4783.215 5355.587}
+gui_select -rect {5083.189 4997.724 5156.867 4902.995}
+gui_select -rect {5177.918 4508.293 5256.858 4360.937}
+gui_select -rect {5335.799 4034.650 5383.163 3850.455}
+gui_select -rect {5362.112 3524.168 5388.426 3455.753}
+gui_select -rect {5404.214 3097.889 5420.002 2997.898}
+gui_select -rect {3329.668 6168.657 2834.337 7345.069}
+gui_select -rect {3181.069 4131.607 2927.211 5735.242}
+deselectAll
+selectWire 30.1500 5611.6500 5662.6500 5621.5500 1 gnd
+pan -154.791 2129.925
+gui_select -rect {215.272 4193.523 394.829 3444.334}
+deselectAll
+selectInst AES/D_AES/INV_SUB_BYTES/ISUB14/FE_OFC3378_n1011
+pan 94.698 1158.226
+gui_select -rect {3253.935 411.630 3406.908 280.510}
+gui_select -rect {1437.401 1795.615 1697.461 1560.322}
+pan -116.380 -643.323
+pan 93.750 -1170.266
+pan 6.465 -74.354
+gui_select -rect {2727.167 4208.449 2775.937 4136.729}
+gui_select -rect {3018.413 3934.662 3088.487 3852.909}
+gui_select -rect {3548.641 4161.235 3588.350 4070.139}
+gui_select -rect {3707.476 3883.274 3733.170 3768.820}
+pan 216.645 -649.938
+pan -821.416 1353.230
+pan 94.779 626.592
+gui_select -rect {3689.605 2606.326 3730.025 2573.538}
+pan -231.686 3048.778
+pan -173.765 -2606.468
+gui_select -rect {2394.125 2125.407 2406.033 2109.769}
+gui_select -rect {2323.644 2149.335 2409.781 2075.932}
+pan -327.144 14.244
+pan -430.984 29.406
+pan -530.230 0.919
+pan -459.472 -14.244
+deselectAll
+selectInst FILLER_139836
+deselectAll
+selectInst KEYGEN/FE_RC_3193_0
+deselectAll

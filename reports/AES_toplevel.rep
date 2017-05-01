@@ -8,7 +8,7 @@ Report : timing
         -max_paths 1
 Design : AES_toplevel
 Version: K-2015.06-SP1
-Date   : Wed Apr 26 01:04:45 2017
+Date   : Wed Apr 26 02:09:56 2017
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -16,9 +16,9 @@ Date   : Wed Apr 26 01:04:45 2017
 Operating Conditions: typical   Library: osu05_stdcells
 Wire Load Model Mode: top
 
-  Startpoint: KEYGEN/wordThree_reg[14]
+  Startpoint: KEYGEN/wordThree_reg[23]
               (rising edge-triggered flip-flop clocked by HCLK)
-  Endpoint: KEYGEN/wordThree_reg[22]
+  Endpoint: KEYGEN/wordThree_reg[25]
             (rising edge-triggered flip-flop clocked by HCLK)
   Path Group: HCLK
   Path Type: max
@@ -27,44 +27,45 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock HCLK (rise edge)                                  0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  KEYGEN/wordThree_reg[14]/CLK (DFFSR)                    0.00 #     0.00 r
-  KEYGEN/wordThree_reg[14]/Q (DFFSR)                      0.49       0.49 f
-  KEYGEN/U74/Y (INVX2)                                    0.17       0.66 r
-  KEYGEN/U3522/Y (INVX8)                                  0.16       0.82 f
-  KEYGEN/GFUNCTION/input_word[14] (g_function)            0.00       0.82 f
-  KEYGEN/GFUNCTION/SUBS1/input_word[6] (s_box_lookup_18)
-                                                          0.00       0.82 f
-  KEYGEN/GFUNCTION/SUBS1/U597/Y (NOR2X1)                  0.14       0.96 r
-  KEYGEN/GFUNCTION/SUBS1/U618/Y (AND2X2)                  0.19       1.15 r
-  KEYGEN/GFUNCTION/SUBS1/U60/Y (INVX4)                    0.18       1.33 f
-  KEYGEN/GFUNCTION/SUBS1/U49/Y (INVX4)                    0.25       1.58 r
-  KEYGEN/GFUNCTION/SUBS1/U361/Y (NAND2X1)                 0.13       1.71 f
-  KEYGEN/GFUNCTION/SUBS1/U7/Y (AND2X2)                    0.23       1.94 f
-  KEYGEN/GFUNCTION/SUBS1/U216/Y (NAND3X1)                 0.11       2.05 r
-  KEYGEN/GFUNCTION/SUBS1/U213/Y (NOR2X1)                  0.18       2.23 f
-  KEYGEN/GFUNCTION/SUBS1/U212/Y (NAND3X1)                 0.15       2.38 r
-  KEYGEN/GFUNCTION/SUBS1/U636/Y (INVX2)                   0.10       2.48 f
-  KEYGEN/GFUNCTION/SUBS1/U211/Y (NAND2X1)                 0.12       2.60 r
-  KEYGEN/GFUNCTION/SUBS1/U210/Y (NOR2X1)                  0.12       2.72 f
-  KEYGEN/GFUNCTION/SUBS1/U74/Y (AND2X2)                   0.24       2.96 f
-  KEYGEN/GFUNCTION/SUBS1/U126/Y (NAND3X1)                 0.16       3.13 r
-  KEYGEN/GFUNCTION/SUBS1/U125/Y (NOR2X1)                  0.13       3.26 f
-  KEYGEN/GFUNCTION/SUBS1/U109/Y (NAND2X1)                 0.20       3.46 r
-  KEYGEN/GFUNCTION/SUBS1/substituted_word[6] (s_box_lookup_18)
-                                                          0.00       3.46 r
-  KEYGEN/GFUNCTION/gee[22] (g_function)                   0.00       3.46 r
-  KEYGEN/U470/Y (XOR2X1)                                  0.28       3.73 f
-  KEYGEN/U481/Y (XOR2X1)                                  0.27       4.01 f
-  KEYGEN/U3485/Y (XNOR2X1)                                0.28       4.29 f
-  KEYGEN/U3579/Y (XOR2X1)                                 0.19       4.48 r
-  KEYGEN/U3581/Y (AOI22X1)                                0.13       4.61 f
-  KEYGEN/U220/Y (NAND2X1)                                 0.16       4.78 r
-  KEYGEN/wordThree_reg[22]/D (DFFSR)                      0.00       4.78 r
+  KEYGEN/wordThree_reg[23]/CLK (DFFSR)                    0.00 #     0.00 r
+  KEYGEN/wordThree_reg[23]/Q (DFFSR)                      0.49       0.49 f
+  KEYGEN/U3483/Y (INVX2)                                  0.11       0.60 r
+  KEYGEN/U66/Y (INVX4)                                    0.16       0.76 f
+  KEYGEN/GFUNCTION/input_word[23] (g_function)            0.00       0.76 f
+  KEYGEN/GFUNCTION/SUBS0/input_word[7] (s_box_lookup_19)
+                                                          0.00       0.76 f
+  KEYGEN/GFUNCTION/SUBS0/U126/Y (INVX1)                   0.10       0.86 r
+  KEYGEN/GFUNCTION/SUBS0/U226/Y (AND2X2)                  0.20       1.06 r
+  KEYGEN/GFUNCTION/SUBS0/U175/Y (AND2X2)                  0.24       1.30 r
+  KEYGEN/GFUNCTION/SUBS0/U256/Y (INVX8)                   0.15       1.45 f
+  KEYGEN/GFUNCTION/SUBS0/U243/Y (INVX8)                   0.13       1.58 r
+  KEYGEN/GFUNCTION/SUBS0/U164/Y (AND2X2)                  0.17       1.75 r
+  KEYGEN/GFUNCTION/SUBS0/U512/Y (NOR2X1)                  0.15       1.91 f
+  KEYGEN/GFUNCTION/SUBS0/U135/Y (NAND2X1)                 0.12       2.02 r
+  KEYGEN/GFUNCTION/SUBS0/U331/Y (NOR2X1)                  0.15       2.18 f
+  KEYGEN/GFUNCTION/SUBS0/U12/Y (AND2X2)                   0.23       2.41 f
+  KEYGEN/GFUNCTION/SUBS0/U330/Y (NAND3X1)                 0.12       2.53 r
+  KEYGEN/GFUNCTION/SUBS0/U673/Y (AOI21X1)                 0.19       2.72 f
+  KEYGEN/GFUNCTION/SUBS0/U197/Y (AND2X2)                  0.21       2.92 f
+  KEYGEN/GFUNCTION/SUBS0/U294/Y (NAND3X1)                 0.11       3.03 r
+  KEYGEN/GFUNCTION/SUBS0/U293/Y (NOR2X1)                  0.13       3.16 f
+  KEYGEN/GFUNCTION/SUBS0/U58/Y (NAND2X1)                  0.18       3.35 r
+  KEYGEN/GFUNCTION/SUBS0/substituted_word[1] (s_box_lookup_19)
+                                                          0.00       3.35 r
+  KEYGEN/GFUNCTION/U3/Y (XOR2X1)                          0.22       3.57 f
+  KEYGEN/GFUNCTION/gee[25] (g_function)                   0.00       3.57 f
+  KEYGEN/U98/Y (XOR2X1)                                   0.24       3.82 f
+  KEYGEN/U316/Y (XOR2X1)                                  0.25       4.07 f
+  KEYGEN/U371/Y (XNOR2X1)                                 0.27       4.34 r
+  KEYGEN/U360/Y (AND2X1)                                  0.14       4.48 r
+  KEYGEN/U5204/Y (AOI22X1)                                0.13       4.61 f
+  KEYGEN/U250/Y (NAND2X1)                                 0.16       4.78 r
+  KEYGEN/wordThree_reg[25]/D (DFFSR)                      0.00       4.78 r
   data arrival time                                                  4.78
 
   clock HCLK (rise edge)                                  5.00       5.00
   clock network delay (ideal)                             0.00       5.00
-  KEYGEN/wordThree_reg[22]/CLK (DFFSR)                    0.00       5.00 r
+  KEYGEN/wordThree_reg[25]/CLK (DFFSR)                    0.00       5.00 r
   library setup time                                     -0.22       4.78
   data required time                                                 4.78
   --------------------------------------------------------------------------
@@ -80,7 +81,7 @@ Wire Load Model Mode: top
 Report : area
 Design : AES_toplevel
 Version: K-2015.06-SP1
-Date   : Wed Apr 26 01:04:45 2017
+Date   : Wed Apr 26 02:09:56 2017
 ****************************************
 
 Library(s) Used:
@@ -88,21 +89,21 @@ Library(s) Used:
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
 Number of ports:                        10108
-Number of nets:                         64301
-Number of cells:                        54390
-Number of combinational cells:          47281
+Number of nets:                         64286
+Number of cells:                        54375
+Number of combinational cells:          47266
 Number of sequential cells:              6998
 Number of macros/black boxes:               0
-Number of buf/inv:                      10409
+Number of buf/inv:                      10406
 Number of references:                       4
 
-Combinational area:           12784329.000000
-Buf/Inv area:                  1650816.000000
+Combinational area:           12784014.000000
+Buf/Inv area:                  1651896.000000
 Noncombinational area:         5627952.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:              18412281.000000
+Total cell area:              18411966.000000
 Total area:                 undefined
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
@@ -116,7 +117,7 @@ Report : power
         -analysis_effort low
 Design : AES_toplevel
 Version: K-2015.06-SP1
-Date   : Wed Apr 26 01:04:48 2017
+Date   : Wed Apr 26 02:09:59 2017
 ****************************************
 
 
@@ -144,11 +145,11 @@ Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
 AES_toplevel                            248.534 1.89e+03 5.52e+03 2.13e+03 100.0
   KEYGEN (key_generator)                 22.405  770.990 1.58e+03  793.396  37.2
-    GFUNCTION (g_function)                0.000    0.000  179.678 1.80e-04   0.0
-      SUBS3 (s_box_lookup_16)             0.000    0.000   43.249 4.32e-05   0.0
-      SUBS2 (s_box_lookup_17)             0.000    0.000   44.045 4.40e-05   0.0
-      SUBS1 (s_box_lookup_18)             0.000    0.000   44.109 4.41e-05   0.0
-      SUBS0 (s_box_lookup_19)             0.000    0.000   46.770 4.68e-05   0.0
+    GFUNCTION (g_function)                0.000    0.000  180.579 1.81e-04   0.0
+      SUBS3 (s_box_lookup_16)             0.000    0.000   43.311 4.33e-05   0.0
+      SUBS2 (s_box_lookup_17)             0.000    0.000   44.130 4.41e-05   0.0
+      SUBS1 (s_box_lookup_18)             0.000    0.000   44.477 4.45e-05   0.0
+      SUBS0 (s_box_lookup_19)             0.000    0.000   47.219 4.72e-05   0.0
   AES (aes_block)                       222.187  722.404 3.33e+03  944.594  44.3
     D_AES (aes_decryption)              104.560  353.265 1.65e+03  457.827  21.4
       INC_STATE (incriment_state_0)    5.88e-02 7.04e-02    0.947    0.129   0.0
@@ -231,7 +232,7 @@ AES_toplevel                            248.534 1.89e+03 5.52e+03 2.13e+03 100.0
         SUB1 (s_box_lookup_15)            1.562    1.028   39.080    2.590   0.1
       XOR_INIT (xor_init_1)               1.164    2.631   31.218    3.795   0.2
       DBS (data_block_select_1)           2.316    3.651   19.279    5.967   0.3
-  jhfgd (MCU)                          2.41e-04    3.691    7.372    3.691   0.2
+  jhfgd (MCU)                          2.41e-04    3.691    7.438    3.691   0.2
   AHB (ahb_fifo_io)                       3.932  388.993  601.158  392.926  18.4
     TX_FIFO (tx_fifo)                     1.699  254.006  390.575  255.706  12.0
       FIFO_REG (tx_fifo_reg)              1.699  247.865  374.439  249.565  11.7

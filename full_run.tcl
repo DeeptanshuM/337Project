@@ -34,6 +34,7 @@ timeDesign -preCTS
 # reports are in timingReports subdirectory of project
 
 # Perform pre-CTS optimization
+setMultiCpuUsage -localCpu 10
 setOptMode -yieldEffort none
 setOptMode -highEffort
 setOptMode -maxDensity 0.95

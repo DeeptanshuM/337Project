@@ -1,0 +1,17 @@
+Version 4.1
+Micron 1000
+LAYERS 10
+poly
+metal1
+metal2
+metal3
+cc
+via
+via2
+nwell
+nactive
+pactive
+VIAS 0
+SPECIALNETS
+0 0 1 gnd
+0 0 1 vdd

@@ -30,7 +30,7 @@ output reg [3:0] status_bits
 reg flagKeyGenDone;
 wire tmp_flagKeyGenDone;
 
-typedef enum bit [4:0] {
+typedef enum bit [3:0] {
 			IDLE,
 			get_key,
 			get_data,
@@ -55,7 +55,7 @@ always_ff @ (posedge clk, negedge n_reset) begin
   else begin
 	state <= nxt_state;
 	flagKeyGenDone <= tmp_flagKeyGenDone;
-	//status_bits <= {flagKeyGenDone, is_encrypt, is_decrypt, !emptyTx, fullRx};
+	//status_bits <= {key generation is complete, is_encrypt/not_is_decrypt, encryption/decrption complete, buffer is full};
 	status_bits[0] <= fullRx;
         status_bits[1] <= !emptyTx;
 	status_bits[2] <= tmp_status_bits_2;
@@ -72,8 +72,8 @@ case(state)
 		nxt_state = get_key;
 	if(!emptyRx)
 		nxt_state = get_data;
-	if(data_done)
-		nxt_state = enqueueTrans;
+	//if(data_done)
+	//	nxt_state = enqueueTrans;
 	end
 
 	get_key: begin
@@ -117,7 +117,7 @@ assign read_fifo_KeyGen = (state == get_key);
 assign is_encrypt = status_bits[2];
 assign read_fifo = (state == get_data);
 assign rcv_deq = ((state == didRead) || (state == get_key));
-assign trans_enq = (state == enqueueTrans);
+assign trans_enq = data_done;
 assign mcu_key_in = (state == get_key); 
 
 endmodule
