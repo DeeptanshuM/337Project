@@ -1,0 +1,177 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'aes_decryption' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : aes_decryption
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:32:07 2017
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: block_B_reg[118]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: block_C_reg[114]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  block_B_reg[118]/CLK (DFFSR)                            0.00       0.00 r
+  block_B_reg[118]/Q (DFFSR)                              0.49       0.49 f
+  U1445/Y (INVX2)                                         0.08       0.57 r
+  U1446/Y (INVX2)                                         0.74       1.31 f
+  INV_MIX_COLUMNS/i_data[118] (inv_mix_columns)           0.00       1.31 f
+  INV_MIX_COLUMNS/MC_B4/i_data[22] (mix_columns_byte_11)
+                                                          0.00       1.31 f
+  INV_MIX_COLUMNS/MC_B4/U19/Y (INVX2)                     0.39       1.70 r
+  INV_MIX_COLUMNS/MC_B4/U244/Y (XNOR2X1)                  0.25       1.95 f
+  INV_MIX_COLUMNS/MC_B4/U207/Y (NAND2X1)                  0.19       2.14 r
+  INV_MIX_COLUMNS/MC_B4/U206/Y (XOR2X1)                   0.26       2.41 f
+  INV_MIX_COLUMNS/MC_B4/U205/Y (XOR2X1)                   0.26       2.67 f
+  INV_MIX_COLUMNS/MC_B4/U204/Y (XOR2X1)                   0.25       2.92 f
+  INV_MIX_COLUMNS/MC_B4/U200/Y (XOR2X1)                   0.24       3.15 f
+  INV_MIX_COLUMNS/MC_B4/U199/Y (XOR2X1)                   0.25       3.40 f
+  INV_MIX_COLUMNS/MC_B4/U198/Y (XOR2X1)                   0.24       3.64 f
+  INV_MIX_COLUMNS/MC_B4/U197/Y (XOR2X1)                   0.21       3.85 r
+  INV_MIX_COLUMNS/MC_B4/o_data[2] (mix_columns_byte_11)
+                                                          0.00       3.85 r
+  INV_MIX_COLUMNS/U243/Y (AOI22X1)                        0.11       3.96 f
+  INV_MIX_COLUMNS/U37/Y (INVX2)                           0.13       4.09 r
+  INV_MIX_COLUMNS/o_data[114] (inv_mix_columns)           0.00       4.09 r
+  U579/Y (AOI22X1)                                        0.08       4.17 f
+  U578/Y (INVX1)                                          0.11       4.28 r
+  block_C_reg[114]/D (DFFSR)                              0.00       4.28 r
+  data arrival time                                                  4.28
+
+  clock clk (rise edge)                                   5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  block_C_reg[114]/CLK (DFFSR)                            0.00       5.00 r
+  library setup time                                     -0.22       4.78
+  data required time                                                 4.78
+  --------------------------------------------------------------------------
+  data required time                                                 4.78
+  data arrival time                                                 -4.28
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.50
+
+
+1
+ 
+****************************************
+Report : area
+Design : aes_decryption
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:32:07 2017
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                         3625
+Number of nets:                         21100
+Number of cells:                        17650
+Number of combinational cells:          16545
+Number of sequential cells:              1066
+Number of macros/black boxes:               0
+Number of buf/inv:                       2382
+Number of references:                      19
+
+Combinational area:            4626162.000000
+Buf/Inv area:                   350712.000000
+Noncombinational area:          842688.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               5468850.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : aes_decryption
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:32:08 2017
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+aes_decryption                          212.173  492.061 1.64e+03  704.236 100.0
+  INC_STATE (incriment_state)          2.40e-02 3.56e-02    0.947 5.96e-02   0.0
+  INV_MIX_COLUMNS (inv_mix_columns)      95.563  140.532  606.799  236.095  33.5
+    MC_B15 (mix_columns_byte_0)           5.540    8.438   36.679   13.978   2.0
+    MC_B14 (mix_columns_byte_1)           5.549    8.446   36.679   13.995   2.0
+    MC_B13 (mix_columns_byte_2)           5.547    8.451   36.679   13.998   2.0
+    MC_B12 (mix_columns_byte_3)           5.550    8.453   36.679   14.003   2.0
+    MC_B11 (mix_columns_byte_4)           5.516    8.424   36.679   13.940   2.0
+    MC_B10 (mix_columns_byte_5)           5.528    8.437   36.679   13.965   2.0
+    MC_B9 (mix_columns_byte_6)            5.514    8.424   36.679   13.938   2.0
+    MC_B8 (mix_columns_byte_7)            5.519    8.426   36.679   13.944   2.0
+    MC_B7 (mix_columns_byte_8)            5.535    8.429   36.679   13.964   2.0
+    MC_B6 (mix_columns_byte_9)            5.546    8.447   36.679   13.993   2.0
+    MC_B5 (mix_columns_byte_10)           5.537    8.437   36.679   13.975   2.0
+    MC_B4 (mix_columns_byte_11)           5.541    8.441   36.679   13.982   2.0
+    MC_B3 (mix_columns_byte_12)           5.495    8.482   36.679   13.977   2.0
+    MC_B2 (mix_columns_byte_13)           5.503    8.494   36.679   13.998   2.0
+    MC_B1 (mix_columns_byte_14)           5.490    8.477   36.679   13.967   2.0
+    MC_B0 (mix_columns_byte_15)           5.499    8.487   36.679   13.987   2.0
+  RKA (round_key_adder)                   2.215    6.807   23.077    9.022   1.3
+  INV_SUB_BYTES (inv_sub_bytes)          63.813   38.672  619.177  102.486  14.6
+    ISUB16 (inv_s_box_lookup_0)           4.000    2.424   38.699    6.424   0.9
+    ISUB15 (inv_s_box_lookup_1)           3.976    2.407   38.699    6.383   0.9
+    ISUB14 (inv_s_box_lookup_2)           3.999    2.421   38.699    6.420   0.9
+    ISUB13 (inv_s_box_lookup_3)           4.007    2.424   38.699    6.431   0.9
+    ISUB12 (inv_s_box_lookup_4)           3.992    2.415   38.699    6.407   0.9
+    ISUB11 (inv_s_box_lookup_5)           3.980    2.415   38.699    6.395   0.9
+    ISUB10 (inv_s_box_lookup_6)           3.972    2.405   38.699    6.378   0.9
+    ISUB9 (inv_s_box_lookup_7)            4.005    2.427   38.699    6.433   0.9
+    ISUB8 (inv_s_box_lookup_8)            3.986    2.414   38.699    6.401   0.9
+    ISUB7 (inv_s_box_lookup_9)            3.984    2.419   38.699    6.402   0.9
+    ISUB6 (inv_s_box_lookup_10)           3.995    2.427   38.699    6.422   0.9
+    ISUB5 (inv_s_box_lookup_11)           3.988    2.414   38.699    6.402   0.9
+    ISUB4 (inv_s_box_lookup_12)           3.981    2.415   38.699    6.397   0.9
+    ISUB3 (inv_s_box_lookup_13)           3.996    2.428   38.699    6.425   0.9
+    ISUB2 (inv_s_box_lookup_14)           3.971    2.408   38.699    6.379   0.9
+    ISUB1 (inv_s_box_lookup_15)           3.979    2.409   38.699    6.388   0.9
+  SHIFT_ROWS (inv_shift_rows)             0.000    0.000    0.000    0.000   0.0
+  XOR_INIT (xor_init)                     4.055    8.949   31.218   13.004   1.8
+  DBS (data_block_select)                 7.374    7.504   19.370   14.879   2.1
+1
