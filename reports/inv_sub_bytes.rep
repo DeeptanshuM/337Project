@@ -1,0 +1,136 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : inv_sub_bytes
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:03:17 2017
+****************************************
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: i_data[126]
+              (input port)
+  Endpoint: o_data[127]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 r
+  i_data[126] (in)                                        0.00       0.00 r
+  ISUB1/input_word[6] (inv_s_box_lookup_15)               0.00       0.00 r
+  ISUB1/U494/Y (INVX1)                                    0.14       0.14 f
+  ISUB1/U493/Y (NOR2X1)                                   0.21       0.35 r
+  ISUB1/U353/Y (NAND2X1)                                  0.59       0.94 f
+  ISUB1/U352/Y (INVX1)                                    0.87       1.81 r
+  ISUB1/U228/Y (NOR2X1)                                   0.39       2.20 f
+  ISUB1/U71/Y (OAI22X1)                                   0.16       2.36 r
+  ISUB1/U70/Y (NOR2X1)                                    0.16       2.53 f
+  ISUB1/U69/Y (NAND3X1)                                   0.12       2.65 r
+  ISUB1/U68/Y (INVX1)                                     0.17       2.82 f
+  ISUB1/U44/Y (NAND3X1)                                   0.14       2.96 r
+  ISUB1/U43/Y (NOR2X1)                                    0.13       3.09 f
+  ISUB1/U34/Y (AND2X1)                                    0.24       3.33 f
+  ISUB1/U14/Y (OAI21X1)                                   0.13       3.46 r
+  ISUB1/U13/Y (OR2X1)                                     0.26       3.72 r
+  ISUB1/U9/Y (NOR2X1)                                     0.16       3.89 f
+  ISUB1/U8/Y (NAND3X1)                                    0.09       3.97 r
+  ISUB1/substituted_word[7] (inv_s_box_lookup_15)         0.00       3.97 r
+  o_data[127] (out)                                       0.00       3.97 r
+  data arrival time                                                  3.97
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+ 
+****************************************
+Report : area
+Design : inv_sub_bytes
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:03:17 2017
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                          512
+Number of nets:                          8352
+Number of cells:                         7984
+Number of combinational cells:           7968
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                       1248
+Number of references:                      16
+
+Combinational area:            1917072.000000
+Buf/Inv area:                   179712.000000
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               1917072.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : inv_sub_bytes
+Version: K-2015.06-SP1
+Date   : Tue Apr 25 20:03:18 2017
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+inv_sub_bytes                           396.091  293.955  515.163  690.046 100.0
+  ISUB16 (inv_s_box_lookup_0)            24.530   18.225   32.198   42.755   6.2
+  ISUB15 (inv_s_box_lookup_1)            24.733   18.341   32.198   43.074   6.2
+  ISUB14 (inv_s_box_lookup_2)            24.772   18.386   32.198   43.158   6.3
+  ISUB13 (inv_s_box_lookup_3)            24.751   18.347   32.198   43.098   6.2
+  ISUB12 (inv_s_box_lookup_4)            24.616   18.260   32.198   42.875   6.2
+  ISUB11 (inv_s_box_lookup_5)            24.779   18.390   32.198   43.169   6.3
+  ISUB10 (inv_s_box_lookup_6)            24.738   18.337   32.198   43.075   6.2
+  ISUB9 (inv_s_box_lookup_7)             24.588   18.269   32.198   42.857   6.2
+  ISUB8 (inv_s_box_lookup_8)             24.879   18.463   32.198   43.342   6.3
+  ISUB7 (inv_s_box_lookup_9)             24.915   18.487   32.198   43.403   6.3
+  ISUB6 (inv_s_box_lookup_10)            24.707   18.342   32.198   43.049   6.2
+  ISUB5 (inv_s_box_lookup_11)            24.904   18.485   32.198   43.389   6.3
+  ISUB4 (inv_s_box_lookup_12)            24.739   18.353   32.198   43.092   6.2
+  ISUB3 (inv_s_box_lookup_13)            24.821   18.451   32.198   43.272   6.3
+  ISUB2 (inv_s_box_lookup_14)            24.845   18.453   32.198   43.298   6.3
+  ISUB1 (inv_s_box_lookup_15)            24.774   18.366   32.198   43.140   6.3
+1
